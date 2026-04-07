@@ -1,0 +1,10 @@
+# Netlify redirects (clean URLs)
+/privacy-policy /privacy-policy.html 200
+/terms-of-use /terms-of-use.html 200
+/cookies-policy /cookies-policy.html 200
+/disclaimer /disclaimer.html 200
+/dmca /dmca.html 200
+/accessibility /accessibility.html 200
+/do-not-sell-my-data /do-not-sell-my-data.html 200
+/about /about.html 200
+/contact /contact.html 200
