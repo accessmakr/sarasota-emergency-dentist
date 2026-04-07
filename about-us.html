@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us • Sarasota Emergency Dentist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        :root { --emerald: #10b981; --violet: #8b5cf6; }
+        * { font-family: 'Inter', system_ui, sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+    <nav class="sticky top-0 bg-white border-b z-50 px-8 py-5 flex justify-between items-center max-w-screen-2xl mx-auto">
+        <div class="flex items-center gap-x-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-violet-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner">🦷</div>
+            <span class="font-semibold text-2xl tracking-[-0.5px]">Sarasota Emergency Dentist</span>
+        </div>
+        <a href="index.html" class="flex items-center gap-x-2 text-violet-600 font-medium hover:text-violet-700 transition-colors">
+            ← Back to Homepage
+        </a>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-8 py-16 prose prose-slate">
+        <h1 class="text-5xl font-semibold tracking-[-1px] mb-2">About Sarasota Emergency Dentist</h1>
+        <p class="text-emerald-600 font-medium">Last updated: April 7, 2026</p>
+        
+        <p>We are an independent, locally focused directory service founded in 2024 to solve one problem: when a Sarasota resident has a dental emergency, they should be able to find a verified, high-quality provider in seconds — not hours.</p>
+        
+        <h2 class="text-3xl mt-12 mb-4">Our Mission</h2>
+        <p>To connect Sarasota County residents with the 21 best emergency-capable dental practices through transparent, real-time, clinically verified information.</p>
+        
+        <h2 class="text-3xl mt-12 mb-4">How We Curate the 21 Providers</h2>
+        <ul class="list-disc pl-6 space-y-3">
+            <li>Every provider is physically located inside Sarasota County</li>
+            <li>Minimum 4.5-star average rating across Google, Yelp, and Healthgrades (50+ reviews)</li>
+            <li>Documented same-day or after-hours emergency capability</li>
+            <li>Active Florida Board of Dentistry license verified weekly</li>
+            <li>ADA emergency protocol compliance</li>
+        </ul>
+        
+        <p class="mt-8">We are not affiliated with any dental chain or insurance company. Our only goal is faster pain relief for Sarasota families.</p>
+    </div>
+
+    <footer class="bg-slate-950 text-slate-400 text-sm py-12 text-center">
+        © <span id="year9"></span> Sarasota Emergency Dental Network • 
+        <a href="index.html" class="text-white hover:text-emerald-400">Home</a>
+        <script>document.getElementById('year9').textContent = new Date().getFullYear();</script>
+    </footer>
+</body>
+</html>
