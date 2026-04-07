@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy • Sarasota Emergency Dentist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        :root { --emerald: #10b981; --violet: #8b5cf6; }
+        * { font-family: 'Inter', system_ui, sans-serif; }
+        .prose h1, .prose h2 { font-weight: 600; letter-spacing: -1px; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+    <!-- NAV -->
+    <nav class="sticky top-0 bg-white border-b z-50 px-8 py-5 flex justify-between items-center max-w-screen-2xl mx-auto">
+        <div class="flex items-center gap-x-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-violet-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner">🦷</div>
+            <span class="font-semibold text-2xl tracking-[-0.5px]">Sarasota Emergency Dentist</span>
+        </div>
+        <a href="index.html" class="flex items-center gap-x-2 text-violet-600 font-medium hover:text-violet-700 transition-colors">
+            ← Back to Homepage
+        </a>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-8 py-16 prose prose-slate">
+        <h1 class="text-5xl font-semibold tracking-[-1px] mb-2">Privacy Policy</h1>
+        <p class="text-emerald-600 font-medium">Last updated: April 7, 2026</p>
+        
+        <p class="text-lg leading-relaxed">Sarasota Emergency Dentist (“we”, “us”, or “our”) operates as an independent online directory and connection service. We are not a dental clinic, do not provide medical or dental treatment, and do not collect, store, or transmit protected health information (PHI) under HIPAA.</p>
+        
+        <h2 class="text-3xl mt-12 mb-4">1. Information We Collect</h2>
+        <p>We only collect non-personal, anonymous usage data through Plausible Analytics (a privacy-first, GDPR-compliant, cookie-free analytics platform). This includes:</p>
+        <ul class="list-disc pl-6 space-y-2">
+            <li>Page views and session duration (aggregated only)</li>
+            <li>Referral sources and geographic region (country-level only)</li>
+            <li>Search terms entered in our live provider search (never linked to any user)</li>
+        </ul>
+        <p class="mt-6">We do NOT collect names, email addresses, phone numbers, IP addresses, or any dental/medical details unless you voluntarily submit them through the secure contact form on the Contact page. Even then, the form data is immediately forwarded to our internal support email and is not stored on this website.</p>
+
+        <h2 class="text-3xl mt-12 mb-4">2. How We Use Information</h2>
+        <p>Anonymous analytics help us improve the directory and understand which providers and emergency topics are most needed by Sarasota residents. Voluntary contact form submissions are used solely to respond to your emergency guidance request within minutes.</p>
+
+        <h2 class="text-3xl mt-12 mb-4">3. Information Sharing &amp; Selling</h2>
+        <p>We NEVER sell, rent, or share any personal data with third parties for marketing purposes. We do not participate in any data broker networks. The only sharing occurs when you explicitly request guidance and we connect you to a verified local dentist (you initiate the call or booking).</p>
+
+        <h2 class="text-3xl mt-12 mb-4">4. Data Retention &amp; Security</h2>
+        <p>Anonymous analytics data is retained for a maximum of 14 months. Contact form submissions are deleted after our team has responded. All data is transmitted over HTTPS. We use industry-standard security practices.</p>
+
+        <h2 class="text-3xl mt-12 mb-4">5. Your Rights (Florida &amp; Federal)</h2>
+        <p>You have the right to request access, correction, or deletion of any personal data we hold about you. To exercise these rights, simply use the contact form on the Contact page or email the address provided there. We respond within 48 hours.</p>
+
+        <h2 class="text-3xl mt-12 mb-4">6. Children’s Privacy</h2>
+        <p>Our site is not directed to children under 13. We do not knowingly collect data from children.</p>
+
+        <h2 class="text-3xl mt-12 mb-4">7. Changes to This Policy</h2>
+        <p>We may update this policy. Continued use of the site after changes constitutes acceptance of the new policy.</p>
+
+        <div class="mt-16 p-6 bg-emerald-50 border border-emerald-200 rounded-3xl text-sm">
+            <strong>Questions?</strong> Use the secure contact form on our <a href="contact.html" class="text-violet-600 underline">Contact page</a>. We never store your message beyond responding to your emergency request.
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 text-sm py-12 text-center">
+        © <span id="year"></span> Sarasota Emergency Dental Network • 
+        <a href="index.html" class="text-white hover:text-emerald-400">Home</a>
+        <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    </footer>
+</body>
+</html>
