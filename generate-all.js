@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import pages from './data/pages.json' assert { type: 'json' };
+import pages from './data/pages.json' with { type: 'json' };
 
 console.log('🚀 Starting Sarasota Emergency Dentist page generator...');
 
