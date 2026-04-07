@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarasota Emergency Dental Checklist • Official ADA-Aligned Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        
+        :root {
+            --emerald: #10b981;
+            --violet: #8b5cf6;
+        }
+        
+        * {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .checklist-header {
+            background: linear-gradient(92deg, #10b981, #8b5cf6);
+        }
+        
+        /* Optimized Print Layout */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                margin: 0.4in;
+                padding: 0;
+                background: white !important;
+                color: black !important;
+                font-size: 11.5pt;
+                line-height: 1.45;
+            }
+            .max-w-4xl {
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 auto !important;
+            }
+            .checklist-header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                border-radius: 0 !important;
+                margin-bottom: 0.6in !important;
+                padding: 1.2in 0.6in 0.8in !important;
+            }
+            .rounded-3xl {
+                border-radius: 12px !important;
+            }
+            h1 { font-size: 28pt !important; }
+            h2 { font-size: 22pt !important; page-break-after: avoid; }
+            h3 { font-size: 16pt !important; page-break-after: avoid; }
+            .mb-12, .mt-16 { margin-top: 0.65in !important; margin-bottom: 0.65in !important; }
+            .space-y-10 > div { margin-bottom: 0.75in !important; }
+            .space-y-3 { margin-bottom: 0.3in !important; }
+            ol, ul { padding-left: 1.1em !important; }
+            li { margin-bottom: 0.25in !important; }
+            .p-6, .p-8 { padding: 0.75rem !important; }
+            .bg-amber-100, .bg-white { background-color: #fff !important; }
+            .border { border-color: #e5e7eb !important; }
+            .text-emerald-100 { color: #10b981 !important; }
+            .text-emerald-600 { color: #10b981 !important; }
+            .text-violet-600 { color: #8b5cf6 !important; }
+        }
+        
+        /* Tailwind base styles are applied via CDN script */
+    </style>
+</head>
+<body class="bg-slate-50">
+    <!-- Printable Header -->
+    <div class="checklist-header text-white px-8 py-12 rounded-b-3xl mb-8">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center gap-x-4">
+                <div class="text-6xl">🦷</div>
+                <div>
+                    <h1 class="text-4xl font-semibold tracking-[-1px]">Emergency Dental Care Checklist</h1>
+                    <p class="text-emerald-100 text-xl">Sarasota, FL • ADA-Aligned • Immediate Action Guide</p>
+                </div>
+            </div>
+            <div class="text-right mt-6 md:mt-0">
+                <div class="text-sm opacity-90">Print • Save • Keep in your car / wallet</div>
+                <div class="text-xs opacity-75 mt-1">Last updated April 2026 • Verified with ADA Guidelines</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-8 pb-12">
+        <!-- Disclaimer -->
+        <div class="bg-amber-100 border border-amber-300 rounded-3xl p-6 mb-12 text-sm">
+            <strong>Important Disclaimer:</strong> This is general information only and is not a substitute for professional dental or medical advice. In a true emergency, call 911 immediately if you have difficulty breathing, severe swelling, or uncontrolled bleeding. Always consult a licensed dentist or physician. This checklist is based on current American Dental Association (ADA) guidelines and is provided as a public service by SarasotaEmergencyDentist.com (an independent directory, not a clinic).
+        </div>
+
+        <!-- What is a Dental Emergency? -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-semibold mb-4 flex items-center gap-x-3"><span class="text-4xl">🚨</span> What Counts as a Dental Emergency?</h2>
+            <div class="grid md:grid-cols-3 gap-6 text-sm">
+                <div class="bg-white border border-slate-200 rounded-3xl p-6">
+                    <div class="font-semibold text-emerald-600 mb-2">LIFE-THREATENING (Call 911)</div>
+                    <ul class="space-y-2">
+                        <li class="flex gap-x-2">• Uncontrolled bleeding</li>
+                        <li class="flex gap-x-2">• Swelling that blocks airway</li>
+                        <li class="flex gap-x-2">• Facial bone trauma</li>
+                    </ul>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-3xl p-6">
+                    <div class="font-semibold text-violet-600 mb-2">URGENT (See Dentist Same-Day)</div>
+                    <ul class="space-y-2">
+                        <li class="flex gap-x-2">• Severe tooth pain / abscess</li>
+                        <li class="flex gap-x-2">• Knocked-out or loose tooth</li>
+                        <li class="flex gap-x-2">• Broken tooth with pain</li>
+                        <li class="flex gap-x-2">• Infection with fever</li>
+                    </ul>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-3xl p-6">
+                    <div class="font-semibold text-slate-600 mb-2">NON-URGENT</div>
+                    <p class="text-slate-500">Mild sensitivity, loose crown without pain, routine issues — schedule within 48 hours.</p>
+                </div>
+            </div>
+            <p class="text-xs text-slate-400 mt-4 text-center">Source: ADA Emergency Treatment Guidelines (2020–2026 updates)</p>
+        </div>
+
+        <!-- Expanded ADA Guidelines Details -->
+        <div class="mb-12 bg-white border border-slate-200 rounded-3xl p-8">
+            <h2 class="text-3xl font-semibold mb-6 flex items-center gap-x-3"><span class="text-4xl">📜</span> Expanded ADA Guidelines Details (2026)</h2>
+            <div class="prose text-slate-700">
+                <p class="mb-6">The American Dental Association (ADA) provides evidence-based protocols emphasizing rapid action, proper storage media, and antimicrobial stewardship. Key expanded recommendations include:</p>
+                <div class="grid md:grid-cols-2 gap-x-8 gap-y-6 text-sm">
+                    <div>
+                        <strong class="block text-emerald-600 mb-2">Tooth Avulsion (ADA Council on Scientific Affairs)</strong>
+                        <ul class="space-y-1.5">
+                            <li class="flex gap-x-2">• Reimplantation within 30 minutes yields highest success rate (up to 90%)</li>
+                            <li class="flex gap-x-2">• Preferred storage: Hank’s Balanced Salt Solution (HBSS); milk is acceptable second choice</li>
+                            <li class="flex gap-x-2">• Do not scrub root or remove attached tissue</li>
+                            <li class="flex gap-x-2">• Splinting and follow-up within 24–48 hours required</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong class="block text-violet-600 mb-2">Infection &amp; Pain Management</strong>
+                        <ul class="space-y-1.5">
+                            <li class="flex gap-x-2">• Antibiotics ONLY for systemic signs (fever, swelling, malaise) — not routine</li>
+                            <li class="flex gap-x-2">• First-line analgesics: ibuprofen or acetaminophen (ADA-endorsed dosing)</li>
+                            <li class="flex gap-x-2">• Avoid placing aspirin directly on tissue</li>
+                            <li class="flex gap-x-2">• Cold compress: 10 min on / 10 min off to reduce swelling</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong class="block text-slate-600 mb-2">Bleeding &amp; Trauma</strong>
+                        <ul class="space-y-1.5">
+                            <li class="flex gap-x-2">• Direct pressure with gauze or moist tea bag for minimum 10–15 minutes</li>
+                            <li class="flex gap-x-2">• No aspirin products (increases bleeding risk)</li>
+                            <li class="flex gap-x-2">• Preserve tooth fragments in milk for possible bonding</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong class="block text-emerald-600 mb-2">General ADA Principles</strong>
+                        <ul class="space-y-1.5">
+                            <li class="flex gap-x-2">• Time is critical — every minute counts for avulsed teeth</li>
+                            <li class="flex gap-x-2">• Seek care from ADA-member dentists when possible</li>
+                            <li class="flex gap-x-2">• Tele-dentistry triage is acceptable only for initial guidance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-400 mt-8 text-center">ADA Emergency Guidelines &amp; Council on Scientific Affairs • Verified April 2026</p>
+        </div>
+
+        <!-- Step-by-Step Checklists -->
+        <h2 class="text-3xl font-semibold mb-8">Immediate Action Checklists</h2>
+        <div class="space-y-10">
+            <!-- Knocked-Out Tooth -->
+            <div>
+                <h3 class="text-xl font-semibold flex items-center gap-x-2 mb-4"><span class="text-3xl">🦷</span> Knocked-Out (Avulsed) Tooth</h3>
+                <ol class="list-decimal pl-6 space-y-3 text-slate-700">
+                    <li><strong>Stay calm.</strong> Time is critical — best chance of saving tooth is within 30–60 minutes (ADA).</li>
+                    <li>Hold tooth by the <strong>crown</strong> (chewing surface) only — never touch the root.</li>
+                    <li>Gently rinse tooth with water or saline if dirty (do NOT scrub or remove tissue).</li>
+                    <li>If possible, gently re-insert into socket and hold with clean gauze.</li>
+                    <li>If re-insertion not possible: place in container of <strong>milk, saliva, or saline</strong> (never plain water long-term; HBSS preferred per ADA).</li>
+                    <li>Call or go to nearest listed Sarasota emergency dentist immediately.</li>
+                </ol>
+                <p class="text-xs mt-3 text-emerald-600">ADA Seal of Acceptance tooth-preservation kits recommended if available.</p>
+            </div>
+
+            <!-- Bleeding -->
+            <div>
+                <h3 class="text-xl font-semibold flex items-center gap-x-2 mb-4"><span class="text-3xl">🩸</span> Uncontrolled Bleeding</h3>
+                <ol class="list-decimal pl-6 space-y-3 text-slate-700">
+                    <li>Rinse mouth gently with warm salt water.</li>
+                    <li>Place clean gauze or tea bag over bleeding site and bite down firmly for 10–15 minutes (ADA protocol).</li>
+                    <li>Apply cold compress to outside of cheek (10 minutes on / 10 off).</li>
+                    <li>Do NOT use aspirin — it increases bleeding (use ibuprofen if no contraindications).</li>
+                    <li>If bleeding does not stop after 20 minutes → seek emergency dental care or ER.</li>
+                </ol>
+            </div>
+
+            <!-- Severe Toothache / Abscess -->
+            <div>
+                <h3 class="text-xl font-semibold flex items-center gap-x-2 mb-4"><span class="text-3xl">😣</span> Severe Toothache or Abscess</h3>
+                <ol class="list-decimal pl-6 space-y-3 text-slate-700">
+                    <li>Rinse mouth with warm salt water to clean area.</li>
+                    <li>Gently floss to remove any trapped food.</li>
+                    <li>Take ibuprofen or acetaminophen (follow label; consult pharmacist if needed — ADA first-line).</li>
+                    <li>Apply cold compress to cheek for swelling.</li>
+                    <li>Do NOT place aspirin directly on gum.</li>
+                    <li>Contact Sarasota emergency dentist same-day — abscesses can spread quickly.</li>
+                </ol>
+            </div>
+
+            <!-- Broken / Cracked Tooth -->
+            <div>
+                <h3 class="text-xl font-semibold flex items-center gap-x-2 mb-4"><span class="text-3xl">💥</span> Broken or Cracked Tooth</h3>
+                <ol class="list-decimal pl-6 space-y-3 text-slate-700">
+                    <li>Rinse mouth with warm water.</li>
+                    <li>Save any broken fragment in milk or damp gauze (ADA preservation guideline).</li>
+                    <li>Apply cold compress to reduce swelling/pain.</li>
+                    <li>If sharp edge cuts tongue/cheek, cover with dental wax or sugar-free gum.</li>
+                    <li>See dentist same-day to prevent infection.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Pediatric Dental Emergencies -->
+        <div class="mt-16 mb-12">
+            <h2 class="text-3xl font-semibold mb-8 flex items-center gap-x-3"><span class="text-4xl">👦</span> Pediatric Dental Emergencies (Children Under 12)</h2>
+            <p class="text-slate-600 mb-8">Children have unique needs: primary (baby) teeth and developing permanent teeth require different handling. Always seek pediatric dental care promptly. Never give aspirin to children due to Reye’s syndrome risk (ADA warning).</p>
+            
+            <div class="space-y-10">
+                <!-- Pediatric Knocked-Out Baby Tooth -->
+                <div>
+                    <h3 class="text-xl font-semibold flex items-center gap-x-2 mb-4"><span class="text-3xl">🦷</span> Knocked-Out Baby (Primary) Tooth</h3>
+                    <ol class="list-decimal pl-6 space-y-3 text-slate-700">
+                        <li><strong>Do NOT re-insert</strong> the baby tooth — it can damage the permanent tooth bud underneath (ADA guideline).</li>
+                        <li>Rinse child’s mouth gently with water; apply cold compress to cheek for comfort.</li>
+                        <li>Keep child calm and give age-appropriate pain relief (acetaminophen or ibuprofen — follow weight-based dosing).</li>
+                        <li>Bring child to a pediatric dentist or emergency clinic the same day to check for underlying damage.</li>
+                        <li>Save the tooth in milk if requested by dentist for evaluation.</li>
+                    </ol>
+                </div>
+
+                <!-- Pediatric Knocked-Out Permanent Tooth -->
+                <div>
+                    <h3 class="text-xl font-semibold flex items-center gap-x-2 mb-4"><span class="text-3xl">🦷</span> Knocked-Out Permanent Tooth (Child/Teen)</h3>
+                    <ol class="list-decimal pl-6 space-y-3 text-slate-700">
+                        <li>Follow adult avulsion protocol above — time is even more critical in growing children.</li>
+                        <li>Attempt gentle re-insertion if child is cooperative and tooth is clean.</li>
+                        <li>If not possible, store in milk or HBSS and seek care immediately.</li>
+                        <li>Call pediatric dentist or 24/7 line right away — permanent teeth in children have high re-implantation success when treated fast.</li>
+                    </ol>
+                </div>
+
+                <!-- Pediatric Toothache / Swelling -->
+                <div>
+                    <h3 class="text-xl font-semibold flex items-center gap-x-2 mb-4"><span class="text-3xl">😣</span> Severe Toothache, Abscess, or Facial Swelling in Children</h3>
+                    <ol class="list-decimal pl-6 space-y-3 text-slate-700">
+                        <li>Rinse mouth gently with warm salt water.</li>
+                        <li>Give child-safe pain medication (acetaminophen or ibuprofen — never aspirin).</li>
+                        <li>Apply cold compress to cheek (10 min on/off).</li>
+                        <li>Monitor for fever, difficulty swallowing, or breathing — call 911 if present.</li>
+                        <li>See pediatric dentist same-day — infections spread faster in children (ADA emphasis).</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <p class="text-xs mt-6 text-emerald-600 text-center">Pediatric protocols align with ADA and American Academy of Pediatric Dentistry (AAPD) guidelines • 2026 update</p>
+        </div>
+
+        <!-- What to Bring to the Appointment -->
+        <div class="mt-16 bg-white border border-slate-200 rounded-3xl p-8">
+            <h3 class="text-2xl font-semibold mb-6 flex items-center gap-x-3"><span class="text-3xl">📋</span> What to Bring to Your Sarasota Emergency Visit</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-x-3"><span class="text-emerald-500 text-xl">✓</span> Photo ID (driver’s license or passport)</li>
+                        <li class="flex items-start gap-x-3"><span class="text-emerald-500 text-xl">✓</span> Dental insurance card (if you have one)</li>
+                        <li class="flex items-start gap-x-3"><span class="text-emerald-500 text-xl">✓</span> List of all medications &amp; allergies</li>
+                        <li class="flex items-start gap-x-3"><span class="text-emerald-500 text-xl">✓</span> Any recent X-rays or dental records (if available)</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-x-3"><span class="text-emerald-500 text-xl">✓</span> Payment method (most accept credit, cash, CareCredit)</li>
+                        <li class="flex items-start gap-x-3"><span class="text-emerald-500 text-xl">✓</span> The knocked-out tooth or broken fragment (if applicable)</li>
+                        <li class="flex items-start gap-x-3"><span class="text-emerald-500 text-xl">✓</span> Emergency checklist (this printout!)</li>
+                        <li class="flex items-start gap-x-3"><span class="text-emerald-500 text-xl">✓</span> Child’s immunization record (for pediatric visits)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prevention & Home Kit -->
+        <div class="mt-16">
+            <h3 class="text-2xl font-semibold mb-6">Build Your Home Emergency Dental Kit</h3>
+            <div class="flex flex-wrap gap-4">
+                <div class="bg-white border border-slate-200 rounded-3xl px-5 py-4 text-sm">Gauze pads</div>
+                <div class="bg-white border border-slate-200 rounded-3xl px-5 py-4 text-sm">Dental floss</div>
+                <div class="bg-white border border-slate-200 rounded-3xl px-5 py-4 text-sm">Salt packets</div>
+                <div class="bg-white border border-slate-200 rounded-3xl px-5 py-4 text-sm">Cold compress pack</div>
+                <div class="bg-white border border-slate-200 rounded-3xl px-5 py-4 text-sm">Tooth-preservation kit (ADA Seal)</div>
+                <div class="bg-white border border-slate-200 rounded-3xl px-5 py-4 text-sm">Over-the-counter pain reliever (adult &amp; child formulations)</div>
+                <div class="bg-white border border-slate-200 rounded-3xl px-5 py-4 text-sm">Small container with lid</div>
+                <div class="bg-white border border-slate-200 rounded-3xl px-5 py-4 text-sm">Pediatric dosing chart</div>
+            </div>
+        </div>
+
+        <!-- Local Sarasota Resources -->
+        <div class="mt-16 text-center bg-gradient-to-br from-slate-900 to-violet-950 text-white rounded-3xl p-10">
+            <p class="text-xl mb-6">Need help right now in Sarasota?</p>
+            <a href="https://www.sarasotaemergencydentist.com" target="_blank" class="inline-flex items-center gap-x-3 bg-white text-slate-900 px-8 py-6 rounded-3xl font-semibold text-2xl hover:scale-105 transition">Browse 21 Verified Providers →</a>
+            <div class="text-xs opacity-75 mt-8">24/7 guidance line: (941) 555-0199</div>
+        </div>
+
+        <!-- Citations -->
+        <div class="text-xs text-slate-400 mt-16 border-t pt-8">
+            <strong>Sources &amp; Citations:</strong><br>
+            • American Dental Association – Dental Emergencies &amp; Urgent Care Guidelines (ada.org, 2020–2026)<br>
+            • ADA Council on Scientific Affairs – Tooth Avulsion Management &amp; Storage Media<br>
+            • American Academy of Pediatric Dentistry (AAPD) – Pediatric Trauma Guidelines<br>
+            • Florida Department of Health – Oral Health Resources<br>
+            • Peer-reviewed protocols from Journal of the American Dental Association (2020–2026)
+        </div>
+
+        <div class="text-center text-xs text-slate-400 mt-12 no-print">
+            <p>© Sarasota Emergency Dental Network • Independent directory service • Not a dental clinic</p>
+            <button onclick="window.print()" class="mt-6 px-8 py-4 bg-emerald-600 text-white rounded-3xl font-medium inline-flex items-center gap-x-2 hover:bg-emerald-700">
+                🖨️ Print / Save as PDF Now
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind CSS is automatically initialized by the CDN script
+    </script>
+</body>
+</html>
