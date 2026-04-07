@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* McKinsey-inspired clean white mode */
+:root {
+  --tw-color-emerald: #10b981;
+  --tw-color-violet: #8b5cf6;
+}
+
+body {
+  font-family: 'Inter', system_ui, sans-serif;
+}
+
+.prose h1, .prose h2, .prose h3 {
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 25px 25px 0 -10px rgb(139 92 246);
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(to right, #10b981, #8b5cf6);
+  z-index: 50;
+  transition: width 0.1s ease;
+}
+
+/* Legal page styling */
+.legal-content {
+  max-width: 780px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
