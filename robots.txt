@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.sarasotaemergencydentist.com/sitemap.xml
+
+# Disallow sensitive directories
+Disallow: /js/
+Disallow: /css/
+Disallow: /data/
