@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies Policy • Sarasota Emergency Dentist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        :root { --emerald: #10b981; --violet: #8b5cf6; }
+        * { font-family: 'Inter', system_ui, sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+    <nav class="sticky top-0 bg-white border-b z-50 px-8 py-5 flex justify-between items-center max-w-screen-2xl mx-auto">
+        <div class="flex items-center gap-x-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-violet-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner">🦷</div>
+            <span class="font-semibold text-2xl tracking-[-0.5px]">Sarasota Emergency Dentist</span>
+        </div>
+        <a href="index.html" class="flex items-center gap-x-2 text-violet-600 font-medium hover:text-violet-700 transition-colors">
+            ← Back to Homepage
+        </a>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-8 py-16 prose prose-slate">
+        <h1 class="text-5xl font-semibold tracking-[-1px] mb-2">Cookies Policy</h1>
+        <p class="text-emerald-600 font-medium">Last updated: April 7, 2026</p>
+        
+        <p>We use ZERO traditional tracking or marketing cookies. Our site is intentionally designed to respect your privacy.</p>
+        
+        <h2 class="text-3xl mt-12 mb-4">What We Use Instead</h2>
+        <p>We rely exclusively on <strong>Plausible Analytics</strong>, a lightweight, open-source, privacy-first analytics tool that:</p>
+        <ul class="list-disc pl-6 space-y-2">
+            <li>Does not use cookies at all</li>
+            <li>Does not collect IP addresses or any personally identifiable information</li>
+            <li>Does not track you across websites</li>
+            <li>Is fully GDPR, CCPA, and Florida privacy law compliant</li>
+        </ul>
+        
+        <h2 class="text-3xl mt-12 mb-4">No Third-Party Cookies</h2>
+        <p>No Google Analytics, Facebook Pixel, advertising cookies, or any other third-party scripts are present on this website.</p>
+        
+        <div class="mt-12 bg-violet-50 border border-violet-200 rounded-3xl p-8">
+            <p class="text-center font-medium">You can browse our entire directory, search providers, read testimonials, and download the free checklist without ever being tracked or having any cookie stored in your browser.</p>
+        </div>
+    </div>
+
+    <footer class="bg-slate-950 text-slate-400 text-sm py-12 text-center">
+        © <span id="year2"></span> Sarasota Emergency Dental Network • 
+        <a href="index.html" class="text-white hover:text-emerald-400">Home</a>
+        <script>document.getElementById('year2').textContent = new Date().getFullYear();</script>
+    </footer>
+</body>
+</html>
