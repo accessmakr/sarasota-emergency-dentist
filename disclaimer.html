@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer • Sarasota Emergency Dentist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        :root { --emerald: #10b981; --violet: #8b5cf6; }
+        * { font-family: 'Inter', system_ui, sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+    <nav class="sticky top-0 bg-white border-b z-50 px-8 py-5 flex justify-between items-center max-w-screen-2xl mx-auto">
+        <div class="flex items-center gap-x-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-violet-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner">🦷</div>
+            <span class="font-semibold text-2xl tracking-[-0.5px]">Sarasota Emergency Dentist</span>
+        </div>
+        <a href="index.html" class="flex items-center gap-x-2 text-violet-600 font-medium hover:text-violet-700 transition-colors">
+            ← Back to Homepage
+        </a>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-8 py-16 prose prose-slate">
+        <h1 class="text-5xl font-semibold tracking-[-1px] mb-2">Medical &amp; Legal Disclaimer</h1>
+        <p class="text-emerald-600 font-medium">Last updated: April 7, 2026</p>
+        
+        <p>This website is an independent information and connection service. It is not a substitute for professional dental or medical advice, diagnosis, or treatment.</p>
+        
+        <div class="bg-amber-50 border-l-4 border-amber-400 p-6 my-10 text-amber-800">
+            <strong>Never delay seeking emergency dental care.</strong> If you are experiencing severe pain, swelling that affects breathing, uncontrolled bleeding, or a knocked-out tooth, contact a licensed dentist or go to the nearest emergency facility immediately.
+        </div>
+        
+        <p>We make no representations or warranties regarding the accuracy, completeness, or suitability of any provider information. All decisions regarding your care are between you and the chosen dentist.</p>
+    </div>
+
+    <footer class="bg-slate-950 text-slate-400 text-sm py-12 text-center">
+        © <span id="year4"></span> Sarasota Emergency Dental Network • 
+        <a href="index.html" class="text-white hover:text-emerald-400">Home</a>
+        <script>document.getElementById('year4').textContent = new Date().getFullYear();</script>
+    </footer>
+</body>
+</html>
