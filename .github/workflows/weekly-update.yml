@@ -3,7 +3,7 @@ name: Weekly Full Site Update – index.html + registry.js + sitemap.xml + provi
 on:
   schedule:
     - cron: '0 13 * * 1'   # Every Monday at 13:00 UTC = 9:00 AM Eastern
-  workflow_dispatch:        # Allows you to run it manually with the green "Run workflow" button
+  workflow_dispatch:        # Allows manual run
 
 jobs:
   update:
