@@ -8,11 +8,17 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write      # ← This fixes the 403 permission error
+
     # 🔥 This fixes the Node.js 20 deprecation warning
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
+      - name: Checkout repository
+        uses: actions/github-script@v7   # Updated to latest for better compatibility
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
