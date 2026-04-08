@@ -10,8 +10,3 @@ Live since April 7, 2026
 - Advanced schema markup
 - Legal pages & compliance engine
 - Netlify + GitHub Actions CI/CD
-
-### Quick Start
-```bash
-npm install
-node generate-all.js
