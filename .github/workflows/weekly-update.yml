@@ -3,11 +3,14 @@ name: Weekly Full Site Update – index.html + registry.js + sitemap.xml + provi
 on:
   schedule:
     - cron: '0 13 * * 1'   # Every Monday at 13:00 UTC = 9:00 AM Eastern
-  workflow_dispatch:        # Allows manual run
+  workflow_dispatch:        # Allows manual trigger
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    # 🔥 This fixes the Node.js 20 deprecation warning
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout repository
