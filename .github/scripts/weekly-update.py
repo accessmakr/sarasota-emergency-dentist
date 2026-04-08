@@ -105,7 +105,8 @@ content = content.replace("{{MARQUEE_FRESH_INSIGHTS}}", marquee_html)
 dentists_js = "const dentists = [\n" + ",\n".join(
     f"            {json.dumps(d, separators=(',', ':'))}" for d in full_dentists
 ) + "\n            ]"
-content = re.sub(r'const dentists = \[[\s\S]*?// \{\{DYNAMIC_NEW_PROVIDERS_INSERT\}\}', dentists_js, content)
+# The 'lambda _: dentists_js' tells Python to use the string exactly as it is
+content = re.sub(r'const dentists = \[[\s\S]*?// \{\{DYNAMIC_NEW_PROVIDERS_INSERT\}\}', lambda _: dentists_js, content)
 
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(content)
