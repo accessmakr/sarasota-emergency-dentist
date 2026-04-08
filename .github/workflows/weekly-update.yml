@@ -14,7 +14,9 @@ jobs:
 
       - name: Update index.html + sitemap.xml + registry.js
         run: |
-          python3 -c '
+          python3 -c "
+            import textwrap
+            exec(textwrap.dedent(r'''
 import datetime
 import random
 import re
@@ -170,7 +172,8 @@ else:
     print("⚠️ Could not extract dentists array for registry.js")
 
 print("🎉 All files updated successfully!")
-          '
+            '''))
+          "
 
       - name: Commit and push all updates
         run: |
