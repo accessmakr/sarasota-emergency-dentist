@@ -1,0 +1,25 @@
+name: Weekly Full Site Update – index.html + registry.js + sitemap.xml + providers.json
+
+on:
+  schedule:
+    - cron: '0 13 * * 1'   # Every Monday at 13:00 UTC = 9:00 AM Eastern
+  workflow_dispatch:        # Allows you to run it manually with the green "Run workflow" button
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate fresh content + update ALL files
+        run: python3 .github/scripts/weekly-update.py
+
+      - name: Commit and push all updated files
+        run: |
+          git config user.name "Weekly Updater"
+          git config user.email "action@github.com"
+          git add index.html registry.js sitemap.xml providers.json providers/ robots.txt
+          git commit -m "Weekly auto-update: fresh date + 8 clinical insights + registry.js + sitemap.xml + providers.json + individual provider pages + pediatric/insurance enhancements + FULL RESHUFFLE + oral surgery specialists + dynamic count" || echo "No changes to commit"
+          git push
