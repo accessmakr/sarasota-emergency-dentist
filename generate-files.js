@@ -3,7 +3,7 @@ const path = require('path');
 
 // ========================= CONFIG =========================
 const DOMAIN = 'https://www.sarasotaemergencydentist.com';
-const MAIN_HTML = 'sarasotav3.html';           // change to 'index.html' if you rename it
+const MAIN_HTML = 'index.html';           // change to 'index.html' if you rename it
 // =======================================================
 
 console.log('🚀 Starting auto-generation of pages.json, registry.js, sitemap.xml...');
