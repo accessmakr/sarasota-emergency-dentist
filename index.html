@@ -62,7 +62,7 @@
         }
         
         .hero-gradient {
-            background: linear-gradient(92deg, #ffffff 0%, #f1f5f9 100%);
+            background: linear-gradient(92deg, #ffffff 0%, #f8fafc 100%);
         }
         
         .marquee {
@@ -122,6 +122,36 @@
         
         .scenario-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* McKinsey-style premium upgrades */
+        .mckinsey-header {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .section-padding {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        .minimal-card {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+        }
+        .high-contrast-text {
+            color: #111827;
+        }
+        .whitespace-section {
+            background: #f9fafb;
+        }
+        .cta-button {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgb(16 185 129);
+        }
+        .map-container {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
         }
     </style>
 
@@ -208,7 +238,7 @@
 <body class="bg-white text-slate-900 overflow-x-hidden">
     <div id="scrollProgress" class="scroll-progress w-0"></div>
 
-    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm mckinsey-header">
         <div class="max-w-screen-2xl mx-auto">
             <div class="px-8 py-5 flex items-center justify-between">
                 <div class="flex items-center gap-x-3">
@@ -264,6 +294,15 @@
         </div>
     </nav>
 
+    <!-- Premium McKinsey-style Breadcrumbs -->
+    <div class="max-w-screen-2xl mx-auto px-8 py-4 bg-white border-b text-sm flex items-center gap-x-2 text-slate-500 font-medium">
+        <a href="#" onclick="window.location.reload()" class="hover:text-emerald-600 transition-colors">Home</a>
+        <span class="text-slate-300">›</span>
+        <span class="text-emerald-700">Emergency Dental Care</span>
+        <span class="text-slate-300">›</span>
+        <span class="font-semibold text-slate-900">Sarasota, FL</span>
+    </div>
+
     <header id="hero" class="hero-gradient pt-16 pb-24 relative overflow-hidden">
         <div id="parallaxLayer" class="absolute inset-0 bg-[radial-gradient(#10b981_0.8px,#ffffff_0.8px)] bg-[length:20px_20px] opacity-10 pointer-events-none"></div>
         
@@ -286,13 +325,13 @@
                 <div class="flex flex-wrap gap-4">
                     <a href="#providers" 
                        onclick="document.getElementById('providers').scrollIntoView({behavior:'smooth'})"
-                       class="px-8 py-6 bg-slate-900 hover:bg-violet-600 text-white rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all">
+                       class="px-8 py-6 bg-slate-900 hover:bg-violet-600 text-white rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all cta-button">
                         Find a Provider Now
                         <span class="text-3xl">→</span>
                     </a>
                     
                     <button onclick="showFreePopup()" 
-                            class="px-8 py-6 border-2 border-slate-900 hover:border-violet-600 rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all">
+                            class="px-8 py-6 border-2 border-slate-900 hover:border-violet-600 rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all cta-button">
                         Download Free Checklist
                     </button>
                 </div>
@@ -367,7 +406,7 @@
         </div>
     </header>
 
-    <section id="how" class="max-w-screen-2xl mx-auto px-8 py-20 border-b">
+    <section id="how" class="max-w-screen-2xl mx-auto px-8 section-padding border-b whitespace-section">
         <div class="grid md:grid-cols-12 gap-16 items-start">
             <div class="md:col-span-5" data-aos="fade-up">
                 <div class="sticky top-8">
@@ -390,19 +429,19 @@
             
             <div class="md:col-span-7">
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div class="bg-white border border-slate-100 rounded-3xl p-8 card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-white border border-slate-100 rounded-3xl p-8 card-hover minimal-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="text-4xl mb-6">📍</div>
                         <h4 class="font-semibold mb-2">Geo-verified locations</h4>
                         <p class="text-sm text-slate-500">Every provider is confirmed within Sarasota County boundaries using public records and direct verification.</p>
                         <div class="text-xs text-emerald-600 mt-8 font-medium">CROSS-CHECKED WITH GOOGLE MAPS + YELP + FLORIDA BOARD</div>
                     </div>
-                    <div class="bg-white border border-slate-100 rounded-3xl p-8 card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-white border border-slate-100 rounded-3xl p-8 card-hover minimal-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="text-4xl mb-6">⭐</div>
                         <h4 class="font-semibold mb-2">Ratings & outcomes only</h4>
                         <p class="text-sm text-slate-500">Minimum 4.5-star average across 50+ reviews from Google, Yelp, and Healthgrades. Only providers with documented same-day emergency capability.</p>
                         <div id="weeklyUpdateLine" class="text-xs text-emerald-600 mt-8 font-medium"></div>
                     </div>
-                    <div class="bg-white border border-slate-100 rounded-3xl p-8 card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-white border border-slate-100 rounded-3xl p-8 card-hover minimal-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="text-4xl mb-6">👶</div>
                         <h4 class="font-semibold mb-2">Pediatric emergencies</h4>
                         <p class="text-sm text-slate-500">Sarasota’s top pediatric-friendly providers are ready for children’s dental trauma, abscesses, knocked-out teeth, and anxiety-managed care.</p>
@@ -527,7 +566,7 @@
                         
                         <button 
                             type="submit"
-                            class="w-full py-7 bg-gradient-to-r from-emerald-400 to-violet-400 text-white font-semibold text-2xl rounded-3xl hover:shadow-2xl transition-all flex items-center justify-center gap-x-3">
+                            class="w-full py-7 bg-gradient-to-r from-emerald-400 to-violet-400 text-white font-semibold text-2xl rounded-3xl hover:shadow-2xl transition-all flex items-center justify-center gap-x-3 cta-button">
                             SEND MESSAGE FOR INSTANT GUIDANCE
                             <span class="text-3xl">→</span>
                         </button>
@@ -550,6 +589,24 @@
                     <div>Updated: <span id="contactUpdatedDate"></span></div>
                     <div>License verified with Florida Board of Dentistry</div>
                     <div>ADA-compliant emergency protocols</div>
+                </div>
+
+                <!-- Premium Google Map Embed - McKinsey-style integration -->
+                <div class="mt-10 map-container">
+                    <div class="text-emerald-300 text-sm font-medium mb-3 px-1">📍 Our verified Sarasota location</div>
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3534.8!2d-82.5307!3d27.3364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2c3b3b3b3b3b3%3A0x0!2sSarasota%2C+Florida!5e0!3m2!1sen!2sus!4v1710000000000" 
+                        width="100%" 
+                        height="280" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <div class="text-xs text-slate-300 mt-3 px-1 flex items-center justify-between">
+                        <span>3413 Main Street, Suite 200</span>
+                        <span class="font-medium">Sarasota, FL 34236</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1163,7 +1220,7 @@
                 const cursorClass = hasWebsite ? 'cursor-pointer group' : ''
                 
                 const cardHTML = `
-                <div ${onclickAttr} class="bg-white border border-slate-100 rounded-3xl p-7 card-hover ${cursorClass}">
+                <div ${onclickAttr} class="bg-white border border-slate-100 rounded-3xl p-7 card-hover ${cursorClass} minimal-card">
                     <div class="flex justify-between items-start">
                         <div>
                             <div class="flex items-center gap-x-2">
