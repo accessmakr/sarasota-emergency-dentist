@@ -1,0 +1,32 @@
+name: Auto-Generate pages.json + registry.js + sitemap.xml
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:   # allows manual trigger from GitHub UI
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate pages.json, registry.js & sitemap.xml
+        run: node generate-files.js
+
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pages.json registry.js sitemap.xml
+          git commit -m "chore: auto-generate pages.json registry.js sitemap.xml" || echo "No changes to commit"
+          git push
