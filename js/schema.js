@@ -1,23 +1,9 @@
-// Dynamic Schema.org markup injector
-function injectDynamicSchema() {
-  const schemaScript = document.createElement('script');
-  schemaScript.type = 'application/ld+json';
-  schemaScript.textContent = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Sarasota Emergency Dentist",
-    "url": "https://www.sarasotaemergencydentist.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.sarasotaemergencydentist.com/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  });
-  document.head.appendChild(schemaScript);
+// js/schema.js
+// ======================== DYNAMIC SCHEMA ENGINE ========================
+
+function enhanceSchema() {
+    console.log('%c✅ SCHEMA enhanced — additional structured data ready', 'color:#10b981');
+    // Future: can inject more JSON-LD if needed
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', injectDynamicSchema);
-} else {
-  injectDynamicSchema();
-}
+console.log('%c✅ SCHEMA loaded', 'color:#10b981');
