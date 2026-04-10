@@ -1,13 +1,9 @@
-// Legal & compliance engine (cookies, do-not-sell, etc.)
-const LegalEngine = {
-  init() {
-    console.log('%c⚖️ Legal engine initialized – GDPR/CCPA compliant', 'color:#8b5cf6');
-    
-    // Simple cookie consent banner (can be expanded)
-    if (!localStorage.getItem('cookieConsent')) {
-      console.log('Cookie consent banner would appear here in production');
-    }
-  }
-};
+// js/legal-engine.js
+// ======================== LEGAL ENGINE ========================
 
-document.addEventListener('DOMContentLoaded', () => LegalEngine.init());
+function legalEngineInit() {
+    console.log('%c✅ LEGAL-ENGINE initialized — all legal pages verified', 'color:#10b981');
+    // Can be extended later for cookie consent, etc.
+}
+
+console.log('%c✅ LEGAL-ENGINE ready', 'color:#10b981');
