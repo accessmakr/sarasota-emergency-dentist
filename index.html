@@ -124,6 +124,7 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
+        /* McKinsey-style premium upgrades */
         .mckinsey-header {
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
@@ -151,18 +152,6 @@
             border-radius: 1rem;
             overflow: hidden;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-        }
-        
-        /* Enhanced exhaustive menu styles */
-        .repo-modal-content {
-            max-height: 70vh;
-        }
-        .repo-file-card {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .repo-file-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgb(139 92 246);
         }
     </style>
 
@@ -261,11 +250,6 @@
                     <a href="#providers" onclick="document.getElementById('providers').scrollIntoView({behavior:'smooth'})" class="hover:text-violet-600 transition-colors">Providers</a>
                     <a href="#how" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})" class="hover:text-violet-600 transition-colors">How It Works</a>
                     <a href="#testimonials" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})" class="hover:text-violet-600 transition-colors">Stories</a>
-                    <a href="#specialties" onclick="document.getElementById('specialties').scrollIntoView({behavior:'smooth'})" class="hover:text-violet-600 transition-colors">Specialties</a>
-                    <a href="#" onclick="showRepoExplorer(); return false;" class="hover:text-violet-600 transition-colors flex items-center gap-x-1">
-                        📁 Repo Files
-                        <span class="text-xs bg-emerald-100 text-emerald-700 px-2 py-px rounded-full">18 files • exhaustive</span>
-                    </a>
                     <a href="#faqs" onclick="document.getElementById('faqs').scrollIntoView({behavior:'smooth'})" class="hover:text-violet-600 transition-colors">FAQs</a>
                     <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="hover:text-violet-600 transition-colors">Contact</a>
                 </div>
@@ -274,7 +258,7 @@
                     <input 
                         id="globalSearch"
                         type="text" 
-                        placeholder="Search providers, specialties, or repo files instantly… 🦷"
+                        placeholder="Search providers or services instantly… 🦷"
                         onkeyup="liveSearch(this.value)"
                         class="w-full bg-slate-100 border-0 focus:ring-2 focus:ring-violet-300 rounded-3xl px-6 py-3 text-sm outline-none placeholder:text-slate-400">
                     <div id="searchDropdown" class="hidden absolute top-12 left-0 right-0 bg-white rounded-3xl shadow-2xl max-h-96 overflow-auto z-50 border border-slate-100"></div>
@@ -293,21 +277,16 @@
                 </div>
             </div>
             
-            <!-- Mobile Menu – now includes exhaustive repo link -->
             <div id="mobileMenu" class="hidden md:hidden mobile-menu bg-white border-t px-8 py-6">
                 <div class="flex flex-col gap-y-6 text-lg font-medium">
                     <a href="#providers" onclick="toggleMobileMenu()" class="hover:text-violet-600">Providers</a>
                     <a href="#how" onclick="toggleMobileMenu()" class="hover:text-violet-600">How It Works</a>
                     <a href="#testimonials" onclick="toggleMobileMenu()" class="hover:text-violet-600">Patient Stories</a>
-                    <a href="#specialties" onclick="toggleMobileMenu()" class="hover:text-violet-600">All Specialties</a>
-                    <a href="#" onclick="toggleMobileMenu();showRepoExplorer();return false;" class="hover:text-violet-600 flex items-center gap-x-2">
-                        📁 Full Repo Explorer (18 files)
-                    </a>
                     <a href="#faqs" onclick="toggleMobileMenu()" class="hover:text-violet-600">Frequently Asked Questions</a>
                     <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-violet-600">Get In Touch</a>
                     <div class="pt-4 border-t">
-                        <input id="mobileSearch" type="text" placeholder="Search providers + repo files live…" 
-                               onkeyup="liveSearch(this.value);"
+                        <input id="mobileSearch" type="text" placeholder="Search providers live…" 
+                               onkeyup="liveSearch(this.value);toggleMobileMenu()"
                                class="w-full bg-slate-100 rounded-3xl px-6 py-4 text-sm">
                     </div>
                 </div>
@@ -321,7 +300,7 @@
         <span class="text-slate-300">›</span>
         <span class="text-emerald-700">Emergency Dental Care</span>
         <span class="text-slate-300">›</span>
-        <span class="font-semibold text-slate-900">Sarasota, FL • Full Self-Contained v3</span>
+        <span class="font-semibold text-slate-900">Sarasota, FL</span>
     </div>
 
     <header id="hero" class="hero-gradient pt-16 pb-24 relative overflow-hidden">
@@ -331,7 +310,7 @@
             <div class="md:col-span-7" data-aos="fade-right">
                 <div class="inline-flex items-center gap-x-2 bg-white/80 backdrop-blur-md text-emerald-700 text-xs font-medium px-4 h-8 rounded-3xl mb-6 shadow-inner">
                     <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                    24/7 SARASOTA GUIDANCE • ADULTS & CHILDREN • FULLY SELF-CONTAINED
+                    24/7 SARASOTA GUIDANCE • ADULTS & CHILDREN
                 </div>
                 
                 <h1 class="text-6xl md:text-7xl font-semibold tracking-[-2px] leading-none mb-6">
@@ -473,17 +452,34 @@
         </div>
     </section>
 
-    <!-- DENTAL SPECIALTIES – now fully dynamic with onclick to load repo content -->
+    <!-- DIVERSITIES / SPECIALTIES SECTION – FULL LINKS TO YOUR EXISTING FILES -->
     <section id="specialties" class="max-w-screen-2xl mx-auto px-8 py-20 border-b bg-white">
         <div class="text-center mb-12">
-            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS • 18 FILES IN REPO</span>
+            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
             <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Dental specialties & diversities covered by verified providers</h2>
-            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented. Click any card to dynamically load full self-contained content from the repo.</p>
+            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented by verified providers in Sarasota.</p>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4" id="specialtiesGrid">
-            <!-- Populated dynamically by JS -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <a href="index.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>General Dentistry</strong><br>routine cleanings, fillings, preventive care</a>
+            <a href="pd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Pediatric Dentistry</strong><br>children & adolescents (behavior management, sedation)</a>
+            <a href="odo.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Orthodontics & Dentofacial Orthopedics</strong><br>braces, Invisalign, jaw alignment</a>
+            <a href="per.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Periodontics</strong><br>gums, bone, periodontal surgery</a>
+            <a href="end.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Endodontics</strong><br>root canals, pulp therapy</a>
+            <a href="oms.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Oral & Maxillofacial Surgery</strong><br>extractions, trauma, jaw surgery, implants</a>
+            <a href="pro.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Prosthodontics</strong><br>crowns, bridges, dentures, full-mouth reconstruction</a>
+            <a href="cod.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Cosmetic Dentistry</strong><br>veneers, whitening, smile design</a>
+            <a href="emd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Emergency Dentistry</strong><br>urgent pain, trauma, abscesses, 24/7 care</a>
+            <a href="imd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Implant Dentistry</strong><br>surgical placement & restoration of implants</a>
+            <a href="sda.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Sedation Dentistry / Anesthesia</strong><br>nitrous, oral, IV sedation for anxious patients</a>
+            <a href="ged.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Geriatric Dentistry</strong><br>seniors, denture care, medically complex patients</a>
+            <a href="snd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Special Needs Dentistry</strong><br>patients with disabilities or medical conditions</a>
+            <a href="red.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Restorative Dentistry</strong><br>complex fillings, inlays/onlays</a>
+            <a href="pwd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Preventive / Wellness Dentistry</strong><br>hygiene, sealants, fluoride, education</a>
+            <a href="ttop.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>TMJ / TMD & Orofacial Pain</strong><br>jaw joint disorders, headaches</a>
+            <a href="lad.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Laser Dentistry</strong><br>minimally invasive procedures</a>
+            <a href="sdssa.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Sleep Dentistry / Snoring & Sleep Apnea</strong><br>oral appliances</a>
         </div>
-        <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network. Repo is fully self-contained.</p>
+        <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network.</p>
     </section>
 
     <section id="providers" class="max-w-screen-2xl mx-auto px-8 py-20 bg-slate-50">
@@ -491,7 +487,7 @@
             <div>
                 <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-3xl">VERIFIED PROVIDERS</span>
                 <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Sarasota’s emergency dental network</h2>
-                <p class="text-slate-600 mt-2">verified providers • real-time searchable</p>
+                <p class="text-slate-600 mt-2">verified providers</p>
                 <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                     <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-3 text-emerald-700 text-xs leading-tight">• This week’s top call in Sarasota: 14 abscess/infection cases – same-day incision & drainage at 13 providers prevented 92% of ER visits (Florida Board Q1 2026 data)</div>
                     <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-3 text-emerald-700 text-xs leading-tight">• Pediatric dental trauma alert: 9 knocked-out teeth from spring sports – immediate milk storage + 60-minute reimplantation window achieved 88% success at our 5 pediatric specialists</div>
@@ -499,7 +495,7 @@
                     <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-3 text-emerald-700 text-xs leading-tight">• Lost crown emergencies up 25%: 6 cases – temporary sugar-free gum or OTC cement buys 24 hours until same-day fix at 18 providers</div>
                 </div>
             </div>
-            <p class="max-w-xs text-slate-500 text-lg">Real-time searchable directory. Tap any card to see full details, ratings, strengths, and direct booking links. Search also scans repo files.</p>
+            <p class="max-w-xs text-slate-500 text-lg">Real-time searchable directory. Tap any card to see full details, ratings, strengths, and direct booking links.</p>
         </div>
         
         <div id="providersContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -595,6 +591,7 @@
                     <div>ADA-compliant emergency protocols</div>
                 </div>
 
+                <!-- Premium Google Map Embed - McKinsey-style integration -->
                 <div class="mt-10 map-container">
                     <div class="text-emerald-300 text-sm font-medium mb-3 px-1">📍 Our verified Sarasota location</div>
                     <iframe 
@@ -623,7 +620,7 @@
                         <div class="text-4xl">🦷</div>
                         <span class="font-semibold text-2xl">Sarasota Emergency Dentist</span>
                     </div>
-                    <p class="text-sm opacity-75 max-w-[220px]">Connecting Sarasota residents to immediate, high-quality emergency dental care since 2024. Fully self-contained single-file version.</p>
+                    <p class="text-sm opacity-75 max-w-[220px]">Connecting Sarasota residents to immediate, high-quality emergency dental care since 2024.</p>
                     
                     <div class="mt-12 flex flex-wrap gap-x-6 text-sm font-medium">
                         <a href="https://facebook.com/sarasotaemergencydentist" target="_blank" class="hover:text-white transition-colors">Facebook</a>
@@ -644,24 +641,30 @@
                 </div>
                 
                 <div class="md:col-span-3">
-                    <div class="uppercase text-xs tracking-widest mb-4 text-slate-500">Exhaustive Repo Menu</div>
-                    <div onclick="showRepoExplorer()" class="cursor-pointer hover:text-white text-sm flex items-center gap-x-2">
-                        📁 View all 18 repo files & folders
+                    <div class="uppercase text-xs tracking-widest mb-4 text-slate-500">Legal</div>
+                    <div class="grid grid-cols-2 gap-2 text-sm">
+                        <a href="privacy-policy.html" class="hover:text-white">Privacy Policy</a>
+                        <a href="cookies-policy.html" class="hover:text-white">Cookies Policy</a>
+                        <a href="terms-of-use.html" class="hover:text-white">Terms of Use</a>
+                        <a href="disclaimer.html" class="hover:text-white">Disclaimer</a>
+                        <a href="dmca.html" class="hover:text-white">DMCA</a>
+                        <a href="accessibility.html" class="hover:text-white">Accessibility</a>
+                        <a href="do-not-sell-my-data.html" class="hover:text-white">Do Not Sell My Data</a>
+                        <a href="contact.html" class="hover:text-white">Contact</a>
+                        <a href="about.html" class="hover:text-white">About</a>
                     </div>
-                    <p class="text-xs text-slate-500 mt-2">Dynamically searchable • self-contained • no external files needed</p>
                 </div>
                 
                 <div class="md:col-span-4 text-sm">
                     <div class="text-white mb-2">Sarasota Emergency Dental Network</div>
                     <div>3413 Main Street • Suite 200<br>Sarasota, Florida 34236</div>
                     <div class="mt-6 text-emerald-400 font-medium">24/7 guidance contact now</div>
-                    <div class="mt-8 text-xs opacity-60">© <span id="currentYear"></span> All rights reserved. This is an independent information and connection service — not a dental clinic. Fully self-contained HTML.</div>
+                    <div class="mt-8 text-xs opacity-60">© <span id="currentYear"></span> All rights reserved. This is an independent information and connection service — not a dental clinic.</div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- FREE CHECKLIST POPUP -->
     <div onclick="if(event.target.id === 'freePopup')hideFreePopup()" id="freePopup" class="hidden fixed inset-0 bg-black/70 flex items-end md:items-center justify-center z-[9999]">
         <div onclick="event.stopImmediatePropagation()" class="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-lg mx-4 md:mx-0 p-8">
             <h3 class="text-3xl font-semibold mb-2">Your free emergency dental checklist</h3>
@@ -686,32 +689,6 @@
             </button>
             
             <button onclick="hideFreePopup()" class="mt-4 w-full text-slate-400 text-sm">Close</button>
-        </div>
-    </div>
-
-    <!-- EXHAUSTIVE REPO EXPLORER MODAL – fully dynamic search + content population -->
-    <div onclick="if(event.target.id === 'repoModal')hideRepoModal()" id="repoModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[9999]">
-        <div onclick="event.stopImmediatePropagation()" class="bg-white rounded-3xl w-full max-w-3xl mx-4 p-8 repo-modal-content overflow-hidden flex flex-col">
-            <div class="flex items-center justify-between mb-6">
-                <h3 class="text-3xl font-semibold">📁 Full Repo Explorer • 18 Self-Contained Files</h3>
-                <button onclick="hideRepoModal()" class="text-4xl leading-none text-slate-400 hover:text-slate-600">×</button>
-            </div>
-            
-            <input 
-                id="repoSearchInput"
-                type="text" 
-                placeholder="Search any repo file or folder name… (dynamic live filtering)"
-                onkeyup="liveRepoSearch(this.value)"
-                class="w-full bg-slate-100 border-0 focus:ring-2 focus:ring-violet-300 rounded-3xl px-6 py-4 text-sm outline-none mb-6">
-            
-            <div id="repoListContainer" class="flex-1 overflow-auto grid grid-cols-1 md:grid-cols-2 gap-4 pr-2">
-                <!-- Dynamically populated by JS -->
-            </div>
-            
-            <div class="text-xs text-slate-400 mt-6 flex items-center justify-between">
-                <span>✅ All files are fully self-contained in this single HTML</span>
-                <span class="font-mono">Total files: 18 • Folders: root + specialties</span>
-            </div>
         </div>
     </div>
 
@@ -746,75 +723,491 @@
             }
         }
         
-        // FULL PROVIDERS DATABASE
         const dentists = [
-            { id: 3, name: "Aspire Dental South Gate Ridge", rating: 4.8, address: "South Gate Ridge, Sarasota, FL 34233", phone: "(941) 555-9900", website: "https://www.aspiredentalsarasota.com", strengths: "Compassionate urgent care, sedation dentistry", summary: "Locals’ go-to for quick, caring emergency visits.", categories: [] },
-            { id: 4, name: "Bayview Dental", rating: 4.8, address: "3665 Bee Ridge Rd, Ste 108, Sarasota, FL 34233", phone: "(941) 953-4288", website: "https://bayviewdental.com", strengths: "Medicare & insurance accepted for emergencies", summary: "Accessible care for seniors and families.", categories: [] },
-            { id: 5, name: "Beneva Dental Care", rating: 4.8, address: "5917 South Beneva Road, Sarasota, FL 34238", phone: "(941) 924-2939", website: "https://www.dentistinsarasota.com", strengths: "General & emergency care", summary: "Full-service practice with same-day availability.", categories: [] },
-            { id: 6, name: "Champion Dental Group", rating: 4.7, address: "Sarasota, FL 34242", phone: "(941) 555-7788", website: "https://www.hewettdds.com", strengths: "High-volume emergency practice, insurance friendly", summary: "Large team ensures quick appointment availability.", categories: [] },
-            { id: 7, name: "Coast Dental Beneva", rating: 4.5, address: "3466 Clark Rd Suite 410, Sarasota, FL 34231", phone: "(941) 927-1705", website: "https://www.coastdental.com", strengths: "Same-day emergency appointments Monday–Friday", summary: "Convenient location with priority emergency scheduling.", categories: [] },
-            { id: 8, name: "Dentistry of Sarasota (Jaworski & Moricz)", rating: 4.8, address: "3990 Clark Road, Sarasota, FL 34233", phone: "(941) 955-7344", website: "https://www.dentistryofsarasota.com", strengths: "General, cosmetic, emergency", summary: "30+ years serving Sarasota with same-day care.", categories: [] },
-            { id: 9, name: "Dentistry on Fruitville", rating: 4.6, address: "7590 Fruitville Rd #100, Sarasota, FL 34240", phone: "(941) 529-0055", website: "https://www.dentistryonfruitville.com", strengths: "Immediate response, sedation for anxious patients", summary: "Expert team ready for any dental emergency.", categories: [] },
-            { id: 12, name: "Dynamic Dental Smiles", rating: 4.5, address: "Sarasota, FL 34235", phone: "(941) 555-6677", website: "https://dynamicdentalsmiles.com", strengths: "Weekend & evening emergency slots", summary: "Flexible hours for working professionals.", categories: ["24-hour"] },
-            { id: 13, name: "Emergency Dentistry Sarasota", rating: 5.0, address: "5223 Avenida Navarra, Sarasota, FL 34242 (24/7)", phone: "(941) 375-4005", website: "https://emergencydentistry.com", strengths: "True 24/7 service, state-of-the-art facility", summary: "Open 24 hours – the only true round-the-clock option in the area.", categories: ["24-hour"] },
-            { id: 14, name: "Give Me A Smile Dentistry (Dr. Jerry Chery)", rating: 5.0, address: "Sarasota, FL (pediatric focus)", phone: "(941) 529-0331", website: "https://www.givemeasmile.net", strengths: "Pediatric emergencies & trauma", summary: "Pediatric-focused practice with compassionate care.", categories: ["pediatric"] },
-            { id: 16, name: "Gulf Gate Dental", rating: 4.9, address: "3212 Gulf Gate Dr, Sarasota, FL 34231", phone: "(941) 921-2122", website: "https://www.gulfgatedental.com", strengths: "Prompt pain relief, family-friendly emergency care", summary: "Fast, compassionate emergency treatment for all ages.", categories: ["pediatric"] },
-            { id: 17, name: "Hillview Family Dental", rating: 4.7, address: "1865 Hillview St, Sarasota, FL 34239", phone: "(941) 365-4500", website: "https://hillviewfamilydental.com", strengths: "Emergency care, family & restorative", summary: "Full emergency dental services with same-day appointments.", categories: [] },
-            { id: 18, name: "HumbleBees Pediatric Dentistry (Dr. Debbie Grant)", rating: 4.9, address: "Sarasota, FL (pediatric)", phone: "Contact via site", website: "https://www.humblebeespediatricdentistry.com", strengths: "Pediatric emergencies, nitrous", summary: "Board-certified pediatric specialist.", categories: ["pediatric"] },
-            { id: 21, name: "Lakewood Ranch Oral & Maxillofacial Surgery", rating: 4.9, address: "Lakewood Ranch / Sarasota, FL", phone: "Contact via site", website: "https://www.lakewoodranchofs.com", strengths: "Same-day emergency extractions & trauma", summary: "Oral surgeons offering immediate surgical care.", categories: ["oral-surgery"] },
-            { id: 22, name: "Lefton Family Dentistry", rating: 4.6, address: "1515 N Lockwood Ridge Rd, Sarasota, FL 34237", phone: "(941) 365-3311", website: "http://www.leftondental.com", strengths: "Multi-generational care, emergency walk-ins", summary: "Long-standing Sarasota family practice.", categories: ["pediatric"] },
-            { id: 23, name: "Meadows Dental Associates of Sarasota", rating: 4.8, address: "4987 Ringwood Meadow, Sarasota, FL 34235", phone: "(941) 377-3659", website: "https://www.meadowsdentalassociates.com", strengths: "After-hours emergencies, extractions, infections", summary: "Family-owned practice with 24/7 on-call support for Sarasota residents.", categories: ["24-hour"] },
-            { id: 24, name: "Misch Implant & Aesthetic Dentistry", rating: 5.0, address: "120 S. Tuttle Ave, Sarasota, FL 34237", phone: "(941) 957-6444", website: "https://drmisch.com", strengths: "Implant emergencies, complex trauma, sedation options", summary: "Specialists in surgical emergencies and implant rescue.", categories: ["implant"] },
-            { id: 25, name: "Modern Smile Design", rating: 4.9, address: "Sarasota, FL 34231", phone: "(941) 555-2211", website: "https://modernsmilesdesign.com", strengths: "Aesthetic emergency repairs, veneers in emergency", summary: "Blends beauty with urgent dental solutions.", categories: [] },
-            { id: 26, name: "Prestige Dental", rating: 4.9, address: "8520 South Tamiami Trail, Suite #2, Sarasota, FL 34238", phone: "(941) 918-1416", website: "https://prestigedentalsarasota.com", strengths: "Same-day appointments, tooth pain & trauma, cosmetic repair", summary: "Top-rated for urgent care and same-day crowns. Highly reviewed for compassion.", categories: [] },
-            { id: 27, name: "Sage Dental of Siesta Row", rating: 4.8, address: "3800 S. Tamiami Trail, Suite 19, Sarasota, FL 34239", phone: "(941) 883-3716", website: "https://mysagedental.com/siesta-row/", strengths: "General & emergency care", summary: "Convenient Siesta Row location with same-day options.", categories: [] },
-            { id: 28, name: "Sarasota Bay Dental", rating: 4.7, address: "2809 University Pkwy, Sarasota, FL 34243", phone: "Contact via Yelp", website: "https://www.sarasotabaydental.com/", strengths: "General emergency care", summary: "Highly reviewed local practice.", categories: [] },
-            { id: 29, name: "Sarasota Complete Dental", rating: 4.8, address: "1120 S Allendale Ave, Sarasota, FL 34237", phone: "Contact via site", website: "https://sarasotacompletedental.com/", strengths: "Complete emergency services", summary: "Full service dental emergency provider.", categories: [] },
-            { id: 30, name: "Sarasota Dental Arts", rating: 4.9, address: "7162 South Beneva Road, Sarasota, FL 34238", phone: "(941) 927-8287", website: "https://sarasotadentalarts.com", strengths: "Toothaches, abscesses, broken teeth", summary: "4.9 Google rating and 400+ reviews for fast pain relief.", categories: [] },
-            { id: 31, name: "Sarasota Family Dental – Dr. Michael Dorociak", rating: 4.8, address: "3900 Clark Road Suite J5, Sarasota, FL 34233", phone: "(941) 924-1100", website: "https://sarasotafamilydental.com", strengths: "After-hours accessibility, full emergency spectrum", summary: "Dedicated emergency dentist serving Sarasota since 2008.", categories: ["24-hour"] },
-            { id: 32, name: "Sarasota Oral & Implant Surgery (Dr. Scott Middleton)", rating: 5.0, address: "Bee Ridge Office, Sarasota, FL 34233", phone: "(941) 923-0033", website: "https://www.sarasotaoms.com", strengths: "Oral surgery, wisdom teeth, trauma, implants", summary: "Board-certified oral surgeons, same-day emergency extractions.", categories: ["oral-surgery"] },
-            { id: 33, name: "Sarasota Oral Surgery & Implant Center", rating: 4.9, address: "1985 Main Street Suite 300, Sarasota, FL 34236", phone: "(941) 555-7788", website: "https://sarasotaoralsurgery.com", strengths: "Oral surgery, implants", summary: "Specialized oral surgery and implant emergency care.", categories: ["oral-surgery"] },
-            { id: 34, name: "Sarasota Pediatric Dentistry", rating: 5.0, address: "Sarasota, FL (pediatric)", phone: "(941) 529-0345", website: "https://sarasotakidsdentistry.com", strengths: "Pediatric emergencies, sedation", summary: "Board-certified pediatric care for infants to teens.", categories: ["pediatric"] },
-            { id: 35, name: "Schroeter Dental", rating: 4.7, address: "Sarasota, FL", phone: "Contact via Yelp", website: "https://www.schroeterdental.com/", strengths: "Emergency general care", summary: "Highly reviewed emergency provider.", categories: [] },
-            { id: 36, name: "Si McAninch, DDS, PA", rating: 4.8, address: "2711 S Tamiami Trail, Sarasota, FL 34239 (pediatric)", phone: "Contact via site", website: "https://www.drmcaninch.com", strengths: "Pediatric & family emergency", summary: "Gentle pediatric care since 2008.", categories: ["pediatric"] },
-            { id: 37, name: "Simply Smiles Sarasota", rating: 4.9, address: "2750 Stickney Point Rd, Ste 107, Sarasota, FL 34231", phone: "(941) 248-0754", website: "https://www.simplysmilessarasota.com/", strengths: "Emergency, wellness, family", summary: "Top-rated general & emergency practice.", categories: [] },
-            { id: 38, name: "Smile Sarasota (Adam N. Still, DMD)", rating: 4.8, address: "2389 Ringling Blvd., Suite C, Sarasota, FL 34237", phone: "(941) 957-3311", website: "https://smilesarasota.com", strengths: "General & cosmetic emergency", summary: "Trusted local practice for urgent care.", categories: [] },
-            { id: 39, name: "SmileWorks Kids Dentistry", rating: 5.0, address: "Sarasota, FL (pediatric)", phone: "(941) 953-2111", website: "https://www.smileworkskids.com", strengths: "Pediatric emergencies & sedation", summary: "Fun, board-certified pediatric team.", categories: ["pediatric"] },
-            { id: 40, name: "SRQ Dental", rating: 4.9, address: "Sarasota, FL 34239", phone: "(941) 555-3344", website: "https://srqfamilydental.com", strengths: "Modern technology, same-day root canals", summary: "Newer practice with outstanding emergency feedback.", categories: [] },
-            { id: 41, name: "SRQ Smile (Bowles & Karow)", rating: 4.9, address: "5677 S Beneva Rd, Sarasota, FL 34233", phone: "(941) 923-3545", website: "https://srqsmile.com", strengths: "Family dentistry, emergency, implants", summary: "700+ five-star reviews, same-day emergency slots.", categories: ["pediatric"] },
-            { id: 42, name: "Strickland Family Dentistry", rating: 4.7, address: "South Sarasota, FL", phone: "Contact via site", website: "https://www.stricklanddentalsarasota.com", strengths: "Family emergency care", summary: "South Sarasota family dentistry with emergency services.", categories: [] },
-            { id: 43, name: "University Parkway Dental", rating: 4.6, address: "3315 University Pkwy, Unit 103, Sarasota, FL 34243", phone: "(941) 822-8165", website: "https://universityparkwaydental.com", strengths: "Oral trauma & after-hours", summary: "Emergency oral trauma specialists.", categories: [] },
-            { id: 44, name: "Vital Dental Sarasota", rating: 4.8, address: "Sarasota, FL 34233", phone: "(941) 371-2022", website: "https://www.vitaldentalsarasota.com", strengths: "General emergency care", summary: "Modern practice with same-day availability.", categories: [] },
-            { id: 45, name: "Waterside Dental Sarasota", rating: 4.8, address: "1058 N Tamiami Trail, Sarasota, FL 34236", phone: "(941) 870-3322", website: "https://watersidedentalsarasota.com", strengths: "Same-day emergencies, cosmetic & implant rescue", summary: "$59 emergency exam, walk-ins welcome, 30+ years experience.", categories: ["24-hour"] },
-            { id: 46, name: "Z Family Dental", rating: 5.0, address: "2171 Siesta Dr, Sarasota, FL 34239 (pediatric)", phone: "(941) 899-0260", website: "https://zfamilydental.com", strengths: "Family-focused emergency care, pediatric specialist on staff", summary: "5-star Yelp reviews for kindness and speed.", categories: ["pediatric"] },
-            { id: 47, name: "941 Dental Studio", rating: 4.8, address: "Sarasota, FL", phone: "Phone via Yelp", website: "https://www.941dentalstudio.com/", strengths: "General & emergency dentistry", summary: "Verified local studio for urgent care.", categories: [] },
-            { id: 48, name: "Go2Dental Sarasota", rating: 4.7, address: "Sarasota, FL", phone: "Phone via Yelp", website: "https://www.go2dental.com/", strengths: "Emergency dental services", summary: "Quick access emergency provider.", categories: [] },
-            { id: 49, name: "Sarasota Endodontic Solutions (Mitchell R Edlund, DDS MS)", rating: 5.0, address: "Sarasota, FL", phone: "Contact via Yelp", website: "https://sarasotaendodonticsolutions.com/", strengths: "Emergency root canals", summary: "Top-rated endodontics for urgent pain relief.", categories: [] },
-            { id: 50, name: "Precious Dental", rating: 4.8, address: "Sarasota, FL", phone: "Phone via Yelp", website: "https://www.preciousdentalfl.com/", strengths: "Emergency focus", summary: "Emergency dental provider.", categories: ["24-hour"] },
-            { id: 51, name: "Sage Dental additional location", rating: 4.8, address: "Sarasota, FL", phone: "(941) 444-5366", website: "https://mysagedental.com", strengths: "General & emergency care", summary: "Additional Sage Dental location for same-day service.", categories: [] }
-        ]
-        
-        // FULL REPO FILES DATABASE – exhaustive list of every file/folder referenced in the site
-        const repoFiles = [
-            { name: "index.html", folder: "root", type: "file", desc: "General Dentistry – Main landing page with routine cleanings, fillings, preventive care" },
-            { name: "pd.html", folder: "specialties", type: "file", desc: "Pediatric Dentistry – Children & adolescents (behavior management, sedation)" },
-            { name: "odo.html", folder: "specialties", type: "file", desc: "Orthodontics & Dentofacial Orthopedics – Braces, Invisalign, jaw alignment" },
-            { name: "per.html", folder: "specialties", type: "file", desc: "Periodontics – Gums, bone, periodontal surgery" },
-            { name: "end.html", folder: "specialties", type: "file", desc: "Endodontics – Root canals, pulp therapy" },
-            { name: "oms.html", folder: "specialties", type: "file", desc: "Oral & Maxillofacial Surgery – Extractions, trauma, jaw surgery, implants" },
-            { name: "pro.html", folder: "specialties", type: "file", desc: "Prosthodontics – Crowns, bridges, dentures, full-mouth reconstruction" },
-            { name: "cod.html", folder: "specialties", type: "file", desc: "Cosmetic Dentistry – Veneers, whitening, smile design" },
-            { name: "emd.html", folder: "specialties", type: "file", desc: "Emergency Dentistry – Urgent pain, trauma, abscesses, 24/7 care" },
-            { name: "imd.html", folder: "specialties", type: "file", desc: "Implant Dentistry – Surgical placement & restoration of implants" },
-            { name: "sda.html", folder: "specialties", type: "file", desc: "Sedation Dentistry / Anesthesia – Nitrous, oral, IV sedation for anxious patients" },
-            { name: "ged.html", folder: "specialties", type: "file", desc: "Geriatric Dentistry – Seniors, denture care, medically complex patients" },
-            { name: "snd.html", folder: "specialties", type: "file", desc: "Special Needs Dentistry – Patients with disabilities or medical conditions" },
-            { name: "red.html", folder: "specialties", type: "file", desc: "Restorative Dentistry – Complex fillings, inlays/onlays" },
-            { name: "pwd.html", folder: "specialties", type: "file", desc: "Preventive / Wellness Dentistry – Hygiene, sealants, fluoride, education" },
-            { name: "ttop.html", folder: "specialties", type: "file", desc: "TMJ / TMD & Orofacial Pain – Jaw joint disorders, headaches" },
-            { name: "lad.html", folder: "specialties", type: "file", desc: "Laser Dentistry – Minimally invasive procedures" },
-            { name: "sdssa.html", folder: "specialties", type: "file", desc: "Sleep Dentistry / Snoring & Sleep Apnea – Oral appliances" },
-            { name: "sarasotav3.html", folder: "root", type: "file", desc: "Emergency Dental Care Homepage – This exact self-contained file" }
+            {
+                id: 3,
+                name: "Aspire Dental South Gate Ridge",
+                rating: 4.8,
+                address: "South Gate Ridge, Sarasota, FL 34233",
+                phone: "(941) 555-9900",
+                website: "https://www.aspiredentalsarasota.com",
+                strengths: "Compassionate urgent care, sedation dentistry",
+                summary: "Locals’ go-to for quick, caring emergency visits.",
+                categories: []
+            },
+            {
+                id: 4,
+                name: "Bayview Dental",
+                rating: 4.8,
+                address: "3665 Bee Ridge Rd, Ste 108, Sarasota, FL 34233",
+                phone: "(941) 953-4288",
+                website: "https://bayviewdental.com",
+                strengths: "Medicare & insurance accepted for emergencies",
+                summary: "Accessible care for seniors and families.",
+                categories: []
+            },
+            {
+                id: 5,
+                name: "Beneva Dental Care",
+                rating: 4.8,
+                address: "5917 South Beneva Road, Sarasota, FL 34238",
+                phone: "(941) 924-2939",
+                website: "https://www.dentistinsarasota.com",
+                strengths: "General & emergency care",
+                summary: "Full-service practice with same-day availability.",
+                categories: []
+            },
+            {
+                id: 6,
+                name: "Champion Dental Group",
+                rating: 4.7,
+                address: "Sarasota, FL 34242",
+                phone: "(941) 555-7788",
+                website: "https://www.hewettdds.com",
+                strengths: "High-volume emergency practice, insurance friendly",
+                summary: "Large team ensures quick appointment availability.",
+                categories: []
+            },
+            {
+                id: 7,
+                name: "Coast Dental Beneva",
+                rating: 4.5,
+                address: "3466 Clark Rd Suite 410, Sarasota, FL 34231",
+                phone: "(941) 927-1705",
+                website: "https://www.coastdental.com",
+                strengths: "Same-day emergency appointments Monday–Friday",
+                summary: "Convenient location with priority emergency scheduling.",
+                categories: []
+            },
+            {
+                id: 8,
+                name: "Dentistry of Sarasota (Jaworski & Moricz)",
+                rating: 4.8,
+                address: "3990 Clark Road, Sarasota, FL 34233",
+                phone: "(941) 955-7344",
+                website: "https://www.dentistryofsarasota.com",
+                strengths: "General, cosmetic, emergency",
+                summary: "30+ years serving Sarasota with same-day care.",
+                categories: []
+            },
+            {
+                id: 9,
+                name: "Dentistry on Fruitville",
+                rating: 4.6,
+                address: "7590 Fruitville Rd #100, Sarasota, FL 34240",
+                phone: "(941) 529-0055",
+                website: "https://www.dentistryonfruitville.com",
+                strengths: "Immediate response, sedation for anxious patients",
+                summary: "Expert team ready for any dental emergency.",
+                categories: []
+            },
+            {
+                id: 12,
+                name: "Dynamic Dental Smiles",
+                rating: 4.5,
+                address: "Sarasota, FL 34235",
+                phone: "(941) 555-6677",
+                website: "https://dynamicdentalsmiles.com",
+                strengths: "Weekend & evening emergency slots",
+                summary: "Flexible hours for working professionals.",
+                categories: ["24-hour"]
+            },
+            {
+                id: 13,
+                name: "Emergency Dentistry Sarasota",
+                rating: 5.0,
+                address: "5223 Avenida Navarra, Sarasota, FL 34242 (24/7)",
+                phone: "(941) 375-4005",
+                website: "https://emergencydentistry.com",
+                strengths: "True 24/7 service, state-of-the-art facility",
+                summary: "Open 24 hours – the only true round-the-clock option in the area.",
+                categories: ["24-hour"]
+            },
+            {
+                id: 14,
+                name: "Give Me A Smile Dentistry (Dr. Jerry Chery)",
+                rating: 5.0,
+                address: "Sarasota, FL (pediatric focus)",
+                phone: "(941) 529-0331",
+                website: "https://www.givemeasmile.net",
+                strengths: "Pediatric emergencies & trauma",
+                summary: "Pediatric-focused practice with compassionate care.",
+                categories: ["pediatric"]
+            },
+            {
+                id: 16,
+                name: "Gulf Gate Dental",
+                rating: 4.9,
+                address: "3212 Gulf Gate Dr, Sarasota, FL 34231",
+                phone: "(941) 921-2122",
+                website: "https://www.gulfgatedental.com",
+                strengths: "Prompt pain relief, family-friendly emergency care",
+                summary: "Fast, compassionate emergency treatment for all ages.",
+                categories: ["pediatric"]
+            },
+            {
+                id: 17,
+                name: "Hillview Family Dental",
+                rating: 4.7,
+                address: "1865 Hillview St, Sarasota, FL 34239",
+                phone: "(941) 365-4500",
+                website: "https://hillviewfamilydental.com",
+                strengths: "Emergency care, family & restorative",
+                summary: "Full emergency dental services with same-day appointments.",
+                categories: []
+            },
+            {
+                id: 18,
+                name: "HumbleBees Pediatric Dentistry (Dr. Debbie Grant)",
+                rating: 4.9,
+                address: "Sarasota, FL (pediatric)",
+                phone: "Contact via site",
+                website: "https://www.humblebeespediatricdentistry.com",
+                strengths: "Pediatric emergencies, nitrous",
+                summary: "Board-certified pediatric specialist.",
+                categories: ["pediatric"]
+            },
+            {
+                id: 21,
+                name: "Lakewood Ranch Oral & Maxillofacial Surgery",
+                rating: 4.9,
+                address: "Lakewood Ranch / Sarasota, FL",
+                phone: "Contact via site",
+                website: "https://www.lakewoodranchofs.com",
+                strengths: "Same-day emergency extractions & trauma",
+                summary: "Oral surgeons offering immediate surgical care.",
+                categories: ["oral-surgery"]
+            },
+            {
+                id: 22,
+                name: "Lefton Family Dentistry",
+                rating: 4.6,
+                address: "1515 N Lockwood Ridge Rd, Sarasota, FL 34237",
+                phone: "(941) 365-3311",
+                website: "http://www.leftondental.com",
+                strengths: "Multi-generational care, emergency walk-ins",
+                summary: "Long-standing Sarasota family practice.",
+                categories: ["pediatric"]
+            },
+            {
+                id: 23,
+                name: "Meadows Dental Associates of Sarasota",
+                rating: 4.8,
+                address: "4987 Ringwood Meadow, Sarasota, FL 34235",
+                phone: "(941) 377-3659",
+                website: "https://www.meadowsdentalassociates.com",
+                strengths: "After-hours emergencies, extractions, infections",
+                summary: "Family-owned practice with 24/7 on-call support for Sarasota residents.",
+                categories: ["24-hour"]
+            },
+            {
+                id: 24,
+                name: "Misch Implant & Aesthetic Dentistry",
+                rating: 5.0,
+                address: "120 S. Tuttle Ave, Sarasota, FL 34237",
+                phone: "(941) 957-6444",
+                website: "https://drmisch.com",
+                strengths: "Implant emergencies, complex trauma, sedation options",
+                summary: "Specialists in surgical emergencies and implant rescue.",
+                categories: ["implant"]
+            },
+            {
+                id: 25,
+                name: "Modern Smile Design",
+                rating: 4.9,
+                address: "Sarasota, FL 34231",
+                phone: "(941) 555-2211",
+                website: "https://modernsmilesdesign.com",
+                strengths: "Aesthetic emergency repairs, veneers in emergency",
+                summary: "Blends beauty with urgent dental solutions.",
+                categories: []
+            },
+            {
+                id: 26,
+                name: "Prestige Dental",
+                rating: 4.9,
+                address: "8520 South Tamiami Trail, Suite #2, Sarasota, FL 34238",
+                phone: "(941) 918-1416",
+                website: "https://prestigedentalsarasota.com",
+                strengths: "Same-day appointments, tooth pain & trauma, cosmetic repair",
+                summary: "Top-rated for urgent care and same-day crowns. Highly reviewed for compassion.",
+                categories: []
+            },
+            {
+                id: 27,
+                name: "Sage Dental of Siesta Row",
+                rating: 4.8,
+                address: "3800 S. Tamiami Trail, Suite 19, Sarasota, FL 34239",
+                phone: "(941) 883-3716",
+                website: "https://mysagedental.com/siesta-row/",
+                strengths: "General & emergency care",
+                summary: "Convenient Siesta Row location with same-day options.",
+                categories: []
+            },
+            {
+                id: 28,
+                name: "Sarasota Bay Dental",
+                rating: 4.7,
+                address: "2809 University Pkwy, Sarasota, FL 34243",
+                phone: "Contact via Yelp",
+                website: "https://www.sarasotabaydental.com/",
+                strengths: "General emergency care",
+                summary: "Highly reviewed local practice.",
+                categories: []
+            },
+            {
+                id: 29,
+                name: "Sarasota Complete Dental",
+                rating: 4.8,
+                address: "1120 S Allendale Ave, Sarasota, FL 34237",
+                phone: "Contact via site",
+                website: "https://sarasotacompletedental.com/",
+                strengths: "Complete emergency services",
+                summary: "Full service dental emergency provider.",
+                categories: []
+            },
+            {
+                id: 30,
+                name: "Sarasota Dental Arts",
+                rating: 4.9,
+                address: "7162 South Beneva Road, Sarasota, FL 34238",
+                phone: "(941) 927-8287",
+                website: "https://sarasotadentalarts.com",
+                strengths: "Toothaches, abscesses, broken teeth",
+                summary: "4.9 Google rating and 400+ reviews for fast pain relief.",
+                categories: []
+            },
+            {
+                id: 31,
+                name: "Sarasota Family Dental – Dr. Michael Dorociak",
+                rating: 4.8,
+                address: "3900 Clark Road Suite J5, Sarasota, FL 34233",
+                phone: "(941) 924-1100",
+                website: "https://sarasotafamilydental.com",
+                strengths: "After-hours accessibility, full emergency spectrum",
+                summary: "Dedicated emergency dentist serving Sarasota since 2008.",
+                categories: ["24-hour"]
+            },
+            {
+                id: 32,
+                name: "Sarasota Oral & Implant Surgery (Dr. Scott Middleton)",
+                rating: 5.0,
+                address: "Bee Ridge Office, Sarasota, FL 34233",
+                phone: "(941) 923-0033",
+                website: "https://www.sarasotaoms.com",
+                strengths: "Oral surgery, wisdom teeth, trauma, implants",
+                summary: "Board-certified oral surgeons, same-day emergency extractions.",
+                categories: ["oral-surgery"]
+            },
+            {
+                id: 33,
+                name: "Sarasota Oral Surgery & Implant Center",
+                rating: 4.9,
+                address: "1985 Main Street Suite 300, Sarasota, FL 34236",
+                phone: "(941) 555-7788",
+                website: "https://sarasotaoralsurgery.com",
+                strengths: "Oral surgery, implants",
+                summary: "Specialized oral surgery and implant emergency care.",
+                categories: ["oral-surgery"]
+            },
+            {
+                id: 34,
+                name: "Sarasota Pediatric Dentistry",
+                rating: 5.0,
+                address: "Sarasota, FL (pediatric)",
+                phone: "(941) 529-0345",
+                website: "https://sarasotakidsdentistry.com",
+                strengths: "Pediatric emergencies, sedation",
+                summary: "Board-certified pediatric care for infants to teens.",
+                categories: ["pediatric"]
+            },
+            {
+                id: 35,
+                name: "Schroeter Dental",
+                rating: 4.7,
+                address: "Sarasota, FL",
+                phone: "Contact via Yelp",
+                website: "https://www.schroeterdental.com/",
+                strengths: "Emergency general care",
+                summary: "Highly reviewed emergency provider.",
+                categories: []
+            },
+            {
+                id: 36,
+                name: "Si McAninch, DDS, PA",
+                rating: 4.8,
+                address: "2711 S Tamiami Trail, Sarasota, FL 34239 (pediatric)",
+                phone: "Contact via site",
+                website: "https://www.drmcaninch.com",
+                strengths: "Pediatric & family emergency",
+                summary: "Gentle pediatric care since 2008.",
+                categories: ["pediatric"]
+            },
+            {
+                id: 37,
+                name: "Simply Smiles Sarasota",
+                rating: 4.9,
+                address: "2750 Stickney Point Rd, Ste 107, Sarasota, FL 34231",
+                phone: "(941) 248-0754",
+                website: "https://www.simplysmilessarasota.com/",
+                strengths: "Emergency, wellness, family",
+                summary: "Top-rated general & emergency practice.",
+                categories: []
+            },
+            {
+                id: 38,
+                name: "Smile Sarasota (Adam N. Still, DMD)",
+                rating: 4.8,
+                address: "2389 Ringling Blvd., Suite C, Sarasota, FL 34237",
+                phone: "(941) 957-3311",
+                website: "https://smilesarasota.com",
+                strengths: "General & cosmetic emergency",
+                summary: "Trusted local practice for urgent care.",
+                categories: []
+            },
+            {
+                id: 39,
+                name: "SmileWorks Kids Dentistry",
+                rating: 5.0,
+                address: "Sarasota, FL (pediatric)",
+                phone: "(941) 953-2111",
+                website: "https://www.smileworkskids.com",
+                strengths: "Pediatric emergencies & sedation",
+                summary: "Fun, board-certified pediatric team.",
+                categories: ["pediatric"]
+            },
+            {
+                id: 40,
+                name: "SRQ Dental",
+                rating: 4.9,
+                address: "Sarasota, FL 34239",
+                phone: "(941) 555-3344",
+                website: "https://srqfamilydental.com",
+                strengths: "Modern technology, same-day root canals",
+                summary: "Newer practice with outstanding emergency feedback.",
+                categories: []
+            },
+            {
+                id: 41,
+                name: "SRQ Smile (Bowles & Karow)",
+                rating: 4.9,
+                address: "5677 S Beneva Rd, Sarasota, FL 34233",
+                phone: "(941) 923-3545",
+                website: "https://srqsmile.com",
+                strengths: "Family dentistry, emergency, implants",
+                summary: "700+ five-star reviews, same-day emergency slots.",
+                categories: ["pediatric"]
+            },
+            {
+                id: 42,
+                name: "Strickland Family Dentistry",
+                rating: 4.7,
+                address: "South Sarasota, FL",
+                phone: "Contact via site",
+                website: "https://www.stricklanddentalsarasota.com",
+                strengths: "Family emergency care",
+                summary: "South Sarasota family dentistry with emergency services.",
+                categories: []
+            },
+            {
+                id: 43,
+                name: "University Parkway Dental",
+                rating: 4.6,
+                address: "3315 University Pkwy, Unit 103, Sarasota, FL 34243",
+                phone: "(941) 822-8165",
+                website: "https://universityparkwaydental.com",
+                strengths: "Oral trauma & after-hours",
+                summary: "Emergency oral trauma specialists.",
+                categories: []
+            },
+            {
+                id: 44,
+                name: "Vital Dental Sarasota",
+                rating: 4.8,
+                address: "Sarasota, FL 34233",
+                phone: "(941) 371-2022",
+                website: "https://www.vitaldentalsarasota.com",
+                strengths: "General emergency care",
+                summary: "Modern practice with same-day availability.",
+                categories: []
+            },
+            {
+                id: 45,
+                name: "Waterside Dental Sarasota",
+                rating: 4.8,
+                address: "1058 N Tamiami Trail, Sarasota, FL 34236",
+                phone: "(941) 870-3322",
+                website: "https://watersidedentalsarasota.com",
+                strengths: "Same-day emergencies, cosmetic & implant rescue",
+                summary: "$59 emergency exam, walk-ins welcome, 30+ years experience.",
+                categories: ["24-hour"]
+            },
+            {
+                id: 46,
+                name: "Z Family Dental",
+                rating: 5.0,
+                address: "2171 Siesta Dr, Sarasota, FL 34239 (pediatric)",
+                phone: "(941) 899-0260",
+                website: "https://zfamilydental.com",
+                strengths: "Family-focused emergency care, pediatric specialist on staff",
+                summary: "5-star Yelp reviews for kindness and speed.",
+                categories: ["pediatric"]
+            },
+            {
+                id: 47,
+                name: "941 Dental Studio",
+                rating: 4.8,
+                address: "Sarasota, FL",
+                phone: "Phone via Yelp",
+                website: "https://www.941dentalstudio.com/",
+                strengths: "General & emergency dentistry",
+                summary: "Verified local studio for urgent care.",
+                categories: []
+            },
+            {
+                id: 48,
+                name: "Go2Dental Sarasota",
+                rating: 4.7,
+                address: "Sarasota, FL",
+                phone: "Phone via Yelp",
+                website: "https://www.go2dental.com/",
+                strengths: "Emergency dental services",
+                summary: "Quick access emergency provider.",
+                categories: []
+            },
+            {
+                id: 49,
+                name: "Sarasota Endodontic Solutions (Mitchell R Edlund, DDS MS)",
+                rating: 5.0,
+                address: "Sarasota, FL",
+                phone: "Contact via Yelp",
+                website: "https://sarasotaendodonticsolutions.com/",
+                strengths: "Emergency root canals",
+                summary: "Top-rated endodontics for urgent pain relief.",
+                categories: []
+            },
+            {
+                id: 50,
+                name: "Precious Dental",
+                rating: 4.8,
+                address: "Sarasota, FL",
+                phone: "Phone via Yelp",
+                website: "https://www.preciousdentalfl.com/",
+                strengths: "Emergency focus",
+                summary: "Emergency dental provider.",
+                categories: ["24-hour"]
+            },
+            {
+                id: 51,
+                name: "Sage Dental additional location",
+                rating: 4.8,
+                address: "Sarasota, FL",
+                phone: "(941) 444-5366",
+                website: "https://mysagedental.com",
+                strengths: "General & emergency care",
+                summary: "Additional Sage Dental location for same-day service.",
+                categories: []
+            }
         ]
         
         function renderProviders(filteredDentists) {
@@ -859,7 +1252,7 @@
             })
             
             if (filteredDentists.length === 0) {
-                container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400">No providers match your search. Try broadening your terms or check repo files.</div>`
+                container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400">No providers match your search. Try broadening your terms.</div>`
             }
         }
         
@@ -878,148 +1271,39 @@
             document.getElementById('providers').scrollIntoView({behavior: 'smooth'});
         }
         
-        // LIVE SEARCH – now searches BOTH providers AND repo files
         function liveSearch(query) {
             const lower = query.toLowerCase().trim()
-            const dropdown = document.getElementById('searchDropdown')
-            
-            // Filter providers
-            const filteredDentists = dentists.filter(d => 
+            const filtered = dentists.filter(d => 
                 d.name.toLowerCase().includes(lower) ||
                 d.summary.toLowerCase().includes(lower) ||
                 d.strengths.toLowerCase().includes(lower) ||
                 d.address.toLowerCase().includes(lower)
             )
+            renderProviders(filtered)
             
-            // Filter repo files
-            const filteredRepo = repoFiles.filter(f => 
-                f.name.toLowerCase().includes(lower) || 
-                f.desc.toLowerCase().includes(lower) ||
-                f.folder.toLowerCase().includes(lower)
-            )
-            
-            // Render providers in main container
-            if (lower.length > 0) {
-                renderProviders(filteredDentists)
-                
-                // Render dropdown with BOTH providers + repo results
-                let dropdownHTML = ''
-                
-                if (filteredDentists.length > 0) {
-                    dropdownHTML += `<div class="px-4 py-2 text-xs font-semibold text-emerald-600 border-b">PROVIDERS (${filteredDentists.length})</div>`
-                    dropdownHTML += filteredDentists.slice(0, 6).map(d => {
-                        const hasWebsite = d.website && d.website !== '#'
-                        let clickHandler = hasWebsite 
-                            ? `window.open('${d.website}','_blank');document.getElementById('globalSearch').value='';this.parentElement.classList.add('hidden')` 
-                            : `alert('📞 Call ${d.phone} to book an appointment');document.getElementById('globalSearch').value='';this.parentElement.classList.add('hidden')`
-                        return `
-                        <div onclick="${clickHandler}" class="px-6 py-4 hover:bg-slate-50 flex items-center justify-between border-b last:border-none cursor-pointer">
-                            <div class="flex-1">
-                                <div class="font-medium">${d.name}</div>
-                                <div class="text-xs text-slate-400">${d.address}</div>
-                            </div>
-                            <div class="text-emerald-500">${d.rating} ★</div>
-                        </div>`
-                    }).join('')
-                }
-                
-                if (filteredRepo.length > 0) {
-                    dropdownHTML += `<div class="px-4 py-2 text-xs font-semibold text-violet-600 border-b">REPO FILES (${filteredRepo.length})</div>`
-                    dropdownHTML += filteredRepo.map(f => `
-                    <div onclick="loadRepoFile('${f.name}');document.getElementById('globalSearch').value='';this.parentElement.classList.add('hidden')" class="px-6 py-4 hover:bg-slate-50 flex items-center justify-between border-b last:border-none cursor-pointer">
-                        <div class="flex-1">
-                            <div class="font-medium flex items-center gap-x-2"><span>${f.type === 'file' ? '📄' : '📁'}</span> ${f.name}</div>
-                            <div class="text-xs text-slate-400">${f.desc}</div>
+            const dropdown = document.getElementById('searchDropdown')
+            if (lower.length > 1) {
+                dropdown.innerHTML = filtered.slice(0, 8).map(d => {
+                    const hasWebsite = d.website && d.website !== '#'
+                    let clickHandler = ''
+                    if (hasWebsite) {
+                        clickHandler = `window.open('${d.website}','_blank');`
+                    } else {
+                        clickHandler = `alert('📞 Call ${d.phone} to book an appointment');`
+                    }
+                    return `
+                    <div onclick="${clickHandler}document.getElementById('globalSearch').value='';this.parentElement.classList.add('hidden')" class="px-6 py-4 hover:bg-slate-50 flex items-center justify-between border-b last:border-none cursor-pointer">
+                        <div>
+                            <div class="font-medium">${d.name}</div>
+                            <div class="text-xs text-slate-400">${d.address}</div>
                         </div>
-                    </div>`).join('')
-                }
-                
-                dropdown.innerHTML = dropdownHTML || `<div class="px-6 py-8 text-center text-slate-400">No matches found in providers or repo.</div>`
+                        <div class="text-emerald-500">${d.rating} ★</div>
+                    </div>`
+                }).join('')
                 dropdown.classList.remove('hidden')
             } else {
                 dropdown.classList.add('hidden')
-                renderProviders(dentists)
             }
-        }
-        
-        // REPO EXPLORER FUNCTIONS
-        function showRepoExplorer() {
-            document.getElementById('repoModal').classList.remove('hidden')
-            document.getElementById('repoModal').classList.add('flex')
-            renderRepoFiles(repoFiles)
-        }
-        
-        function hideRepoModal() {
-            const modal = document.getElementById('repoModal')
-            modal.classList.add('hidden')
-            modal.classList.remove('flex')
-        }
-        
-        function renderRepoFiles(files) {
-            const container = document.getElementById('repoListContainer')
-            container.innerHTML = files.map(f => `
-                <div onclick="loadRepoFile('${f.name}'); hideRepoModal()" class="repo-file-card bg-white border border-slate-200 rounded-3xl p-6 flex items-center gap-x-4 cursor-pointer hover:border-violet-300">
-                    <div class="text-4xl flex-shrink-0">${f.type === 'file' ? '📄' : '📁'}</div>
-                    <div class="flex-1 min-w-0">
-                        <div class="font-semibold text-lg truncate">${f.name}</div>
-                        <div class="text-sm text-slate-500 line-clamp-2">${f.desc}</div>
-                        <div class="text-[10px] text-emerald-600 mt-1">Folder: ${f.folder}</div>
-                    </div>
-                    <div class="text-violet-500 font-medium text-sm whitespace-nowrap">Load full content →</div>
-                </div>
-            `).join('')
-            
-            if (files.length === 0) {
-                container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400">No repo files match your search.</div>`
-            }
-        }
-        
-        function liveRepoSearch(query) {
-            const lower = query.toLowerCase().trim()
-            const filtered = repoFiles.filter(f => 
-                f.name.toLowerCase().includes(lower) || 
-                f.desc.toLowerCase().includes(lower) ||
-                f.folder.toLowerCase().includes(lower)
-            )
-            renderRepoFiles(filtered)
-        }
-        
-        // DYNAMIC REPO FILE LOADER – populates content instantly (self-contained)
-        function loadRepoFile(filename) {
-            const modalContent = document.createElement('div')
-            modalContent.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;z-index:100000;'
-            modalContent.innerHTML = `
-            <div onclick="event.stopImmediatePropagation()" class="bg-white rounded-3xl max-w-4xl w-full mx-4 p-8 max-h-[90vh] overflow-auto">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-4xl font-semibold">📄 ${filename}</h2>
-                    <button onclick="this.closest('.bg-white').parentElement.remove()" class="text-5xl text-slate-300 hover:text-slate-500 leading-none">×</button>
-                </div>
-                <div class="prose text-lg">
-                    <p class="text-emerald-600 font-medium">✅ Dynamically loaded full self-contained content for <strong>${filename}</strong></p>
-                    <p>This file is now rendered directly inside the single HTML page. In a real multi-page repo this would open the actual HTML file. All data, providers, and specialty-specific information for this file is already embedded and ready.</p>
-                    <div class="my-8 p-6 bg-emerald-50 rounded-3xl">
-                        <strong>Specialty content example for this file:</strong><br>
-                        All verified providers, same-day availability, ratings, and emergency protocols specific to <strong>${filename}</strong> are instantly available. Search system, menu system, and live updates remain fully functional across the entire site.
-                    </div>
-                    <button onclick="this.closest('.bg-white').parentElement.remove()" 
-                            class="mt-6 w-full py-6 bg-gradient-to-r from-emerald-500 to-violet-500 text-white font-semibold text-xl rounded-3xl">Return to main page</button>
-                </div>
-            </div>`
-            document.body.appendChild(modalContent)
-            
-            console.log(`%c🚀 FULLY LOADED REPO FILE: ${filename} – self-contained & dynamic`, 'color:#10b981;font-weight:bold;font-family:monospace')
-        }
-        
-        // DYNAMIC SPECIALTIES GRID
-        function renderSpecialties() {
-            const container = document.getElementById('specialtiesGrid')
-            container.innerHTML = repoFiles.filter(f => f.folder === 'specialties' || f.name === 'index.html').map(f => `
-                <a onclick="loadRepoFile('${f.name}'); return false;" 
-                   class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block cursor-pointer">
-                    <strong>${f.name}</strong><br>
-                    ${f.desc}
-                </a>
-            `).join('')
         }
         
         function updateLiveDentists() {
@@ -1140,7 +1424,7 @@
         
         function claimFreeGuide() {
             hideFreePopup()
-            alert('✅ FREE CHECKLIST DOWNLOADED (self-contained demo). In production this would trigger a real PDF download.')
+            window.location.href = 'emergency-dental-checklist.html'
         }
         
         function toggleMobileMenu() {
@@ -1197,7 +1481,7 @@
                 contactDate.textContent = shortDate
             }
             
-            console.log('%c✅ FULLY SELF-CONTAINED HOMEPAGE v3 DEPLOYED – ' + shortDate, 'color:#10b981; font-family:monospace; font-size:11px')
+            console.log('%c✅ Full self-contained homepage deployed – ' + shortDate, 'color:#10b981; font-family:monospace; font-size:10px')
         }
         
         function initAnimations() {
@@ -1239,7 +1523,6 @@
             renderProviders(dentists)
             renderTestimonials()
             renderFAQs()
-            renderSpecialties()                    // ← dynamic specialties
             initScrollProgress()
             initParallax()
             updateLocalTime()
@@ -1247,9 +1530,18 @@
             initAnimations()
             
             document.getElementById('currentYear').textContent = new Date().getFullYear()
-            
-            console.log('%c🎉 Menu system + exhaustive repo explorer + dynamic search fully fixed and working!', 'color:#8b5cf6;font-weight:bold')
         }
     </script>
+
+        <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <script defer src="js/registry.js"></script>
+    <script defer src="js/root-config.js"></script>
+    <script defer src="js/menu-system.js"></script>
+    <script defer src="js/search-system.js"></script>
+    <script defer src="js/schema.js"></script>
+    <script defer src="js/internal-links.js"></script>
+    <script defer src="js/legal-engine.js"></script>
+
+      <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>  
 </body>
 </html>
