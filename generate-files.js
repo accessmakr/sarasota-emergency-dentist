@@ -6,9 +6,8 @@ const DOMAIN = 'https://www.sarasotaemergencydentist.com';
 const MAIN_HTML = 'index.html';
 const REGISTRY_OUTPUT = path.join('js', 'registry.js');
 
-console.log('🚀 Starting auto-generation (v11 - fully fixed)...');
+console.log('🚀 Starting auto-generation (Collision-Free Version)...');
 console.log(`📍 Registry target: ${REGISTRY_OUTPUT}`);
-console.log(`📂 Working directory: ${process.cwd()}`);
 
 try {
   // ===================== RECURSIVE HTML FINDER =====================
@@ -27,7 +26,7 @@ try {
   }
 
   const htmlFiles = getAllHtmlFiles('.');
-  console.log(`✅ Found ${htmlFiles.length} HTML files (including /guide/ and /location/)`);
+  console.log(`✅ Found ${htmlFiles.length} HTML files`);
 
   if (!htmlFiles.some(f => path.basename(f) === MAIN_HTML)) {
     throw new Error('❌ index.html not found in project root!');
@@ -36,7 +35,7 @@ try {
   // ===================== PAGES.JSON + SITEMAP =====================
   const pages = [];
   const sitemapUrls = [];
-
+  
   htmlFiles.forEach(file => {
     const relativePath = path.relative('.', file).replace(/\\/g, '/');
     const content = fs.readFileSync(file, 'utf8');
@@ -63,27 +62,23 @@ try {
   });
 
   fs.writeFileSync('pages.json', JSON.stringify(pages, null, 2));
-  console.log('✅ pages.json generated');
 
   // ===================== CLEANUP OLD ROOT REGISTRY =====================
   if (fs.existsSync('registry.js')) {
     fs.unlinkSync('registry.js');
-    console.log('🧹 Deleted old registry.js from ROOT folder');
   }
 
   // ===================== BUILD DYNAMIC REGISTRY.JS =====================
   let registryContent = `// ================================================
-// AUTO-GENERATED REGISTRY.JS — v11 (fully dynamic)
+// AUTO-GENERATED REGISTRY.JS — Collision-Free
 // Generated on ${new Date().toISOString()}
-// Supports index.html + /guide/ + /location/ + any subfolder
 // ================================================
 
 window.SITE_REGISTRY = {
-    version: "2026.04.11-v11",
+    version: "2026.04.11-Fixed",
     lastUpdated: new Date().toISOString(),
-    
     folders: {},
-    
+    dentists: [], // Safe namespace to prevent collision with index.html
     getAllPages: function() {
         let all = [];
         Object.keys(this.folders).forEach(folder => {
@@ -95,13 +90,8 @@ window.SITE_REGISTRY = {
     }
 };
 
-// ================================================
-// Folder structure built from real files + titles
-// ================================================
+const folderMap = {};
 `;
-
-  // ←←← THIS WAS THE MISSING PART (now correctly in JS scope)
-  const folderMap = {};
 
   htmlFiles.forEach(file => {
     const relative = path.relative('.', file).replace(/\\/g, '/');
@@ -124,62 +114,41 @@ window.SITE_REGISTRY = {
     });
   });
 
-  // Special homepage handling
   if (folderMap['Root']) {
     const homepage = folderMap['Root'].files.find(f => f.name === 'index.html');
     if (homepage) {
       homepage.label = "Main Homepage";
-      homepage.name = '/';                    // clean root link
+      homepage.name = '/';
     }
   }
 
   registryContent += `window.SITE_REGISTRY.folders = ${JSON.stringify(folderMap, null, 2)};\n\n`;
 
-  // Extract dentists from index.html
+  // === THE FIX: Attach dentists securely to the registry to prevent 'const' crash ===
   const mainContent = fs.readFileSync(MAIN_HTML, 'utf8');
   const dentistsMatch = mainContent.match(/const\s+dentists\s*=\s*(\[[\s\S]*?\])\s*;?/i);
-
+  
   if (dentistsMatch && dentistsMatch[1]) {
-    registryContent += `const dentists = ${dentistsMatch[1]};\n`;
-    console.log(`✅ Extracted dentists array`);
+    registryContent += `window.SITE_REGISTRY.dentists = ${dentistsMatch[1]};\n`;
+    console.log(`✅ Extracted dentists array safely without global collision`);
   } else {
-    registryContent += `const dentists = [];\n`;
     console.log('⚠️ No dentists array found in index.html');
   }
 
-  // Ensure js/ folder exists and write registry
   if (!fs.existsSync('js')) {
     fs.mkdirSync('js', { recursive: true });
-    console.log('📁 Created js/ folder');
   }
   fs.writeFileSync(REGISTRY_OUTPUT, registryContent);
   console.log(`✅ registry.js successfully written to ${REGISTRY_OUTPUT}`);
 
-  // Final verification
-  if (fs.existsSync(REGISTRY_OUTPUT)) {
-    console.log('🎯 VERIFICATION SUCCESS: registry.js is in js/ folder ✅');
-  } else {
-    throw new Error('❌ registry.js was NOT created in js/ folder');
-  }
-
   // ===================== SITEMAP =====================
-  let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-`;
+  let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
   sitemapUrls.forEach(url => {
-    sitemap += `  <url>
-    <loc>${url.loc}</loc>
-    <lastmod>${url.lastmod}</lastmod>
-    <changefreq>${url.changefreq}</changefreq>
-    <priority>${url.priority}</priority>
-  </url>
-`;
+    sitemap += `  <url>\n    <loc>${url.loc}</loc>\n    <lastmod>${url.lastmod}</lastmod>\n    <changefreq>${url.changefreq}</changefreq>\n    <priority>${url.priority}</priority>\n  </url>\n`;
   });
   sitemap += `</urlset>`;
   fs.writeFileSync('sitemap.xml', sitemap);
   console.log('✅ sitemap.xml generated');
-
-  console.log('\n🎉 ALL DONE! index.html is homepage, /guide/ + /location/ fully supported, Menu + Search ready.');
 
 } catch (err) {
   console.error('💥 CRITICAL ERROR during generation:', err.message);
