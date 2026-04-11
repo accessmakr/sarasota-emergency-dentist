@@ -1,7 +1,8 @@
 // js/registry.js
 window.SITE_REGISTRY = {
-    version: "2026.04.10-v3",
+    version: "2026.04.11-v4",
     lastUpdated: new Date().toISOString(),
+    
     folders: {
         "Specialties": {
             icon: "🦷",
@@ -39,8 +40,16 @@ window.SITE_REGISTRY = {
                 { name: "contact.html", label: "Contact" },
                 { name: "about.html", label: "About Us" }
             ]
+        },
+        "Other": {
+            icon: "📁",
+            files: [
+                { name: "sarasotav3.html", label: "Main Homepage", description: "Current page" },
+                { name: "emergency-dental-checklist.html", label: "Free Emergency Checklist", description: "PDF Guide" }
+            ]
         }
     },
+    
     getAllPages: function() {
         let all = [];
         Object.keys(this.folders).forEach(folder => {
@@ -51,4 +60,5 @@ window.SITE_REGISTRY = {
         return all;
     }
 };
-console.log('%c✅ SITE_REGISTRY loaded — ready for menu & search', 'color:#10b981; font-weight:bold');
+
+console.log('%c✅ SITE_REGISTRY loaded — all pages ready', 'color:#10b981; font-weight:bold');
