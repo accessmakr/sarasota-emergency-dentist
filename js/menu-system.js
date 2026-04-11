@@ -22,41 +22,51 @@ function buildRepoMenuHTML() {
 }
 
 function injectRepoMenu() {
-    // Desktop
+    // Desktop button (always visible on lg and up, no "hidden" class)
     const navRight = document.querySelector('.flex.items-center.gap-x-4');
     if (navRight) {
-        navRight.insertAdjacentHTML('beforeend', `
-        <div class="relative group hidden lg:flex ml-4">
-            <button onclick="toggleRepoDropdown()" class="px-6 py-3 text-sm font-semibold flex items-center gap-x-2 hover:bg-slate-100 rounded-3xl">
-                📁 Repo Files &amp; Folders <span class="text-xl">▼</span>
-            </button>
-            <div id="desktopRepoDropdown" class="hidden absolute top-14 right-0 bg-white shadow-2xl rounded-3xl w-96 p-6 z-[9999] max-h-[520px] overflow-auto border">
-                ${buildRepoMenuHTML()}
-            </div>
-        </div>`);
+        const existing = document.getElementById('filesFoldersBtn');
+        if (!existing) {
+            navRight.insertAdjacentHTML('beforeend', `
+            <div class="relative group hidden lg:flex ml-4">
+                <button id="filesFoldersBtn" onclick="toggleFilesFoldersDropdown()" 
+                        class="px-6 py-3 text-sm font-semibold flex items-center gap-x-2 hover:bg-slate-100 rounded-3xl border border-transparent hover:border-slate-200">
+                    📁 Files &amp; Folders 
+                    <span class="text-xl">▼</span>
+                </button>
+                <div id="desktopFilesDropdown" class="hidden absolute top-14 right-0 bg-white shadow-2xl rounded-3xl w-96 p-6 z-[9999] max-h-[520px] overflow-auto border border-slate-100">
+                    ${buildRepoMenuHTML()}
+                </div>
+            </div>`);
+        }
     }
 
-    // Mobile
+    // Mobile section
     const mobileMenu = document.getElementById('mobileMenu');
     if (mobileMenu) {
-        const section = document.createElement('div');
-        section.className = 'pt-8 border-t mt-6';
-        section.innerHTML = `
-            <div class="uppercase text-xs tracking-widest mb-4 text-slate-500 px-2">📁 REPO FILES &amp; FOLDERS</div>
-            <div class="bg-slate-50 rounded-3xl p-3 max-h-80 overflow-auto">${buildRepoMenuHTML()}</div>`;
-        mobileMenu.appendChild(section);
+        const existing = mobileMenu.querySelector('.repo-mobile-section');
+        if (!existing) {
+            const section = document.createElement('div');
+            section.className = 'pt-8 border-t mt-6 repo-mobile-section';
+            section.innerHTML = `
+                <div class="uppercase text-xs tracking-widest mb-4 text-slate-500 px-2">📁 FILES &amp; FOLDERS</div>
+                <div class="bg-slate-50 rounded-3xl p-3 max-h-80 overflow-auto">
+                    ${buildRepoMenuHTML()}
+                </div>`;
+            mobileMenu.appendChild(section);
+        }
     }
 }
 
-window.toggleRepoDropdown = function() {
-    const dd = document.getElementById('desktopRepoDropdown');
+window.toggleFilesFoldersDropdown = function() {
+    const dd = document.getElementById('desktopFilesDropdown');
     if (dd) dd.classList.toggle('hidden');
 };
 
-// Auto-run when loaded
+// Auto-run safely
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', injectRepoMenu);
 } else {
     injectRepoMenu();
 }
-console.log('%c✅ MENU-SYSTEM fully injected — repo menu is now LIVE', 'color:#10b981; font-weight:bold');
+console.log('%c✅ MENU-SYSTEM injected — Files & Folders menu is now LIVE on desktop + mobile', 'color:#10b981; font-weight:bold');
