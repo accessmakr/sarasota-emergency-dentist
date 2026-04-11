@@ -1,7 +1,12 @@
+// generate-files.js — V4 (GREEDY REGEX FIX)
 const fs = require('fs');
 const path = require('path');
 
+const DOMAIN = 'https://www.sarasotaemergencydentist.com';
+const MAIN_HTML = 'index.html';
 const REGISTRY_OUTPUT = path.join('js', 'registry.js');
+
+console.log('🚀 Starting auto-generation...');
 
 try {
   function getAllHtmlFiles(dir) {
@@ -20,25 +25,29 @@ try {
 
   const htmlFiles = getAllHtmlFiles(process.cwd());
   const folderMap = {};
+  const pages = [];
 
   htmlFiles.forEach(file => {
     const relativePath = path.relative(process.cwd(), file).replace(/\\/g, '/');
     const content = fs.readFileSync(file, 'utf8');
     const titleMatch = content.match(/<title>(.*?)<\/title>/i);
     const title = titleMatch ? titleMatch[1].trim() : relativePath;
+
     const dir = path.dirname(relativePath) === '.' ? 'Root' : relativePath.split('/')[0];
 
     if (!folderMap[dir]) {
       folderMap[dir] = { icon: (dir === 'Root' ? '🦷' : '📁'), files: [] };
     }
+    
     folderMap[dir].files.push({ name: relativePath, label: title });
+    pages.push({ path: relativePath, title: title });
   });
 
-  // We are NOT extracting dentists anymore to prevent the syntax error
+  // START BUILDING THE FILE
   let registryContent = `window.SITE_REGISTRY = {
-    version: "2026.04.11-MenuFixed",
+    version: "2026.04.11-Fixed",
     folders: ${JSON.stringify(folderMap, null, 2)},
-    dentists: [], 
+    dentists: [],
     getAllPages: function() {
         let all = [];
         Object.keys(this.folders).forEach(f => {
@@ -46,11 +55,27 @@ try {
         });
         return all;
     }
-};`;
+};\n\n`;
+
+  // EXTRACT DENTISTS (Improved Regex to prevent cutting off)
+  if (fs.existsSync(MAIN_HTML)) {
+    const mainContent = fs.readFileSync(MAIN_HTML, 'utf8');
+    // We search for everything from 'const dentists =' until the specific comment marker
+    const dentistsMatch = mainContent.match(/const\s+dentists\s*=\s*([\s\S]*?);\s*\/\/\s*\{\{DYNAMIC_NEW_PROVIDERS_INSERT\}\}/i);
+    
+    if (dentistsMatch && dentistsMatch[1]) {
+      registryContent += `window.SITE_REGISTRY.dentists = ${dentistsMatch[1]};`;
+      console.log('✅ Successfully extracted full dentist array.');
+    } else {
+      console.error('❌ Could not find dentists with the DYNAMIC_NEW_PROVIDERS_INSERT marker.');
+      // Fallback: If no marker, just use an empty array so it doesn't crash the file
+      registryContent += `window.SITE_REGISTRY.dentists = [];`;
+    }
+  }
 
   if (!fs.existsSync('js')) fs.mkdirSync('js');
   fs.writeFileSync(REGISTRY_OUTPUT, registryContent);
-  console.log('✅ registry.js fixed (Dentist extraction disabled).');
+  console.log('✅ registry.js written successfully.');
 
 } catch (err) {
   console.error('💥 ERROR:', err.message);
