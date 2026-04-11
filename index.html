@@ -39,6 +39,9 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://unpkg.com">
     
+    <!-- Poppins for headings + Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
@@ -53,12 +56,17 @@
         
         :root {
             --emerald: #10b981;
-            --violet: #8b5cf6;
-            --white: #ffffff;
+            --sky: #0ea5e9;
+            --blue: #1e3a8a;
         }
         
         * {
             font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, .font-semibold, .tracking-[-1px], .tracking-[-2px] {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
         }
         
         .hero-gradient {
@@ -75,7 +83,7 @@
         }
         
         .gauge {
-            background: conic-gradient(#10b981 0% 85%, #e2e8f0 85% 100%);
+            background: conic-gradient(#0ea5e9 0% 85%, #e2e8f0 85% 100%);
         }
         
         .card-hover {
@@ -84,7 +92,7 @@
         
         .card-hover:hover {
             transform: translateY(-4px);
-            box-shadow: 25px 25px 0 -10px rgb(139 92 246);
+            box-shadow: 25px 25px 0 -10px rgb(14 165 233);
         }
         
         .scroll-progress {
@@ -92,7 +100,7 @@
             top: 0;
             left: 0;
             height: 4px;
-            background: linear-gradient(to right, #10b981, #8b5cf6);
+            background: linear-gradient(to right, #0ea5e9, #1e3a8a);
             z-index: 50;
             transition: width 0.1s;
         }
@@ -146,12 +154,26 @@
         }
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgb(16 185 129);
+            box-shadow: 0 20px 25px -5px rgb(14 165 233);
         }
         .map-container {
             border-radius: 1rem;
             overflow: hidden;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        
+        /* Specialty cards – recrafted esthetically with new theme */
+        .specialty-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid #f1f5f9;
+        }
+        .specialty-card:hover {
+            border-color: #0ea5e9;
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgb(14 165 233 / 0.15);
+        }
+        .specialty-card strong {
+            color: #1e3a8a;
         }
     </style>
 
@@ -242,16 +264,16 @@
         <div class="max-w-screen-2xl mx-auto">
             <div class="px-8 py-5 flex items-center justify-between">
                 <div class="flex items-center gap-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-violet-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner">🦷</div>
-                    <h1 class="text-2xl font-semibold tracking-[-0.5px]">Sarasota Emergency Dentist</h1>
+                    <div class="w-10 h-10 bg-gradient-to-br from-sky-500 to-blue-900 rounded-2xl flex items-center justify-center text-3xl shadow-inner">🦷</div>
+                    <h1 class="text-2xl font-semibold tracking-[-0.5px] text-blue-900">Sarasota Emergency Dentist</h1>
                 </div>
 
                 <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
-                    <a href="#providers" onclick="document.getElementById('providers').scrollIntoView({behavior:'smooth'})" class="hover:text-violet-600 transition-colors">Providers</a>
-                    <a href="#how" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})" class="hover:text-violet-600 transition-colors">How It Works</a>
-                    <a href="#testimonials" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})" class="hover:text-violet-600 transition-colors">Stories</a>
-                    <a href="#faqs" onclick="document.getElementById('faqs').scrollIntoView({behavior:'smooth'})" class="hover:text-violet-600 transition-colors">FAQs</a>
-                    <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="hover:text-violet-600 transition-colors">Contact</a>
+                    <a href="#providers" onclick="document.getElementById('providers').scrollIntoView({behavior:'smooth'})" class="hover:text-sky-600 transition-colors">Providers</a>
+                    <a href="#how" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})" class="hover:text-sky-600 transition-colors">How It Works</a>
+                    <a href="#testimonials" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})" class="hover:text-sky-600 transition-colors">Stories</a>
+                    <a href="#faqs" onclick="document.getElementById('faqs').scrollIntoView({behavior:'smooth'})" class="hover:text-sky-600 transition-colors">FAQs</a>
+                    <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="hover:text-sky-600 transition-colors">Contact</a>
                 </div>
 
                 <div class="relative w-80 hidden lg:block">
@@ -260,17 +282,11 @@
                         type="text" 
                         placeholder="Search providers or services instantly… 🦷"
                         onkeyup="liveSearch(this.value)"
-                        class="w-full bg-slate-100 border-0 focus:ring-2 focus:ring-violet-300 rounded-3xl px-6 py-3 text-sm outline-none placeholder:text-slate-400">
+                        class="w-full bg-slate-100 border-0 focus:ring-2 focus:ring-sky-300 rounded-3xl px-6 py-3 text-sm outline-none placeholder:text-slate-400">
                     <div id="searchDropdown" class="hidden absolute top-12 left-0 right-0 bg-white rounded-3xl shadow-2xl max-h-96 overflow-auto z-50 border border-slate-100"></div>
                 </div>
 
                 <div class="flex items-center gap-x-4">
-                    <button onclick="showFreePopup()" 
-                            class="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-violet-500 text-white text-sm font-semibold rounded-3xl hover:shadow-xl transition-all flex items-center gap-x-2">
-                        <span>Free Emergency Checklist</span>
-                        <span class="text-lg">📋</span>
-                    </button>
-                    
                     <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
                         <span id="hamburger">☰</span>
                     </button>
@@ -279,11 +295,11 @@
             
             <div id="mobileMenu" class="hidden md:hidden mobile-menu bg-white border-t px-8 py-6">
                 <div class="flex flex-col gap-y-6 text-lg font-medium">
-                    <a href="#providers" onclick="toggleMobileMenu()" class="hover:text-violet-600">Providers</a>
-                    <a href="#how" onclick="toggleMobileMenu()" class="hover:text-violet-600">How It Works</a>
-                    <a href="#testimonials" onclick="toggleMobileMenu()" class="hover:text-violet-600">Patient Stories</a>
-                    <a href="#faqs" onclick="toggleMobileMenu()" class="hover:text-violet-600">Frequently Asked Questions</a>
-                    <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-violet-600">Get In Touch</a>
+                    <a href="#providers" onclick="toggleMobileMenu()" class="hover:text-sky-600">Providers</a>
+                    <a href="#how" onclick="toggleMobileMenu()" class="hover:text-sky-600">How It Works</a>
+                    <a href="#testimonials" onclick="toggleMobileMenu()" class="hover:text-sky-600">Patient Stories</a>
+                    <a href="#faqs" onclick="toggleMobileMenu()" class="hover:text-sky-600">Frequently Asked Questions</a>
+                    <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-sky-600">Get In Touch</a>
                     <div class="pt-4 border-t">
                         <input id="mobileSearch" type="text" placeholder="Search providers live…" 
                                onkeyup="liveSearch(this.value);toggleMobileMenu()"
@@ -296,59 +312,60 @@
 
     <!-- Premium McKinsey-style Breadcrumbs -->
     <div class="max-w-screen-2xl mx-auto px-8 py-4 bg-white border-b text-sm flex items-center gap-x-2 text-slate-500 font-medium">
-        <a href="#" onclick="window.location.reload()" class="hover:text-emerald-600 transition-colors">Home</a>
+        <a href="#" onclick="window.location.reload()" class="hover:text-sky-600 transition-colors">Home</a>
         <span class="text-slate-300">›</span>
-        <span class="text-emerald-700">Emergency Dental Care</span>
+        <span class="text-sky-700">Emergency Dental Care</span>
         <span class="text-slate-300">›</span>
         <span class="font-semibold text-slate-900">Sarasota, FL</span>
     </div>
 
     <header id="hero" class="hero-gradient pt-16 pb-24 relative overflow-hidden">
-        <div id="parallaxLayer" class="absolute inset-0 bg-[radial-gradient(#10b981_0.8px,#ffffff_0.8px)] bg-[length:20px_20px] opacity-10 pointer-events-none"></div>
+        <div id="parallaxLayer" class="absolute inset-0 bg-[radial-gradient(#0ea5e9_0.8px,#ffffff_0.8px)] bg-[length:20px_20px] opacity-10 pointer-events-none"></div>
         
         <div class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-12 gap-12 items-center">
             <div class="md:col-span-7" data-aos="fade-right">
-                <div class="inline-flex items-center gap-x-2 bg-white/80 backdrop-blur-md text-emerald-700 text-xs font-medium px-4 h-8 rounded-3xl mb-6 shadow-inner">
-                    <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                <div class="inline-flex items-center gap-x-2 bg-white/80 backdrop-blur-md text-sky-700 text-xs font-medium px-4 h-8 rounded-3xl mb-6 shadow-inner">
+                    <div class="w-2 h-2 bg-sky-500 rounded-full animate-pulse"></div>
                     24/7 SARASOTA GUIDANCE • ADULTS & CHILDREN
                 </div>
                 
                 <h1 class="text-6xl md:text-7xl font-semibold tracking-[-2px] leading-none mb-6">
                     Tooth pain hitting hard?<br>
-                    <span class="bg-gradient-to-r from-emerald-500 via-violet-500 to-emerald-500 bg-clip-text text-transparent">Get same-day relief in Sarasota.</span>
+                    <span class="bg-gradient-to-r from-sky-500 via-blue-900 to-sky-500 bg-clip-text text-transparent">Get same-day relief in Sarasota.</span>
                 </h1>
                 
                 <p class="text-2xl text-slate-600 max-w-lg mb-10">
                     Immediate emergency dental care • Verified providers • Pediatric emergencies • Pain gone fast
                 </p>
                 
-                <div class="flex flex-wrap gap-4">
+                <div class="flex flex-wrap gap-4 items-center justify-between w-full max-w-2xl">
                     <a href="#providers" 
                        onclick="document.getElementById('providers').scrollIntoView({behavior:'smooth'})"
-                       class="px-8 py-6 bg-slate-900 hover:bg-violet-600 text-white rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all cta-button">
+                       class="px-8 py-6 bg-sky-500 hover:bg-sky-600 text-white rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all cta-button">
                         Find a Provider Now
                         <span class="text-3xl">→</span>
                     </a>
                     
+                    <!-- Download checklist button moved to far right of hero section -->
                     <button onclick="showFreePopup()" 
-                            class="px-8 py-6 border-2 border-slate-900 hover:border-violet-600 rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all cta-button">
+                            class="px-8 py-6 border-2 border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all cta-button ml-auto">
                         Download Free Checklist
                     </button>
                 </div>
                 
                 <div class="flex items-center gap-x-8 mt-12 text-sm">
                     <div class="flex -space-x-4">
-                        <div class="w-8 h-8 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 text-xl">⭐</div>
-                        <div class="w-8 h-8 bg-violet-100 rounded-2xl flex items-center justify-center text-violet-600 text-xl">⭐</div>
+                        <div class="w-8 h-8 bg-sky-100 rounded-2xl flex items-center justify-center text-sky-600 text-xl">⭐</div>
+                        <div class="w-8 h-8 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-900 text-xl">⭐</div>
                     </div>
                     <div>
                         <div class="font-semibold">4.92 average rating</div>
                         <div class="text-slate-500 flex items-center gap-x-1">from 2,847 verified Sarasota patients 
-                            <span class="text-xs px-2 py-px bg-emerald-100 text-emerald-700 rounded">Google • Yelp • Healthgrades</span>
+                            <span class="text-xs px-2 py-px bg-sky-100 text-sky-700 rounded">Google • Yelp • Healthgrades</span>
                         </div>
                     </div>
                     <div class="h-6 w-px bg-slate-300"></div>
-                    <div class="text-emerald-600 font-medium flex items-center gap-x-1">
+                    <div class="text-sky-600 font-medium flex items-center gap-x-1">
                         ADA • Florida Board Certified • Same-day care for adults & children
                         <a href="https://www.floridasdentistry.gov" target="_blank" class="text-xs underline ml-1">verified</a>
                     </div>
@@ -410,18 +427,18 @@
         <div class="grid md:grid-cols-12 gap-16 items-start">
             <div class="md:col-span-5" data-aos="fade-up">
                 <div class="sticky top-8">
-                    <div class="uppercase text-emerald-600 text-xs font-semibold tracking-[1px]">TRANSPARENT • VERIFIED • LOCAL</div>
-                    <h2 class="text-5xl font-semibold tracking-[-1px] leading-none mt-3 mb-6">How we connect you to Sarasota’s emergency dental experts</h2>
+                    <div class="uppercase text-sky-600 text-xs font-semibold tracking-[1px]">TRANSPARENT • VERIFIED • LOCAL</div>
+                    <h2 class="text-5xl font-semibold tracking-[-1px] leading-none mt-3 mb-6 text-blue-900">How we connect you to Sarasota’s emergency dental experts</h2>
                     <p class="text-slate-600 text-lg">Our process is built on clinical standards, real patient outcomes, and public data transparency — including dedicated pediatric emergency protocols.</p>
                     
                     <div class="mt-8 flex items-center gap-x-3 text-xs font-medium">
-                        <a href="https://www.ada.org/resources/practice/practice-management/emergency-treatment" target="_blank" class="flex-1 border border-slate-200 hover:border-emerald-200 rounded-3xl px-5 py-4 flex items-center justify-between">
+                        <a href="https://www.ada.org/resources/practice/practice-management/emergency-treatment" target="_blank" class="flex-1 border border-slate-200 hover:border-sky-200 rounded-3xl px-5 py-4 flex items-center justify-between">
                             <span>ADA Emergency Guidelines</span>
-                            <span class="text-emerald-500">→</span>
+                            <span class="text-sky-500">→</span>
                         </a>
-                        <a href="https://www.floridahealth.gov/" target="_blank" class="flex-1 border border-slate-200 hover:border-violet-200 rounded-3xl px-5 py-4 flex items-center justify-between">
+                        <a href="https://www.floridahealth.gov/" target="_blank" class="flex-1 border border-slate-200 hover:border-blue-200 rounded-3xl px-5 py-4 flex items-center justify-between">
                             <span>Florida Dept. of Health</span>
-                            <span class="text-violet-500">→</span>
+                            <span class="text-blue-900">→</span>
                         </a>
                     </div>
                 </div>
@@ -433,51 +450,51 @@
                         <div class="text-4xl mb-6">📍</div>
                         <h4 class="font-semibold mb-2">Geo-verified locations</h4>
                         <p class="text-sm text-slate-500">Every provider is confirmed within Sarasota County boundaries using public records and direct verification.</p>
-                        <div class="text-xs text-emerald-600 mt-8 font-medium">CROSS-CHECKED WITH GOOGLE MAPS + YELP + FLORIDA BOARD</div>
+                        <div class="text-xs text-sky-600 mt-8 font-medium">CROSS-CHECKED WITH GOOGLE MAPS + YELP + FLORIDA BOARD</div>
                     </div>
                     <div class="bg-white border border-slate-100 rounded-3xl p-8 card-hover minimal-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="text-4xl mb-6">⭐</div>
                         <h4 class="font-semibold mb-2">Ratings & outcomes only</h4>
                         <p class="text-sm text-slate-500">Minimum 4.5-star average across 50+ reviews from Google, Yelp, and Healthgrades. Only providers with documented same-day emergency capability.</p>
-                        <div id="weeklyUpdateLine" class="text-xs text-emerald-600 mt-8 font-medium"></div>
+                        <div id="weeklyUpdateLine" class="text-xs text-sky-600 mt-8 font-medium"></div>
                     </div>
                     <div class="bg-white border border-slate-100 rounded-3xl p-8 card-hover minimal-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="text-4xl mb-6">👶</div>
                         <h4 class="font-semibold mb-2">Pediatric emergencies</h4>
                         <p class="text-sm text-slate-500">Sarasota’s top pediatric-friendly providers are ready for children’s dental trauma, abscesses, knocked-out teeth, and anxiety-managed care.</p>
-                        <div class="text-xs text-violet-600 mt-8 font-medium">5 SPECIALISTS • CHILD-FOCUSED PROTOCOLS</div>
+                        <div class="text-xs text-blue-900 mt-8 font-medium">5 SPECIALISTS • CHILD-FOCUSED PROTOCOLS</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DIVERSITIES / SPECIALTIES SECTION – FULL LINKS TO YOUR EXISTING FILES -->
+    <!-- DIVERSITIES / SPECIALTIES SECTION – FULL LINKS TO YOUR EXISTING FILES – recrafted esthetically -->
     <section id="specialties" class="max-w-screen-2xl mx-auto px-8 py-20 border-b bg-white">
         <div class="text-center mb-12">
-            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
-            <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Dental specialties & diversities covered by verified providers</h2>
+            <span class="px-4 py-1 bg-sky-100 text-sky-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
+            <h2 class="text-5xl font-semibold tracking-[-1px] mt-3 text-blue-900">Dental specialties & diversities covered by verified providers</h2>
             <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented by verified providers in Sarasota.</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <a href="index.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>General Dentistry</strong><br>routine cleanings, fillings, preventive care</a>
-            <a href="pd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Pediatric Dentistry</strong><br>children & adolescents (behavior management, sedation)</a>
-            <a href="odo.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Orthodontics & Dentofacial Orthopedics</strong><br>braces, Invisalign, jaw alignment</a>
-            <a href="per.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Periodontics</strong><br>gums, bone, periodontal surgery</a>
-            <a href="end.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Endodontics</strong><br>root canals, pulp therapy</a>
-            <a href="oms.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Oral & Maxillofacial Surgery</strong><br>extractions, trauma, jaw surgery, implants</a>
-            <a href="pro.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Prosthodontics</strong><br>crowns, bridges, dentures, full-mouth reconstruction</a>
-            <a href="cod.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Cosmetic Dentistry</strong><br>veneers, whitening, smile design</a>
-            <a href="emd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Emergency Dentistry</strong><br>urgent pain, trauma, abscesses, 24/7 care</a>
-            <a href="imd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Implant Dentistry</strong><br>surgical placement & restoration of implants</a>
-            <a href="sda.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Sedation Dentistry / Anesthesia</strong><br>nitrous, oral, IV sedation for anxious patients</a>
-            <a href="ged.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Geriatric Dentistry</strong><br>seniors, denture care, medically complex patients</a>
-            <a href="snd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Special Needs Dentistry</strong><br>patients with disabilities or medical conditions</a>
-            <a href="red.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Restorative Dentistry</strong><br>complex fillings, inlays/onlays</a>
-            <a href="pwd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Preventive / Wellness Dentistry</strong><br>hygiene, sealants, fluoride, education</a>
-            <a href="ttop.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>TMJ / TMD & Orofacial Pain</strong><br>jaw joint disorders, headaches</a>
-            <a href="lad.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Laser Dentistry</strong><br>minimally invasive procedures</a>
-            <a href="sdssa.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Sleep Dentistry / Snoring & Sleep Apnea</strong><br>oral appliances</a>
+            <a href="index.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>General Dentistry</strong><br>routine cleanings, fillings, preventive care</a>
+            <a href="pd.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Pediatric Dentistry</strong><br>children & adolescents (behavior management, sedation)</a>
+            <a href="odo.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Orthodontics & Dentofacial Orthopedics</strong><br>braces, Invisalign, jaw alignment</a>
+            <a href="per.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Periodontics</strong><br>gums, bone, periodontal surgery</a>
+            <a href="end.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Endodontics</strong><br>root canals, pulp therapy</a>
+            <a href="oms.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Oral & Maxillofacial Surgery</strong><br>extractions, trauma, jaw surgery, implants</a>
+            <a href="pro.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Prosthodontics</strong><br>crowns, bridges, dentures, full-mouth reconstruction</a>
+            <a href="cod.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Cosmetic Dentistry</strong><br>veneers, whitening, smile design</a>
+            <a href="emd.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Emergency Dentistry</strong><br>urgent pain, trauma, abscesses, 24/7 care</a>
+            <a href="imd.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Implant Dentistry</strong><br>surgical placement & restoration of implants</a>
+            <a href="sda.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Sedation Dentistry / Anesthesia</strong><br>nitrous, oral, IV sedation for anxious patients</a>
+            <a href="ged.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Geriatric Dentistry</strong><br>seniors, denture care, medically complex patients</a>
+            <a href="snd.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Special Needs Dentistry</strong><br>patients with disabilities or medical conditions</a>
+            <a href="red.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Restorative Dentistry</strong><br>complex fillings, inlays/onlays</a>
+            <a href="pwd.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Preventive / Wellness Dentistry</strong><br>hygiene, sealants, fluoride, education</a>
+            <a href="ttop.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>TMJ / TMD & Orofacial Pain</strong><br>jaw joint disorders, headaches</a>
+            <a href="lad.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Laser Dentistry</strong><br>minimally invasive procedures</a>
+            <a href="sdssa.html" class="specialty-card bg-white border-2 border-slate-100 rounded-3xl p-6 text-sm hover:bg-sky-50 transition-all block flex flex-col justify-between h-full"><strong>Sleep Dentistry / Snoring & Sleep Apnea</strong><br>oral appliances</a>
         </div>
         <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network.</p>
     </section>
@@ -485,14 +502,14 @@
     <section id="providers" class="max-w-screen-2xl mx-auto px-8 py-20 bg-slate-50">
         <div class="flex flex-col md:flex-row justify-between items-baseline mb-12">
             <div>
-                <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-3xl">VERIFIED PROVIDERS</span>
-                <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Sarasota’s emergency dental network</h2>
+                <span class="px-4 py-1 bg-sky-100 text-sky-700 text-xs font-semibold rounded-3xl">VERIFIED PROVIDERS</span>
+                <h2 class="text-5xl font-semibold tracking-[-1px] mt-3 text-blue-900">Sarasota’s emergency dental network</h2>
                 <p class="text-slate-600 mt-2">verified providers</p>
                 <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                    <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-3 text-emerald-700 text-xs leading-tight">• This week’s top call in Sarasota: 14 abscess/infection cases – same-day incision & drainage at 13 providers prevented 92% of ER visits (Florida Board Q1 2026 data)</div>
-                    <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-3 text-emerald-700 text-xs leading-tight">• Pediatric dental trauma alert: 9 knocked-out teeth from spring sports – immediate milk storage + 60-minute reimplantation window achieved 88% success at our 5 pediatric specialists</div>
-                    <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-3 text-emerald-700 text-xs leading-tight">• Implant rescue trend: 7 loose implant cases – Misch Implant & Aesthetic Dentistry achieved 100% same-day stabilization with advanced torque technology</div>
-                    <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-3 text-emerald-700 text-xs leading-tight">• Lost crown emergencies up 25%: 6 cases – temporary sugar-free gum or OTC cement buys 24 hours until same-day fix at 18 providers</div>
+                    <div class="bg-sky-50 border border-sky-100 rounded-2xl p-3 text-sky-700 text-xs leading-tight">• This week’s top call in Sarasota: 14 abscess/infection cases – same-day incision & drainage at 13 providers prevented 92% of ER visits (Florida Board Q1 2026 data)</div>
+                    <div class="bg-sky-50 border border-sky-100 rounded-2xl p-3 text-sky-700 text-xs leading-tight">• Pediatric dental trauma alert: 9 knocked-out teeth from spring sports – immediate milk storage + 60-minute reimplantation window achieved 88% success at our 5 pediatric specialists</div>
+                    <div class="bg-sky-50 border border-sky-100 rounded-2xl p-3 text-sky-700 text-xs leading-tight">• Implant rescue trend: 7 loose implant cases – Misch Implant & Aesthetic Dentistry achieved 100% same-day stabilization with advanced torque technology</div>
+                    <div class="bg-sky-50 border border-sky-100 rounded-2xl p-3 text-sky-700 text-xs leading-tight">• Lost crown emergencies up 25%: 6 cases – temporary sugar-free gum or OTC cement buys 24 hours until same-day fix at 18 providers</div>
                 </div>
             </div>
             <p class="max-w-xs text-slate-500 text-lg">Real-time searchable directory. Tap any card to see full details, ratings, strengths, and direct booking links.</p>
@@ -504,8 +521,8 @@
 
     <section id="testimonials" class="max-w-screen-2xl mx-auto px-8 py-20">
         <div class="text-center mb-12">
-            <div class="text-violet-600 text-sm font-medium">REAL STORIES • REAL RELIEF</div>
-            <h2 class="text-5xl font-semibold tracking-[-1px]">What Sarasota patients say</h2>
+            <div class="text-sky-600 text-sm font-medium">REAL STORIES • REAL RELIEF</div>
+            <h2 class="text-5xl font-semibold tracking-[-1px] text-blue-900">What Sarasota patients say</h2>
         </div>
         
         <div id="testimonialCarousel" class="relative overflow-hidden">
@@ -522,8 +539,8 @@
     <section id="faqs" class="max-w-screen-2xl mx-auto px-8 py-20 border-t bg-white">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-12">
-                <span class="text-emerald-600 uppercase text-xs tracking-widest">15 most common questions answered</span>
-                <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Emergency dental care explained</h2>
+                <span class="text-sky-600 uppercase text-xs tracking-widest">15 most common questions answered</span>
+                <h2 class="text-5xl font-semibold tracking-[-1px] mt-3 text-blue-900">Emergency dental care explained</h2>
             </div>
             
             <div class="space-y-4" id="faqAccordion">
@@ -531,7 +548,7 @@
         </div>
     </section>
 
-    <section id="contact" class="max-w-screen-2xl mx-auto px-8 py-20 bg-gradient-to-br from-slate-900 to-violet-950 text-white rounded-t-[4rem]">
+    <section id="contact" class="max-w-screen-2xl mx-auto px-8 py-20 bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-t-[4rem]">
         <div class="grid md:grid-cols-12 gap-12 items-center">
             <div class="md:col-span-7">
                 <h2 class="text-5xl font-semibold tracking-[-1px]">Need help right now?</h2>
@@ -566,7 +583,7 @@
                         
                         <button 
                             type="submit"
-                            class="w-full py-7 bg-gradient-to-r from-emerald-400 to-violet-400 text-white font-semibold text-2xl rounded-3xl hover:shadow-2xl transition-all flex items-center justify-center gap-x-3 cta-button">
+                            class="w-full py-7 bg-gradient-to-r from-sky-400 to-blue-400 text-white font-semibold text-2xl rounded-3xl hover:shadow-2xl transition-all flex items-center justify-center gap-x-3 cta-button">
                             SEND MESSAGE FOR INSTANT GUIDANCE
                             <span class="text-3xl">→</span>
                         </button>
@@ -580,7 +597,7 @@
             </div>
             
             <div class="md:col-span-5 bg-white/10 backdrop-blur-3xl rounded-3xl p-8 text-slate-100">
-                <div class="text-emerald-300 text-sm font-medium mb-6">SARASOTA, FL 34236</div>
+                <div class="text-sky-300 text-sm font-medium mb-6">SARASOTA, FL 34236</div>
                 <div class="text-4xl font-medium leading-none mb-8">Local. Fast. Compassionate.</div>
                 <p class="opacity-75">We are not a clinic — we are your independent connection to the best emergency dental providers serving Sarasota and surrounding communities.</p>
                 
@@ -593,7 +610,7 @@
 
                 <!-- Premium Google Map Embed - McKinsey-style integration -->
                 <div class="mt-10 map-container">
-                    <div class="text-emerald-300 text-sm font-medium mb-3 px-1">📍 Our verified Sarasota location</div>
+                    <div class="text-sky-300 text-sm font-medium mb-3 px-1">📍 Our verified Sarasota location</div>
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3534.8!2d-82.5307!3d27.3364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2c3b3b3b3b3b3%3A0x0!2sSarasota%2C+Florida!5e0!3m2!1sen!2sus!4v1710000000000" 
                         width="100%" 
@@ -658,7 +675,7 @@
                 <div class="md:col-span-4 text-sm">
                     <div class="text-white mb-2">Sarasota Emergency Dental Network</div>
                     <div>3413 Main Street • Suite 200<br>Sarasota, Florida 34236</div>
-                    <div class="mt-6 text-emerald-400 font-medium">24/7 guidance contact now</div>
+                    <div class="mt-6 text-sky-400 font-medium">24/7 guidance contact now</div>
                     <div class="mt-8 text-xs opacity-60">© <span id="currentYear"></span> All rights reserved. This is an independent information and connection service — not a dental clinic.</div>
                 </div>
             </div>
@@ -684,7 +701,7 @@
             </div>
             
             <button onclick="claimFreeGuide()" 
-                    class="w-full py-6 bg-gradient-to-r from-emerald-500 to-violet-500 text-white font-semibold text-xl rounded-3xl">
+                    class="w-full py-6 bg-gradient-to-r from-sky-500 to-blue-900 text-white font-semibold text-xl rounded-3xl">
                 DOWNLOAD FREE CHECKLIST NOW
             </button>
             
@@ -693,7 +710,7 @@
     </div>
 
     <script>
-        // Tailwind initialization
+        // Tailwind initialization – updated for new color palette
         function initializeTailwind() {
             return {
                 config(userConfig = {}) {
@@ -702,8 +719,9 @@
                         theme: {
                             extend: {
                                 colors: {
-                                    emerald: '#10b981',
-                                    violet: '#8b5cf6'
+                                    sky: '#0ea5e9',
+                                    blue: '#1e3a8a',
+                                    emerald: '#10b981'
                                 }
                             }
                         }
@@ -1225,7 +1243,7 @@
                         <div>
                             <div class="flex items-center gap-x-2">
                                 <span class="text-3xl">🦷</span>
-                                <h4 class="font-semibold text-xl group-hover:text-violet-600">${dentist.name}</h4>
+                                <h4 class="font-semibold text-xl group-hover:text-sky-600">${dentist.name}</h4>
                             </div>
                             <div class="flex items-center gap-x-1 mt-2">
                                 ${Array(5).fill('').map((_, i) => `<span class="${i < Math.floor(dentist.rating) ? 'text-amber-400' : 'text-slate-200'}">★</span>`).join('')}
@@ -1234,7 +1252,7 @@
                         </div>
                         <div class="text-right text-xs leading-tight">
                             <div class="font-mono">${dentist.phone}</div>
-                            <div class="text-emerald-500 mt-px">Call now</div>
+                            <div class="text-sky-500 mt-px">Call now</div>
                         </div>
                     </div>
                     
@@ -1242,7 +1260,7 @@
                     
                     <div class="mt-6 flex justify-between text-xs">
                         <div class="flex items-center">
-                            <span class="bg-emerald-100 text-emerald-700 px-3 rounded-3xl h-6 flex items-center">${dentist.strengths.split(', ')[0]}</span>
+                            <span class="bg-sky-100 text-sky-700 px-3 rounded-3xl h-6 flex items-center">${dentist.strengths.split(', ')[0]}</span>
                         </div>
                         <div class="text-slate-400 font-medium">${dentist.address.split(',')[0]}</div>
                     </div>
@@ -1297,7 +1315,7 @@
                             <div class="font-medium">${d.name}</div>
                             <div class="text-xs text-slate-400">${d.address}</div>
                         </div>
-                        <div class="text-emerald-500">${d.rating} ★</div>
+                        <div class="text-sky-500">${d.rating} ★</div>
                     </div>`
                 }).join('')
                 dropdown.classList.remove('hidden')
@@ -1322,9 +1340,9 @@
                 const hasWebsite = d.website && d.website !== '#'
                 let linkHTML = ''
                 if (hasWebsite) {
-                    linkHTML = `<a href="${d.website}" target="_blank" class="text-violet-600 text-xs underline">Book →</a>`
+                    linkHTML = `<a href="${d.website}" target="_blank" class="text-sky-600 text-xs underline">Book →</a>`
                 } else {
-                    linkHTML = `<span onclick="alert('📞 Call ${d.phone} for immediate booking')" class="text-violet-600 text-xs underline cursor-pointer">Call now</span>`
+                    linkHTML = `<span onclick="alert('📞 Call ${d.phone} for immediate booking')" class="text-sky-600 text-xs underline cursor-pointer">Call now</span>`
                 }
                 return `
                 <div class="flex items-center justify-between text-sm">
@@ -1402,10 +1420,10 @@
         function renderFAQs() {
             const container = document.getElementById('faqAccordion')
             container.innerHTML = faqsData.map((faq, index) => `
-                <div onclick="this.querySelector('.answer').classList.toggle('hidden'); this.querySelector('.chevron').classList.toggle('rotate-180')" class="border border-slate-200 rounded-3xl px-7 py-6 cursor-pointer hover:border-emerald-200">
+                <div onclick="this.querySelector('.answer').classList.toggle('hidden'); this.querySelector('.chevron').classList.toggle('rotate-180')" class="border border-slate-200 rounded-3xl px-7 py-6 cursor-pointer hover:border-sky-200">
                     <div class="flex justify-between items-center">
                         <div class="font-medium text-lg">${faq.q}</div>
-                        <span class="chevron transition-transform text-2xl text-emerald-500">›</span>
+                        <span class="chevron transition-transform text-2xl text-sky-500">›</span>
                     </div>
                     <div class="answer hidden text-slate-600 mt-4 leading-relaxed">${faq.a}</div>
                 </div>`).join('')
@@ -1481,7 +1499,7 @@
                 contactDate.textContent = shortDate
             }
             
-            console.log('%c✅ Full self-contained homepage deployed – ' + shortDate, 'color:#10b981; font-family:monospace; font-size:10px')
+            console.log('%c✅ Full self-contained homepage deployed – ' + shortDate, 'color:#0ea5e9; font-family:monospace; font-size:10px')
         }
         
         function initAnimations() {
@@ -1507,7 +1525,7 @@
                         message: document.getElementById('contactMessage').value,
                         timestamp: new Date().toISOString()
                     }
-                    console.log('%c🚀 FORM DELIVERED TO accessmakr@gmail.com', 'color:#10b981;font-weight:bold')
+                    console.log('%c🚀 FORM DELIVERED TO accessmakr@gmail.com', 'color:#0ea5e9;font-weight:bold')
                     console.log(formData)
                     alert('✅ Message received! Your emergency guidance request has been sent securely to our team. Response time: under 5 minutes.')
                     contactForm.reset()
@@ -1533,7 +1551,7 @@
         }
     </script>
 
-        <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
     <script defer src="js/registry.js"></script>
     <script defer src="js/root-config.js"></script>
     <script defer src="js/menu-system.js"></script>
