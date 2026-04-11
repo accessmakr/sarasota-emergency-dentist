@@ -3,9 +3,9 @@ const fs = require('fs');
 const path = require('path');
 
 const DOMAIN = 'https://www.sarasotaemergencydentist.com';
-const MAIN_HTML = 'index.html';   // ← changed to index.html as requested
+const MAIN_HTML = 'index.html';   // ← homepage is now index.html
 
-console.log('🚀 Starting auto-generation (with full subfolder support)...');
+console.log('🚀 Starting auto-generation (full subfolder + title support)...');
 
 // ===================== RECURSIVE HTML FINDER =====================
 function getAllHtmlFiles(dir) {
@@ -24,14 +24,14 @@ function getAllHtmlFiles(dir) {
 }
 
 const htmlFiles = getAllHtmlFiles('.');
-console.log(`Found ${htmlFiles.length} HTML files (including subfolders like /guide/, /location/, etc.)`);
+console.log(`Found ${htmlFiles.length} HTML files (including /guide/, /location/, etc.)`);
 
 // ===================== BUILD PAGES.JSON + SITEMAP =====================
 const pages = [];
 const sitemapUrls = [];
 
 htmlFiles.forEach(file => {
-  const relativePath = path.relative('.', file).replace(/\\/g, '/'); // e.g. guide/page.html
+  const relativePath = path.relative('.', file).replace(/\\/g, '/');
   const content = fs.readFileSync(file, 'utf8');
   const titleMatch = content.match(/<title>(.*?)<\/title>/i);
   const title = titleMatch 
@@ -50,24 +50,28 @@ htmlFiles.forEach(file => {
   });
 });
 
+// Title map for registry (real <title> tags)
+const titleMap = {};
+pages.forEach(page => {
+  let key = page.path === '/' ? MAIN_HTML : page.path.substring(1);
+  titleMap[key] = page.title;
+});
+
 // Generate pages.json
 fs.writeFileSync('pages.json', JSON.stringify(pages, null, 2));
-console.log('✅ pages.json generated (subfolders included)');
+console.log('✅ pages.json generated');
 
-// ===================== EXTRACT DENTISTS + BUILD DYNAMIC REGISTRY.JS =====================
-const mainContent = fs.readFileSync(MAIN_HTML, 'utf8'); // now looks for index.html
-const dentistsMatch = mainContent.match(/const\s+dentists\s*=\s*(\[[\s\S]*?\])\s*;?/i);
-
+// ===================== BUILD DYNAMIC REGISTRY.JS =====================
 let registryContent = `// ================================================
-// AUTO-GENERATED REGISTRY.JS (subfolder-aware)
+// AUTO-GENERATED REGISTRY.JS — fully dynamic
 // Generated on ${new Date().toISOString()}
+// Supports index.html + /guide/ + /location/ + any subfolder
 // ================================================
 
 window.SITE_REGISTRY = {
-    version: "2026.04.11-v5",
+    version: "2026.04.11-v6",
     lastUpdated: new Date().toISOString(),
     
-    // Dynamic folders from actual file structure
     folders: {},
 
     getAllPages: function() {
@@ -81,10 +85,9 @@ window.SITE_REGISTRY = {
     }
 };
 
-// Build folder structure from scanned files
+// Build folder structure from actual files
 const folderMap = {};
 
-// Group files by their directory
 htmlFiles.forEach(file => {
     const relative = path.relative('.', file).replace(/\\\\/g, '/');
     const dir = path.dirname(relative) === '.' ? 'Root' : relative.split('/')[0];
@@ -96,33 +99,43 @@ htmlFiles.forEach(file => {
             files: []
         };
     }
+    
+    let label = titleMap[relative] || filename.replace('.html', '').replace(/-/g, ' ').replace(/\\//g, ' › ');
+    
     folderMap[dir].files.push({
         name: relative,
-        label: filename.replace('.html', '').replace(/-/g, ' ').replace(/\\//g, ' › '),
+        label: label,
         description: ''
     });
 });
 
-// Special homepage label
+// Special homepage handling
 if (folderMap['Root']) {
     const homepage = folderMap['Root'].files.find(f => f.name === 'index.html');
-    if (homepage) homepage.label = "Main Homepage";
+    if (homepage) {
+        homepage.label = "Main Homepage";
+        homepage.name = '/';                    // clean root link
+    }
 }
 
 window.SITE_REGISTRY.folders = folderMap;
 
+// Extract dentists (unchanged)
 `;
+
+const mainContent = fs.readFileSync(MAIN_HTML, 'utf8');
+const dentistsMatch = mainContent.match(/const\s+dentists\s*=\s*(\[[\s\S]*?\])\s*;?/i);
 
 if (dentistsMatch && dentistsMatch[1]) {
   registryContent += `const dentists = ${dentistsMatch[1]};\n\n`;
-  console.log(`✅ Extracted dentists array (${(dentistsMatch[1].match(/\{/g) || []).length} providers)`);
+  console.log(`✅ Extracted dentists array`);
 } else {
   registryContent += `const dentists = [];\n`;
   console.log('⚠️ No dentists array found in index.html');
 }
 
 fs.writeFileSync('registry.js', registryContent);
-console.log('✅ registry.js generated (dynamic folders + subfolders)');
+console.log('✅ registry.js generated (dynamic folders + real titles + index.html homepage)');
 
 // ===================== SITEMAP =====================
 let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -141,4 +154,4 @@ sitemap += `</urlset>`;
 fs.writeFileSync('sitemap.xml', sitemap);
 console.log('✅ sitemap.xml generated');
 
-console.log('\n🎉 DONE! Subfolders (/guide/, /location/, etc.) are now fully supported.');
+console.log('\n🎉 DONE! index.html is homepage, /guide/ and /location/ are fully supported, search-ready.');
