@@ -1,9 +1,10 @@
+
 const fs = require('fs');
 const path = require('path');
 
 // ========================= CONFIG =========================
 const DOMAIN = 'https://www.sarasotaemergencydentist.com';
-const MAIN_HTML = 'index.html';           // homepage is now correctly index.html
+const MAIN_HTML = 'index.html';
 // =======================================================
 
 console.log('🚀 Starting auto-generation of pages.json, registry.js, sitemap.xml...');
@@ -28,7 +29,6 @@ function getAllHtmlFiles(dir) {
   return files;
 }
 
-// Get ALL .html files recursively (supports /guide/, /location/, etc.)
 const htmlFiles = getAllHtmlFiles('.');
 console.log(`Found ${htmlFiles.length} HTML files (including subfolders)`);
 
@@ -64,11 +64,11 @@ htmlFiles.forEach(file => {
 fs.writeFileSync('pages.json', JSON.stringify(pages, null, 2));
 console.log('✅ pages.json generated');
 
-// 4. FIXED: Extract dentists array (now works even without semicolon)
+// 4. FIXED: Extract dentists array (no more JSON.parse crash)
 const mainContent = fs.readFileSync(MAIN_HTML, 'utf8');
 
-// More robust regex: allows optional semicolon + whitespace after the closing bracket
-const dentistsMatch = mainContent.match(/const dentists\s*=\s*(\[[\s\S]*?\])\s*;?/i);
+// Robust regex: handles missing semicolon, extra whitespace, different formatting
+const dentistsMatch = mainContent.match(/const\s+dentists\s*=\s*(\[[\s\S]*?\])\s*;?/i);
 
 let registryContent = `// ================================================
 // AUTO-GENERATED REGISTRY.JS
@@ -80,15 +80,20 @@ let registryContent = `// ================================================
 `;
 
 if (dentistsMatch && dentistsMatch[1]) {
+  const arrayContent = dentistsMatch[1].trim();
+  // Safe count without JSON.parse (counts each dentist object)
+  const numDentists = (arrayContent.match(/\{\s*id\s*:/gi) || []).length;
+
   registryContent += `const dentists = ${dentistsMatch[1]};\n\n`;
   registryContent += `// Shared across all pages (pd.html, odo.html, etc.)\n`;
-  registryContent += `// Usage: <script src="js/registry.js"></script>\n`;
+  registryContent += `// Usage: <script src="/registry.js"></script>\n`;
   registryContent += `// Then: window.dentists or just "dentists" (global)\n`;
-  console.log(`✅ Extracted ${JSON.parse(dentistsMatch[1]).length} dentists`);
+
+  console.log(`✅ Extracted ${numDentists} dentists`);
 } else {
   registryContent += `// WARNING: Could not extract dentists array from ${MAIN_HTML}\n`;
   registryContent += `const dentists = [];\n`;
-  console.log('⚠️  Could not find dentists array — check the regex');
+  console.log('⚠️  Could not find dentists array — check index.html');
 }
 
 fs.writeFileSync('registry.js', registryContent);
