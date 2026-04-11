@@ -10,7 +10,7 @@ console.log('🚀 Starting auto-generation (Collision-Free Version)...');
 console.log(`📍 Registry target: ${REGISTRY_OUTPUT}`);
 
 try {
-  // ===================== RECURSIVE HTML FINDER =====================
+  // 1. RECURSIVE HTML FINDER
   function getAllHtmlFiles(dir) {
     let files = [];
     const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -28,24 +28,30 @@ try {
   const htmlFiles = getAllHtmlFiles('.');
   console.log(`✅ Found ${htmlFiles.length} HTML files`);
 
-  if (!htmlFiles.some(f => path.basename(f) === MAIN_HTML)) {
-    throw new Error('❌ index.html not found in project root!');
-  }
-
-  // ===================== PAGES.JSON + SITEMAP =====================
+  // 2. DATA COLLECTION
   const pages = [];
   const sitemapUrls = [];
-  
+  const titleMap = {};
+  const folderMap = {}; // FIXED: Defined as a real object here
+
   htmlFiles.forEach(file => {
     const relativePath = path.relative('.', file).replace(/\\/g, '/');
     const content = fs.readFileSync(file, 'utf8');
+    
+    // Extract Title
     const titleMatch = content.match(/<title>(.*?)<\/title>/i);
     const title = titleMatch 
       ? titleMatch[1].trim().replace(/&amp;/g, '&') 
       : relativePath.replace('.html', '').replace(/-/g, ' ');
 
     const slug = relativePath === MAIN_HTML ? '/' : `/${relativePath}`;
+    const filename = path.basename(relativePath);
+    const dir = path.dirname(relativePath) === '.' ? 'Root' : relativePath.split('/')[0];
 
+    // Build Internal Title Map
+    titleMap[relativePath] = title;
+
+    // Build Sitemap Data
     pages.push({ path: slug, title: title, lastmod: new Date().toISOString().split('T')[0] });
     sitemapUrls.push({
       loc: `${DOMAIN}${slug}`,
@@ -53,22 +59,23 @@ try {
       changefreq: relativePath === MAIN_HTML ? 'daily' : 'weekly',
       priority: relativePath === MAIN_HTML ? '1.0' : '0.8'
     });
+
+    // Sort into Folder Map for the Menu
+    if (!folderMap[dir]) {
+      folderMap[dir] = {
+        icon: (dir === 'Root' || dir === 'guide') ? '🦷' : (dir === 'location' ? '📍' : '📁'),
+        files: []
+      };
+    }
+    
+    folderMap[dir].files.push({
+      name: relativePath,
+      label: title,
+      description: ''
+    });
   });
 
-  const titleMap = {};
-  pages.forEach(page => {
-    let key = page.path === '/' ? MAIN_HTML : page.path.substring(1);
-    titleMap[key] = page.title;
-  });
-
-  fs.writeFileSync('pages.json', JSON.stringify(pages, null, 2));
-
-  // ===================== CLEANUP OLD ROOT REGISTRY =====================
-  if (fs.existsSync('registry.js')) {
-    fs.unlinkSync('registry.js');
-  }
-
-  // ===================== BUILD DYNAMIC REGISTRY.JS =====================
+  // 3. GENERATE REGISTRY.JS CONTENT
   let registryContent = `// ================================================
 // AUTO-GENERATED REGISTRY.JS — Collision-Free
 // Generated on ${new Date().toISOString()}
@@ -77,8 +84,8 @@ try {
 window.SITE_REGISTRY = {
     version: "2026.04.11-Fixed",
     lastUpdated: new Date().toISOString(),
-    folders: {},
-    dentists: [], // Safe namespace to prevent collision with index.html
+    folders: ${JSON.stringify(folderMap, null, 2)},
+    dentists: [],
     getAllPages: function() {
         let all = [];
         Object.keys(this.folders).forEach(folder => {
@@ -88,69 +95,33 @@ window.SITE_REGISTRY = {
         });
         return all;
     }
-};
+};\n\n`;
 
-const folderMap = {};
-`;
-
-  htmlFiles.forEach(file => {
-    const relative = path.relative('.', file).replace(/\\/g, '/');
-    const dir = path.dirname(relative) === '.' ? 'Root' : relative.split('/')[0];
-    const filename = path.basename(relative);
-    
-    if (!folderMap[dir]) {
-      folderMap[dir] = {
-        icon: dir === 'Root' || dir === 'guide' ? '🦷' : dir === 'location' ? '📍' : '📁',
-        files: []
-      };
-    }
-    
-    let label = titleMap[relative] || filename.replace('.html', '').replace(/-/g, ' ').replace(/\\//g, ' › ');
-    
-    folderMap[dir].files.push({
-      name: relative,
-      label: label,
-      description: ''
-    });
-  });
-
-  if (folderMap['Root']) {
-    const homepage = folderMap['Root'].files.find(f => f.name === 'index.html');
-    if (homepage) {
-      homepage.label = "Main Homepage";
-      homepage.name = '/';
+  // 4. EXTRACT DENTISTS FROM INDEX.HTML
+  if (fs.existsSync(MAIN_HTML)) {
+    const mainContent = fs.readFileSync(MAIN_HTML, 'utf8');
+    const dentistsMatch = mainContent.match(/const\s+dentists\s*=\s*(\[[\s\S]*?\])\s*;?/i);
+    if (dentistsMatch && dentistsMatch[1]) {
+      registryContent += `window.SITE_REGISTRY.dentists = ${dentistsMatch[1]};\n`;
+      console.log(`✅ Extracted dentists array from ${MAIN_HTML}`);
     }
   }
 
-  registryContent += `window.SITE_REGISTRY.folders = ${JSON.stringify(folderMap, null, 2)};\n\n`;
-
-  // === THE FIX: Attach dentists securely to the registry to prevent 'const' crash ===
-  const mainContent = fs.readFileSync(MAIN_HTML, 'utf8');
-  const dentistsMatch = mainContent.match(/const\s+dentists\s*=\s*(\[[\s\S]*?\])\s*;?/i);
-  
-  if (dentistsMatch && dentistsMatch[1]) {
-    registryContent += `window.SITE_REGISTRY.dentists = ${dentistsMatch[1]};\n`;
-    console.log(`✅ Extracted dentists array safely without global collision`);
-  } else {
-    console.log('⚠️ No dentists array found in index.html');
-  }
-
-  if (!fs.existsSync('js')) {
-    fs.mkdirSync('js', { recursive: true });
-  }
+  // 5. WRITE FILES
+  if (!fs.existsSync('js')) fs.mkdirSync('js', { recursive: true });
   fs.writeFileSync(REGISTRY_OUTPUT, registryContent);
-  console.log(`✅ registry.js successfully written to ${REGISTRY_OUTPUT}`);
+  fs.writeFileSync('pages.json', JSON.stringify(pages, null, 2));
 
-  // ===================== SITEMAP =====================
   let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
   sitemapUrls.forEach(url => {
     sitemap += `  <url>\n    <loc>${url.loc}</loc>\n    <lastmod>${url.lastmod}</lastmod>\n    <changefreq>${url.changefreq}</changefreq>\n    <priority>${url.priority}</priority>\n  </url>\n`;
   });
   sitemap += `</urlset>`;
   fs.writeFileSync('sitemap.xml', sitemap);
-  console.log('✅ sitemap.xml generated');
+
+  console.log('✅ All files (registry.js, pages.json, sitemap.xml) generated successfully!');
 
 } catch (err) {
-  console.error('💥 CRITICAL ERROR during generation:', err.message);
+  console.error('💥 CRITICAL ERROR during generation:', err.stack);
   process.exit(1);
 }
