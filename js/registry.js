@@ -1,6 +1,6 @@
 // ================================================
 // AUTO-GENERATED REGISTRY.JS — Collision-Free
-// Generated on 2026-04-11T12:41:17.264Z
+// Generated on 2026-04-11T12:44:25.611Z
 // ================================================
 
 window.SITE_REGISTRY = {
