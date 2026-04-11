@@ -5,6 +5,9 @@ const path = require('path');
 const DOMAIN = 'https://www.sarasotaemergencydentist.com';
 const MAIN_HTML = 'index.html';   // ← homepage is now index.html
 
+// Output registry directly into the js/ folder where your site loads it
+const REGISTRY_OUTPUT = path.join('js', 'registry.js');
+
 console.log('🚀 Starting auto-generation (full subfolder + title support)...');
 
 // ===================== RECURSIVE HTML FINDER =====================
@@ -69,7 +72,7 @@ let registryContent = `// ================================================
 // ================================================
 
 window.SITE_REGISTRY = {
-    version: "2026.04.11-v6",
+    version: "2026.04.11-v7",
     lastUpdated: new Date().toISOString(),
     
     folders: {},
@@ -134,8 +137,12 @@ if (dentistsMatch && dentistsMatch[1]) {
   console.log('⚠️ No dentists array found in index.html');
 }
 
-fs.writeFileSync('registry.js', registryContent);
-console.log('✅ registry.js generated (dynamic folders + real titles + index.html homepage)');
+// Ensure js/ folder exists and write registry.js there
+if (!fs.existsSync('js')) {
+  fs.mkdirSync('js', { recursive: true });
+}
+fs.writeFileSync(REGISTRY_OUTPUT, registryContent);
+console.log(`✅ registry.js generated at ${REGISTRY_OUTPUT} (dynamic folders + real titles + index.html homepage)`);
 
 // ===================== SITEMAP =====================
 let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
