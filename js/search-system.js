@@ -1,13 +1,11 @@
 // js/search-system.js
-// ======================== ADVANCED SEARCH SYSTEM ========================
-
 function enhanceLiveSearch() {
     const originalLiveSearch = window.liveSearch;
     
     window.liveSearch = function(query) {
         const lower = (query || '').toLowerCase().trim();
         
-        // Call original provider search first
+        // Run original provider search first
         if (typeof originalLiveSearch === 'function') {
             originalLiveSearch(query);
         }
@@ -25,17 +23,10 @@ function enhanceLiveSearch() {
             p.name.toLowerCase().includes(lower)
         );
         
-        // Search providers (global dentists array from inline script)
-        const providerMatches = (window.dentists || []).filter(d => 
-            d.name.toLowerCase().includes(lower) ||
-            (d.summary || '').toLowerCase().includes(lower) ||
-            (d.strengths || '').toLowerCase().includes(lower)
-        );
-        
         let extraHTML = '';
         
         if (pageMatches.length) {
-            extraHTML += `<div class="px-6 py-2 text-xs uppercase bg-slate-50 font-medium">📁 Repo Pages</div>`;
+            extraHTML += `<div class="px-6 py-2 text-xs uppercase bg-slate-50 font-medium">📁 Site Pages</div>`;
             extraHTML += pageMatches.map(p => `
                 <a href="${p.name}" class="px-6 py-4 hover:bg-slate-50 flex items-center justify-between border-b last:border-none">
                     <div class="flex items-center gap-x-3">
@@ -48,19 +39,13 @@ function enhanceLiveSearch() {
                 </a>`).join('');
         }
         
-        if (providerMatches.length) {
-            extraHTML += `<div class="px-6 py-2 text-xs uppercase bg-violet-50 font-medium">🦷 Providers</div>`;
-            extraHTML += providerMatches.slice(0, 5).map(d => `
-                <div onclick="window.open('${d.website || '#'}','_blank')" class="px-6 py-4 hover:bg-slate-50 flex justify-between border-b last:border-none cursor-pointer">
-                    <div class="font-medium">${d.name}</div>
-                    <div class="text-emerald-500">${d.rating}★</div>
-                </div>`).join('');
-        }
-        
         if (extraHTML) {
             dropdown.innerHTML += extraHTML;
         }
     };
 }
 
-console.log('%c✅ SEARCH-SYSTEM enhanced — full repo + provider search active', 'color:#8b5cf6');
+// === ACTIVATE THE SEARCH ENHANCEMENT ===
+enhanceLiveSearch();
+
+console.log('%c✅ SEARCH-SYSTEM fully active — now searches providers + every .html page', 'color:#8b5cf6');
