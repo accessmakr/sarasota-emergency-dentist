@@ -1,6 +1,6 @@
 // ================================================
 // AUTO-GENERATED REGISTRY.JS (subfolder-aware)
-// Generated on 2026-04-11T06:33:33.350Z
+// Generated on 2026-04-11T06:36:33.887Z
 // ================================================
 
 window.SITE_REGISTRY = {
