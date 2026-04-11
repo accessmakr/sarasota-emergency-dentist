@@ -46,7 +46,7 @@ window.SITE_REGISTRY = {
       },
       {
         "name": "emergency-dental-checklist.html",
-        "label": "Sarasota Emergency Dental Checklist • Official ADA-Aligned Guide"
+        "label": "Comprehensive Dental Checklist by Specialty • Sarasota Emergency Dentist • ADA-Aligned"
       },
       {
         "name": "end.html",
