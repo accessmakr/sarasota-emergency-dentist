@@ -1,5 +1,5 @@
 // js/menu-system.js
-console.log('🚀 menu-system.js v14 loading — tailored to sarasotav3.html / index.html');
+console.log('🚀 menu-system.js v13 loading... (ultra-robust injection)');
 
 function capitalize(str) {
     if (str === 'Root') return 'Homepage';
@@ -8,15 +8,16 @@ function capitalize(str) {
 
 function buildRepoMenuHTML() {
     if (!window.SITE_REGISTRY || !window.SITE_REGISTRY.folders) {
-        console.error('❌ SITE_REGISTRY not ready yet');
-        return '<div class="p-6 text-red-500 text-sm">Loading pages… please refresh</div>';
+        console.error('❌ SITE_REGISTRY not ready');
+        return '<div class="p-4 text-red-500 text-sm">Registry not loaded — refresh page</div>';
     }
 
-    console.log('✅ Registry loaded —', Object.keys(window.SITE_REGISTRY.folders).length, 'folders with', Object.values(window.SITE_REGISTRY.folders).reduce((a, f) => a + f.files.length, 0), 'pages');
+    console.log('✅ Building menu — folders found:', Object.keys(window.SITE_REGISTRY.folders).length);
 
     let html = `
     <div class="mb-4 relative">
-        <input type="text" id="repo-search-input"
+        <input type="text" 
+               id="repo-search-input"
                class="repo-search-input w-full px-4 py-3 border border-slate-200 rounded-3xl text-sm focus:outline-none focus:border-emerald-300 placeholder:text-slate-400"
                placeholder="🔎 Search pages, services, locations...">
         <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg">🔎</span>
@@ -43,14 +44,25 @@ function buildRepoMenuHTML() {
 }
 
 function injectRepoMenu() {
-    console.log('🔧 Attempting injection into your exact nav...');
+    console.log('🔧 Trying to inject menu...');
 
-    // === DESKTOP: exact match to your right-side flex container ===
-    const desktopRight = document.querySelector('.flex.items-center.gap-x-4');
-    if (desktopRight) {
+    // === DESKTOP: Try many possible nav containers ===
+    let navRight = 
+        document.querySelector('.flex.items-center.gap-x-4') ||
+        document.querySelector('header nav .flex') ||
+        document.querySelector('nav .flex.items-center') ||
+        document.querySelector('header > div:last-child') ||
+        document.querySelector('header .flex.justify-end') ||
+        document.querySelector('header .flex.items-center') ||
+        document.querySelector('.navbar .flex') ||
+        document.querySelector('#navbar .flex') ||
+        document.querySelector('nav')?.lastElementChild ||
+        document.querySelector('header');
+
+    if (navRight) {
         const existing = document.getElementById('filesFoldersBtn');
         if (!existing) {
-            desktopRight.insertAdjacentHTML('beforeend', `
+            navRight.insertAdjacentHTML('beforeend', `
             <div class="relative group ml-4">
                 <button id="filesFoldersBtn" onclick="toggleFilesFoldersDropdown()" 
                         class="px-6 py-3 text-sm font-semibold flex items-center gap-x-2 hover:bg-slate-100 rounded-3xl border border-transparent hover:border-slate-200">
@@ -63,12 +75,12 @@ function injectRepoMenu() {
             </div>`);
 
             // Desktop live search
-            const dd = document.getElementById('desktopFilesDropdown');
-            const input = dd?.querySelector('#repo-search-input');
-            if (input) {
-                input.addEventListener('input', function () {
+            const desktopDd = document.getElementById('desktopFilesDropdown');
+            const searchInput = desktopDd?.querySelector('#repo-search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', function () {
                     const term = this.value.toLowerCase().trim();
-                    const links = dd.querySelectorAll('a');
+                    const links = desktopDd.querySelectorAll('a');
                     links.forEach(link => {
                         const label = link.querySelector('.font-medium')?.textContent.toLowerCase() || '';
                         const href = link.getAttribute('href') || '';
@@ -76,13 +88,14 @@ function injectRepoMenu() {
                     });
                 });
             }
-            console.log('✅ Desktop ☰ Menu button injected into .flex.items-center.gap-x-4');
+            console.log('✅ Desktop ☰ Menu button injected successfully');
         }
     } else {
-        console.warn('⚠️ Desktop nav not found — using floating fallback button');
+        console.warn('⚠️ No desktop nav found — falling back to floating button');
+        // Floating fallback button
         document.body.insertAdjacentHTML('beforeend', `
             <button onclick="toggleFilesFoldersDropdown()" 
-                    class="fixed bottom-6 right-6 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-4 rounded-3xl shadow-2xl flex items-center gap-x-2 z-[99999] text-sm font-semibold">
+                    class="fixed bottom-6 right-6 bg-emerald-600 text-white px-6 py-4 rounded-3xl shadow-2xl flex items-center gap-x-2 z-[99999] hover:bg-emerald-700 text-sm font-semibold">
                 ☰ Menu
             </button>
             <div id="desktopFilesDropdown" class="hidden fixed bottom-24 right-6 bg-white shadow-2xl rounded-3xl w-96 p-6 z-[99999] max-h-[520px] overflow-auto border border-slate-100">
@@ -90,8 +103,16 @@ function injectRepoMenu() {
             </div>`);
     }
 
-    // === MOBILE: exact id="mobileMenu" from your HTML ===
-    const mobileMenu = document.getElementById('mobileMenu');
+    // === MOBILE: Try many possible mobile containers ===
+    let mobileMenu = 
+        document.getElementById('mobileMenu') ||
+        document.querySelector('.mobile-menu') ||
+        document.querySelector('[class*="mobile"]') ||
+        document.querySelector('nav.mobile') ||
+        document.querySelector('.offcanvas') ||
+        document.querySelector('#mobile-nav') ||
+        document.querySelector('body > div:last-child'); // last resort
+
     if (mobileMenu) {
         const existing = mobileMenu.querySelector('.repo-mobile-section');
         if (!existing) {
@@ -117,10 +138,10 @@ function injectRepoMenu() {
                     });
                 });
             }
-            console.log('✅ Mobile menu section injected into #mobileMenu');
+            console.log('✅ Mobile menu section injected');
         }
     } else {
-        console.warn('⚠️ #mobileMenu not found');
+        console.warn('⚠️ No mobile menu container found');
     }
 }
 
@@ -129,11 +150,11 @@ window.toggleFilesFoldersDropdown = function() {
     if (dd) dd.classList.toggle('hidden');
 };
 
-// Smart init with retry until registry + DOM are ready
+// Auto-init with retry
 function initMenu() {
-    if (typeof window.SITE_REGISTRY === 'undefined' || !window.SITE_REGISTRY.folders) {
-        console.warn('Registry not ready — retrying in 200ms');
-        setTimeout(initMenu, 200);
+    if (typeof window.SITE_REGISTRY === 'undefined') {
+        console.warn('Registry not loaded yet — retrying in 300ms');
+        setTimeout(initMenu, 300);
         return;
     }
     injectRepoMenu();
@@ -145,12 +166,9 @@ if (document.readyState === 'loading') {
     initMenu();
 }
 
-// Extra safety retry after 1.5 seconds
+// Extra safety: run again after 1 second in case of late-loading elements
 setTimeout(() => {
-    if (!document.getElementById('filesFoldersBtn')) {
-        console.log('Extra retry triggered');
-        initMenu();
-    }
-}, 1500);
+    if (!document.getElementById('filesFoldersBtn')) initMenu();
+}, 1000);
 
-console.log('%c✅ MENU-SYSTEM v14 + SEARCH ready for your exact nav', 'color:#10b981; font-weight:bold');
+console.log('%c✅ MENU-SYSTEM v13 + SEARCH ready (desktop + mobile)', 'color:#10b981; font-weight:bold');
