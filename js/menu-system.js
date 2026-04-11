@@ -1,34 +1,32 @@
-// js/menu-system.js
-console.log('🔍 Menu System: Initializing...');
+// js/menu-system.js - V3 "The Aggressive Fix"
+console.log('🚀 Menu System: Starting Deep Scan...');
 
-function buildRepoMenuHTML() {
-    // Safety check: If registry is empty, show a loading state instead of a blank box
+function buildMenuContent() {
+    // 1. DATA CHECK
     if (!window.SITE_REGISTRY || !window.SITE_REGISTRY.folders || Object.keys(window.SITE_REGISTRY.folders).length === 0) {
-        console.error('❌ Menu Error: SITE_REGISTRY is empty or missing.');
-        return '<div class="p-4 text-slate-500 text-sm">No pages found in registry.</div>';
+        console.error('❌ REGISTRY DATA MISSING');
+        return '<div class="p-4 text-red-500 text-xs font-bold">⚠️ DATA ERROR: registry.js is empty. Run GitHub Action.</div>';
     }
 
     let html = `
-    <div class="mb-4 relative">
-        <input type="text" id="repo-search-input"
-               class="w-full px-4 py-3 border border-slate-200 rounded-3xl text-sm focus:outline-none focus:border-emerald-300 placeholder:text-slate-400"
-               placeholder="Search site...">
+    <div class="mb-4">
+        <input type="text" placeholder="Search pages..." id="menu-search"
+               class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-emerald-400">
     </div>`;
 
-    Object.keys(window.SITE_REGISTRY.folders).forEach(folderName => {
-        const folder = window.SITE_REGISTRY.folders[folderName];
+    Object.entries(window.SITE_REGISTRY.folders).forEach(([folderName, folder]) => {
         if (folder.files.length === 0) return;
-
+        
         html += `
-        <div class="mb-6 repo-folder-section">
-            <div class="flex items-center gap-x-2 px-4 py-2 text-emerald-600 font-bold text-[10px] uppercase tracking-widest border-b mb-2">
-                ${folder.icon} ${folderName}
+        <div class="mb-4 menu-section">
+            <div class="text-[10px] font-black text-emerald-600 uppercase tracking-tighter mb-2 px-2 border-b border-emerald-50 pb-1">
+                ${folder.icon || '📁'} ${folderName}
             </div>
             ${folder.files.map(file => `
                 <a href="${file.name === 'index.html' ? '/' : '/' + file.name}" 
-                   class="flex items-center gap-x-3 px-4 py-3 hover:bg-slate-50 rounded-2xl text-sm transition-all group">
-                    <span class="opacity-30 group-hover:opacity-100">📄</span>
-                    <div class="flex-1 font-medium text-slate-700">${file.label}</div>
+                   class="flex items-center gap-x-3 px-3 py-2 hover:bg-emerald-50 rounded-xl text-sm text-slate-700 transition-all group">
+                    <span class="text-xs opacity-40">📄</span>
+                    <span class="font-medium group-hover:text-emerald-700">${file.label}</span>
                 </a>
             `).join('')}
         </div>`;
@@ -36,93 +34,69 @@ function buildRepoMenuHTML() {
     return html;
 }
 
-function injectRepoMenu() {
-    console.log('💉 Menu System: Attempting injection...');
+function inject() {
+    console.log('💉 Attempting injection...');
 
-    // 1. DESKTOP TARGET: Find the "Free Emergency Checklist" button container
-    // Specifically looking for the nav area to avoid the top social bar
-    const desktopNav = document.querySelector('nav .flex.items-center.gap-x-4');
-    
-    if (desktopNav && !document.getElementById('filesFoldersBtn')) {
-        const btnHtml = `
-        <div class="relative ml-2" id="menu-wrapper-desktop">
-            <button id="filesFoldersBtn" onclick="window.toggleFilesFoldersDropdown()" 
-                    class="px-5 py-2.5 bg-slate-900 text-white text-xs font-bold uppercase tracking-widest rounded-full hover:bg-emerald-600 transition-all flex items-center gap-x-2">
-                <span>Directory</span>
-                <span class="text-[10px]">▼</span>
+    // DESKTOP: Find the button that says "Free Emergency Checklist"
+    const checklistBtn = document.querySelector('a[href="#emergency-checklist"]');
+    if (checklistBtn && !document.getElementById('desktop-nav-menu')) {
+        const wrapper = document.createElement('div');
+        wrapper.id = 'desktop-nav-menu';
+        wrapper.className = 'relative ml-2';
+        wrapper.innerHTML = `
+            <button onclick="document.getElementById('nav-dd').classList.toggle('hidden')" 
+                    class="px-5 py-3 bg-emerald-500 text-white text-xs font-bold uppercase rounded-full hover:bg-slate-900 transition-all flex items-center gap-2">
+                MENU <span class="text-[8px]">▼</span>
             </button>
-            <div id="desktopFilesDropdown" class="hidden absolute top-12 right-0 bg-white shadow-2xl rounded-3xl w-80 p-5 z-[9999] max-h-[500px] overflow-auto border border-slate-100">
-                ${buildRepoMenuHTML()}
+            <div id="nav-dd" class="hidden absolute top-14 right-0 w-72 bg-white shadow-2xl rounded-3xl p-5 z-[9999] border border-slate-100 max-h-[80vh] overflow-y-auto">
+                ${buildMenuContent()}
             </div>
-        </div>`;
-        desktopNav.insertAdjacentHTML('beforeend', btnHtml);
-        console.log('✅ Menu System: Desktop injection successful');
-    } else {
-        console.warn('⚠️ Menu System: Could not find Desktop Nav container.');
-    }
-
-    // 2. MOBILE TARGET: Find the #mobileMenu div
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (mobileMenu && !document.getElementById('mobile-directory-section')) {
-        const mobileSection = document.createElement('div');
-        mobileSection.id = 'mobile-directory-section';
-        mobileSection.className = 'mt-8 pt-8 border-t border-slate-100';
-        mobileSection.innerHTML = `
-            <div class="text-[10px] font-bold tracking-[0.2em] text-slate-400 mb-4 px-4 uppercase">Site Directory</div>
-            <div class="px-2">${buildRepoMenuHTML()}</div>
         `;
-        mobileMenu.appendChild(mobileSection);
-        console.log('✅ Menu System: Mobile injection successful');
+        checklistBtn.parentNode.insertBefore(wrapper, checklistBtn);
+        console.log('✅ Desktop Menu Injected');
     }
 
-    // Initialize Search Functionality
-    setupSearchListeners();
+    // MOBILE: Find the #mobileMenu ID
+    const mobileContainer = document.getElementById('mobileMenu');
+    if (mobileContainer && !document.getElementById('mobile-nav-content')) {
+        const mobileDiv = document.createElement('div');
+        mobileDiv.id = 'mobile-nav-content';
+        mobileDiv.className = 'mt-10 pt-10 border-t border-slate-100 px-4';
+        mobileDiv.innerHTML = buildMenuContent();
+        mobileMenu.appendChild(mobileDiv);
+        console.log('✅ Mobile Menu Injected');
+    }
 }
 
-function setupSearchListeners() {
-    const inputs = document.querySelectorAll('#repo-search-input');
-    inputs.forEach(input => {
-        input.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            const container = e.target.closest('div').parentElement;
-            container.querySelectorAll('a').forEach(link => {
-                const text = link.textContent.toLowerCase();
-                link.style.display = text.includes(term) ? 'flex' : 'none';
-            });
-            // Hide folder headers if no links are visible
-            container.querySelectorAll('.repo-folder-section').forEach(section => {
-                const hasVisible = Array.from(section.querySelectorAll('a')).some(a => a.style.display !== 'none');
-                section.style.display = hasVisible ? 'block' : 'none';
-            });
+// Ensure it runs even if registry loads late
+function start() {
+    if (window.SITE_REGISTRY) {
+        inject();
+    } else {
+        console.log('⏳ Registry not ready, retrying...');
+        setTimeout(start, 500);
+    }
+}
+
+// Search Logic
+document.addEventListener('input', (e) => {
+    if (e.target.id === 'menu-search') {
+        const val = e.target.value.toLowerCase();
+        const links = e.target.closest('div').parentElement.querySelectorAll('a');
+        links.forEach(l => {
+            const match = l.textContent.toLowerCase().includes(val);
+            l.style.display = match ? 'flex' : 'none';
         });
-    });
-}
+    }
+});
 
-window.toggleFilesFoldersDropdown = function() {
-    const dd = document.getElementById('desktopFilesDropdown');
-    if (dd) dd.classList.toggle('hidden');
-};
-
-// Global click-away closer
+// Close menu on outside click
 document.addEventListener('click', (e) => {
-    const dd = document.getElementById('desktopFilesDropdown');
-    const btn = document.getElementById('filesFoldersBtn');
-    if (dd && !dd.contains(e.target) && !btn.contains(e.target)) {
+    const dd = document.getElementById('nav-dd');
+    const btn = e.target.closest('button');
+    if (dd && !dd.contains(e.target) && (!btn || !btn.innerText.includes('MENU'))) {
         dd.classList.add('hidden');
     }
 });
 
-function initMenu() {
-    if (typeof window.SITE_REGISTRY === 'undefined') {
-        setTimeout(initMenu, 100);
-        return;
-    }
-    injectRepoMenu();
-}
-
-// Kickoff
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMenu);
-} else {
-    initMenu();
-}
+start();
