@@ -4,177 +4,165 @@ const path = require('path');
 
 const DOMAIN = 'https://www.sarasotaemergencydentist.com';
 const MAIN_HTML = 'index.html';
-
-// === EXPLICIT OUTPUT PATH (this is the fix) ===
 const REGISTRY_OUTPUT = path.join('js', 'registry.js');
 
-console.log('🚀 Starting auto-generation (full subfolder + title support)...');
-console.log(`📍 Registry will be written to: ${REGISTRY_OUTPUT}`);
+console.log('🚀 Starting auto-generation (v10 - GitHub Actions safe)...');
+console.log(`📍 Registry target: ${REGISTRY_OUTPUT}`);
+console.log(`📂 Working directory: ${process.cwd()}`);
 
-// ===================== RECURSIVE HTML FINDER =====================
-function getAllHtmlFiles(dir) {
-  let files = [];
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory() && !entry.name.startsWith('.') && entry.name !== 'node_modules' && entry.name !== '.git') {
-      files = files.concat(getAllHtmlFiles(fullPath));
-    } else if (entry.isFile() && entry.name.endsWith('.html') && !entry.name.startsWith('.')) {
-      files.push(fullPath);
+try {
+  // ===================== RECURSIVE HTML FINDER =====================
+  function getAllHtmlFiles(dir) {
+    let files = [];
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory() && !entry.name.startsWith('.') && entry.name !== 'node_modules' && entry.name !== '.git') {
+        files = files.concat(getAllHtmlFiles(fullPath));
+      } else if (entry.isFile() && entry.name.endsWith('.html') && !entry.name.startsWith('.')) {
+        files.push(fullPath);
+      }
     }
+    return files;
   }
-  return files;
-}
 
-const htmlFiles = getAllHtmlFiles('.');
-console.log(`Found ${htmlFiles.length} HTML files (including /guide/, /location/, etc.)`);
+  const htmlFiles = getAllHtmlFiles('.');
+  console.log(`✅ Found ${htmlFiles.length} HTML files (including /guide/ and /location/)`);
 
-// ===================== BUILD PAGES.JSON + SITEMAP =====================
-const pages = [];
-const sitemapUrls = [];
+  if (!htmlFiles.some(f => path.basename(f) === MAIN_HTML)) {
+    throw new Error('❌ index.html not found in project root!');
+  }
 
-htmlFiles.forEach(file => {
-  const relativePath = path.relative('.', file).replace(/\\/g, '/');
-  const content = fs.readFileSync(file, 'utf8');
-  const titleMatch = content.match(/<title>(.*?)<\/title>/i);
-  const title = titleMatch 
-    ? titleMatch[1].trim().replace(/&amp;/g, '&') 
-    : relativePath.replace('.html', '').replace(/-/g, ' ');
+  // ===================== PAGES + SITEMAP (unchanged) =====================
+  const pages = [];
+  const sitemapUrls = [];
 
-  const slug = relativePath === MAIN_HTML ? '/' : `/${relativePath}`;
+  htmlFiles.forEach(file => {
+    const relativePath = path.relative('.', file).replace(/\\/g, '/');
+    const content = fs.readFileSync(file, 'utf8');
+    const titleMatch = content.match(/<title>(.*?)<\/title>/i);
+    const title = titleMatch 
+      ? titleMatch[1].trim().replace(/&amp;/g, '&') 
+      : relativePath.replace('.html', '').replace(/-/g, ' ');
 
-  pages.push({ path: slug, title: title, lastmod: new Date().toISOString().split('T')[0] });
+    const slug = relativePath === MAIN_HTML ? '/' : `/${relativePath}`;
 
-  sitemapUrls.push({
-    loc: `${DOMAIN}${slug}`,
-    lastmod: new Date().toISOString().split('T')[0],
-    changefreq: relativePath === MAIN_HTML ? 'daily' : 'weekly',
-    priority: relativePath === MAIN_HTML ? '1.0' : '0.8'
+    pages.push({ path: slug, title: title, lastmod: new Date().toISOString().split('T')[0] });
+    sitemapUrls.push({
+      loc: `${DOMAIN}${slug}`,
+      lastmod: new Date().toISOString().split('T')[0],
+      changefreq: relativePath === MAIN_HTML ? 'daily' : 'weekly',
+      priority: relativePath === MAIN_HTML ? '1.0' : '0.8'
+    });
   });
-});
 
-// Title map for registry
-const titleMap = {};
-pages.forEach(page => {
-  let key = page.path === '/' ? MAIN_HTML : page.path.substring(1);
-  titleMap[key] = page.title;
-});
+  const titleMap = {};
+  pages.forEach(page => {
+    let key = page.path === '/' ? MAIN_HTML : page.path.substring(1);
+    titleMap[key] = page.title;
+  });
 
-// Generate pages.json
-fs.writeFileSync('pages.json', JSON.stringify(pages, null, 2));
-console.log('✅ pages.json generated');
+  fs.writeFileSync('pages.json', JSON.stringify(pages, null, 2));
+  console.log('✅ pages.json generated');
 
-// ===================== AUTO-CLEANUP: Remove old root registry.js =====================
-if (fs.existsSync('registry.js')) {
-  fs.unlinkSync('registry.js');
-  console.log('🧹 Deleted old registry.js from root folder');
-}
+  // ===================== CLEANUP ROOT =====================
+  if (fs.existsSync('registry.js')) {
+    fs.unlinkSync('registry.js');
+    console.log('🧹 Deleted old registry.js from ROOT folder');
+  }
 
-// ===================== BUILD DYNAMIC REGISTRY.JS =====================
-let registryContent = `// ================================================
-// AUTO-GENERATED REGISTRY.JS — fully dynamic
+  // ===================== BUILD REGISTRY =====================
+  let registryContent = `// ================================================
+// AUTO-GENERATED REGISTRY.JS — v10 (GitHub Actions safe)
 // Generated on ${new Date().toISOString()}
-// Supports index.html + /guide/ + /location/ + any subfolder
 // ================================================
 
 window.SITE_REGISTRY = {
-    version: "2026.04.11-v8",
+    version: "2026.04.11-v10",
     lastUpdated: new Date().toISOString(),
-    
     folders: {},
-
     getAllPages: function() {
         let all = [];
         Object.keys(this.folders).forEach(folder => {
-            this.folders[folder].files.forEach(file => {
-                all.push({ folder: folder, ...file });
-            });
+            this.folders[folder].files.forEach(file => all.push({ folder: folder, ...file }));
         });
         return all;
     }
 };
 
-// Build folder structure from actual files
+// Build folder structure
 const folderMap = {};
+`;
 
-htmlFiles.forEach(file => {
-    const relative = path.relative('.', file).replace(/\\\\/g, '/');
+  htmlFiles.forEach(file => {
+    const relative = path.relative('.', file).replace(/\\/g, '/');
     const dir = path.dirname(relative) === '.' ? 'Root' : relative.split('/')[0];
     const filename = path.basename(relative);
-    
-    if (!folderMap[dir]) {
-        folderMap[dir] = {
-            icon: dir === 'Root' || dir === 'guide' ? '🦷' : dir === 'location' ? '📍' : '📁',
-            files: []
-        };
-    }
-    
-    let label = titleMap[relative] || filename.replace('.html', '').replace(/-/g, ' ').replace(/\\//g, ' › ');
-    
-    folderMap[dir].files.push({
-        name: relative,
-        label: label,
-        description: ''
-    });
-});
 
-// Special homepage handling
-if (folderMap['Root']) {
+    if (!folderMap[dir]) {
+      folderMap[dir] = {
+        icon: dir === 'Root' || dir === 'guide' ? '🦷' : dir === 'location' ? '📍' : '📁',
+        files: []
+      };
+    }
+
+    let label = titleMap[relative] || filename.replace('.html', '').replace(/-/g, ' ').replace(/\\//g, ' › ');
+
+    folderMap[dir].files.push({
+      name: relative,
+      label: label,
+      description: ''
+    });
+  });
+
+  if (folderMap['Root']) {
     const homepage = folderMap['Root'].files.find(f => f.name === 'index.html');
     if (homepage) {
-        homepage.label = "Main Homepage";
-        homepage.name = '/';                    // clean root link
+      homepage.label = "Main Homepage";
+      homepage.name = '/';
     }
+  }
+
+  registryContent += `window.SITE_REGISTRY.folders = ${JSON.stringify(folderMap, null, 2)};\n\n`;
+
+  // Extract dentists
+  const mainContent = fs.readFileSync(MAIN_HTML, 'utf8');
+  const dentistsMatch = mainContent.match(/const\s+dentists\s*=\s*(\[[\s\S]*?\])\s*;?/i);
+  if (dentistsMatch && dentistsMatch[1]) {
+    registryContent += `const dentists = ${dentistsMatch[1]};\n`;
+    console.log(`✅ Extracted dentists array`);
+  } else {
+    registryContent += `const dentists = [];\n`;
+    console.log('⚠️ No dentists array found');
+  }
+
+  // Write to js/
+  if (!fs.existsSync('js')) {
+    fs.mkdirSync('js', { recursive: true });
+    console.log('📁 Created js/ folder');
+  }
+  fs.writeFileSync(REGISTRY_OUTPUT, registryContent);
+  console.log(`✅ registry.js written to ${REGISTRY_OUTPUT}`);
+
+  // Final verification
+  if (fs.existsSync(REGISTRY_OUTPUT)) {
+    console.log('🎯 VERIFICATION SUCCESS: registry.js is in js/ folder ✅');
+  } else {
+    throw new Error('❌ registry.js was NOT created in js/ folder');
+  }
+
+  // Sitemap
+  let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+  sitemapUrls.forEach(url => {
+    sitemap += `  <url>\n    <loc>${url.loc}</loc>\n    <lastmod>${url.lastmod}</lastmod>\n    <changefreq>${url.changefreq}</changefreq>\n    <priority>${url.priority}</priority>\n  </url>\n`;
+  });
+  sitemap += `</urlset>`;
+  fs.writeFileSync('sitemap.xml', sitemap);
+  console.log('✅ sitemap.xml generated');
+
+  console.log('\n🎉 ALL DONE — index.html homepage + /guide/ + /location/ + Menu + Search ready!');
+
+} catch (err) {
+  console.error('💥 CRITICAL ERROR during generation:', err.message);
+  process.exit(1);   // Force GitHub Actions to show as failed
 }
-
-window.SITE_REGISTRY.folders = folderMap;
-
-// Extract dentists
-`;
-
-const mainContent = fs.readFileSync(MAIN_HTML, 'utf8');
-const dentistsMatch = mainContent.match(/const\s+dentists\s*=\s*(\[[\s\S]*?\])\s*;?/i);
-
-if (dentistsMatch && dentistsMatch[1]) {
-  registryContent += `const dentists = ${dentistsMatch[1]};\n\n`;
-  console.log(`✅ Extracted dentists array`);
-} else {
-  registryContent += `const dentists = [];\n`;
-  console.log('⚠️ No dentists array found in index.html');
-}
-
-// Ensure js/ folder exists and write registry
-if (!fs.existsSync('js')) {
-  fs.mkdirSync('js', { recursive: true });
-  console.log('📁 Created js/ folder');
-}
-
-fs.writeFileSync(REGISTRY_OUTPUT, registryContent);
-console.log(`✅ registry.js successfully written to ${REGISTRY_OUTPUT}`);
-
-// Final verification
-if (fs.existsSync(REGISTRY_OUTPUT)) {
-  console.log('🎯 Verification: registry.js is correctly inside the js/ folder ✅');
-} else {
-  console.error('❌ Something went wrong — registry.js not found in js/');
-}
-
-// ===================== SITEMAP =====================
-let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-`;
-sitemapUrls.forEach(url => {
-  sitemap += `  <url>
-    <loc>${url.loc}</loc>
-    <lastmod>${url.lastmod}</lastmod>
-    <changefreq>${url.changefreq}</changefreq>
-    <priority>${url.priority}</priority>
-  </url>
-`;
-});
-sitemap += `</urlset>`;
-fs.writeFileSync('sitemap.xml', sitemap);
-console.log('✅ sitemap.xml generated');
-
-console.log('\n🎉 DONE! index.html is homepage, /guide/ and /location/ are fully supported, Menu + Search are ready.');
