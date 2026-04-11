@@ -22,13 +22,13 @@ function buildRepoMenuHTML() {
 }
 
 function injectRepoMenu() {
-    // Desktop button (always visible on lg and up, no "hidden" class)
+    // Desktop — always visible on lg+, no hidden class
     const navRight = document.querySelector('.flex.items-center.gap-x-4');
     if (navRight) {
         const existing = document.getElementById('filesFoldersBtn');
         if (!existing) {
             navRight.insertAdjacentHTML('beforeend', `
-            <div class="relative group hidden lg:flex ml-4">
+            <div class="relative group flex items-center ml-4">
                 <button id="filesFoldersBtn" onclick="toggleFilesFoldersDropdown()" 
                         class="px-6 py-3 text-sm font-semibold flex items-center gap-x-2 hover:bg-slate-100 rounded-3xl border border-transparent hover:border-slate-200">
                     📁 Files &amp; Folders 
@@ -41,7 +41,7 @@ function injectRepoMenu() {
         }
     }
 
-    // Mobile section
+    // Mobile
     const mobileMenu = document.getElementById('mobileMenu');
     if (mobileMenu) {
         const existing = mobileMenu.querySelector('.repo-mobile-section');
@@ -63,10 +63,10 @@ window.toggleFilesFoldersDropdown = function() {
     if (dd) dd.classList.toggle('hidden');
 };
 
-// Auto-run safely
+// Safe auto-run
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', injectRepoMenu);
 } else {
     injectRepoMenu();
 }
-console.log('%c✅ MENU-SYSTEM injected — Files & Folders menu is now LIVE on desktop + mobile', 'color:#10b981; font-weight:bold');
+console.log('%c✅ MENU-SYSTEM injected — desktop menu always visible + subfolders working', 'color:#10b981; font-weight:bold');
