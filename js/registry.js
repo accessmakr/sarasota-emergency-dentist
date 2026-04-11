@@ -1,30 +1,12 @@
 // ================================================
-// AUTO-GENERATED REGISTRY.JS — v11 (fully dynamic)
-// Generated on 2026-04-11T12:17:12.502Z
-// Supports index.html + /guide/ + /location/ + any subfolder
+// AUTO-GENERATED REGISTRY.JS — Collision-Free
+// Generated on 2026-04-11T12:41:17.264Z
 // ================================================
 
 window.SITE_REGISTRY = {
-    version: "2026.04.11-v11",
+    version: "2026.04.11-Fixed",
     lastUpdated: new Date().toISOString(),
-    
-    folders: {},
-    
-    getAllPages: function() {
-        let all = [];
-        Object.keys(this.folders).forEach(folder => {
-            this.folders[folder].files.forEach(file => {
-                all.push({ folder: folder, ...file });
-            });
-        });
-        return all;
-    }
-};
-
-// ================================================
-// Folder structure built from real files + titles
-// ================================================
-window.SITE_REGISTRY.folders = {
+    folders: {
   "Root": {
     "icon": "🦷",
     "files": [
@@ -99,8 +81,8 @@ window.SITE_REGISTRY.folders = {
         "description": ""
       },
       {
-        "name": "/",
-        "label": "Main Homepage",
+        "name": "index.html",
+        "label": "Emergency Dental Care in Sarasota, FL • Same-Day Relief with Trusted Local Experts",
         "description": ""
       },
       {
@@ -200,9 +182,20 @@ window.SITE_REGISTRY.folders = {
       }
     ]
   }
+},
+    dentists: [],
+    getAllPages: function() {
+        let all = [];
+        Object.keys(this.folders).forEach(folder => {
+            this.folders[folder].files.forEach(file => {
+                all.push({ folder: folder, ...file });
+            });
+        });
+        return all;
+    }
 };
 
-const dentists = [
+window.SITE_REGISTRY.dentists = [
             {
                 id: 3,
                 name: "Aspire Dental South Gate Ridge",
