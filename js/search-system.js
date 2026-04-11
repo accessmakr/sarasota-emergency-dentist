@@ -5,7 +5,6 @@ function enhanceLiveSearch() {
     window.liveSearch = function(query) {
         const lower = (query || '').toLowerCase().trim();
         
-        // Run original provider search first
         if (typeof originalLiveSearch === 'function') {
             originalLiveSearch(query);
         }
@@ -16,7 +15,6 @@ function enhanceLiveSearch() {
         const registry = window.SITE_REGISTRY;
         const allPages = registry.getAllPages();
         
-        // Search repo pages
         const pageMatches = allPages.filter(p => 
             p.label.toLowerCase().includes(lower) || 
             (p.description || '').toLowerCase().includes(lower) ||
@@ -39,13 +37,10 @@ function enhanceLiveSearch() {
                 </a>`).join('');
         }
         
-        if (extraHTML) {
-            dropdown.innerHTML += extraHTML;
-        }
+        if (extraHTML) dropdown.innerHTML += extraHTML;
     };
 }
 
-// === ACTIVATE THE SEARCH ENHANCEMENT ===
+// Activate on both desktop and mobile
 enhanceLiveSearch();
-
-console.log('%c✅ SEARCH-SYSTEM fully active — now searches providers + every .html page', 'color:#8b5cf6');
+console.log('%c✅ SEARCH-SYSTEM active — works on desktop + mobile (subfolders included)', 'color:#8b5cf6');
