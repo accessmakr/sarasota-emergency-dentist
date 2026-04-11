@@ -1,13 +1,13 @@
 // ================================================
-// AUTO-GENERATED REGISTRY.JS (subfolder-aware)
-// Generated on 2026-04-11T07:08:41.698Z
+// AUTO-GENERATED REGISTRY.JS — fully dynamic
+// Generated on 2026-04-11T07:11:48.236Z
+// Supports index.html + /guide/ + /location/ + any subfolder
 // ================================================
 
 window.SITE_REGISTRY = {
-    version: "2026.04.11-v5",
+    version: "2026.04.11-v6",
     lastUpdated: new Date().toISOString(),
     
-    // Dynamic folders from actual file structure
     folders: {},
 
     getAllPages: function() {
@@ -21,10 +21,9 @@ window.SITE_REGISTRY = {
     }
 };
 
-// Build folder structure from scanned files
+// Build folder structure from actual files
 const folderMap = {};
 
-// Group files by their directory
 htmlFiles.forEach(file => {
     const relative = path.relative('.', file).replace(/\\/g, '/');
     const dir = path.dirname(relative) === '.' ? 'Root' : relative.split('/')[0];
@@ -36,21 +35,28 @@ htmlFiles.forEach(file => {
             files: []
         };
     }
+    
+    let label = titleMap[relative] || filename.replace('.html', '').replace(/-/g, ' ').replace(/\//g, ' › ');
+    
     folderMap[dir].files.push({
         name: relative,
-        label: filename.replace('.html', '').replace(/-/g, ' ').replace(/\//g, ' › '),
+        label: label,
         description: ''
     });
 });
 
-// Special homepage label
+// Special homepage handling
 if (folderMap['Root']) {
     const homepage = folderMap['Root'].files.find(f => f.name === 'index.html');
-    if (homepage) homepage.label = "Main Homepage";
+    if (homepage) {
+        homepage.label = "Main Homepage";
+        homepage.name = '/';                    // clean root link
+    }
 }
 
 window.SITE_REGISTRY.folders = folderMap;
 
+// Extract dentists (unchanged)
 const dentists = [
             {
                 id: 3,
