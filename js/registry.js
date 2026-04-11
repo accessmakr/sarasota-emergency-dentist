@@ -1,6 +1,6 @@
 // ================================================
 // AUTO-GENERATED REGISTRY.JS — v11 (fully dynamic)
-// Generated on 2026-04-11T09:51:00.189Z
+// Generated on 2026-04-11T09:57:30.361Z
 // Supports index.html + /guide/ + /location/ + any subfolder
 // ================================================
 
