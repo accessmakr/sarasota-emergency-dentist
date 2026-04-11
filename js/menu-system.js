@@ -10,7 +10,8 @@ function buildRepoMenuHTML() {
                 <span>${folder.icon}</span> ${folderName}
             </div>
             ${folder.files.map(file => `
-                <a href="${file.name}" class="flex items-center gap-x-3 px-4 py-3 hover:bg-slate-100 rounded-2xl text-sm transition-all">
+                <a href="${file.name}" 
+                   class="flex items-center gap-x-3 px-4 py-3 hover:bg-slate-100 rounded-2xl text-sm transition-all">
                     <span class="text-violet-500">📄</span>
                     <div class="flex-1 font-medium">${file.label}</div>
                     <span class="text-[10px] font-mono text-slate-300">${file.name}</span>
@@ -22,13 +23,13 @@ function buildRepoMenuHTML() {
 }
 
 function injectRepoMenu() {
-    // Desktop — always visible on lg+, no hidden class
+    // Desktop button (always visible on lg+)
     const navRight = document.querySelector('.flex.items-center.gap-x-4');
     if (navRight) {
         const existing = document.getElementById('filesFoldersBtn');
         if (!existing) {
             navRight.insertAdjacentHTML('beforeend', `
-            <div class="relative group flex items-center ml-4">
+            <div class="relative group ml-4">
                 <button id="filesFoldersBtn" onclick="toggleFilesFoldersDropdown()" 
                         class="px-6 py-3 text-sm font-semibold flex items-center gap-x-2 hover:bg-slate-100 rounded-3xl border border-transparent hover:border-slate-200">
                     📁 Files &amp; Folders 
@@ -41,7 +42,7 @@ function injectRepoMenu() {
         }
     }
 
-    // Mobile
+    // Mobile section
     const mobileMenu = document.getElementById('mobileMenu');
     if (mobileMenu) {
         const existing = mobileMenu.querySelector('.repo-mobile-section');
@@ -63,10 +64,9 @@ window.toggleFilesFoldersDropdown = function() {
     if (dd) dd.classList.toggle('hidden');
 };
 
-// Safe auto-run
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', injectRepoMenu);
 } else {
     injectRepoMenu();
 }
-console.log('%c✅ MENU-SYSTEM injected — desktop menu always visible + subfolders working', 'color:#10b981; font-weight:bold');
+console.log('%c✅ MENU-SYSTEM injected — subfolders now visible on desktop + mobile', 'color:#10b981; font-weight:bold');
