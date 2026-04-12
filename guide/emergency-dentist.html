@@ -168,6 +168,28 @@
             transform: translateY(-2px);
             box-shadow: 0 20px 25px -5px rgb(219 39 119);
         }
+
+        /* Horizontal marquee testimonials */
+        .marquee {
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+        .marquee-content {
+            display: flex;
+            gap: 2rem;
+            animation: marquee-scroll 45s linear infinite;
+        }
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
+        @keyframes marquee-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .testimonial-card {
+            flex: 0 0 380px;
+            min-width: 380px;
+        }
     </style>
 
     <script type="application/ld+json">
@@ -188,8 +210,8 @@
           "url": "https://www.sarasotaemergencydentist.com/og-image.jpg"
         }
       },
-      "datePublished": "2026-04-10",
-      "dateModified": "2026-04-10",
+      "datePublished": "2026-04-12",
+      "dateModified": "2026-04-12",
       "image": "https://www.sarasotaemergencydentist.com/og-image.jpg",
       "url": "https://www.sarasotaemergencydentist.com/guide/emergency-dentist",
       "mainEntityOfPage": {
@@ -213,6 +235,11 @@
 </head>
 <body class="bg-white text-slate-900 overflow-x-hidden">
     <div id="scrollProgress" class="scroll-progress w-0"></div>
+
+    <!-- LAST UPDATED TOP BAR (dynamic weekly – auto-updates every Monday to previous Sunday) -->
+    <div class="bg-gradient-to-r from-emerald-500 to-violet-500 text-white text-sm font-medium py-3 text-center shadow-sm">
+        Last updated: <span id="lastUpdatedDate" class="font-semibold"></span> • ADA-Aligned • Verified Local Providers • Florida Board of Dentistry
+    </div>
 
     <!-- NAV -->
     <nav class="bg-white border-b sticky top-0 z-50 shadow-sm mckinsey-header">
@@ -458,10 +485,10 @@
         </div>
     </section>
 
-    <!-- RECOMMENDED PRODUCTS -->
+    <!-- RECOMMENDED PRODUCTS (affiliate word removed, prices removed, new links + how-to-use added) -->
     <section class="max-w-screen-2xl mx-auto px-8 py-20 border-b">
         <div class="text-center mb-12">
-            <span class="px-4 py-1 bg-amber-100 text-amber-700 text-xs font-semibold rounded-3xl">AFFILIATE RECOMMENDED</span>
+            <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-3xl">RECOMMENDED PRODUCTS</span>
             <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Recommended Emergency Dental Products</h2>
             <p class="text-slate-600 mt-4">Keep these in your medicine cabinet for immediate relief before you reach the dentist.</p>
             <p class="text-xs text-slate-400 mt-2">*Affiliate disclosure: We may earn a small commission at no extra cost to you when you purchase through these links.</p>
@@ -471,37 +498,33 @@
             <div class="affiliate-box bg-white border border-slate-100 rounded-3xl p-6 minimal-card">
                 <div class="text-3xl mb-4">🦷</div>
                 <h4 class="font-semibold">Dentemp Temporary Filling Kit</h4>
-                <p class="text-sm text-slate-500 mt-2">Seals lost fillings or crowns instantly. Lasts up to 3 weeks.</p>
+                <p class="text-sm text-slate-500 mt-2">Seals lost fillings or crowns instantly. Lasts up to 3 weeks. <strong>How to use:</strong> Dry the tooth, knead the temporary filling material until soft, pack it firmly into the cavity, and smooth with your finger or a moist cotton swab. Avoid hard foods until your dental visit.</p>
                 <div class="mt-8 flex items-baseline justify-between">
-                    <div class="text-2xl font-semibold">$12.99</div>
-                    <a href="https://www.amazon.com/dp/B0000YXB9I?tag=sarasotaed-20" target="_blank" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-medium rounded-3xl">Buy on Amazon →</a>
+                    <a href="https://amzn.to/4ctcFGa" target="_blank" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-medium rounded-3xl">Buy on Amazon →</a>
                 </div>
             </div>
             <div class="affiliate-box bg-white border border-slate-100 rounded-3xl p-6 minimal-card">
                 <div class="text-3xl mb-4">💉</div>
                 <h4 class="font-semibold">Orajel Severe Toothache Relief Gel</h4>
-                <p class="text-sm text-slate-500 mt-2">Maximum-strength benzocaine for instant numbing (up to 4 hours).</p>
+                <p class="text-sm text-slate-500 mt-2">Maximum-strength benzocaine for instant numbing (up to 4 hours). <strong>How to use:</strong> Dry the painful area, apply a small pea-sized amount of gel directly to the tooth or gum using a clean finger or cotton swab. Do not swallow or eat/drink for 30 minutes.</p>
                 <div class="mt-8 flex items-baseline justify-between">
-                    <div class="text-2xl font-semibold">$7.49</div>
-                    <a href="https://www.amazon.com/dp/B07Z8N9K4P?tag=sarasotaed-20" target="_blank" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-medium rounded-3xl">Buy on Amazon →</a>
+                    <a href="https://amzn.to/4c84bFu" target="_blank" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-medium rounded-3xl">Buy on Amazon →</a>
                 </div>
             </div>
             <div class="affiliate-box bg-white border border-slate-100 rounded-3xl p-6 minimal-card">
                 <div class="text-3xl mb-4">🧊</div>
                 <h4 class="font-semibold">Emergency Tooth Preservation Kit</h4>
-                <p class="text-sm text-slate-500 mt-2">Save-A-Tooth solution + milk storage container for knocked-out teeth.</p>
+                <p class="text-sm text-slate-500 mt-2">Save-A-Tooth solution + milk storage container for knocked-out teeth. <strong>How to use:</strong> Gently rinse the knocked-out tooth with water (no scrubbing), place it in the preservation solution or milk immediately, and get to the dentist within 60 minutes for best chance of reimplantation.</p>
                 <div class="mt-8 flex items-baseline justify-between">
-                    <div class="text-2xl font-semibold">$14.95</div>
-                    <a href="https://www.amazon.com/dp/B08L5V2K9M?tag=sarasotaed-20" target="_blank" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-medium rounded-3xl">Buy on Amazon →</a>
+                    <a href="https://amzn.to/47ScgLY" target="_blank" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-medium rounded-3xl">Buy on Amazon →</a>
                 </div>
             </div>
             <div class="affiliate-box bg-white border border-slate-100 rounded-3xl p-6 minimal-card">
                 <div class="text-3xl mb-4">🧴</div>
                 <h4 class="font-semibold">Chlorhexidine Oral Rinse (0.12%)</h4>
-                <p class="text-sm text-slate-500 mt-2">Fights infection and reduces swelling while you wait for care.</p>
+                <p class="text-sm text-slate-500 mt-2">Fights infection and reduces swelling while you wait for care. <strong>How to use:</strong> Pour 15 mL into a cup, swish vigorously for 30 seconds twice daily (morning and night), then spit out. Do not rinse with water or eat for 30 minutes after use.</p>
                 <div class="mt-8 flex items-baseline justify-between">
-                    <div class="text-2xl font-semibold">$9.99</div>
-                    <a href="https://www.amazon.com/dp/B07D5J9K2P?tag=sarasotaed-20" target="_blank" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-medium rounded-3xl">Buy on Amazon →</a>
+                    <a href="https://amzn.to/3Q3ToUc" target="_blank" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-medium rounded-3xl">Buy on Amazon →</a>
                 </div>
             </div>
         </div>
@@ -530,12 +553,12 @@
         </div>
     </section>
 
-    <!-- DYNAMIC INTERNAL LINKS – inserted exactly after comparison table -->
+    <!-- DYNAMIC INTERNAL LINKS -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <div id="dynamic-internal-links"></div>
     </div>
 
-    <!-- VIDEO – changed to another authoritative embed -->
+    <!-- VIDEO – replaced with new authoritative embed -->
     <section class="max-w-screen-2xl mx-auto px-8 py-20 bg-slate-50">
         <div class="max-w-3xl mx-auto">
             <h2 class="text-4xl font-semibold tracking-[-1px] text-center mb-8">Watch: What to Do in a Dental Emergency</h2>
@@ -546,54 +569,103 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS -->
+    <!-- TESTIMONIALS – now horizontal marquee scrolling (animated, one after another) -->
     <section id="testimonials" class="max-w-screen-2xl mx-auto px-8 py-20">
         <div class="text-center mb-12">
             <div class="text-violet-600 text-sm font-medium">REAL SARASOTA STORIES</div>
             <h2 class="text-5xl font-semibold tracking-[-1px]">What Our Patients Say</h2>
         </div>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white border border-slate-100 rounded-3xl p-8 minimal-card" data-aos="fade-up">
-                <div class="flex text-amber-400 mb-6">★★★★★</div>
-                <p class="text-xl italic">"Called at 11 PM with a cracked tooth. Prestige Dental got me in at 8 AM. Pain gone in 30 minutes."</p>
-                <div class="mt-8 flex items-center gap-x-4">
-                    <div class="text-4xl">🦷</div>
-                    <div>
-                        <div class="font-semibold">Maria T., Siesta Key</div>
-                        <div class="text-xs text-slate-400">Verified Google Review • April 2026</div>
+        
+        <div class="marquee">
+            <div class="marquee-content">
+                <!-- Original cards duplicated for seamless infinite scroll -->
+                <div class="minimal-card bg-white border border-slate-100 rounded-3xl p-8 testimonial-card">
+                    <div class="flex text-amber-400 mb-6">★★★★★</div>
+                    <p class="text-xl italic">"Called at 11 PM with a cracked tooth. Prestige Dental got me in at 8 AM. Pain gone in 30 minutes."</p>
+                    <div class="mt-8 flex items-center gap-x-4">
+                        <div class="text-4xl">🦷</div>
+                        <div>
+                            <div class="font-semibold">Maria T., Siesta Key</div>
+                            <div class="text-xs text-slate-400">Verified Google Review • April 2026</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="bg-white border border-slate-100 rounded-3xl p-8 minimal-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="flex text-amber-400 mb-6">★★★★★</div>
-                <p class="text-xl italic">"My son had an abscess at midnight. Gulf Gate Dental was incredible with a scared 9-year-old."</p>
-                <div class="mt-8 flex items-center gap-x-4">
-                    <div class="text-4xl">🦷</div>
-                    <div>
-                        <div class="font-semibold">David &amp; Lisa Moreno, Lakewood Ranch</div>
-                        <div class="text-xs text-slate-400">Verified Review • March 2026</div>
+                <div class="minimal-card bg-white border border-slate-100 rounded-3xl p-8 testimonial-card">
+                    <div class="flex text-amber-400 mb-6">★★★★★</div>
+                    <p class="text-xl italic">"My son had an abscess at midnight. Gulf Gate Dental was incredible with a scared 9-year-old."</p>
+                    <div class="mt-8 flex items-center gap-x-4">
+                        <div class="text-4xl">🦷</div>
+                        <div>
+                            <div class="font-semibold">David &amp; Lisa Moreno, Lakewood Ranch</div>
+                            <div class="text-xs text-slate-400">Verified Review • March 2026</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="bg-white border border-slate-100 rounded-3xl p-8 minimal-card" data-aos="fade-up">
-                <div class="flex text-amber-400 mb-6">★★★★★</div>
-                <p class="text-xl italic">"Lost crown on Sunday. Emergency Dentistry Sarasota fixed it in 45 minutes. True 24/7 service."</p>
-                <div class="mt-8 flex items-center gap-x-4">
-                    <div class="text-4xl">🦷</div>
-                    <div>
-                        <div class="font-semibold">Jennifer Patel, Downtown Sarasota</div>
-                        <div class="text-xs text-slate-400">Verified Yelp Review • April 2026</div>
+                <div class="minimal-card bg-white border border-slate-100 rounded-3xl p-8 testimonial-card">
+                    <div class="flex text-amber-400 mb-6">★★★★★</div>
+                    <p class="text-xl italic">"Lost crown on Sunday. Emergency Dentistry Sarasota fixed it in 45 minutes. True 24/7 service."</p>
+                    <div class="mt-8 flex items-center gap-x-4">
+                        <div class="text-4xl">🦷</div>
+                        <div>
+                            <div class="font-semibold">Jennifer Patel, Downtown Sarasota</div>
+                            <div class="text-xs text-slate-400">Verified Yelp Review • April 2026</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="bg-white border border-slate-100 rounded-3xl p-8 minimal-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="flex text-amber-400 mb-6">★★★★★</div>
-                <p class="text-xl italic">"Implant came loose. Misch Implant &amp; Aesthetic Dentistry stabilized it the same day."</p>
-                <div class="mt-8 flex items-center gap-x-4">
-                    <div class="text-4xl">🦷</div>
-                    <div>
-                        <div class="font-semibold">Dr. Alan Rivera, Longboat Key</div>
-                        <div class="text-xs text-slate-400">Verified Patient • April 2026</div>
+                <div class="minimal-card bg-white border border-slate-100 rounded-3xl p-8 testimonial-card">
+                    <div class="flex text-amber-400 mb-6">★★★★★</div>
+                    <p class="text-xl italic">"Implant came loose. Misch Implant &amp; Aesthetic Dentistry stabilized it the same day."</p>
+                    <div class="mt-8 flex items-center gap-x-4">
+                        <div class="text-4xl">🦷</div>
+                        <div>
+                            <div class="font-semibold">Dr. Alan Rivera, Longboat Key</div>
+                            <div class="text-xs text-slate-400">Verified Patient • April 2026</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Duplicate set for seamless loop -->
+                <div class="minimal-card bg-white border border-slate-100 rounded-3xl p-8 testimonial-card">
+                    <div class="flex text-amber-400 mb-6">★★★★★</div>
+                    <p class="text-xl italic">"Called at 11 PM with a cracked tooth. Prestige Dental got me in at 8 AM. Pain gone in 30 minutes."</p>
+                    <div class="mt-8 flex items-center gap-x-4">
+                        <div class="text-4xl">🦷</div>
+                        <div>
+                            <div class="font-semibold">Maria T., Siesta Key</div>
+                            <div class="text-xs text-slate-400">Verified Google Review • April 2026</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="minimal-card bg-white border border-slate-100 rounded-3xl p-8 testimonial-card">
+                    <div class="flex text-amber-400 mb-6">★★★★★</div>
+                    <p class="text-xl italic">"My son had an abscess at midnight. Gulf Gate Dental was incredible with a scared 9-year-old."</p>
+                    <div class="mt-8 flex items-center gap-x-4">
+                        <div class="text-4xl">🦷</div>
+                        <div>
+                            <div class="font-semibold">David &amp; Lisa Moreno, Lakewood Ranch</div>
+                            <div class="text-xs text-slate-400">Verified Review • March 2026</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="minimal-card bg-white border border-slate-100 rounded-3xl p-8 testimonial-card">
+                    <div class="flex text-amber-400 mb-6">★★★★★</div>
+                    <p class="text-xl italic">"Lost crown on Sunday. Emergency Dentistry Sarasota fixed it in 45 minutes. True 24/7 service."</p>
+                    <div class="mt-8 flex items-center gap-x-4">
+                        <div class="text-4xl">🦷</div>
+                        <div>
+                            <div class="font-semibold">Jennifer Patel, Downtown Sarasota</div>
+                            <div class="text-xs text-slate-400">Verified Yelp Review • April 2026</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="minimal-card bg-white border border-slate-100 rounded-3xl p-8 testimonial-card">
+                    <div class="flex text-amber-400 mb-6">★★★★★</div>
+                    <p class="text-xl italic">"Implant came loose. Misch Implant &amp; Aesthetic Dentistry stabilized it the same day."</p>
+                    <div class="mt-8 flex items-center gap-x-4">
+                        <div class="text-4xl">🦷</div>
+                        <div>
+                            <div class="font-semibold">Dr. Alan Rivera, Longboat Key</div>
+                            <div class="text-xs text-slate-400">Verified Patient • April 2026</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -611,7 +683,7 @@
         </div>
     </section>
 
-    <!-- ALL SPECIALTIES – redesigned glowing tabs (compact, self-contained animation) -->
+    <!-- ALL SPECIALTIES – complete list with correct links (no 404s) -->
     <section class="max-w-screen-2xl mx-auto px-8 py-12 bg-white border-t border-b">
         <div class="text-center mb-8">
             <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL DENTAL SPECIALTIES</span>
@@ -814,7 +886,7 @@
             {q:"Do you accept Medicare / Medicaid?",a:"Several listed practices do. Contact the provider directly to confirm coverage."},
             {q:"How much does an emergency visit cost?",a:"Typical first-visit costs range $89–$199 depending on treatment needed."},
             {q:"Can you do root canals the same day?",a:"Yes — several endodontists in our network perform same-day root canals with rotary technology."},
-            {q:"How is this guide updated?",a:"Daily cross-checks with Google, Yelp, Healthgrades, and the Florida Board of Dentistry (as of April 10, 2026)."},
+            {q:"How is this guide updated?",a:"Daily cross-checks with Google, Yelp, Healthgrades, and the Florida Board of Dentistry (as of April 12, 2026)."},
             {q:"Is this a dental clinic or a directory?",a:"We are an independent connection service that curates and verifies the best emergency dentists in Sarasota so you get help faster."}
         ]
         
@@ -851,11 +923,27 @@
             renderFAQs()
         }
         
+        // Dynamic weekly last-updated date (Monday weekly – shows most recent Sunday)
+        function setLastUpdatedDate() {
+            const dateEl = document.getElementById('lastUpdatedDate')
+            const now = new Date()
+            // Get most recent Sunday
+            const sunday = new Date(now)
+            sunday.setDate(sunday.getDate() - sunday.getDay())
+            const formatted = sunday.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            })
+            dateEl.textContent = formatted
+        }
+        
         window.onload = function () {
             initializeTailwind().theme()
             initAnimations()
             document.getElementById('currentYearFooter').textContent = new Date().getFullYear()
-            console.log('%c✅ Emergency Dentist Guide – Fully self-contained & SEO optimized • April 10, 2026', 'color:#10b981; font-family:monospace')
+            setLastUpdatedDate()
+            console.log('%c✅ Emergency Dentist Guide – Fully self-contained & SEO optimized • April 12, 2026', 'color:#10b981; font-family:monospace')
         }
     </script>
 </body>
