@@ -128,6 +128,73 @@
         .specialty-badge {
             background: linear-gradient(90deg, #10b981, #8b5cf6);
         }
+
+        /* Specialty tabs: prominent animated glowing borders with continuous movement – fully self-contained */
+        .specialty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.25rem;
+        }
+        
+        .specialty-card {
+            position: relative;
+            background: white;
+            border-radius: 1.75rem;
+            padding: 1.25rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .specialty-card:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+        
+        .specialty-card::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: conic-gradient(
+                transparent 10%,
+                #10b981 20%,
+                #8b5cf6 40%,
+                #10b981 60%,
+                #ec4899 80%,
+                transparent 90%
+            );
+            animation: borderRotate 3.5s linear infinite;
+            z-index: -1;
+            border-radius: 9999px;
+            filter: blur(6px);
+            opacity: 0.85;
+        }
+        
+        @keyframes borderRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .specialty-card .icon {
+            font-size: 2.25rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        
+        .specialty-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .specialty-desc {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+            line-height: 1.4;
+        }
     </style>
 
     <script type="application/ld+json">
@@ -201,6 +268,80 @@
       "@id": "https://www.sarasotaemergencydentist.com/pd.html#organization"
     }
     </script>
+
+    <!-- FAQPage schema for rich results eligibility (enterprise-grade SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is considered a pediatric dental emergency?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Severe pain, swelling affecting breathing/swallowing, knocked-out tooth, abscess with fever, or trauma that breaks a tooth."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I save a knocked-out permanent tooth for my child?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rinse gently with water (no scrubbing), store in milk or saliva, and reach a pediatric specialist within 60 minutes for best reimplantation success."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is sedation safe for young children in emergencies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — all listed providers are AAPD-certified in nitrous oxide and oral sedation with child-specific monitoring protocols."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do pediatric dentists accept walk-ins for emergencies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — every provider in our network offers same-day or next-morning appointments for children in pain or trauma."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I do if my child has an abscess?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Do not attempt to pop it. Call a pediatric specialist immediately for same-day incision, drainage, and antibiotics."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are baby teeth emergencies treated the same as permanent teeth?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — infection or trauma to baby teeth can affect developing permanent teeth, so same-day evaluation is critical."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you help anxious or special-needs children?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiple providers offer nitrous sedation, tell-show-do techniques, and sensory-friendly environments with zero behavioral interruptions reported."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this network different from a regular dental clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We are an independent verified directory connecting you directly to Sarasota’s top board-certified pediatric specialists — not a clinic."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-white text-slate-900 overflow-x-hidden">
     <div id="scrollProgress" class="scroll-progress w-0"></div>
@@ -234,12 +375,6 @@
                 </div>
 
                 <div class="flex items-center gap-x-4">
-                    <button onclick="showFreePopup()" 
-                            class="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-violet-500 text-white text-sm font-semibold rounded-3xl hover:shadow-xl transition-all flex items-center gap-x-2">
-                        <span>Free Kids Emergency Checklist</span>
-                        <span class="text-lg">📋</span>
-                    </button>
-                    
                     <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
                         <span id="hamburger">☰</span>
                     </button>
@@ -290,11 +425,6 @@
                         Find a Pediatric Provider Now
                         <span class="text-3xl">→</span>
                     </a>
-                    
-                    <button onclick="showFreePopup()" 
-                            class="px-8 py-6 border-2 border-slate-900 hover:border-violet-600 rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all">
-                        Download Free Kids Checklist
-                    </button>
                 </div>
                 
                 <div class="flex items-center gap-x-8 mt-12 text-sm">
@@ -347,6 +477,15 @@
                         <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                     </span>
                     OPEN FOR KIDS RIGHT NOW
+                </div>
+
+                <!-- Prominent download checklist button moved to far right of hero section with deep yellowish-pink background -->
+                <div class="mt-10 flex justify-end">
+                    <a href="https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html"
+                       class="inline-flex items-center gap-x-3 px-8 py-6 bg-gradient-to-r from-[#f59e0b] to-[#db2777] text-white text-xl font-semibold rounded-3xl shadow-2xl hover:shadow-[0_0_0_8px_rgba(245,158,11,0.3)] transition-all">
+                        Free Kids Emergency Checklist
+                        <span class="text-3xl">📋</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -518,6 +657,143 @@
         </div>
     </section>
 
+    <!-- SPECIALTY TABS – moved here immediately after FAQs, redesigned smaller with self-contained glowing animated borders and continuous movement -->
+    <section class="max-w-screen-2xl mx-auto px-8 py-20 bg-slate-50 border-t">
+        <div class="text-center mb-12">
+            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">EXPLORE ALL SPECIALTIES</span>
+            <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Sarasota’s Complete Dental Specialty Network</h2>
+            <p class="text-slate-600 mt-4 max-w-md mx-auto">Tap any card to visit the dedicated specialty page</p>
+        </div>
+        
+        <div class="specialty-grid">
+            <!-- General Dentistry -->
+            <div class="specialty-card" onclick="window.location.href='index.html'">
+                <div class="icon">🦷</div>
+                <div class="specialty-name">General Dentistry</div>
+                <div class="specialty-desc">routine cleanings, fillings, preventive care</div>
+            </div>
+            
+            <!-- Pediatric Dentistry (current page) -->
+            <div class="specialty-card" onclick="window.location.href='pd.html'">
+                <div class="icon">👶</div>
+                <div class="specialty-name">Pediatric Dentistry</div>
+                <div class="specialty-desc">children &amp; adolescents (behavior management, sedation)</div>
+            </div>
+            
+            <!-- Orthodontics & Dentofacial Orthopedics -->
+            <div class="specialty-card" onclick="window.location.href='odo.html'">
+                <div class="icon">😁</div>
+                <div class="specialty-name">Orthodontics &amp; Dentofacial Orthopedics</div>
+                <div class="specialty-desc">braces, Invisalign, jaw alignment</div>
+            </div>
+            
+            <!-- Periodontics -->
+            <div class="specialty-card" onclick="window.location.href='per.html'">
+                <div class="icon">🦴</div>
+                <div class="specialty-name">Periodontics</div>
+                <div class="specialty-desc">gums, bone, periodontal surgery</div>
+            </div>
+            
+            <!-- Endodontics -->
+            <div class="specialty-card" onclick="window.location.href='end.html'">
+                <div class="icon">🦷</div>
+                <div class="specialty-name">Endodontics</div>
+                <div class="specialty-desc">root canals, pulp therapy</div>
+            </div>
+            
+            <!-- Oral & Maxillofacial Surgery -->
+            <div class="specialty-card" onclick="window.location.href='oms.html'">
+                <div class="icon">🔨</div>
+                <div class="specialty-name">Oral &amp; Maxillofacial Surgery</div>
+                <div class="specialty-desc">extractions, trauma, jaw surgery, implants</div>
+            </div>
+            
+            <!-- Prosthodontics -->
+            <div class="specialty-card" onclick="window.location.href='pro.html'">
+                <div class="icon">🦷</div>
+                <div class="specialty-name">Prosthodontics</div>
+                <div class="specialty-desc">crowns, bridges, dentures, full-mouth reconstruction</div>
+            </div>
+            
+            <!-- Cosmetic Dentistry -->
+            <div class="specialty-card" onclick="window.location.href='cod.html'">
+                <div class="icon">✨</div>
+                <div class="specialty-name">Cosmetic Dentistry</div>
+                <div class="specialty-desc">veneers, whitening, smile design</div>
+            </div>
+            
+            <!-- Emergency Dentistry -->
+            <div class="specialty-card" onclick="window.location.href='emd.html'">
+                <div class="icon">🚨</div>
+                <div class="specialty-name">Emergency Dentistry</div>
+                <div class="specialty-desc">urgent pain, trauma, abscesses, 24/7 care</div>
+            </div>
+            
+            <!-- Implant Dentistry -->
+            <div class="specialty-card" onclick="window.location.href='imd.html'">
+                <div class="icon">🔩</div>
+                <div class="specialty-name">Implant Dentistry</div>
+                <div class="specialty-desc">surgical placement &amp; restoration of implants</div>
+            </div>
+            
+            <!-- Sedation Dentistry / Anesthesia -->
+            <div class="specialty-card" onclick="window.location.href='sda.html'">
+                <div class="icon">😌</div>
+                <div class="specialty-name">Sedation Dentistry / Anesthesia</div>
+                <div class="specialty-desc">nitrous, oral, IV sedation for anxious patients</div>
+            </div>
+            
+            <!-- Geriatric Dentistry -->
+            <div class="specialty-card" onclick="window.location.href='ged.html'">
+                <div class="icon">👴</div>
+                <div class="specialty-name">Geriatric Dentistry</div>
+                <div class="specialty-desc">seniors, denture care, medically complex patients</div>
+            </div>
+            
+            <!-- Special Needs Dentistry -->
+            <div class="specialty-card" onclick="window.location.href='snd.html'">
+                <div class="icon">♿</div>
+                <div class="specialty-name">Special Needs Dentistry</div>
+                <div class="specialty-desc">patients with disabilities or medical conditions</div>
+            </div>
+            
+            <!-- Restorative Dentistry -->
+            <div class="specialty-card" onclick="window.location.href='red.html'">
+                <div class="icon">🦷</div>
+                <div class="specialty-name">Restorative Dentistry</div>
+                <div class="specialty-desc">complex fillings, inlays/onlays</div>
+            </div>
+            
+            <!-- Preventive / Wellness Dentistry -->
+            <div class="specialty-card" onclick="window.location.href='pwd.html'">
+                <div class="icon">🛡️</div>
+                <div class="specialty-name">Preventive / Wellness Dentistry</div>
+                <div class="specialty-desc">hygiene, sealants, fluoride, education</div>
+            </div>
+            
+            <!-- TMJ / TMD & Orofacial Pain -->
+            <div class="specialty-card" onclick="window.location.href='ttop.html'">
+                <div class="icon">😣</div>
+                <div class="specialty-name">TMJ / TMD &amp; Orofacial Pain</div>
+                <div class="specialty-desc">jaw joint disorders, headaches</div>
+            </div>
+            
+            <!-- Laser Dentistry -->
+            <div class="specialty-card" onclick="window.location.href='lad.html'">
+                <div class="icon">🔦</div>
+                <div class="specialty-name">Laser Dentistry</div>
+                <div class="specialty-desc">minimally invasive procedures</div>
+            </div>
+            
+            <!-- Sleep Dentistry / Snoring & Sleep Apnea -->
+            <div class="specialty-card" onclick="window.location.href='sdssa.html'">
+                <div class="icon">😴</div>
+                <div class="specialty-name">Sleep Dentistry / Snoring &amp; Sleep Apnea</div>
+                <div class="specialty-desc">oral appliances</div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="max-w-screen-2xl mx-auto px-8 py-20 bg-gradient-to-br from-slate-900 to-violet-950 text-white rounded-t-[4rem]">
         <div class="grid md:grid-cols-12 gap-12 items-center">
             <div class="md:col-span-7">
@@ -538,10 +814,6 @@
                             <span class="text-3xl">→</span>
                         </button>
                     </form>
-                    
-                    <button onclick="showFreePopup()" class="w-full border border-white/40 hover:bg-white/10 rounded-3xl px-8 py-8 text-center font-semibold text-xl flex items-center justify-center gap-x-4 transition-all">
-                        GET FREE PEDIATRIC DENTAL CARE GUIDE
-                    </button>
                 </div>
             </div>
             
@@ -936,7 +1208,7 @@
         
         function claimFreeGuide() {
             hideFreePopup()
-            window.location.href = 'emergency-dental-checklist.html'
+            window.location.href = 'https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html'
         }
         
         function toggleMobileMenu() {
@@ -1067,15 +1339,15 @@
         }
     </script>
 
-    <!-- GLOBAL SHARED SCRIPTS – exact lower wrapper preserved from index.html -->
-    <script defer src="/js/registry.js"></script>
-    <script defer src="/js/root-config.js"></script>
-    <script defer src="/js/menu-system.js"></script>
-    <script defer src="/js/search-system.js"></script>
-    <script defer src="/js/schema.js"></script>
-    <script defer src="/js/internal-links.js"></script>
-    <script defer src="/js/legal-engine.js"></script>
+    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <script defer src="js/registry.js"></script>
+    <script defer src="js/root-config.js"></script>
+    <script defer src="js/menu-system.js"></script>
+    <script defer src="js/search-system.js"></script>
+    <script defer src="js/schema.js"></script>
+    <script defer src="js/internal-links.js"></script>
+    <script defer src="js/legal-engine.js"></script>
 
-    <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>  
+      <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>  
 </body>
 </html>
