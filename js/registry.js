@@ -90,7 +90,7 @@ window.SITE_REGISTRY = {
       },
       {
         "name": "pro.html",
-        "label": "Prosthodontics in Sarasota, FL • Crowns, Bridges, Dentures & Full-Mouth Reconstruction Specialists"
+        "label": "Prosthodontics in Sarasota, FL • Crowns, Bridges, Dentures &amp; Full-Mouth Reconstruction Specialists"
       },
       {
         "name": "pwd.html",
