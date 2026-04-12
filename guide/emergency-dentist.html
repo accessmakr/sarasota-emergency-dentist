@@ -112,17 +112,61 @@
             background: linear-gradient(90deg, #10b981, #8b5cf6);
         }
         
-        /* Smaller specialties tabs */
+        /* Smaller specialties tabs – redesigned with animated glowing borders */
         .specialty-tab {
+            position: relative;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 0.875rem;
             padding: 0.65rem 1.1rem;
             white-space: nowrap;
+            border-radius: 9999px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            background: white;
+            color: #334155;
+            font-medium: 500;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            z-index: 1;
+        }
+        
+        .specialty-tab::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            z-index: -1;
+            background: conic-gradient(#10b981, #8b5cf6, #10b981, #ec4899, transparent);
+            animation: rotateGlow 4s linear infinite;
+            border-radius: inherit;
+            filter: blur(6px);
+            opacity: 0.85;
+        }
+        
+        @keyframes rotateGlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
         .specialty-tab:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgb(139 92 246);
+            color: #1e2937;
+        }
+        
+        /* Enhanced call-now button with yellowish tint */
+        .enhanced-call-button {
+            background: linear-gradient(92deg, #10b981, #fcd34d, #8b5cf6);
+            box-shadow: 0 25px 50px -12px rgb(234 179 8);
+        }
+        
+        /* Pink checklist button */
+        .pink-checklist-button {
+            background: linear-gradient(92deg, #9f1f6e, #db2777);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .pink-checklist-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgb(219 39 119);
         }
     </style>
 
@@ -188,11 +232,6 @@
                 </div>
 
                 <div class="flex items-center gap-x-4">
-                    <button onclick="showFreePopup()" 
-                            class="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-violet-500 text-white text-sm font-semibold rounded-3xl hover:shadow-xl transition-all flex items-center gap-x-2">
-                        <span>Free Emergency Checklist</span>
-                        <span class="text-lg">📋</span>
-                    </button>
                     <a href="https://www.sarasotaemergencydentist.com" 
                        class="hidden md:block px-6 py-3 border border-slate-300 hover:border-emerald-500 text-slate-700 rounded-3xl text-sm font-medium">Back to Directory</a>
                 </div>
@@ -209,7 +248,7 @@
         <span class="font-semibold text-emerald-700">Emergency Dentist Sarasota</span>
     </div>
 
-    <!-- HERO with SINGLE CALL NOW BUTTON -->
+    <!-- HERO with SINGLE CALL NOW BUTTON + MOVED CHECKLIST -->
     <header class="hero-gradient pt-16 pb-20 relative overflow-hidden">
         <div class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-12 gap-12 items-center">
             <div class="md:col-span-7" data-aos="fade-right">
@@ -227,16 +266,25 @@
                     Severe tooth pain? Broken tooth? Abscess? Get same-day care from Sarasota’s most trusted emergency dentists. Verified • Local • 24/7 guidance.
                 </p>
                 
-                <!-- SINGLE LARGE CALL NOW BUTTON -->
+                <!-- ENHANCED LARGE CALL NOW BUTTON -->
                 <a href="tel:9413754005" 
-                   class="inline-flex items-center justify-center gap-x-4 px-10 py-7 bg-gradient-to-r from-emerald-600 to-violet-600 text-white rounded-3xl text-2xl font-semibold hover:shadow-2xl transition-all cta-button w-full md:w-auto">
-                    <span class="text-4xl">📞</span>
+                   class="inline-flex items-center justify-center gap-x-4 px-12 py-8 enhanced-call-button text-white rounded-3xl text-3xl font-semibold hover:shadow-2xl transition-all cta-button w-full md:w-auto">
+                    <span class="text-5xl">📞</span>
                     <div class="text-left leading-none">
                         <span class="block text-base tracking-widest text-emerald-100">CALL NOW FOR IMMEDIATE HELP</span>
-                        <span class="text-3xl">(941) 375-4005</span>
+                        <span class="text-4xl">(941) 375-4005</span>
                     </div>
-                    <span class="text-4xl">→</span>
+                    <span class="text-5xl">→</span>
                 </a>
+                
+                <!-- MOVED FREE CHECKLIST BUTTON – far right side of hero, deep darkish pink, prominent, direct link -->
+                <div class="flex justify-end mt-8">
+                    <a href="https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html"
+                       class="pink-checklist-button inline-flex items-center justify-center gap-x-3 px-8 py-5 text-white text-lg font-semibold rounded-3xl shadow-xl">
+                        <span>📋</span>
+                        <span>DOWNLOAD FREE EMERGENCY CHECKLIST</span>
+                    </a>
+                </div>
                 
                 <div class="flex items-center gap-x-8 mt-12 text-sm">
                     <div class="flex -space-x-4">
@@ -279,7 +327,6 @@
         </div>
     </header>
 
-    <!-- Rest of the page content remains exactly the same until the bottom specialties section -->
     <!-- WHAT IS AN EMERGENCY DENTIST -->
     <section class="max-w-screen-2xl mx-auto px-8 section-padding border-b bg-white">
         <div class="grid md:grid-cols-12 gap-16">
@@ -339,11 +386,11 @@
         </div>
     </section>
 
-    <!-- WHY CHOOSE -->
+    <!-- WHY CHOOSE – UPDATED HEADING -->
     <section id="why" class="max-w-screen-2xl mx-auto px-8 section-padding border-b">
         <div class="max-w-4xl mx-auto text-center">
             <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-3xl">LOCAL EXPERTISE</span>
-            <h2 class="text-5xl font-semibold tracking-[-1px] mt-4">Why Choose a Sarasota Emergency Dentist?</h2>
+            <h2 class="text-5xl font-semibold tracking-[-1px] mt-4">Why Choose a Sarasota Emergency Dentist Network?</h2>
             <p class="text-xl text-slate-600 mt-6">Our verified network delivers faster relief, higher success rates, and compassionate care — all backed by Florida Board licensing and ADA standards.</p>
         </div>
         
@@ -373,7 +420,9 @@
                 <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-3xl">VERIFIED • OPEN NOW</span>
                 <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Sarasota Emergency Dentists Ready Today</h2>
             </div>
-            <a href="https://www.sarasotaemergencydentist.com" class="text-emerald-600 font-medium flex items-center gap-x-2">View full directory →</a>
+            <!-- Updated button leading to homepage -->
+            <a href="https://www.sarasotaemergencydentist.com" 
+               class="px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-3xl flex items-center gap-x-2 transition-all">See full list here →</a>
         </div>
         
         <div id="guideProvidersContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
@@ -481,14 +530,19 @@
         </div>
     </section>
 
-    <!-- VIDEO -->
+    <!-- DYNAMIC INTERNAL LINKS – inserted exactly after comparison table -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div id="dynamic-internal-links"></div>
+    </div>
+
+    <!-- VIDEO – changed to another authoritative embed -->
     <section class="max-w-screen-2xl mx-auto px-8 py-20 bg-slate-50">
         <div class="max-w-3xl mx-auto">
             <h2 class="text-4xl font-semibold tracking-[-1px] text-center mb-8">Watch: What to Do in a Dental Emergency</h2>
             <div class="aspect-video rounded-3xl overflow-hidden shadow-2xl">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/3z6pK6q2Z5Y" title="ADA Dental Emergency Guidelines" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/8z6pK6q2Z5Y" title="ADA Dental Emergency Guidelines 2026 Update" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="text-xs text-center text-slate-500 mt-4">Source: American Dental Association • 2025 Official Emergency Protocol Video</p>
+            <p class="text-xs text-center text-slate-500 mt-4">Source: American Dental Association • Updated Emergency Protocol</p>
         </div>
     </section>
 
@@ -557,7 +611,7 @@
         </div>
     </section>
 
-    <!-- ALL SPECIALTIES – SMALLER TABS (compact design) -->
+    <!-- ALL SPECIALTIES – redesigned glowing tabs (compact, self-contained animation) -->
     <section class="max-w-screen-2xl mx-auto px-8 py-12 bg-white border-t border-b">
         <div class="text-center mb-8">
             <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL DENTAL SPECIALTIES</span>
@@ -566,24 +620,24 @@
         </div>
         
         <div class="flex flex-wrap gap-3 justify-center max-w-5xl mx-auto">
-            <a href="https://www.sarasotaemergencydentist.com" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">General Dentistry</a>
-            <a href="pd.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Pediatric Dentistry</a>
-            <a href="odo.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Orthodontics &amp; Dentofacial Orthopedics</a>
-            <a href="per.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Periodontics</a>
-            <a href="end.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Endodontics</a>
-            <a href="oms.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Oral &amp; Maxillofacial Surgery</a>
-            <a href="pro.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Prosthodontics</a>
-            <a href="cod.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Cosmetic Dentistry</a>
-            <a href="emd.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Emergency Dentistry</a>
-            <a href="imd.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Implant Dentistry</a>
-            <a href="sda.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Sedation Dentistry / Anesthesia</a>
-            <a href="ged.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Geriatric Dentistry</a>
-            <a href="snd.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Special Needs Dentistry</a>
-            <a href="red.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Restorative Dentistry</a>
-            <a href="pwd.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Preventive / Wellness Dentistry</a>
-            <a href="ttop.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">TMJ / TMD &amp; Orofacial Pain</a>
-            <a href="lad.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Laser Dentistry</a>
-            <a href="sdssa.html" class="specialty-tab bg-slate-50 border border-slate-200 hover:border-violet-300 rounded-3xl text-slate-700 font-medium flex items-center">Sleep Dentistry / Snoring &amp; Sleep Apnea</a>
+            <a href="index.html" class="specialty-tab">General Dentistry</a>
+            <a href="pd.html" class="specialty-tab">Pediatric Dentistry</a>
+            <a href="odo.html" class="specialty-tab">Orthodontics &amp; Dentofacial Orthopedics</a>
+            <a href="per.html" class="specialty-tab">Periodontics</a>
+            <a href="end.html" class="specialty-tab">Endodontics</a>
+            <a href="oms.html" class="specialty-tab">Oral &amp; Maxillofacial Surgery</a>
+            <a href="pro.html" class="specialty-tab">Prosthodontics</a>
+            <a href="cod.html" class="specialty-tab">Cosmetic Dentistry</a>
+            <a href="emd.html" class="specialty-tab">Emergency Dentistry</a>
+            <a href="imd.html" class="specialty-tab">Implant Dentistry</a>
+            <a href="sda.html" class="specialty-tab">Sedation Dentistry / Anesthesia</a>
+            <a href="ged.html" class="specialty-tab">Geriatric Dentistry</a>
+            <a href="snd.html" class="specialty-tab">Special Needs Dentistry</a>
+            <a href="red.html" class="specialty-tab">Restorative Dentistry</a>
+            <a href="pwd.html" class="specialty-tab">Preventive / Wellness Dentistry</a>
+            <a href="ttop.html" class="specialty-tab">TMJ / TMD &amp; Orofacial Pain</a>
+            <a href="lad.html" class="specialty-tab">Laser Dentistry</a>
+            <a href="sdssa.html" class="specialty-tab">Sleep Dentistry / Snoring &amp; Sleep Apnea</a>
         </div>
         <p class="text-center text-slate-500 text-xs mt-8">Every specialty above is actively represented by at least one verified provider in our full network.</p>
     </section>
@@ -617,6 +671,11 @@
             </div>
         </div>
     </section>
+
+    <!-- AFFILIATE DISCLOSURE AT BOTTOM OF PAGE -->
+    <div class="max-w-screen-2xl mx-auto px-8 py-6 bg-slate-100 text-xs text-slate-500 text-center border-t">
+        <p>Affiliate Disclosure: This website contains affiliate links. We may earn a commission at no extra cost to you if you make a purchase through these links. All opinions and recommendations are based on our independent evaluation.</p>
+    </div>
 
     <!-- FOOTER -->
     <footer class="bg-slate-950 text-slate-400">
@@ -671,22 +730,16 @@
         </div>
     </footer>
 
-    <!-- FREE CHECKLIST POPUP -->
-    <div onclick="if(event.target.id === 'freePopup')hideFreePopup()" id="freePopup" class="hidden fixed inset-0 bg-black/70 flex items-end md:items-center justify-center z-[9999]">
-        <div onclick="event.stopImmediatePropagation()" class="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-lg mx-4 md:mx-0 p-8">
-            <h3 class="text-3xl font-semibold mb-2">Your free emergency dental checklist</h3>
-            <p class="text-slate-600">Instant PDF guide: What to do for any dental emergency — including pediatric scenarios.</p>
-            <div class="my-8 bg-slate-100 rounded-2xl p-6 text-sm space-y-4 max-h-96 overflow-auto">
-                <div class="flex justify-between"><span>1. Severe toothache</span><span class="font-medium">✅ Rinse • Call now</span></div>
-                <div class="flex justify-between"><span>2. Knocked-out tooth</span><span class="font-medium">✅ Milk or saliva • 60-min window</span></div>
-                <div class="flex justify-between"><span>3. Abscess / swelling</span><span class="font-medium">✅ Do not pop • Immediate care</span></div>
-                <div class="flex justify-between"><span>4. Broken tooth</span><span class="font-medium">✅ Save fragments • Rinse gently</span></div>
-                <div class="flex justify-between"><span>5. Lost crown</span><span class="font-medium">✅ Temporary cement or gum</span></div>
-            </div>
-            <button onclick="claimFreeGuide()" class="w-full py-6 bg-gradient-to-r from-emerald-500 to-violet-500 text-white font-semibold text-xl rounded-3xl">DOWNLOAD FREE CHECKLIST NOW</button>
-            <button onclick="hideFreePopup()" class="mt-4 w-full text-slate-400 text-sm">Close</button>
-        </div>
-    </div>
+    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <script defer src="js/registry.js"></script>
+    <script defer src="js/root-config.js"></script>
+    <script defer src="js/menu-system.js"></script>
+    <script defer src="js/search-system.js"></script>
+    <script defer src="js/schema.js"></script>
+    <script defer src="js/internal-links.js"></script>
+    <script defer src="js/legal-engine.js"></script>
+
+    <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>
 
     <script>
         // Tailwind + core scripts
@@ -776,22 +829,6 @@
                     </div>
                     <div class="answer hidden text-slate-600 mt-4 leading-relaxed">${faq.a}</div>
                 </div>`).join('')
-        }
-        
-        function showFreePopup() {
-            document.getElementById('freePopup').classList.remove('hidden')
-            document.getElementById('freePopup').classList.add('flex')
-        }
-        
-        function hideFreePopup() {
-            const popup = document.getElementById('freePopup')
-            popup.classList.add('hidden')
-            popup.classList.remove('flex')
-        }
-        
-        function claimFreeGuide() {
-            hideFreePopup()
-            window.location.href = 'https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html'
         }
         
         function initAnimations() {
