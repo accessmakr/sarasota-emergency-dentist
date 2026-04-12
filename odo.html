@@ -128,6 +128,42 @@
         th, td {
             padding: 16px 20px;
         }
+
+        /* Enterprise-grade glowing animated specialty tabs – fully self-contained */
+        .specialty-tab {
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+        }
+        
+        .specialty-tab::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: conic-gradient(#10b981 0deg, #8b5cf6 90deg, #10b981 180deg, #8b5cf6 270deg, #10b981 360deg);
+            z-index: -1;
+            animation: borderRotate 3.5s linear infinite;
+            border-radius: inherit;
+            filter: blur(10px);
+            opacity: 0.75;
+        }
+        
+        @keyframes borderRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .specialty-tab:hover::before {
+            opacity: 1;
+            filter: blur(12px);
+        }
+        
+        .specialty-tab:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 25px 25px -10px rgb(16 185 129);
+        }
     </style>
 
     <script type="application/ld+json">
@@ -187,6 +223,80 @@
       "@id": "https://www.sarasotaemergencydentist.com/odo.html#organization"
     }
     </script>
+
+    <!-- FAQPage Schema for rich results eligibility -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between traditional braces and Invisalign?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Traditional braces use metal or ceramic brackets and wires. Invisalign uses a series of clear, removable aligners. Invisalign is often preferred by adults for aesthetics and comfort."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "At what age should my child first see an orthodontist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The American Association of Orthodontists recommends an initial evaluation at age 7 for early detection of developing problems."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does orthodontic treatment usually take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most cases take 12–24 months depending on complexity. Early intervention (Phase I) can shorten overall treatment time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can adults benefit from orthodontics?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Over 30% of our Sarasota orthodontic patients are adults seeking Invisalign or clear braces for smile confidence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is dentofacial orthopedics?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It focuses on guiding the growth of the jaw and facial bones, often used in children to correct skeletal discrepancies before full braces."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is jaw alignment covered under orthodontic treatment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes – when medically necessary. Many providers coordinate with oral surgeons for severe cases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you accept insurance for orthodontics?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most providers in our network accept major dental insurance plans with orthodontic coverage and offer flexible payment plans."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens at the first orthodontic consultation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Digital 3D scans, X-rays, photos, and a personalized treatment plan are created during your same-day or next-day visit."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-white text-slate-900 overflow-x-hidden">
     <div id="scrollProgress" class="scroll-progress w-0"></div>
@@ -218,12 +328,6 @@
                 </div>
 
                 <div class="flex items-center gap-x-4">
-                    <button onclick="showFreePopup()" 
-                            class="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-violet-500 text-white text-sm font-semibold rounded-3xl hover:shadow-xl transition-all flex items-center gap-x-2">
-                        <span>Free Ortho Checklist</span>
-                        <span class="text-lg">📋</span>
-                    </button>
-                    
                     <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
                         <span id="hamburger">☰</span>
                     </button>
@@ -266,18 +370,19 @@
                     Same-day consultations • Pediatric & adult specialists • Verified Invisalign® providers • Dentofacial orthopedics
                 </p>
                 
-                <div class="flex flex-wrap gap-4">
+                <div class="flex items-center gap-x-6">
                     <a href="#providers" 
                        onclick="document.getElementById('providers').scrollIntoView({behavior:'smooth'})"
-                       class="px-8 py-6 bg-slate-900 hover:bg-violet-600 text-white rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all">
+                       class="flex-1 md:flex-none px-8 py-6 bg-slate-900 hover:bg-violet-600 text-white rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all">
                         Find Your Orthodontist Now
                         <span class="text-3xl">→</span>
                     </a>
                     
-                    <button onclick="showFreePopup()" 
-                            class="px-8 py-6 border-2 border-slate-900 hover:border-violet-600 rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all">
-                        Download Free Ortho Guide
-                    </button>
+                    <a href="https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html" 
+                       class="flex-1 md:flex-none px-8 py-6 bg-gradient-to-r from-amber-500 to-pink-600 text-white rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all hover:shadow-2xl shadow-lg">
+                        Download Free Ortho Checklist
+                        <span class="text-3xl">📋</span>
+                    </a>
                 </div>
                 
                 <div class="flex items-center gap-x-8 mt-12 text-sm">
@@ -395,36 +500,7 @@
         </div>
     </section>
 
-    <!-- SPECIALTIES GRID - SAME AS INDEX FOR CONSISTENCY -->
-    <section id="specialties" class="max-w-screen-2xl mx-auto px-8 py-20 border-b bg-white">
-        <div class="text-center mb-12">
-            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
-            <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Dental specialties &amp; diversities covered by verified providers</h2>
-            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented by verified providers in Sarasota.</p>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <a href="index.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>General Dentistry</strong><br>routine cleanings, fillings, preventive care</a>
-            <a href="pd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Pediatric Dentistry</strong><br>children &amp; adolescents (behavior management, sedation)</a>
-            <a href="odo.html" class="bg-emerald-100 border border-emerald-300 rounded-3xl p-6 text-sm hover:bg-emerald-200 transition-all block ring-2 ring-emerald-500"><strong>Orthodontics &amp; Dentofacial Orthopedics</strong><br>braces, Invisalign, jaw alignment <span class="text-emerald-600 text-xs font-bold">(YOU ARE HERE)</span></a>
-            <a href="per.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Periodontics</strong><br>gums, bone, periodontal surgery</a>
-            <a href="end.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Endodontics</strong><br>root canals, pulp therapy</a>
-            <a href="oms.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Oral &amp; Maxillofacial Surgery</strong><br>extractions, trauma, jaw surgery, implants</a>
-            <a href="pro.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Prosthodontics</strong><br>crowns, bridges, dentures, full-mouth reconstruction</a>
-            <a href="cod.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Cosmetic Dentistry</strong><br>veneers, whitening, smile design</a>
-            <a href="emd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Emergency Dentistry</strong><br>urgent pain, trauma, abscesses, 24/7 care</a>
-            <a href="imd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Implant Dentistry</strong><br>surgical placement &amp; restoration of implants</a>
-            <a href="sda.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Sedation Dentistry / Anesthesia</strong><br>nitrous, oral, IV sedation for anxious patients</a>
-            <a href="ged.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Geriatric Dentistry</strong><br>seniors, denture care, medically complex patients</a>
-            <a href="snd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Special Needs Dentistry</strong><br>patients with disabilities or medical conditions</a>
-            <a href="red.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Restorative Dentistry</strong><br>complex fillings, inlays/onlays</a>
-            <a href="pwd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Preventive / Wellness Dentistry</strong><br>hygiene, sealants, fluoride, education</a>
-            <a href="ttop.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>TMJ / TMD &amp; Orofacial Pain</strong><br>jaw joint disorders, headaches</a>
-            <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm"><strong>Laser Dentistry</strong><br>minimally invasive procedures</div>
-            <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm"><strong>Sleep Dentistry / Snoring &amp; Sleep Apnea</strong><br>oral appliances</div>
-        </div>
-        <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network.</p>
-    </section>
-
+    <!-- METICULOUS COMPARISON TABLE -->
     <section id="providers" class="max-w-screen-2xl mx-auto px-8 py-20 bg-slate-50">
         <div class="flex flex-col md:flex-row justify-between items-baseline mb-12">
             <div>
@@ -442,7 +518,6 @@
             <p class="max-w-xs text-slate-500 text-lg">Detailed side-by-side comparison. Tap any row for full profile, ratings, and direct booking.</p>
         </div>
         
-        <!-- METICULOUS COMPARISON TABLE -->
         <div class="overflow-x-auto rounded-3xl border border-slate-100 bg-white shadow-inner">
             <table class="min-w-full">
                 <thead>
@@ -527,6 +602,36 @@
         </div>
     </section>
 
+    <!-- SPECIALTIES GRID – MOVED TO BOTTOM AFTER FAQS, REDESIGNED SMALLER WITH ANIMATED GLOWING BORDERS -->
+    <section id="specialties" class="max-w-screen-2xl mx-auto px-8 py-20 border-t bg-white">
+        <div class="text-center mb-12">
+            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
+            <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Dental specialties &amp; diversities covered by verified providers</h2>
+            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented by verified providers in Sarasota.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <a href="index.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>General Dentistry</strong><br>routine cleanings, fillings, preventive care</a>
+            <a href="pd.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Pediatric Dentistry</strong><br>children &amp; adolescents (behavior management, sedation)</a>
+            <a href="odo.html" class="specialty-tab bg-emerald-100 border border-emerald-300 p-5 text-sm hover:bg-emerald-200 transition-all block ring-2 ring-emerald-500"><strong>Orthodontics &amp; Dentofacial Orthopedics</strong><br>braces, Invisalign, jaw alignment <span class="text-emerald-600 text-xs font-bold">(YOU ARE HERE)</span></a>
+            <a href="per.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Periodontics</strong><br>gums, bone, periodontal surgery</a>
+            <a href="end.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Endodontics</strong><br>root canals, pulp therapy</a>
+            <a href="oms.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Oral &amp; Maxillofacial Surgery</strong><br>extractions, trauma, jaw surgery, implants</a>
+            <a href="pro.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Prosthodontics</strong><br>crowns, bridges, dentures, full-mouth reconstruction</a>
+            <a href="cod.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Cosmetic Dentistry</strong><br>veneers, whitening, smile design</a>
+            <a href="emd.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Emergency Dentistry</strong><br>urgent pain, trauma, abscesses, 24/7 care</a>
+            <a href="imd.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Implant Dentistry</strong><br>surgical placement &amp; restoration of implants</a>
+            <a href="sda.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Sedation Dentistry / Anesthesia</strong><br>nitrous, oral, IV sedation for anxious patients</a>
+            <a href="ged.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Geriatric Dentistry</strong><br>seniors, denture care, medically complex patients</a>
+            <a href="snd.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Special Needs Dentistry</strong><br>patients with disabilities or medical conditions</a>
+            <a href="red.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Restorative Dentistry</strong><br>complex fillings, inlays/onlays</a>
+            <a href="pwd.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Preventive / Wellness Dentistry</strong><br>hygiene, sealants, fluoride, education</a>
+            <a href="ttop.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>TMJ / TMD &amp; Orofacial Pain</strong><br>jaw joint disorders, headaches</a>
+            <a href="lad.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Laser Dentistry</strong><br>minimally invasive procedures</a>
+            <a href="sdssa.html" class="specialty-tab bg-white border border-slate-100 p-5 text-sm hover:bg-slate-100 transition-all block"><strong>Sleep Dentistry / Snoring &amp; Sleep Apnea</strong><br>oral appliances</a>
+        </div>
+        <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network.</p>
+    </section>
+
     <section id="contact" class="max-w-screen-2xl mx-auto px-8 py-20 bg-gradient-to-br from-slate-900 to-violet-950 text-white rounded-t-[4rem]">
         <div class="grid md:grid-cols-12 gap-12 items-center">
             <div class="md:col-span-7">
@@ -547,10 +652,6 @@
                             <span class="text-3xl">→</span>
                         </button>
                     </form>
-                    
-                    <button onclick="showFreePopup()" class="w-full border border-white/40 hover:bg-white/10 rounded-3xl px-8 py-8 text-center font-semibold text-xl flex items-center justify-center gap-x-4 transition-all">
-                        GET FREE ORTHO CHECKLIST
-                    </button>
                 </div>
             </div>
             
@@ -622,30 +723,6 @@
         </div>
     </footer>
 
-    <div onclick="if(event.target.id === 'freePopup')hideFreePopup()" id="freePopup" class="hidden fixed inset-0 bg-black/70 flex items-end md:items-center justify-center z-[9999]">
-        <div onclick="event.stopImmediatePropagation()" class="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-lg mx-4 md:mx-0 p-8">
-            <h3 class="text-3xl font-semibold mb-2">Your free orthodontic checklist</h3>
-            <p class="text-slate-600">Instant PDF guide: Braces vs Invisalign, age guidelines, what to expect, and local provider map.</p>
-            
-            <div class="my-8 bg-slate-100 rounded-2xl p-6 text-sm space-y-4 max-h-96 overflow-auto">
-                <div class="flex justify-between scenario-card"><span>1. Braces vs Invisalign – which is right for me?</span><span class="font-medium">✅ Free consultation determines best option</span></div>
-                <div class="flex justify-between scenario-card"><span>2. Ideal age for first orthodontic visit</span><span class="font-medium">✅ Age 7 for early screening</span></div>
-                <div class="flex justify-between scenario-card"><span>3. How long does treatment typically take?</span><span class="font-medium">✅ 12–24 months average</span></div>
-                <div class="flex justify-between scenario-card"><span>4. Adult orthodontics – is it too late?</span><span class="font-medium">✅ Never too late – 30% of patients are adults</span></div>
-                <div class="flex justify-between scenario-card"><span>5. Jaw alignment concerns</span><span class="font-medium">✅ Early intervention prevents surgery</span></div>
-                <div class="flex justify-between scenario-card"><span>6. Insurance &amp; financing options</span><span class="font-medium">✅ Most providers offer payment plans</span></div>
-                <div class="flex justify-between scenario-card"><span>7. What to expect at first visit</span><span class="font-medium">✅ Digital scans + personalized treatment plan</span></div>
-                <div class="flex justify-between scenario-card"><span>8. Retainer care after treatment</span><span class="font-medium">✅ Lifetime retention protocol included</span></div>
-            </div>
-            
-            <button onclick="claimFreeGuide()" class="w-full py-6 bg-gradient-to-r from-emerald-500 to-violet-500 text-white font-semibold text-xl rounded-3xl">
-                DOWNLOAD FREE ORTHO CHECKLIST NOW
-            </button>
-            
-            <button onclick="hideFreePopup()" class="mt-4 w-full text-slate-400 text-sm">Close</button>
-        </div>
-    </div>
-
     <script>
         // Tailwind initialization (same as index)
         function initializeTailwind() {
@@ -682,7 +759,7 @@
             { id: 3, name: "Aspire Dental South Gate Ridge", rating: 4.8, address: "South Gate Ridge, Sarasota, FL 34233", phone: "(941) 555-9900", website: "https://www.aspiredentalsarasota.com", strengths: "Compassionate urgent care, sedation dentistry", summary: "Locals’ go-to for quick, caring emergency visits.", categories: [] },
             { id: 4, name: "Bayview Dental", rating: 4.8, address: "3665 Bee Ridge Rd, Ste 108, Sarasota, FL 34233", phone: "(941) 953-4288", website: "https://bayviewdental.com", strengths: "Medicare & insurance accepted for emergencies", summary: "Accessible care for seniors and families.", categories: [] },
             { id: 5, name: "Beneva Dental Care", rating: 4.8, address: "5917 South Beneva Road, Sarasota, FL 34238", phone: "(941) 924-2939", website: "https://www.dentistinsarasota.com", strengths: "General & emergency care", summary: "Full-service practice with same-day availability.", categories: [] },
-            { id: 6, name: "Champion Dental Group", rating: 4.7, address: "Sarasota, FL 34242", phone: "(941) 555-7788", website: "https://www.hewettdds.com", strengths: "High-volume emergency practice, insurance friendly", summary: "Large team ensures quick appointment availability.", categories: [] },
+            { id: 6, name: "Champion Dental Group", rating: 4.7,  address: "Sarasota, FL 34242", phone: "(941) 555-7788", website: "https://www.hewettdds.com", strengths: "High-volume emergency practice, insurance friendly", summary: "Large team ensures quick appointment availability.", categories: [] },
             { id: 7, name: "Coast Dental Beneva", rating: 4.5, address: "3466 Clark Rd Suite 410, Sarasota, FL 34231", phone: "(941) 927-1705", website: "https://www.coastdental.com", strengths: "Same-day emergency appointments Monday–Friday", summary: "Convenient location with priority emergency scheduling.", categories: [] },
             { id: 8, name: "Dentistry of Sarasota (Jaworski & Moricz)", rating: 4.8, address: "3990 Clark Road, Sarasota, FL 34233", phone: "(941) 955-7344", website: "https://www.dentistryofsarasota.com", strengths: "General, cosmetic, emergency", summary: "30+ years serving Sarasota with same-day care.", categories: [] },
             { id: 9, name: "Dentistry on Fruitville", rating: 4.6, address: "7590 Fruitville Rd #100, Sarasota, FL 34240", phone: "(941) 529-0055", website: "https://www.dentistryonfruitville.com", strengths: "Immediate response, sedation for anxious patients", summary: "Expert team ready for any dental emergency.", categories: [] },
@@ -841,22 +918,6 @@
                 </div>`).join('')
         }
         
-        function showFreePopup() {
-            document.getElementById('freePopup').classList.remove('hidden')
-            document.getElementById('freePopup').classList.add('flex')
-        }
-        
-        function hideFreePopup() {
-            const popup = document.getElementById('freePopup')
-            popup.classList.add('hidden')
-            popup.classList.remove('flex')
-        }
-        
-        function claimFreeGuide() {
-            hideFreePopup()
-            window.location.href = 'emergency-dental-checklist.html'
-        }
-        
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu')
             menu.classList.toggle('hidden')
@@ -973,14 +1034,14 @@
         }
     </script>
 
-    <!-- GLOBAL SHARED SCRIPTS -->
-    <script defer src="/js/registry.js"></script>
-    <script defer src="/js/root-config.js"></script>
-    <script defer src="/js/menu-system.js"></script>
-    <script defer src="/js/search-system.js"></script>
-    <script defer src="/js/schema.js"></script>
-    <script defer src="/js/internal-links.js"></script>
-    <script defer src="/js/legal-engine.js"></script>
+    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <script defer src="js/registry.js"></script>
+    <script defer src="js/root-config.js"></script>
+    <script defer src="js/menu-system.js"></script>
+    <script defer src="js/search-system.js"></script>
+    <script defer src="js/schema.js"></script>
+    <script defer src="js/internal-links.js"></script>
+    <script defer src="js/legal-engine.js"></script>
 
     <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>
 </body>
