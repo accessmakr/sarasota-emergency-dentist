@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Expert periodontal care in Sarasota, FL. Top-rated local periodontists for gum disease treatment, scaling &amp; root planing, gum grafts, periodontal surgery, pocket reduction &amp; implant support. Same-day appointments &amp; 24/7 guidance available.">
-    <meta name="keywords" content="periodontist Sarasota, periodontal dentist Sarasota FL, gum disease treatment Sarasota, scaling root planing Sarasota, gum surgery Sarasota, periodontics Sarasota, gum recession Sarasota">
+    <meta name="description" content="Expert periodontists in Sarasota, FL for advanced gum disease treatment, scaling &amp; root planing, gum grafts, periodontal surgery, pocket reduction &amp; implant support. Same-day appointments, 4.91-star rated local specialists &amp; 24/7 guidance.">
+    <meta name="keywords" content="periodontist Sarasota, periodontal dentist Sarasota FL, gum disease treatment Sarasota, scaling root planing Sarasota, gum surgery Sarasota, periodontics Sarasota, gum recession Sarasota, laser gum therapy Sarasota, gum graft Sarasota, pocket reduction Sarasota, bone regeneration Sarasota">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Sarasota Emergency Dental Network">
     <meta name="geo.region" content="FL">
@@ -14,7 +14,7 @@
     <title>Periodontics in Sarasota, FL • Gum Disease Treatment &amp; Periodontal Surgery with Trusted Local Experts</title>
     
     <meta property="og:title" content="Periodontics in Sarasota, FL • Gum Disease Treatment &amp; Periodontal Surgery">
-    <meta property="og:description" content="Connect instantly with Sarasota’s top periodontists. Same-day scaling, root planing, gum grafts, surgery &amp; maintenance. Verified 4.8+ ratings.">
+    <meta property="og:description" content="Expert periodontists in Sarasota, FL for advanced gum disease treatment, scaling &amp; root planing, gum grafts, periodontal surgery, pocket reduction &amp; implant support. Same-day appointments, 4.91-star rated local specialists &amp; 24/7 guidance.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.sarasotaemergencydentist.com/per.html">
     <meta property="og:image" content="https://www.sarasotaemergencydentist.com/og-image.jpg">
@@ -22,7 +22,7 @@
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Periodontics Sarasota • Expert Gum Care &amp; Surgery">
-    <meta name="twitter:description" content="Top-rated periodontal specialists in Sarasota. Gum disease reversal starts here.">
+    <meta name="twitter:description" content="Expert periodontists in Sarasota, FL for advanced gum disease treatment, scaling &amp; root planing, gum grafts, periodontal surgery, pocket reduction &amp; implant support. Same-day appointments, 4.91-star rated local specialists &amp; 24/7 guidance.">
     <meta name="twitter:image" content="https://www.sarasotaemergencydentist.com/og-image.jpg">
     
     <link rel="canonical" href="https://www.sarasotaemergencydentist.com/per.html">
@@ -137,6 +137,56 @@
         tr:hover {
             background-color: #f8fafc;
         }
+
+        /* Animated glowing border for specialty cards - fully self-contained, continuous movement around borders */
+        .specialty-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .specialty-card::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: conic-gradient(transparent, #10b981, #8b5cf6, #10b981, transparent);
+            animation: borderSpin 2.8s linear infinite;
+            z-index: -1;
+            filter: blur(3px);
+            opacity: 0.85;
+            border-radius: 28px;
+        }
+        
+        @keyframes borderSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .specialty-card:hover::before {
+            animation-duration: 1.4s;
+            filter: blur(5px);
+            opacity: 1;
+        }
+        
+        .specialty-card-inner {
+            position: relative;
+            z-index: 10;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 20px 24px;
+            height: 100%;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+        }
+        
+        .specialty-card.perio-current .specialty-card-inner {
+            background: linear-gradient(90deg, #ecfdf5, #f0f0ff);
+            border: 2px solid #10b981;
+        }
+        
+        .specialty-card.perio-current::before {
+            background: conic-gradient(transparent, #10b981, #8b5cf6, #10b981, transparent);
+        }
     </style>
 
     <script type="application/ld+json">
@@ -196,6 +246,80 @@
       "@id": "https://www.sarasotaemergencydentist.com/per.html#organization"
     }
     </script>
+
+    <!-- FAQPage Schema for rich results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between gingivitis and periodontitis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gingivitis is early, reversible gum inflammation. Periodontitis is advanced disease that destroys bone and connective tissue if untreated."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know if I need periodontal treatment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Signs include bleeding gums, bad breath, receding gums, loose teeth, or deep pockets measured during exam."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is scaling and root planing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A deep cleaning below the gumline that removes plaque and tartar from root surfaces to allow gums to reattach."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are gum grafts painful?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Modern techniques and sedation make the procedure very comfortable. Most patients report minimal discomfort."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can laser therapy treat gum disease?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes – many Sarasota providers offer laser-assisted new attachment procedure (LANAP) for less invasive treatment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to see results after periodontal treatment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pocket reduction and reduced bleeding often noticeable within 4–6 weeks; full healing may take 3–6 months."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does insurance cover periodontal surgery?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Many plans cover scaling/root planing and some surgical procedures. Our providers work with most major carriers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can periodontal disease be reversed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Early stages (gingivitis) can be reversed. Advanced periodontitis can be managed and stabilized to prevent further tooth loss."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-white text-slate-900 overflow-x-hidden">
     <div id="scrollProgress" class="scroll-progress w-0"></div>
@@ -228,12 +352,6 @@
                 </div>
 
                 <div class="flex items-center gap-x-4">
-                    <button onclick="showFreePopup()" 
-                            class="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-violet-500 text-white text-sm font-semibold rounded-3xl hover:shadow-xl transition-all flex items-center gap-x-2">
-                        <span>Free Periodontics Checklist</span>
-                        <span class="text-lg">📋</span>
-                    </button>
-                    
                     <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
                         <span id="hamburger">☰</span>
                     </button>
@@ -284,11 +402,6 @@
                         Find a Periodontist Now
                         <span class="text-3xl">→</span>
                     </a>
-                    
-                    <button onclick="showFreePopup()" 
-                            class="px-8 py-6 border-2 border-slate-900 hover:border-violet-600 rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all">
-                        Download Free Periodontics Checklist
-                    </button>
                 </div>
                 
                 <div class="flex items-center gap-x-8 mt-12 text-sm">
@@ -333,6 +446,15 @@
                     
                     <div id="liveProvidersList" class="space-y-6">
                     </div>
+                </div>
+                
+                <!-- Prominent checklist button moved to far right of hero section with deep yellowish-pink background -->
+                <div class="mt-8 md:mt-0">
+                    <a href="https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html"
+                       class="block w-full max-w-xs mx-auto md:mx-0 bg-gradient-to-r from-[#f59e0b] via-[#ec4899] to-[#db2777] text-white text-xl font-semibold px-8 py-7 rounded-3xl flex items-center justify-center gap-x-3 shadow-2xl hover:shadow-3xl hover:scale-[1.03] transition-all duration-300">
+                        <span>Download Free Periodontics Checklist</span>
+                        <span class="text-4xl">📋</span>
+                    </a>
                 </div>
                 
                 <div class="absolute -top-4 -right-4 bg-white rounded-3xl px-5 py-2 shadow-xl flex items-center gap-x-2 text-emerald-700 text-sm font-medium rotate-12">
@@ -404,36 +526,6 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- SPECIALTIES SECTION – identical to homepage but with current page highlighted -->
-    <section id="specialties" class="max-w-screen-2xl mx-auto px-8 py-20 border-b bg-white">
-        <div class="text-center mb-12">
-            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
-            <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Dental specialties &amp; diversities covered by verified providers</h2>
-            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented by verified providers in Sarasota.</p>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <a href="index.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>General Dentistry</strong><br>routine cleanings, fillings, preventive care</a>
-            <a href="pd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Pediatric Dentistry</strong><br>children &amp; adolescents (behavior management, sedation)</a>
-            <a href="odo.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Orthodontics &amp; Dentofacial Orthopedics</strong><br>braces, Invisalign, jaw alignment</a>
-            <a href="per.html" class="bg-emerald-100 border-2 border-emerald-500 rounded-3xl p-6 text-sm hover:bg-emerald-100 transition-all block font-semibold"><strong>Periodontics</strong><br>gums, bone, periodontal surgery <span class="text-xs bg-emerald-500 text-white px-2 rounded-full">YOU ARE HERE</span></a>
-            <a href="end.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Endodontics</strong><br>root canals, pulp therapy</a>
-            <a href="oms.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Oral &amp; Maxillofacial Surgery</strong><br>extractions, trauma, jaw surgery, implants</a>
-            <a href="pro.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Prosthodontics</strong><br>crowns, bridges, dentures, full-mouth reconstruction</a>
-            <a href="cod.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Cosmetic Dentistry</strong><br>veneers, whitening, smile design</a>
-            <a href="emd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Emergency Dentistry</strong><br>urgent pain, trauma, abscesses, 24/7 care</a>
-            <a href="imd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Implant Dentistry</strong><br>surgical placement &amp; restoration of implants</a>
-            <a href="sda.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Sedation Dentistry / Anesthesia</strong><br>nitrous, oral, IV sedation for anxious patients</a>
-            <a href="ged.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Geriatric Dentistry</strong><br>seniors, denture care, medically complex patients</a>
-            <a href="snd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Special Needs Dentistry</strong><br>patients with disabilities or medical conditions</a>
-            <a href="red.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Restorative Dentistry</strong><br>complex fillings, inlays/onlays</a>
-            <a href="pwd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Preventive / Wellness Dentistry</strong><br>hygiene, sealants, fluoride, education</a>
-            <a href="ttop.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>TMJ / TMD &amp; Orofacial Pain</strong><br>jaw joint disorders, headaches</a>
-            <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm"><strong>Laser Dentistry</strong><br>minimally invasive procedures</div>
-            <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm"><strong>Sleep Dentistry / Snoring &amp; Sleep Apnea</strong><br>oral appliances</div>
-        </div>
-        <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network. Current page: <strong>Periodontics</strong></p>
     </section>
 
     <section id="providers" class="max-w-screen-2xl mx-auto px-8 py-20 bg-slate-50">
@@ -515,6 +607,126 @@
             <div class="space-y-4" id="faqAccordion">
             </div>
         </div>
+    </section>
+
+    <!-- SPECIALTIES SECTION MOVED HERE – redesigned smaller with animated glowing borders (self-contained) -->
+    <section id="specialties" class="max-w-screen-2xl mx-auto px-8 py-20 border-t bg-slate-50">
+        <div class="text-center mb-12">
+            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
+            <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Dental specialties &amp; diversities covered by verified providers</h2>
+            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented by verified providers in Sarasota.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <a href="index.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">General Dentistry</div>
+                    <div class="text-sm text-slate-500">routine cleanings, fillings, preventive care</div>
+                </div>
+            </a>
+            <a href="pd.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Pediatric Dentistry</div>
+                    <div class="text-sm text-slate-500">children &amp; adolescents (behavior management, sedation)</div>
+                </div>
+            </a>
+            <a href="odo.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Orthodontics &amp; Dentofacial Orthopedics</div>
+                    <div class="text-sm text-slate-500">braces, Invisalign, jaw alignment</div>
+                </div>
+            </a>
+            <a href="per.html" class="specialty-card perio-current group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1 flex items-center justify-between">Periodontics <span class="text-xs bg-emerald-500 text-white px-3 py-px rounded-3xl">YOU ARE HERE</span></div>
+                    <div class="text-sm text-slate-500">gums, bone, periodontal surgery</div>
+                </div>
+            </a>
+            <a href="end.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Endodontics</div>
+                    <div class="text-sm text-slate-500">root canals, pulp therapy</div>
+                </div>
+            </a>
+            <a href="oms.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Oral &amp; Maxillofacial Surgery</div>
+                    <div class="text-sm text-slate-500">extractions, trauma, jaw surgery, implants</div>
+                </div>
+            </a>
+            <a href="pro.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Prosthodontics</div>
+                    <div class="text-sm text-slate-500">crowns, bridges, dentures, full-mouth reconstruction</div>
+                </div>
+            </a>
+            <a href="cod.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Cosmetic Dentistry</div>
+                    <div class="text-sm text-slate-500">veneers, whitening, smile design</div>
+                </div>
+            </a>
+            <a href="emd.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Emergency Dentistry</div>
+                    <div class="text-sm text-slate-500">urgent pain, trauma, abscesses, 24/7 care</div>
+                </div>
+            </a>
+            <a href="imd.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Implant Dentistry</div>
+                    <div class="text-sm text-slate-500">surgical placement &amp; restoration of implants</div>
+                </div>
+            </a>
+            <a href="sda.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Sedation Dentistry / Anesthesia</div>
+                    <div class="text-sm text-slate-500">nitrous, oral, IV sedation for anxious patients</div>
+                </div>
+            </a>
+            <a href="ged.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Geriatric Dentistry</div>
+                    <div class="text-sm text-slate-500">seniors, denture care, medically complex patients</div>
+                </div>
+            </a>
+            <a href="snd.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Special Needs Dentistry</div>
+                    <div class="text-sm text-slate-500">patients with disabilities or medical conditions</div>
+                </div>
+            </a>
+            <a href="red.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Restorative Dentistry</div>
+                    <div class="text-sm text-slate-500">complex fillings, inlays/onlays</div>
+                </div>
+            </a>
+            <a href="pwd.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Preventive / Wellness Dentistry</div>
+                    <div class="text-sm text-slate-500">hygiene, sealants, fluoride, education</div>
+                </div>
+            </a>
+            <a href="ttop.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">TMJ / TMD &amp; Orofacial Pain</div>
+                    <div class="text-sm text-slate-500">jaw joint disorders, headaches</div>
+                </div>
+            </a>
+            <a href="lad.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Laser Dentistry</div>
+                    <div class="text-sm text-slate-500">minimally invasive procedures</div>
+                </div>
+            </a>
+            <a href="sdssa.html" class="specialty-card group">
+                <div class="specialty-card-inner">
+                    <div class="font-semibold text-lg mb-1">Sleep Dentistry / Snoring &amp; Sleep Apnea</div>
+                    <div class="text-sm text-slate-500">oral appliances</div>
+                </div>
+            </a>
+        </div>
+        <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network. Current page: <strong>Periodontics</strong></p>
     </section>
 
     <section id="contact" class="max-w-screen-2xl mx-auto px-8 py-20 bg-gradient-to-br from-slate-900 to-violet-950 text-white rounded-t-[4rem]">
@@ -1153,14 +1365,14 @@
         }
     </script>
 
-    <!-- GLOBAL SHARED SCRIPTS – exact lower wrapper preserved from index.html -->
-    <script defer src="/js/registry.js"></script>
-    <script defer src="/js/root-config.js"></script>
-    <script defer src="/js/menu-system.js"></script>
-    <script defer src="/js/search-system.js"></script>
-    <script defer src="/js/schema.js"></script>
-    <script defer src="/js/internal-links.js"></script>
-    <script defer src="/js/legal-engine.js"></script>
+    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <script defer src="js/registry.js"></script>
+    <script defer src="js/root-config.js"></script>
+    <script defer src="js/menu-system.js"></script>
+    <script defer src="js/search-system.js"></script>
+    <script defer src="js/schema.js"></script>
+    <script defer src="js/internal-links.js"></script>
+    <script defer src="js/legal-engine.js"></script>
 
     <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>  
 </body>
