@@ -138,6 +138,68 @@
             color: white;
             font-weight: 600;
         }
+
+        /* Animated glowing specialty tabs – fully self-contained, continuous border movement */
+        .specialty-tab {
+            position: relative;
+            display: block;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 20px 24px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+            overflow: hidden;
+        }
+        
+        .specialty-tab:hover {
+            transform: translateY(-3px);
+            border-color: transparent;
+            box-shadow: 0 20px 25px -5px rgb(16 185 129 / 0.2);
+        }
+        
+        .specialty-tab::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 28px;
+            background: conic-gradient(#10b981, #8b5cf6, #10b981, transparent 270deg);
+            z-index: -2;
+            animation: borderSpin 6s linear infinite;
+            opacity: 0.8;
+        }
+        
+        .specialty-tab::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 28px;
+            background: conic-gradient(transparent, #10b981, #8b5cf6, transparent);
+            z-index: -1;
+            animation: borderSpin 4s linear infinite reverse;
+            opacity: 0.6;
+            filter: blur(3px);
+        }
+        
+        @keyframes borderSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .specialty-tab strong {
+            font-size: 15px;
+            line-height: 1.3;
+        }
+        
+        .specialty-tab span {
+            font-size: 13px;
+            color: #64748b;
+            display: block;
+            margin-top: 8px;
+            line-height: 1.4;
+        }
     </style>
 
     <script type="application/ld+json">
@@ -197,6 +259,40 @@
       "@id": "https://www.sarasotaemergencydentist.com/pwd.html#organization"
     }
     </script>
+    
+    <!-- Additional FAQPage schema for rich results eligibility (enterprise SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is preventive dentistry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Proactive care focused on hygiene, sealants, fluoride, and education to stop problems before they start."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I get a professional cleaning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every 6 months for most adults; every 3–4 months if you have higher risk factors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are dental sealants only for children?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — adults with deep grooves also benefit greatly from sealants to prevent decay."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-white text-slate-900 overflow-x-hidden">
     <div id="scrollProgress" class="scroll-progress w-0"></div>
@@ -232,12 +328,6 @@
                 </div>
 
                 <div class="flex items-center gap-x-4">
-                    <button onclick="showFreePopup()" 
-                            class="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-violet-500 text-white text-sm font-semibold rounded-3xl hover:shadow-xl transition-all flex items-center gap-x-2">
-                        <span>Free Wellness Checklist</span>
-                        <span class="text-lg">📋</span>
-                    </button>
-                    
                     <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
                         <span id="hamburger">☰</span>
                     </button>
@@ -289,10 +379,12 @@
                         <span class="text-3xl">→</span>
                     </a>
                     
-                    <button onclick="showFreePopup()" 
-                            class="px-8 py-6 border-2 border-slate-900 hover:border-violet-600 rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all">
+                    <!-- Moved & redesigned checklist button – far-right in hero, deep yellowish-pink background, no duplicates anywhere else -->
+                    <a href="https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html"
+                       class="ml-auto px-8 py-6 bg-gradient-to-r from-[#f8b4c8] to-[#f5d07a] text-slate-900 hover:brightness-110 font-semibold rounded-3xl text-xl flex items-center gap-x-3 transition-all shadow-2xl hover:shadow-3xl">
                         Download Free Wellness Checklist
-                    </button>
+                        <span class="text-3xl">📋</span>
+                    </a>
                 </div>
                 
                 <div class="flex items-center gap-x-8 mt-12 text-sm">
@@ -410,36 +502,6 @@
         </div>
     </section>
 
-    <!-- SPECIALTIES GRID (identical to homepage – all links present) -->
-    <section id="specialties" class="max-w-screen-2xl mx-auto px-8 py-20 border-b bg-white">
-        <div class="text-center mb-12">
-            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
-            <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Dental specialties &amp; diversities covered by verified providers</h2>
-            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented by verified providers in Sarasota.</p>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <a href="index.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>General Dentistry</strong><br>routine cleanings, fillings, preventive care</a>
-            <a href="pd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Pediatric Dentistry</strong><br>children &amp; adolescents (behavior management, sedation)</a>
-            <a href="odo.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Orthodontics &amp; Dentofacial Orthopedics</strong><br>braces, Invisalign, jaw alignment</a>
-            <a href="per.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Periodontics</strong><br>gums, bone, periodontal surgery</a>
-            <a href="end.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Endodontics</strong><br>root canals, pulp therapy</a>
-            <a href="oms.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Oral &amp; Maxillofacial Surgery</strong><br>extractions, trauma, jaw surgery, implants</a>
-            <a href="pro.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Prosthodontics</strong><br>crowns, bridges, dentures, full-mouth reconstruction</a>
-            <a href="cod.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Cosmetic Dentistry</strong><br>veneers, whitening, smile design</a>
-            <a href="emd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Emergency Dentistry</strong><br>urgent pain, trauma, abscesses, 24/7 care</a>
-            <a href="imd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Implant Dentistry</strong><br>surgical placement &amp; restoration of implants</a>
-            <a href="sda.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Sedation Dentistry / Anesthesia</strong><br>nitrous, oral, IV sedation for anxious patients</a>
-            <a href="ged.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Geriatric Dentistry</strong><br>seniors, denture care, medically complex patients</a>
-            <a href="snd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Special Needs Dentistry</strong><br>patients with disabilities or medical conditions</a>
-            <a href="red.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Restorative Dentistry</strong><br>complex fillings, inlays/onlays</a>
-            <a href="pwd.html" class="bg-emerald-100 border border-emerald-300 rounded-3xl p-6 text-sm hover:bg-emerald-200 transition-all block ring-2 ring-emerald-500"><strong>Preventive / Wellness Dentistry</strong><br>hygiene, sealants, fluoride, education</a>
-            <a href="ttop.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>TMJ / TMD &amp; Orofacial Pain</strong><br>jaw joint disorders, headaches</a>
-            <a href="lad.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Laser Dentistry</strong><br>minimally invasive procedures</a>
-            <a href="sdssa.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Sleep Dentistry / Snoring &amp; Sleep Apnea</strong><br>oral appliances</a>
-        </div>
-        <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network.</p>
-    </section>
-
     <section id="providers" class="max-w-screen-2xl mx-auto px-8 py-20 bg-slate-50">
         <div class="flex flex-col md:flex-row justify-between items-baseline mb-12">
             <div>
@@ -475,6 +537,11 @@
         </div>
     </section>
 
+    <!-- INTERNAL LINKS SECTION – added exactly after comparison table / before testimonials (as instructed) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div id="dynamic-internal-links"></div>
+    </div>
+
     <section id="testimonials" class="max-w-screen-2xl mx-auto px-8 py-20">
         <div class="text-center mb-12">
             <div class="text-violet-600 text-sm font-medium">REAL STORIES • REAL PREVENTION</div>
@@ -504,6 +571,36 @@
                 <!-- Populated by JS -->
             </div>
         </div>
+    </section>
+
+    <!-- SPECIALTIES SECTION – moved to bottom immediately after FAQs, redesigned smaller with animated glowing borders (self-contained) -->
+    <section id="specialties" class="max-w-screen-2xl mx-auto px-8 py-16 border-t bg-white">
+        <div class="text-center mb-8">
+            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
+            <h2 class="text-4xl font-semibold tracking-[-1px] mt-3">Dental specialties &amp; diversities covered by verified providers</h2>
+            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented by verified providers in Sarasota.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <a href="index.html" class="specialty-tab"><strong>General Dentistry</strong><br><span>routine cleanings, fillings, preventive care</span></a>
+            <a href="pd.html" class="specialty-tab"><strong>Pediatric Dentistry</strong><br><span>children &amp; adolescents (behavior management, sedation)</span></a>
+            <a href="odo.html" class="specialty-tab"><strong>Orthodontics &amp; Dentofacial Orthopedics</strong><br><span>braces, Invisalign, jaw alignment</span></a>
+            <a href="per.html" class="specialty-tab"><strong>Periodontics</strong><br><span>gums, bone, periodontal surgery</span></a>
+            <a href="end.html" class="specialty-tab"><strong>Endodontics</strong><br><span>root canals, pulp therapy</span></a>
+            <a href="oms.html" class="specialty-tab"><strong>Oral &amp; Maxillofacial Surgery</strong><br><span>extractions, trauma, jaw surgery, implants</span></a>
+            <a href="pro.html" class="specialty-tab"><strong>Prosthodontics</strong><br><span>crowns, bridges, dentures, full-mouth reconstruction</span></a>
+            <a href="cod.html" class="specialty-tab"><strong>Cosmetic Dentistry</strong><br><span>veneers, whitening, smile design</span></a>
+            <a href="emd.html" class="specialty-tab"><strong>Emergency Dentistry</strong><br><span>urgent pain, trauma, abscesses, 24/7 care</span></a>
+            <a href="imd.html" class="specialty-tab"><strong>Implant Dentistry</strong><br><span>surgical placement &amp; restoration of implants</span></a>
+            <a href="sda.html" class="specialty-tab"><strong>Sedation Dentistry / Anesthesia</strong><br><span>nitrous, oral, IV sedation for anxious patients</span></a>
+            <a href="ged.html" class="specialty-tab"><strong>Geriatric Dentistry</strong><br><span>seniors, denture care, medically complex patients</span></a>
+            <a href="snd.html" class="specialty-tab"><strong>Special Needs Dentistry</strong><br><span>patients with disabilities or medical conditions</span></a>
+            <a href="red.html" class="specialty-tab"><strong>Restorative Dentistry</strong><br><span>complex fillings, inlays/onlays</span></a>
+            <a href="pwd.html" class="specialty-tab"><strong>Preventive / Wellness Dentistry</strong><br><span>hygiene, sealants, fluoride, education</span></a>
+            <a href="ttop.html" class="specialty-tab"><strong>TMJ / TMD &amp; Orofacial Pain</strong><br><span>jaw joint disorders, headaches</span></a>
+            <a href="lad.html" class="specialty-tab"><strong>Laser Dentistry</strong><br><span>minimally invasive procedures</span></a>
+            <a href="sdssa.html" class="specialty-tab"><strong>Sleep Dentistry / Snoring &amp; Sleep Apnea</strong><br><span>oral appliances</span></a>
+        </div>
+        <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network.</p>
     </section>
 
     <!-- METHODOLOGY &amp; LOGIC SECTION -->
@@ -1069,14 +1166,14 @@
         }
     </script>
 
-    <!-- GLOBAL SHARED SCRIPTS (preserved for consistency) -->
-    <script defer src="/js/registry.js"></script>
-    <script defer src="/js/root-config.js"></script>
-    <script defer src="/js/menu-system.js"></script>
-    <script defer src="/js/search-system.js"></script>
-    <script defer src="/js/schema.js"></script>
-    <script defer src="/js/internal-links.js"></script>
-    <script defer src="/js/legal-engine.js"></script>
+    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <script defer src="js/registry.js"></script>
+    <script defer src="js/root-config.js"></script>
+    <script defer src="js/menu-system.js"></script>
+    <script defer src="js/search-system.js"></script>
+    <script defer src="js/schema.js"></script>
+    <script defer src="js/internal-links.js"></script>
+    <script defer src="js/legal-engine.js"></script>
 
     <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>  
 </body>
