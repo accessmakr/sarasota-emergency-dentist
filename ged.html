@@ -139,6 +139,51 @@
             color: white;
             box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
         }
+
+        /* NEW: Self-contained animated glowing borders with continuous movement for specialty tabs */
+        @keyframes borderFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 200% 50%;
+            }
+        }
+
+        .specialty-card {
+            position: relative;
+            display: block;
+            padding: 20px 16px;
+            border-radius: 24px;
+            text-align: center;
+            font-size: 0.875rem;
+            line-height: 1.3;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 4px solid transparent;
+            background: linear-gradient(#ffffff, #ffffff) padding-box,
+                        conic-gradient(#10b981 0deg, #8b5cf6 120deg, #ec4899 240deg, #10b981 360deg) border-box;
+            background-size: 300% 300%;
+            animation: borderFlow 5s linear infinite;
+            box-shadow: 0 4px 6px -1px rgb(16 185 129 / 0.1),
+                        0 0 0 1px rgb(139 92 246 / 0.2);
+        }
+
+        .specialty-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 15px -3px rgb(16 185 129 / 0.2);
+        }
+
+        .specialty-card .title {
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #0f172a;
+        }
+
+        .specialty-card .desc {
+            font-size: 0.75rem;
+            color: #64748b;
+            line-height: 1.25;
+        }
     </style>
 
     <script type="application/ld+json">
@@ -234,12 +279,6 @@
                 </div>
 
                 <div class="flex items-center gap-x-4">
-                    <button onclick="showFreePopup()" 
-                            class="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-violet-500 text-white text-sm font-semibold rounded-3xl hover:shadow-xl transition-all flex items-center gap-x-2">
-                        <span>Free Senior Checklist</span>
-                        <span class="text-lg">📋</span>
-                    </button>
-                    
                     <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
                         <span id="hamburger">☰</span>
                     </button>
@@ -291,11 +330,6 @@
                         Find a Geriatric Provider Now
                         <span class="text-3xl">→</span>
                     </a>
-                    
-                    <button onclick="showFreePopup()" 
-                            class="px-8 py-6 border-2 border-slate-900 hover:border-violet-600 rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all">
-                        Download Free Senior Guide
-                    </button>
                 </div>
                 
                 <div class="flex items-center gap-x-8 mt-12 text-sm">
@@ -342,6 +376,13 @@
                     </div>
                 </div>
                 
+                <!-- MOVED & PROMINENT DOWNLOAD CHECKLIST BUTTON – far right side of hero section with deep yellowish-pink background -->
+                <a href="https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html"
+                   class="mt-8 block w-full max-w-xs mx-auto md:mx-0 bg-gradient-to-r from-amber-400 to-pink-500 hover:from-amber-500 hover:to-pink-600 text-white text-xl font-semibold rounded-3xl px-8 py-7 flex items-center justify-center gap-x-3 shadow-2xl transition-all">
+                    <span>Free Senior Checklist</span>
+                    <span class="text-3xl">📋</span>
+                </a>
+                
                 <div class="absolute -top-4 -right-4 bg-white rounded-3xl px-5 py-2 shadow-xl flex items-center gap-x-2 text-emerald-700 text-sm font-medium rotate-12">
                     <span class="relative flex h-3 w-3">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -366,33 +407,6 @@
             </div>
         </div>
     </header>
-
-    <!-- SPECIALTIES NAVIGATION -->
-    <section class="max-w-screen-2xl mx-auto px-8 py-8 border-b bg-white">
-        <div class="text-center mb-6">
-            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <a href="index.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">General Dentistry</a>
-            <a href="pd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Pediatric Dentistry</a>
-            <a href="odo.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Orthodontics &amp; Dentofacial Orthopedics</a>
-            <a href="per.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Periodontics</a>
-            <a href="end.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Endodontics</a>
-            <a href="oms.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Oral &amp; Maxillofacial Surgery</a>
-            <a href="pro.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Prosthodontics</a>
-            <a href="cod.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Cosmetic Dentistry</a>
-            <a href="emd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Emergency Dentistry</a>
-            <a href="imd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Implant Dentistry</a>
-            <a href="sda.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Sedation Dentistry / Anesthesia</a>
-            <a href="ged.html" class="specialty-active bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Geriatric Dentistry</strong><br>seniors, denture care, medically complex patients</a>
-            <a href="snd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Special Needs Dentistry</a>
-            <a href="red.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Restorative Dentistry</a>
-            <a href="pwd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Preventive / Wellness Dentistry</a>
-            <a href="ttop.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">TMJ / TMD &amp; Orofacial Pain</a>
-            <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm">Laser Dentistry</div>
-            <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm">Sleep Dentistry / Snoring &amp; Sleep Apnea</div>
-        </div>
-    </section>
 
     <section id="how" class="max-w-screen-2xl mx-auto px-8 py-20 border-b">
         <div class="grid md:grid-cols-12 gap-16 items-start">
@@ -586,6 +600,87 @@
         </div>
     </section>
 
+    <!-- SPECIALTIES NAVIGATION – MOVED TO BOTTOM (immediately after FAQs), REDESIGNED SMALLER & AESTHETIC WITH SELF-CONTAINED GLOWING BORDERS -->
+    <section class="max-w-screen-2xl mx-auto px-8 py-12 border-b bg-white">
+        <div class="text-center mb-6">
+            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <a href="index.html" class="specialty-card">
+                <div class="title">General Dentistry</div>
+                <div class="desc">routine cleanings, fillings, preventive care</div>
+            </a>
+            <a href="pd.html" class="specialty-card">
+                <div class="title">Pediatric Dentistry</div>
+                <div class="desc">children &amp; adolescents (behavior management, sedation)</div>
+            </a>
+            <a href="odo.html" class="specialty-card">
+                <div class="title">Orthodontics &amp; Dentofacial Orthopedics</div>
+                <div class="desc">braces, Invisalign, jaw alignment</div>
+            </a>
+            <a href="per.html" class="specialty-card">
+                <div class="title">Periodontics</div>
+                <div class="desc">gums, bone, periodontal surgery</div>
+            </a>
+            <a href="end.html" class="specialty-card">
+                <div class="title">Endodontics</div>
+                <div class="desc">root canals, pulp therapy</div>
+            </a>
+            <a href="oms.html" class="specialty-card">
+                <div class="title">Oral &amp; Maxillofacial Surgery</div>
+                <div class="desc">extractions, trauma, jaw surgery, implants</div>
+            </a>
+            <a href="pro.html" class="specialty-card">
+                <div class="title">Prosthodontics</div>
+                <div class="desc">crowns, bridges, dentures, full-mouth reconstruction</div>
+            </a>
+            <a href="cod.html" class="specialty-card">
+                <div class="title">Cosmetic Dentistry</div>
+                <div class="desc">veneers, whitening, smile design</div>
+            </a>
+            <a href="emd.html" class="specialty-card">
+                <div class="title">Emergency Dentistry</div>
+                <div class="desc">urgent pain, trauma, abscesses, 24/7 care</div>
+            </a>
+            <a href="imd.html" class="specialty-card">
+                <div class="title">Implant Dentistry</div>
+                <div class="desc">surgical placement &amp; restoration of implants</div>
+            </a>
+            <a href="sda.html" class="specialty-card">
+                <div class="title">Sedation Dentistry / Anesthesia</div>
+                <div class="desc">nitrous, oral, IV sedation for anxious patients</div>
+            </a>
+            <a href="ged.html" class="specialty-card">
+                <div class="title">Geriatric Dentistry</div>
+                <div class="desc">seniors, denture care, medically complex patients</div>
+            </a>
+            <a href="snd.html" class="specialty-card">
+                <div class="title">Special Needs Dentistry</div>
+                <div class="desc">patients with disabilities or medical conditions</div>
+            </a>
+            <a href="red.html" class="specialty-card">
+                <div class="title">Restorative Dentistry</div>
+                <div class="desc">complex fillings, inlays/onlays</div>
+            </a>
+            <a href="pwd.html" class="specialty-card">
+                <div class="title">Preventive / Wellness Dentistry</div>
+                <div class="desc">hygiene, sealants, fluoride, education</div>
+            </a>
+            <a href="ttop.html" class="specialty-card">
+                <div class="title">TMJ / TMD &amp; Orofacial Pain</div>
+                <div class="desc">jaw joint disorders, headaches</div>
+            </a>
+            <div class="specialty-card">
+                <div class="title">Laser Dentistry</div>
+                <div class="desc">minimally invasive procedures</div>
+            </div>
+            <div class="specialty-card">
+                <div class="title">Sleep Dentistry / Snoring &amp; Sleep Apnea</div>
+                <div class="desc">oral appliances</div>
+            </div>
+        </div>
+    </section>
+
     <!-- METHODOLOGY SECTION -->
     <section class="max-w-screen-2xl mx-auto px-8 py-20 border-t bg-slate-50">
         <div class="max-w-4xl mx-auto">
@@ -623,10 +718,6 @@
                             <span class="text-3xl">→</span>
                         </button>
                     </form>
-                    
-                    <button onclick="showFreePopup()" class="w-full border border-white/40 hover:bg-white/10 rounded-3xl px-8 py-8 text-center font-semibold text-xl flex items-center justify-center gap-x-4 transition-all">
-                        GET FREE GERIATRIC CHECKLIST
-                    </button>
                 </div>
             </div>
             
@@ -695,34 +786,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- FREE GERIATRIC CHECKLIST POPUP -->
-    <div onclick="if(event.target.id === 'freePopup')hideFreePopup()" id="freePopup" class="hidden fixed inset-0 bg-black/70 flex items-end md:items-center justify-center z-[9999]">
-        <div onclick="event.stopImmediatePropagation()" class="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-lg mx-4 md:mx-0 p-8">
-            <h3 class="text-3xl font-semibold mb-2">Your Free Geriatric Dentistry Checklist</h3>
-            <p class="text-slate-600">McKinsey-level guide: Senior-specific preparation, medication safety, denture care &amp; in-home tips for Sarasota seniors 65+.</p>
-            
-            <div class="my-8 bg-slate-100 rounded-2xl p-6 text-sm space-y-4 max-h-96 overflow-auto" id="checklistContent">
-                <div class="flex justify-between scenario-card"><span>1. Bring full medication list &amp; physician contacts to appointment</span><span class="font-medium">✅ Critical for safety</span></div>
-                <div class="flex justify-between scenario-card"><span>2. Discuss dry mouth (xerostomia) from common senior meds</span><span class="font-medium">✅ Common issue</span></div>
-                <div class="flex justify-between scenario-card"><span>3. Ask about Medicare coverage or senior payment plans</span><span class="font-medium">✅ Financial clarity</span></div>
-                <div class="flex justify-between scenario-card"><span>4. Caregiver should attend if possible (especially for dementia)</span><span class="font-medium">✅ Supportive care</span></div>
-                <div class="flex justify-between scenario-card"><span>5. Inquire about in-home/mobile options if homebound</span><span class="font-medium">✅ Geriatric House Call</span></div>
-                <div class="flex justify-between scenario-card"><span>6. Bone density &amp; osteoporosis impact on implants/dentures</span><span class="font-medium">✅ Discuss with provider</span></div>
-                <div class="flex justify-between scenario-card"><span>7. Denture cleaning routine &amp; nighttime removal</span><span class="font-medium">✅ Daily habit</span></div>
-                <div class="flex justify-between scenario-card"><span>8. Schedule same-day adjustments for new dentures</span><span class="font-medium">✅ Comfort first</span></div>
-                <div class="flex justify-between scenario-card"><span>9. Post-procedure: Soft foods &amp; hydration for seniors</span><span class="font-medium">✅ Recovery tips</span></div>
-                <div class="flex justify-between scenario-card"><span>10. Follow-up within 48 hours for any swelling or discomfort</span><span class="font-medium">✅ Sarasota standard</span></div>
-            </div>
-            
-            <button onclick="claimFreeGeriatricGuide()" 
-                    class="w-full py-6 bg-gradient-to-r from-emerald-500 to-violet-500 text-white font-semibold text-xl rounded-3xl">
-                DOWNLOAD BRANDED PDF CHECKLIST NOW
-            </button>
-            
-            <button onclick="hideFreePopup()" class="mt-4 w-full text-slate-400 text-sm">Close</button>
-        </div>
-    </div>
 
     <script>
         // Tailwind + core scripts (identical to index & previous specialty pages)
@@ -899,73 +962,6 @@
                 </div>`).join('')
         }
 
-        function showFreePopup() {
-            document.getElementById('freePopup').classList.remove('hidden')
-            document.getElementById('freePopup').classList.add('flex')
-        }
-        
-        function hideFreePopup() {
-            const popup = document.getElementById('freePopup')
-            popup.classList.add('hidden')
-            popup.classList.remove('flex')
-        }
-        
-        // Branded jsPDF – McKinsey-level professional PDF for geriatric checklist
-        function claimFreeGeriatricGuide() {
-            hideFreePopup()
-            const { jsPDF } = window.jspdf
-            const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" })
-            
-            // Header
-            doc.setFillColor(16, 185, 129)
-            doc.rect(0, 0, 210, 35, 'F')
-            doc.setTextColor(255, 255, 255)
-            doc.setFontSize(22)
-            doc.text("Geriatric Dentistry Checklist", 20, 22)
-            doc.setFontSize(12)
-            doc.text("Sarasota Seniors 65+ • April 2026", 20, 30)
-            
-            // Logo placeholder
-            doc.setFontSize(48)
-            doc.text("👴🦷", 165, 26)
-            
-            // Content
-            doc.setTextColor(0, 0, 0)
-            doc.setFontSize(15)
-            doc.text("Senior-Specific Dental Preparation Guide", 20, 52)
-            
-            doc.setFontSize(11)
-            const lines = [
-                "1. Bring complete medication list & physician contacts",
-                "2. Discuss dry mouth & saliva substitutes",
-                "3. Ask about Medicare / senior payment plans",
-                "4. Inquire about in-home/mobile options",
-                "5. Caregiver attendance recommended for dementia",
-                "6. Review bone health before implants/dentures",
-                "7. Daily denture cleaning & nighttime removal",
-                "8. Soft-food diet for first 48 hrs post-procedure",
-                "9. Schedule same-day denture adjustments",
-                "10. Follow-up call within 48 hours",
-                "",
-                "Prepared exclusively for Sarasota seniors by the",
-                "Sarasota Emergency Dental Network"
-            ]
-            
-            let y = 65
-            lines.forEach(line => {
-                doc.text(line, 20, y)
-                y += 7
-            })
-            
-            // Footer branding
-            doc.setFontSize(10)
-            doc.setTextColor(100, 100, 100)
-            doc.text("Compassionate • Verified • Medicare-Friendly • ADA & Florida Board Compliant", 20, 280)
-            
-            doc.save("Sarasota-Geriatric-Dentistry-Checklist.pdf")
-            alert("✅ Your professional Geriatric Dentistry Checklist PDF has been downloaded!")
-        }
-
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu')
             menu.classList.toggle('hidden')
@@ -1051,14 +1047,14 @@
         }
     </script>
 
-    <!-- GLOBAL SHARED SCRIPTS PLACEHOLDERS -->
-    <script defer src="/js/registry.js"></script>
-    <script defer src="/js/root-config.js"></script>
-    <script defer src="/js/menu-system.js"></script>
-    <script defer src="/js/search-system.js"></script>
-    <script defer src="/js/schema.js"></script>
-    <script defer src="/js/internal-links.js"></script>
-    <script defer src="/js/legal-engine.js"></script>
+    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <script defer src="js/registry.js"></script>
+    <script defer src="js/root-config.js"></script>
+    <script defer src="js/menu-system.js"></script>
+    <script defer src="js/search-system.js"></script>
+    <script defer src="js/schema.js"></script>
+    <script defer src="js/internal-links.js"></script>
+    <script defer src="js/legal-engine.js"></script>
 
     <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>  
 </body>
