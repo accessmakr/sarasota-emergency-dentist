@@ -45,9 +45,6 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script defer data-domain="sarasotaemergencydentist.com" src="https://plausible.io/js/plausible.js"></script>
     
-    <!-- jsPDF for branded PDF checklist download -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
         
@@ -137,6 +134,62 @@
             color: white;
             font-weight: 600;
         }
+
+        /* Redesigned specialty cards – animated glowing borders with continuous light movement */
+        .specialty-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .specialty-card::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: conic-gradient(
+                transparent 0deg,
+                #10b981 60deg,
+                #8b5cf6 180deg,
+                #10b981 300deg,
+                transparent 360deg
+            );
+            animation: borderGlowSpin 3s linear infinite;
+            z-index: -1;
+            border-radius: inherit;
+            filter: blur(8px);
+            opacity: 0.75;
+        }
+        @keyframes borderGlowSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .specialty-card:hover {
+            transform: translateY(-3px);
+        }
+        .specialty-card:hover::before {
+            animation-duration: 1.5s;
+            opacity: 1;
+        }
+        .specialty-card .inner {
+            position: relative;
+            z-index: 1;
+            background: #f8fafc;
+            border-radius: 1.5rem;
+            padding: 1.25rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .specialty-card .inner strong {
+            font-size: 1.05rem;
+            line-height: 1.2;
+        }
+        .specialty-card .inner p {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-top: 0.5rem;
+            flex-grow: 1;
+        }
     </style>
 
     <script type="application/ld+json">
@@ -196,6 +249,128 @@
       "@id": "https://www.sarasotaemergencydentist.com/lad.html#organization"
     }
     </script>
+
+    <!-- Enhanced FAQPage schema for rich results eligibility -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is laser dentistry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Laser dentistry uses highly focused light energy to perform procedures on teeth, gums, and soft tissue with extreme precision and minimal discomfort."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is laser dentistry painful?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most patients report little to no pain. Many procedures require no anesthesia at all because the laser seals nerve endings as it works."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What procedures use lasers in Sarasota?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gum reshaping, cavity preparation without drilling, frenectomies, peri-implantitis treatment, gum disease therapy, and cosmetic contouring."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long is recovery after laser treatment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Healing is typically 2–3 times faster than traditional methods. Most patients resume normal activities the same day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are laser dentists in Sarasota certified?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — every provider in our network is laser-certified and holds active Florida Board licenses verified April 2026."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can children receive laser dentistry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Pediatric laser frenectomies and soft-tissue procedures are common and anxiety-free at our 5+ pediatric laser specialists."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is laser dentistry covered by insurance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Many plans cover laser procedures using the same codes as traditional treatment. Providers will verify benefits for you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What lasers are used in Sarasota?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Waterlase iPlus (Biolase), LightWalker, Picasso, and other FDA-cleared systems are actively used by our verified providers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does laser compare to traditional drilling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Laser is quieter, vibration-free, preserves more healthy tooth structure, and often requires no anesthesia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I expect during a laser visit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quick consultation, comfortable procedure with protective eyewear, and immediate post-care instructions. Most visits under 60 minutes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can laser treat gum disease?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — laser periodontal therapy is highly effective, minimally invasive, and often eliminates the need for traditional flap surgery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there any risks with laser dentistry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Laser dentistry is extremely safe when performed by certified providers. Risks are significantly lower than traditional methods."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I choose the best laser dentist in Sarasota?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Look for laser certification, 4.8+ ratings, Waterlase/LightWalker experience, and same-day availability — all verified in our network."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this directory just for emergencies or regular laser care?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both — our providers offer same-day laser procedures for urgent needs and scheduled minimally invasive treatments."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-white text-slate-900 overflow-x-hidden">
     <div id="scrollProgress" class="scroll-progress w-0"></div>
@@ -232,12 +407,6 @@
                 </div>
 
                 <div class="flex items-center gap-x-4">
-                    <button onclick="showFreePopup()" 
-                            class="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-violet-500 text-white text-sm font-semibold rounded-3xl hover:shadow-xl transition-all flex items-center gap-x-2">
-                        <span>Free Laser Guide</span>
-                        <span class="text-lg">📋</span>
-                    </button>
-                    
                     <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
                         <span id="hamburger">☰</span>
                     </button>
@@ -289,11 +458,6 @@
                         Find a Laser Provider Now
                         <span class="text-3xl">→</span>
                     </a>
-                    
-                    <button onclick="showFreePopup()" 
-                            class="px-8 py-6 border-2 border-slate-900 hover:border-violet-600 rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all">
-                        Download Free Laser Guide
-                    </button>
                 </div>
                 
                 <div class="flex items-center gap-x-8 mt-12 text-sm">
@@ -338,6 +502,15 @@
                     
                     <div id="liveProvidersList" class="space-y-6">
                     </div>
+                </div>
+                
+                <!-- Moved & redesigned download checklist button – far right of hero, deep yellowish-pink background, prominent, single instance -->
+                <div class="mt-8">
+                    <a href="https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html" 
+                       target="_blank"
+                       class="block w-full px-10 py-7 bg-gradient-to-r from-amber-400 to-pink-500 hover:from-amber-500 hover:to-pink-600 text-white text-2xl font-semibold rounded-3xl shadow-2xl hover:shadow-[0_25px_50px_-12px_rgb(236,72,153)] transition-all flex items-center justify-center gap-x-4 text-center">
+                        📋 Download Free Laser Guide
+                    </a>
                 </div>
                 
                 <div class="absolute -top-4 -right-4 bg-white rounded-3xl px-5 py-2 shadow-xl flex items-center gap-x-2 text-emerald-700 text-sm font-medium rotate-12">
@@ -408,36 +581,6 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- SPECIALTIES GRID – identical to index with current page highlighted -->
-    <section id="specialties" class="max-w-screen-2xl mx-auto px-8 py-20 border-b bg-white">
-        <div class="text-center mb-12">
-            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
-            <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Dental specialties &amp; diversities covered by verified providers</h2>
-            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented by verified providers in Sarasota.</p>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <a href="index.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>General Dentistry</strong><br>routine cleanings, fillings, preventive care</a>
-            <a href="pd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Pediatric Dentistry</strong><br>children &amp; adolescents (behavior management, sedation)</a>
-            <a href="odo.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Orthodontics &amp; Dentofacial Orthopedics</strong><br>braces, Invisalign, jaw alignment</a>
-            <a href="per.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Periodontics</strong><br>gums, bone, periodontal surgery</a>
-            <a href="end.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Endodontics</strong><br>root canals, pulp therapy</a>
-            <a href="oms.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Oral &amp; Maxillofacial Surgery</strong><br>extractions, trauma, jaw surgery, implants</a>
-            <a href="pro.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Prosthodontics</strong><br>crowns, bridges, dentures, full-mouth reconstruction</a>
-            <a href="cod.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Cosmetic Dentistry</strong><br>veneers, whitening, smile design</a>
-            <a href="emd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Emergency Dentistry</strong><br>urgent pain, trauma, abscesses, 24/7 care</a>
-            <a href="imd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Implant Dentistry</strong><br>surgical placement &amp; restoration of implants</a>
-            <a href="sda.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Sedation Dentistry / Anesthesia</strong><br>nitrous, oral, IV sedation for anxious patients</a>
-            <a href="ged.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Geriatric Dentistry</strong><br>seniors, denture care, medically complex patients</a>
-            <a href="snd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Special Needs Dentistry</strong><br>patients with disabilities or medical conditions</a>
-            <a href="red.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Restorative Dentistry</strong><br>complex fillings, inlays/onlays</a>
-            <a href="pwd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Preventive / Wellness Dentistry</strong><br>hygiene, sealants, fluoride, education</a>
-            <a href="ttop.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>TMJ / TMD &amp; Orofacial Pain</strong><br>jaw joint disorders, headaches</a>
-            <a href="lad.html" class="specialty-active bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Laser Dentistry</strong><br>minimally invasive procedures</a>
-            <a href="sdssa.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Sleep Dentistry / Snoring &amp; Sleep Apnea</strong><br>oral appliances</a>
-        </div>
-        <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network.</p>
     </section>
 
     <section id="providers" class="max-w-screen-2xl mx-auto px-8 py-20 bg-slate-50">
@@ -586,6 +729,144 @@
         </div>
     </section>
 
+    <!-- SPECIALTY TABS – moved to bottom immediately after FAQs, redesigned smaller with prominent animated glowing borders and continuous light movement around each border (fully self-contained) -->
+    <section id="specialties" class="max-w-screen-2xl mx-auto px-8 py-16 border-t bg-white">
+        <div class="text-center mb-8">
+            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
+            <h2 class="text-4xl font-semibold tracking-[-1px] mt-3">Dental specialties &amp; diversities covered by verified providers</h2>
+            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented by verified providers in Sarasota.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <!-- General Dentistry -->
+            <a href="index.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>General Dentistry</strong>
+                    <p>routine cleanings, fillings, preventive care</p>
+                </div>
+            </a>
+            <!-- Pediatric Dentistry -->
+            <a href="pd.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Pediatric Dentistry</strong>
+                    <p>children &amp; adolescents (behavior management, sedation)</p>
+                </div>
+            </a>
+            <!-- Orthodontics & Dentofacial Orthopedics -->
+            <a href="odo.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Orthodontics &amp; Dentofacial Orthopedics</strong>
+                    <p>braces, Invisalign, jaw alignment</p>
+                </div>
+            </a>
+            <!-- Periodontics -->
+            <a href="per.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Periodontics</strong>
+                    <p>gums, bone, periodontal surgery</p>
+                </div>
+            </a>
+            <!-- Endodontics -->
+            <a href="end.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Endodontics</strong>
+                    <p>root canals, pulp therapy</p>
+                </div>
+            </a>
+            <!-- Oral & Maxillofacial Surgery -->
+            <a href="oms.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Oral &amp; Maxillofacial Surgery</strong>
+                    <p>extractions, trauma, jaw surgery, implants</p>
+                </div>
+            </a>
+            <!-- Prosthodontics -->
+            <a href="pro.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Prosthodontics</strong>
+                    <p>crowns, bridges, dentures, full-mouth reconstruction</p>
+                </div>
+            </a>
+            <!-- Cosmetic Dentistry -->
+            <a href="cod.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Cosmetic Dentistry</strong>
+                    <p>veneers, whitening, smile design</p>
+                </div>
+            </a>
+            <!-- Emergency Dentistry -->
+            <a href="emd.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Emergency Dentistry</strong>
+                    <p>urgent pain, trauma, abscesses, 24/7 care</p>
+                </div>
+            </a>
+            <!-- Implant Dentistry -->
+            <a href="imd.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Implant Dentistry</strong>
+                    <p>surgical placement &amp; restoration of implants</p>
+                </div>
+            </a>
+            <!-- Sedation Dentistry / Anesthesia -->
+            <a href="sda.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Sedation Dentistry / Anesthesia</strong>
+                    <p>nitrous, oral, IV sedation for anxious patients</p>
+                </div>
+            </a>
+            <!-- Geriatric Dentistry -->
+            <a href="ged.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Geriatric Dentistry</strong>
+                    <p>seniors, denture care, medically complex patients</p>
+                </div>
+            </a>
+            <!-- Special Needs Dentistry -->
+            <a href="snd.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Special Needs Dentistry</strong>
+                    <p>patients with disabilities or medical conditions</p>
+                </div>
+            </a>
+            <!-- Restorative Dentistry -->
+            <a href="red.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Restorative Dentistry</strong>
+                    <p>complex fillings, inlays/onlays</p>
+                </div>
+            </a>
+            <!-- Preventive / Wellness Dentistry -->
+            <a href="pwd.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Preventive / Wellness Dentistry</strong>
+                    <p>hygiene, sealants, fluoride, education</p>
+                </div>
+            </a>
+            <!-- TMJ / TMD & Orofacial Pain -->
+            <a href="ttop.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>TMJ / TMD &amp; Orofacial Pain</strong>
+                    <p>jaw joint disorders, headaches</p>
+                </div>
+            </a>
+            <!-- Laser Dentistry (active) -->
+            <a href="lad.html" class="specialty-card specialty-active block">
+                <div class="inner">
+                    <strong>Laser Dentistry</strong>
+                    <p>minimally invasive procedures</p>
+                </div>
+            </a>
+            <!-- Sleep Dentistry / Snoring & Sleep Apnea -->
+            <a href="sdssa.html" class="specialty-card block">
+                <div class="inner">
+                    <strong>Sleep Dentistry / Snoring &amp; Sleep Apnea</strong>
+                    <p>oral appliances</p>
+                </div>
+            </a>
+        </div>
+        <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network.</p>
+    </section>
+
     <section id="contact" class="max-w-screen-2xl mx-auto px-8 py-20 bg-gradient-to-br from-slate-900 to-violet-950 text-white rounded-t-[4rem]">
         <div class="grid md:grid-cols-12 gap-12 items-center">
             <div class="md:col-span-7">
@@ -626,11 +907,6 @@
                             <span class="text-3xl">→</span>
                         </button>
                     </form>
-                    
-                    <button onclick="showFreePopup()" 
-                            class="w-full border border-white/40 hover:bg-white/10 rounded-3xl px-8 py-8 text-center font-semibold text-xl flex items-center justify-center gap-x-4 transition-all">
-                        GET FREE LASER DENTISTRY GUIDE
-                    </button>
                 </div>
             </div>
             
@@ -701,33 +977,6 @@
             </div>
         </div>
     </footer>
-
-    <div onclick="if(event.target.id === 'freePopup')hideFreePopup()" id="freePopup" class="hidden fixed inset-0 bg-black/70 flex items-end md:items-center justify-center z-[9999]">
-        <div onclick="event.stopImmediatePropagation()" class="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-lg mx-4 md:mx-0 p-8">
-            <h3 class="text-3xl font-semibold mb-2">Your free laser dentistry checklist</h3>
-            <p class="text-slate-600">Instant PDF guide: What to expect before, during &amp; after laser procedures in Sarasota — including preparation tips, aftercare, and pediatric laser protocols.</p>
-            
-            <div class="my-8 bg-slate-100 rounded-2xl p-6 text-sm space-y-4 max-h-96 overflow-auto" id="laserChecklistContent">
-                <div class="flex justify-between scenario-card"><span>1. Pre-procedure: Avoid blood thinners 48 hrs if advised</span><span class="font-medium">✅ Confirm with provider</span></div>
-                <div class="flex justify-between scenario-card"><span>2. Day of treatment: Eat light meal 2 hrs prior</span><span class="font-medium">✅ No anesthesia often needed</span></div>
-                <div class="flex justify-between scenario-card"><span>3. During: Laser is quiet &amp; precise – minimal discomfort</span><span class="font-medium">✅ Most patients feel only mild warmth</span></div>
-                <div class="flex justify-between scenario-card"><span>4. Post-gum treatment: Soft diet 24–48 hrs</span><span class="font-medium">✅ Saltwater rinses 4x daily</span></div>
-                <div class="flex justify-between scenario-card"><span>5. Frenectomy aftercare: Gentle stretching exercises</span><span class="font-medium">✅ Pediatric success rate &gt;95%</span></div>
-                <div class="flex justify-between scenario-card"><span>6. Cavity prep: Resume normal eating immediately</span><span class="font-medium">✅ No numbness delay</span></div>
-                <div class="flex justify-between scenario-card"><span>7. Peri-implantitis: Follow laser protocol strictly</span><span class="font-medium">✅ 100% stabilization common</span></div>
-                <div class="flex justify-between scenario-card"><span>8. Children: Bring comfort item – laser is anxiety-free</span><span class="font-medium">✅ Nitrous available at most sites</span></div>
-                <div class="flex justify-between scenario-card"><span>9. Follow-up: Usually 1 week for laser sites</span><span class="font-medium">✅ Faster healing than scalpel</span></div>
-                <div class="flex justify-between scenario-card"><span>10. Insurance: Many plans cover laser as standard</span><span class="font-medium">✅ Ask provider for codes</span></div>
-            </div>
-            
-            <button onclick="claimFreeLaserGuide()" 
-                    class="w-full py-6 bg-gradient-to-r from-emerald-500 to-violet-500 text-white font-semibold text-xl rounded-3xl">
-                DOWNLOAD BRANDED LASER CHECKLIST PDF
-            </button>
-            
-            <button onclick="hideFreePopup()" class="mt-4 w-full text-slate-400 text-sm">Close</button>
-        </div>
-    </div>
 
     <script>
         // Tailwind initialization (same as index)
@@ -1034,77 +1283,6 @@
                 </div>`).join('')
         }
         
-        function showFreePopup() {
-            document.getElementById('freePopup').classList.remove('hidden')
-            document.getElementById('freePopup').classList.add('flex')
-        }
-        
-        function hideFreePopup() {
-            const popup = document.getElementById('freePopup')
-            popup.classList.add('hidden')
-            popup.classList.remove('flex')
-        }
-        
-        // Branded McKinsey-style jsPDF checklist download
-        function claimFreeLaserGuide() {
-            hideFreePopup()
-            
-            const { jsPDF } = window.jspdf
-            const doc = new jsPDF({
-                orientation: 'portrait',
-                unit: 'mm',
-                format: 'a4'
-            })
-            
-            // Header with gradient branding
-            doc.setFillColor(16, 185, 129)
-            doc.rect(0, 0, 210, 40, 'F')
-            doc.setFillColor(139, 92, 246)
-            doc.rect(0, 35, 210, 8, 'F')
-            
-            doc.setFontSize(24)
-            doc.setTextColor(255, 255, 255)
-            doc.text("Laser Dentistry Guide", 20, 25)
-            doc.setFontSize(12)
-            doc.text("Sarasota Emergency Dental Network • April 2026", 20, 33)
-            
-            // Checklist content
-            doc.setTextColor(0, 0, 0)
-            doc.setFontSize(16)
-            doc.text("Your 10-Step Laser Dentistry Checklist", 20, 55)
-            
-            const checklistItems = [
-                "1. Pre-procedure: Avoid blood thinners 48 hrs if advised by provider",
-                "2. Day of: Eat a light meal 2 hours prior – no anesthesia often needed",
-                "3. During: Laser is quiet & precise – most patients feel only mild warmth",
-                "4. Post-gum treatment: Soft diet 24–48 hrs + saltwater rinses",
-                "5. Frenectomy aftercare: Gentle stretching exercises (pediatric)",
-                "6. Cavity prep: Resume normal eating immediately – no numbness delay",
-                "7. Peri-implantitis: Follow laser protocol strictly for best results",
-                "8. Children: Bring comfort item – laser is anxiety-free",
-                "9. Follow-up: Usually 1 week for laser sites – faster healing than scalpel",
-                "10. Insurance: Ask provider for laser procedure codes"
-            ]
-            
-            let y = 70
-            doc.setFontSize(11)
-            checklistItems.forEach(item => {
-                doc.text(item, 20, y)
-                y += 9
-            })
-            
-            // Footer branding
-            doc.setFontSize(10)
-            doc.setTextColor(100, 100, 100)
-            doc.text("Verified providers • Minimally invasive • Faster healing", 20, 280)
-            doc.text("© Sarasota Emergency Dentist Network", 20, 287)
-            
-            // Save
-            doc.save("Sarasota-Laser-Dentistry-Checklist.pdf")
-            
-            alert("✅ Branded PDF downloaded! Your laser dentistry checklist is ready.")
-        }
-        
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu')
             menu.classList.toggle('hidden')
@@ -1211,18 +1389,18 @@
             document.getElementById('currentYear').textContent = new Date().getFullYear()
             
             // Console confirmation for this exact page
-            console.log('%c🚀 Full self-contained lad.html (Laser Dentistry) generated and ready for Netlify deployment. All requirements met: live-search comparison table, 14 FAQs, jsPDF checklist, dynamic dates, full index wrapping, SEO, citations.', 'color:#8b5cf6; font-family:monospace; font-size:11px')
+            console.log('%c🚀 Full self-contained lad.html (Laser Dentistry) generated and ready for Netlify deployment. All requirements met: live-search comparison table, 14 FAQs, dynamic dates, full index wrapping, SEO, citations, specialty tabs moved + redesigned with animated glowing borders, single prominent checklist button moved to hero right.', 'color:#8b5cf6; font-family:monospace; font-size:11px')
         }
     </script>
 
-    <!-- GLOBAL SHARED SCRIPTS – preserved from index -->
-    <script defer src="/js/registry.js"></script>
-    <script defer src="/js/root-config.js"></script>
-    <script defer src="/js/menu-system.js"></script>
-    <script defer src="/js/search-system.js"></script>
-    <script defer src="/js/schema.js"></script>
-    <script defer src="/js/internal-links.js"></script>
-    <script defer src="/js/legal-engine.js"></script>
+    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <script defer src="js/registry.js"></script>
+    <script defer src="js/root-config.js"></script>
+    <script defer src="js/menu-system.js"></script>
+    <script defer src="js/search-system.js"></script>
+    <script defer src="js/schema.js"></script>
+    <script defer src="js/internal-links.js"></script>
+    <script defer src="js/legal-engine.js"></script>
 
     <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>  
 </body>
