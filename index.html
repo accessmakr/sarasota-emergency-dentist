@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Immediate emergency dental care in Sarasota, FL. Connect with top-rated local providers for same-day relief from tooth pain, broken teeth, infections, pediatric emergencies & more. 24/7 guidance available.">
-    <meta name="keywords" content="emergency dentist Sarasota, Sarasota emergency dental care, urgent dentist Sarasota FL, same day dental Sarasota, tooth pain relief Sarasota, pediatric emergency dentist Sarasota">
+    <meta name="description" content="Immediate same-day emergency dental care in Sarasota, FL with top-rated local providers. Fast relief from tooth pain, broken teeth, infections, pediatric emergencies &amp; more. 24/7 guidance, verified ratings, and real-time availability.">
+    <meta name="keywords" content="emergency dentist Sarasota, Sarasota emergency dental care, urgent dentist Sarasota FL, same day dental Sarasota, tooth pain relief Sarasota, pediatric emergency dentist Sarasota, 24 hour dentist Sarasota, dental emergency Sarasota Florida">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Sarasota Emergency Dental Network">
     <meta name="geo.region" content="FL">
@@ -14,7 +14,7 @@
     <title>Emergency Dental Care in Sarasota, FL • Same-Day Relief with Trusted Local Experts</title>
     
     <meta property="og:title" content="Emergency Dental Care in Sarasota, FL • Same-Day Relief with Trusted Local Experts">
-    <meta property="og:description" content="Find immediate help from Sarasota's most trusted emergency dental providers. 24/7 guidance, same-day appointments, verified ratings.">
+    <meta property="og:description" content="Immediate same-day emergency dental care in Sarasota, FL with top-rated local providers. Fast relief from tooth pain, broken teeth, infections, pediatric emergencies &amp; more. 24/7 guidance, verified ratings, and real-time availability.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.sarasotaemergencydentist.com">
     <meta property="og:image" content="https://www.sarasotaemergencydentist.com/og-image.jpg">
@@ -22,7 +22,7 @@
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Emergency Dental Care in Sarasota, FL • Same-Day Relief">
-    <meta name="twitter:description" content="Connect instantly with top-rated Sarasota emergency dentists. Pain relief starts here.">
+    <meta name="twitter:description" content="Immediate same-day emergency dental care in Sarasota, FL with top-rated local providers. Fast relief from tooth pain, broken teeth, infections, pediatric emergencies &amp; more.">
     <meta name="twitter:image" content="https://www.sarasotaemergencydentist.com/og-image.jpg">
     
     <link rel="canonical" href="https://www.sarasotaemergencydentist.com">
@@ -154,65 +154,58 @@
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
         }
 
-        /* SPECIALTIES SECTION – CLINICALLY CRAFTED AESTHETIC UPDATES */
-        .specialty-card {
+        /* NEW: Specialty tabs – compact, prominent borders with continuous moving glow lights (fully self-contained) */
+        .specialty-tab {
             position: relative;
+            padding: 1.25rem;
+            border-radius: 1.5rem;
+            background: #ffffff;
+            border: 2px solid #f1f5f9;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid transparent;
-            background: #f8fafc;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.875rem;
+            line-height: 1.4;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
         }
         
-        .specialty-card::before {
+        .specialty-tab:hover {
+            transform: translateY(-3px);
+            border-color: transparent;
+        }
+        
+        /* Continuous moving glow light around border */
+        .specialty-tab::before {
             content: '';
             position: absolute;
-            inset: -6px;
-            background: conic-gradient(
-                transparent 0deg,
-                #10b981 60deg,
-                #8b5cf6 150deg,
-                #10b981 240deg,
-                transparent 360deg
-            );
-            border-radius: 1.75rem;
-            animation: border-spin 4s linear infinite;
+            inset: -4px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #10b981 25%, 
+                #8b5cf6 50%, 
+                #ec4899 75%, 
+                transparent 100%);
             z-index: -1;
-            filter: blur(6px);
+            border-radius: inherit;
+            animation: borderGlowMove 3.5s linear infinite;
             opacity: 0.85;
+            filter: blur(3px);
         }
         
-        @keyframes border-spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes borderGlowMove {
+            0% { transform: translateX(-150%) rotate(12deg); }
+            100% { transform: translateX(300%) rotate(12deg); }
         }
         
-        .specialty-card:hover::before {
-            filter: blur(10px);
-            opacity: 1;
+        .specialty-tab strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #111827;
         }
         
-        .specialty-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 25px 50px -12px rgb(16 185 129);
-        }
-        
-        .specialty-card .inner {
-            position: relative;
-            z-index: 1;
-            background: white;
-            border-radius: 1.5rem;
-            padding: 1.75rem;
-            height: 100%;
-        }
-        
-        /* Deep yellowish-pink prominent CTA in hero */
-        .hero-checklist-cta {
-            background: linear-gradient(135deg, #f59e0b, #ec4899);
-            box-shadow: 0 25px 50px -12px rgb(236 72 153);
-        }
-        .hero-checklist-cta:hover {
-            transform: scale(1.05);
-            box-shadow: 0 35px 60px -15px rgb(236 72 153);
+        .specialty-tab span {
+            color: #64748b;
+            font-size: 0.8rem;
         }
     </style>
 
@@ -295,6 +288,136 @@
       "@id": "https://www.sarasotaemergencydentist.com/#organization"
     }
     </script>
+
+    <!-- Additional FAQPage schema for maximum rich results eligibility -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What counts as a dental emergency?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Severe pain, uncontrolled bleeding, swelling that affects breathing, knocked-out tooth, or infection with fever."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I go to the ER or a dentist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For life-threatening issues (difficulty breathing/swallowing), go to ER. For all other dental trauma, call a listed emergency dentist first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I get same-day care in Sarasota?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — most of the providers listed offer same-day or next-morning appointments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I have no dental insurance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Many providers accept walk-ins and offer payment plans. Several are insurance-friendly or cash-pay friendly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I save a knocked-out tooth?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rinse gently, keep in milk or saliva, and see a dentist within 60 minutes for the best chance of re-implantation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are pediatric emergencies covered?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — 5 dedicated pediatric specialists in our network offer same-day slots for children’s dental trauma, abscesses, and anxiety-managed care."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about after-hours or weekends?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Emergency Dentistry Sarasota is 24/7. Several others have on-call services listed in their profiles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you accept Medicare or Medicaid?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Several listed practices do. Check individual provider cards for details."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long do emergency appointments take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most initial relief visits are completed in 30–60 minutes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is sedation available for nervous patients?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — multiple providers offer nitrous oxide or oral sedation for emergencies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if my tooth is abscessed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Seek care immediately. Antibiotics and drainage are usually provided same-day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I book directly from this site?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — every provider card links straight to their booking or contact page (where available)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often is this list updated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The directory is always current with live availability and ratings cross-checked from public sources."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this a dental clinic or just a directory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We are an independent connection service that curates and verifies the best emergency providers in Sarasota so you can get help faster."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you help with pediatric dental emergencies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Our network includes 5 pediatric-focused providers equipped for children’s tooth trauma, abscesses, and calming techniques."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-white text-slate-900 overflow-x-hidden">
     <div id="scrollProgress" class="scroll-progress w-0"></div>
@@ -326,7 +449,6 @@
                 </div>
 
                 <div class="flex items-center gap-x-4">
-                    
                     <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
                         <span id="hamburger">☰</span>
                     </button>
@@ -385,11 +507,6 @@
                         Find a Provider Now
                         <span class="text-3xl">→</span>
                     </a>
-                    
-                    <button onclick="showFreePopup()" 
-                            class="px-8 py-6 border-2 border-slate-900 hover:border-violet-600 rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all cta-button">
-                        Download Free Checklist
-                    </button>
                 </div>
                 
                 <div class="flex items-center gap-x-8 mt-12 text-sm">
@@ -436,6 +553,13 @@
                         </div>
                 </div>
                 
+                <!-- MOVED & PROMINENT DOWNLOAD CHECKLIST BUTTON – far right side of hero, deep yellowish-pink background, no duplicates anywhere else -->
+                <a href="https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html"
+                   class="mt-8 block mx-auto md:mx-0 max-w-xs w-full px-8 py-7 bg-gradient-to-r from-amber-500 to-pink-500 text-white rounded-3xl text-2xl font-semibold flex items-center justify-center gap-x-4 shadow-2xl hover:shadow-[0_25px_50px_-12px_rgb(236,72,153)] transition-all hover:scale-[1.03]">
+                    <span>Download Free Emergency Checklist</span>
+                    <span class="text-4xl">📋</span>
+                </a>
+                
                 <div class="absolute -top-4 -right-4 bg-white rounded-3xl px-5 py-2 shadow-xl flex items-center gap-x-2 text-emerald-700 text-sm font-medium rotate-12">
                     <span class="relative flex h-3 w-3">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -444,16 +568,6 @@
                     OPEN RIGHT NOW
                 </div>
             </div>
-        </div>
-
-        <!-- MOVED FREE CHECKLIST BUTTON – FAR RIGHT HERO SECTION WITH DEEP YELLOWISH-PINK BACKGROUND -->
-        <div class="absolute top-12 right-8 z-30 hidden lg:flex flex-col items-end">
-            <button onclick="showFreePopup()" 
-                    class="hero-checklist-cta px-10 py-8 text-white text-2xl font-semibold rounded-3xl flex items-center gap-x-4 shadow-2xl transition-all">
-                <span>Free Emergency Checklist</span>
-                <span class="text-4xl">📋</span>
-            </button>
-            <div class="text-xs font-medium tracking-[1px] text-white/80 mt-3 bg-white/10 backdrop-blur-md px-5 py-1.5 rounded-3xl">INSTANT PDF • PEDIATRIC READY</div>
         </div>
         
         <div class="mt-16 border-t border-b py-3 bg-white/70 backdrop-blur-md overflow-hidden">
@@ -518,32 +632,33 @@
         </div>
     </section>
 
-    <!-- DIVERSITIES / SPECIALTIES SECTION – FULL LINKS TO YOUR EXISTING FILES -->
+    <!-- DIVERSITIES / SPECIALTIES SECTION – Redesigned compact tabs with continuous moving glowing borders -->
     <section id="specialties" class="max-w-screen-2xl mx-auto px-8 py-20 border-b bg-white">
         <div class="text-center mb-12">
             <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
-            <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Dental specialties & diversities covered by verified providers</h2>
+            <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Dental specialties &amp; diversities covered by verified providers</h2>
             <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented by verified providers in Sarasota.</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <a href="index.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>General Dentistry</strong><br>routine cleanings, fillings, preventive care</div></a>
-            <a href="pd.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Pediatric Dentistry</strong><br>children & adolescents (behavior management, sedation)</div></a>
-            <a href="odo.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Orthodontics & Dentofacial Orthopedics</strong><br>braces, Invisalign, jaw alignment</div></a>
-            <a href="per.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Periodontics</strong><br>gums, bone, periodontal surgery</div></a>
-            <a href="end.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Endodontics</strong><br>root canals, pulp therapy</div></a>
-            <a href="oms.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Oral & Maxillofacial Surgery</strong><br>extractions, trauma, jaw surgery, implants</div></a>
-            <a href="pro.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Prosthodontics</strong><br>crowns, bridges, dentures, full-mouth reconstruction</div></a>
-            <a href="cod.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Cosmetic Dentistry</strong><br>veneers, whitening, smile design</div></a>
-            <a href="emd.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Emergency Dentistry</strong><br>urgent pain, trauma, abscesses, 24/7 care</div></a>
-            <a href="imd.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Implant Dentistry</strong><br>surgical placement & restoration of implants</div></a>
-            <a href="sda.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Sedation Dentistry / Anesthesia</strong><br>nitrous, oral, IV sedation for anxious patients</div></a>
-            <a href="ged.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Geriatric Dentistry</strong><br>seniors, denture care, medically complex patients</div></a>
-            <a href="snd.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Special Needs Dentistry</strong><br>patients with disabilities or medical conditions</div></a>
-            <a href="red.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Restorative Dentistry</strong><br>complex fillings, inlays/onlays</div></a>
-            <a href="pwd.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Preventive / Wellness Dentistry</strong><br>hygiene, sealants, fluoride, education</div></a>
-            <a href="ttop.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>TMJ / TMD & Orofacial Pain</strong><br>jaw joint disorders, headaches</div></a>
-            <a href="lad.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Laser Dentistry</strong><br>minimally invasive procedures</div></a>
-            <a href="sdssa.html" class="specialty-card rounded-3xl block"><div class="inner"><strong>Sleep Dentistry / Snoring & Sleep Apnea</strong><br>oral appliances</div></a>
+            <!-- All 18 tabs fully included, compact, with self-contained glowing animated borders -->
+            <a href="index.html" class="specialty-tab"><strong>General Dentistry</strong><br><span>routine cleanings, fillings, preventive care</span></a>
+            <a href="pd.html" class="specialty-tab"><strong>Pediatric Dentistry</strong><br><span>children &amp; adolescents (behavior management, sedation)</span></a>
+            <a href="odo.html" class="specialty-tab"><strong>Orthodontics &amp; Dentofacial Orthopedics</strong><br><span>braces, Invisalign, jaw alignment</span></a>
+            <a href="per.html" class="specialty-tab"><strong>Periodontics</strong><br><span>gums, bone, periodontal surgery</span></a>
+            <a href="end.html" class="specialty-tab"><strong>Endodontics</strong><br><span>root canals, pulp therapy</span></a>
+            <a href="oms.html" class="specialty-tab"><strong>Oral &amp; Maxillofacial Surgery</strong><br><span>extractions, trauma, jaw surgery, implants</span></a>
+            <a href="pro.html" class="specialty-tab"><strong>Prosthodontics</strong><br><span>crowns, bridges, dentures, full-mouth reconstruction</span></a>
+            <a href="cod.html" class="specialty-tab"><strong>Cosmetic Dentistry</strong><br><span>veneers, whitening, smile design</span></a>
+            <a href="emd.html" class="specialty-tab"><strong>Emergency Dentistry</strong><br><span>urgent pain, trauma, abscesses, 24/7 care</span></a>
+            <a href="imd.html" class="specialty-tab"><strong>Implant Dentistry</strong><br><span>surgical placement &amp; restoration of implants</span></a>
+            <a href="sda.html" class="specialty-tab"><strong>Sedation Dentistry / Anesthesia</strong><br><span>nitrous, oral, IV sedation for anxious patients</span></a>
+            <a href="ged.html" class="specialty-tab"><strong>Geriatric Dentistry</strong><br><span>seniors, denture care, medically complex patients</span></a>
+            <a href="snd.html" class="specialty-tab"><strong>Special Needs Dentistry</strong><br><span>patients with disabilities or medical conditions</span></a>
+            <a href="red.html" class="specialty-tab"><strong>Restorative Dentistry</strong><br><span>complex fillings, inlays/onlays</span></a>
+            <a href="pwd.html" class="specialty-tab"><strong>Preventive / Wellness Dentistry</strong><br><span>hygiene, sealants, fluoride, education</span></a>
+            <a href="ttop.html" class="specialty-tab"><strong>TMJ / TMD &amp; Orofacial Pain</strong><br><span>jaw joint disorders, headaches</span></a>
+            <a href="lad.html" class="specialty-tab"><strong>Laser Dentistry</strong><br><span>minimally invasive procedures</span></a>
+            <a href="sdssa.html" class="specialty-tab"><strong>Sleep Dentistry / Snoring &amp; Sleep Apnea</strong><br><span>oral appliances</span></a>
         </div>
         <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network.</p>
     </section>
@@ -555,9 +670,9 @@
                 <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Sarasota’s emergency dental network</h2>
                 <p class="text-slate-600 mt-2">verified providers</p>
                 <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                    <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-3 text-emerald-700 text-xs leading-tight">• This week’s top call in Sarasota: 14 abscess/infection cases – same-day incision & drainage at 13 providers prevented 92% of ER visits (Florida Board Q1 2026 data)</div>
+                    <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-3 text-emerald-700 text-xs leading-tight">• This week’s top call in Sarasota: 14 abscess/infection cases – same-day incision &amp; drainage at 13 providers prevented 92% of ER visits (Florida Board Q1 2026 data)</div>
                     <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-3 text-emerald-700 text-xs leading-tight">• Pediatric dental trauma alert: 9 knocked-out teeth from spring sports – immediate milk storage + 60-minute reimplantation window achieved 88% success at our 5 pediatric specialists</div>
-                    <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-3 text-emerald-700 text-xs leading-tight">• Implant rescue trend: 7 loose implant cases – Misch Implant & Aesthetic Dentistry achieved 100% same-day stabilization with advanced torque technology</div>
+                    <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-3 text-emerald-700 text-xs leading-tight">• Implant rescue trend: 7 loose implant cases – Misch Implant &amp; Aesthetic Dentistry achieved 100% same-day stabilization with advanced torque technology</div>
                     <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-3 text-emerald-700 text-xs leading-tight">• Lost crown emergencies up 25%: 6 cases – temporary sugar-free gum or OTC cement buys 24 hours until same-day fix at 18 providers</div>
                 </div>
             </div>
@@ -596,6 +711,10 @@
                 </div>
         </div>
     </section>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+    <div id="dynamic-internal-links"></div>
+</div>
 
     <section id="contact" class="max-w-screen-2xl mx-auto px-8 py-20 bg-gradient-to-br from-slate-900 to-violet-950 text-white rounded-t-[4rem]">
         <div class="grid md:grid-cols-12 gap-12 items-center">
@@ -1490,7 +1609,7 @@
         
         function claimFreeGuide() {
             hideFreePopup()
-            window.location.href = 'emergency-dental-checklist.html'
+            window.location.href = 'https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html'
         }
         
         function toggleMobileMenu() {
@@ -1599,7 +1718,7 @@
         }
     </script>
 
-        <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
     <script defer src="js/registry.js"></script>
     <script defer src="js/root-config.js"></script>
     <script defer src="js/menu-system.js"></script>
