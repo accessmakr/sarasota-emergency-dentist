@@ -118,7 +118,7 @@
             border-bottom: 1px solid #e2e8f0;
         }
 
-        /* NEW: Self-contained animated glowing specialty tabs with continuous moving border lights */
+        /* Self-contained animated glowing specialty tabs with continuous moving border lights */
         .specialty-tab {
             position: relative;
             overflow: hidden;
@@ -126,6 +126,7 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             background: white;
             border: 2px solid #f1f5f9;
+            padding: 1rem; /* redesigned smaller */
         }
         
         .specialty-tab::before {
@@ -325,7 +326,7 @@
                     </div>
                 </div>
                 
-                <!-- MOVED & REDESIGNED DOWNLOAD CHECKLIST BUTTON – far right side of hero, deep yellowish-pink background, fully self-contained -->
+                <!-- DOWNLOAD CHECKLIST BUTTON – far right side of hero, deep yellowish-pink background, fully self-contained, prominent, no duplicates anywhere else -->
                 <div class="mt-8 flex justify-end">
                     <a href="https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html" 
                        target="_blank"
@@ -540,100 +541,100 @@
         </div>
     </section>
 
-    <!-- MOVED SPECIALTY TABS – NOW AT BOTTOM OF PAGE, redesigned smaller, self-contained animated glowing borders with continuous moving lights, all 18 specialties included -->
-    <section class="max-w-screen-2xl mx-auto px-8 py-16 bg-slate-50 border-t">
+    <!-- SPECIALTY TABS – placed immediately after FAQs, redesigned smaller, self-contained animated glowing borders with continuous moving lights, fully contained in HTML, all 18 specialties with correct links -->
+    <section class="max-w-screen-2xl mx-auto px-8 py-12 bg-slate-50 border-t">
         <div class="text-center mb-8">
             <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             <!-- 1 General Dentistry -->
-            <a href="index.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #10b981;">
-                <strong class="text-base">General Dentistry</strong>
+            <a href="index.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #10b981;">
+                <strong class="text-sm">General Dentistry</strong>
                 <span class="text-slate-600 mt-1 flex-1">routine cleanings, fillings, preventive care</span>
             </a>
             <!-- 2 Pediatric Dentistry -->
-            <a href="pd.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #ec4899;">
-                <strong class="text-base">Pediatric Dentistry</strong>
+            <a href="pd.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #ec4899;">
+                <strong class="text-sm">Pediatric Dentistry</strong>
                 <span class="text-slate-600 mt-1 flex-1">children &amp; adolescents (behavior management, sedation)</span>
             </a>
             <!-- 3 Orthodontics & Dentofacial Orthopedics -->
-            <a href="odo.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #0ea5e9;">
-                <strong class="text-base">Orthodontics &amp; Dentofacial Orthopedics</strong>
+            <a href="odo.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #0ea5e9;">
+                <strong class="text-sm">Orthodontics &amp; Dentofacial Orthopedics</strong>
                 <span class="text-slate-600 mt-1 flex-1">braces, Invisalign, jaw alignment</span>
             </a>
             <!-- 4 Periodontics -->
-            <a href="per.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #a78bfa;">
-                <strong class="text-base">Periodontics</strong>
+            <a href="per.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #a78bfa;">
+                <strong class="text-sm">Periodontics</strong>
                 <span class="text-slate-600 mt-1 flex-1">gums, bone, periodontal surgery</span>
             </a>
             <!-- 5 Endodontics -->
-            <a href="end.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #14b8a6;">
-                <strong class="text-base">Endodontics</strong>
+            <a href="end.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #14b8a6;">
+                <strong class="text-sm">Endodontics</strong>
                 <span class="text-slate-600 mt-1 flex-1">root canals, pulp therapy</span>
             </a>
             <!-- 6 Oral & Maxillofacial Surgery -->
-            <a href="oms.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #f59e0b;">
-                <strong class="text-base">Oral &amp; Maxillofacial Surgery</strong>
+            <a href="oms.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #f59e0b;">
+                <strong class="text-sm">Oral &amp; Maxillofacial Surgery</strong>
                 <span class="text-slate-600 mt-1 flex-1">extractions, trauma, jaw surgery, implants</span>
             </a>
             <!-- 7 Prosthodontics -->
-            <a href="pro.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #6366f1;">
-                <strong class="text-base">Prosthodontics</strong>
+            <a href="pro.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #6366f1;">
+                <strong class="text-sm">Prosthodontics</strong>
                 <span class="text-slate-600 mt-1 flex-1">crowns, bridges, dentures, full-mouth reconstruction</span>
             </a>
             <!-- 8 Cosmetic Dentistry – CURRENT PAGE -->
-            <a href="cod.html" class="specialty-tab current p-5 text-sm flex flex-col" style="--accent-color: #8b5cf6;">
-                <strong class="text-base">Cosmetic Dentistry</strong>
+            <a href="cod.html" class="specialty-tab current text-sm flex flex-col" style="--accent-color: #8b5cf6;">
+                <strong class="text-sm">Cosmetic Dentistry</strong>
                 <span class="text-slate-600 mt-1 flex-1">veneers, whitening, smile design <span class="text-xs bg-white px-2 py-0.5 rounded-full text-violet-700 ml-1">CURRENT PAGE</span></span>
             </a>
             <!-- 9 Emergency Dentistry -->
-            <a href="emd.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #ef4444;">
-                <strong class="text-base">Emergency Dentistry</strong>
+            <a href="emd.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #ef4444;">
+                <strong class="text-sm">Emergency Dentistry</strong>
                 <span class="text-slate-600 mt-1 flex-1">urgent pain, trauma, abscesses, 24/7 care</span>
             </a>
             <!-- 10 Implant Dentistry -->
-            <a href="imd.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #10b981;">
-                <strong class="text-base">Implant Dentistry</strong>
+            <a href="imd.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #10b981;">
+                <strong class="text-sm">Implant Dentistry</strong>
                 <span class="text-slate-600 mt-1 flex-1">surgical placement &amp; restoration of implants</span>
             </a>
             <!-- 11 Sedation Dentistry / Anesthesia -->
-            <a href="sda.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #ec4899;">
-                <strong class="text-base">Sedation Dentistry / Anesthesia</strong>
+            <a href="sda.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #ec4899;">
+                <strong class="text-sm">Sedation Dentistry / Anesthesia</strong>
                 <span class="text-slate-600 mt-1 flex-1">nitrous, oral, IV sedation for anxious patients</span>
             </a>
             <!-- 12 Geriatric Dentistry -->
-            <a href="ged.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #0ea5e9;">
-                <strong class="text-base">Geriatric Dentistry</strong>
+            <a href="ged.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #0ea5e9;">
+                <strong class="text-sm">Geriatric Dentistry</strong>
                 <span class="text-slate-600 mt-1 flex-1">seniors, denture care, medically complex patients</span>
             </a>
             <!-- 13 Special Needs Dentistry -->
-            <a href="snd.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #a78bfa;">
-                <strong class="text-base">Special Needs Dentistry</strong>
+            <a href="snd.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #a78bfa;">
+                <strong class="text-sm">Special Needs Dentistry</strong>
                 <span class="text-slate-600 mt-1 flex-1">patients with disabilities or medical conditions</span>
             </a>
             <!-- 14 Restorative Dentistry -->
-            <a href="red.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #14b8a6;">
-                <strong class="text-base">Restorative Dentistry</strong>
+            <a href="red.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #14b8a6;">
+                <strong class="text-sm">Restorative Dentistry</strong>
                 <span class="text-slate-600 mt-1 flex-1">complex fillings, inlays/onlays</span>
             </a>
             <!-- 15 Preventive / Wellness Dentistry -->
-            <a href="pwd.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #f59e0b;">
-                <strong class="text-base">Preventive / Wellness Dentistry</strong>
+            <a href="pwd.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #f59e0b;">
+                <strong class="text-sm">Preventive / Wellness Dentistry</strong>
                 <span class="text-slate-600 mt-1 flex-1">hygiene, sealants, fluoride, education</span>
             </a>
             <!-- 16 TMJ / TMD & Orofacial Pain -->
-            <a href="ttop.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #6366f1;">
-                <strong class="text-base">TMJ / TMD &amp; Orofacial Pain</strong>
+            <a href="ttop.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #6366f1;">
+                <strong class="text-sm">TMJ / TMD &amp; Orofacial Pain</strong>
                 <span class="text-slate-600 mt-1 flex-1">jaw joint disorders, headaches</span>
             </a>
             <!-- 17 Laser Dentistry -->
-            <a href="las.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #22c55e;">
-                <strong class="text-base">Laser Dentistry</strong>
+            <a href="lad.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #22c55e;">
+                <strong class="text-sm">Laser Dentistry</strong>
                 <span class="text-slate-600 mt-1 flex-1">minimally invasive procedures</span>
             </a>
             <!-- 18 Sleep Dentistry / Snoring & Sleep Apnea -->
-            <a href="ssa.html" class="specialty-tab p-5 text-sm flex flex-col" style="--accent-color: #8b5cf6;">
-                <strong class="text-base">Sleep Dentistry / Snoring &amp; Sleep Apnea</strong>
+            <a href="sdssa.html" class="specialty-tab text-sm flex flex-col" style="--accent-color: #8b5cf6;">
+                <strong class="text-sm">Sleep Dentistry / Snoring &amp; Sleep Apnea</strong>
                 <span class="text-slate-600 mt-1 flex-1">oral appliances</span>
             </a>
         </div>
