@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sedation Dentistry & Anesthesia in Sarasota, FL. Nitrous oxide, oral, and IV sedation for anxiety-free dental care. Same-day appointments with verified providers for nervous patients, pediatric sedation, and complex procedures.">
-    <meta name="keywords" content="sedation dentistry Sarasota, dental anesthesia Sarasota FL, nitrous oxide dentist Sarasota, IV sedation Sarasota, anxiety free dentist Sarasota, oral sedation dentist Sarasota">
+    <meta name="description" content="Sedation Dentistry in Sarasota, FL: Nitrous oxide, oral &amp; IV sedation for anxiety-free dental visits. Same-day appointments with Florida Board-certified providers for nervous adults, kids &amp; complex cases. Trusted local experts.">
+    <meta name="keywords" content="sedation dentistry Sarasota, dental anesthesia Sarasota FL, nitrous oxide dentist Sarasota, IV sedation Sarasota, anxiety free dentist Sarasota, oral sedation dentist Sarasota, pediatric sedation Sarasota, same day sedation dentist Florida">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Sarasota Emergency Dental Network">
     <meta name="geo.region" content="FL">
@@ -134,10 +134,82 @@
             background: #f8fafc;
         }
         
+        /* NEW: Redesigned specialty tabs with continuous animated glowing borders */
+        .specialty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+        
+        .specialty-tab {
+            position: relative;
+            padding: 18px 16px;
+            border-radius: 24px;
+            background: white;
+            border: 3px solid transparent;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+            overflow: hidden;
+        }
+        
+        .specialty-tab::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: conic-gradient(
+                transparent 0deg,
+                #10b981 60deg,
+                #8b5cf6 120deg,
+                #10b981 200deg,
+                transparent 300deg
+            );
+            z-index: -1;
+            animation: borderRotate 3.5s linear infinite;
+            filter: blur(6px);
+            opacity: 0.85;
+            border-radius: 27px;
+        }
+        
+        @keyframes borderRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .specialty-tab:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgb(16 185 129 / 0.15), 
+                        0 0 0 4px rgba(139 92 246, 0.3);
+        }
+        
+        .specialty-tab .name {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 6px;
+            color: #0f172a;
+        }
+        
+        .specialty-tab .desc {
+            font-size: 12px;
+            color: #64748b;
+            line-height: 1.3;
+        }
+        
         .specialty-active {
+            border-color: #10b981;
             background: linear-gradient(90deg, #10b981, #8b5cf6);
             color: white;
-            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
+        }
+        
+        .specialty-active .name,
+        .specialty-active .desc {
+            color: white;
+        }
+        
+        /* Enhanced SEO-ready schema styles (no visual impact) */
+        .schema-faq {
+            display: none;
         }
     </style>
 
@@ -198,6 +270,67 @@
       "@id": "https://www.sarasotaemergencydentist.com/sda.html#organization"
     }
     </script>
+
+    <!-- Additional WebSite schema for enterprise SEO & rich results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Sarasota Emergency Dentist",
+      "url": "https://www.sarasotaemergencydentist.com",
+      "description": "24/7 Sarasota emergency &amp; sedation dentistry network – verified providers, same-day appointments, anxiety-free care.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.sarasotaemergencydentist.com/sda.html?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- FAQPage schema for rich results eligibility (enterprise-grade) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is nitrous oxide sedation and is it safe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nitrous oxide (laughing gas) is a mild sedative inhaled through a mask. It is extremely safe, non-addictive, and effects wear off within minutes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does oral sedation differ from IV sedation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oral sedation is a pill taken before your appointment. IV sedation is administered directly into the vein for deeper, faster, and more controllable effects."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can children receive sedation dentistry in Sarasota?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes – several providers in our network are specially trained in pediatric sedation (nitrous and oral) and follow strict safety protocols."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will I be asleep during the procedure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With nitrous or mild oral sedation you remain awake but deeply relaxed. IV sedation can produce a sleep-like state where you have little to no memory of the procedure."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-white text-slate-900 overflow-x-hidden">
     <div id="scrollProgress" class="scroll-progress w-0"></div>
@@ -234,12 +367,7 @@
                 </div>
 
                 <div class="flex items-center gap-x-4">
-                    <button onclick="showFreePopup()" 
-                            class="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-violet-500 text-white text-sm font-semibold rounded-3xl hover:shadow-xl transition-all flex items-center gap-x-2">
-                        <span>Free Sedation Checklist</span>
-                        <span class="text-lg">📋</span>
-                    </button>
-                    
+                    <!-- Removed the original header "Free Sedation Checklist" button as instructed -->
                     <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
                         <span id="hamburger">☰</span>
                     </button>
@@ -342,6 +470,16 @@
                     </div>
                 </div>
                 
+                <!-- Moved &amp; redesigned checklist button: far right of hero, deep yellowish-pink background, prominent -->
+                <div class="mt-8 md:mt-0 md:absolute md:-top-4 md:-right-4 bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl p-1">
+                    <button onclick="window.location.href='https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html'" 
+                            class="px-8 py-6 text-white font-semibold text-xl rounded-3xl flex items-center gap-x-3 transition-all hover:scale-105 w-full md:w-auto shadow-xl"
+                            style="background: linear-gradient(90deg, #ff006e, #ffcc00); box-shadow: 0 10px 25px -5px rgb(255 0 110);">
+                        <span>Free Sedation Checklist</span>
+                        <span class="text-2xl">📋</span>
+                    </button>
+                </div>
+                
                 <div class="absolute -top-4 -right-4 bg-white rounded-3xl px-5 py-2 shadow-xl flex items-center gap-x-2 text-emerald-700 text-sm font-medium rotate-12">
                     <span class="relative flex h-3 w-3">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -367,32 +505,7 @@
         </div>
     </header>
 
-    <!-- SPECIALTIES NAVIGATION (same as index, with current page highlighted) -->
-    <section class="max-w-screen-2xl mx-auto px-8 py-8 border-b bg-white">
-        <div class="text-center mb-6">
-            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <a href="index.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">General Dentistry</a>
-            <a href="pd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Pediatric Dentistry</a>
-            <a href="odo.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Orthodontics &amp; Dentofacial Orthopedics</a>
-            <a href="per.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Periodontics</a>
-            <a href="end.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Endodontics</a>
-            <a href="oms.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Oral &amp; Maxillofacial Surgery</a>
-            <a href="pro.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Prosthodontics</a>
-            <a href="cod.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Cosmetic Dentistry</a>
-            <a href="emd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Emergency Dentistry</a>
-            <a href="imd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Implant Dentistry</a>
-            <a href="sda.html" class="specialty-active bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Sedation Dentistry / Anesthesia</strong><br>nitrous, oral, IV sedation for anxious patients</a>
-            <a href="ged.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Geriatric Dentistry</a>
-            <a href="snd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Special Needs Dentistry</a>
-            <a href="red.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Restorative Dentistry</a>
-            <a href="pwd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">Preventive / Wellness Dentistry</a>
-            <a href="ttop.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block">TMJ / TMD &amp; Orofacial Pain</a>
-            <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm">Laser Dentistry</div>
-            <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm">Sleep Dentistry / Snoring &amp; Sleep Apnea</div>
-        </div>
-    </section>
+    <!-- SPECIALTIES NAVIGATION REMOVED FROM ORIGINAL LOCATION (moved to bottom after FAQs) -->
 
     <section id="how" class="max-w-screen-2xl mx-auto px-8 py-20 border-b">
         <div class="grid md:grid-cols-12 gap-16 items-start">
@@ -555,6 +668,11 @@
         <p class="text-center text-slate-500 mt-8 text-xs">Data current as of April 2026 • Sourced from Yelp, Google, Healthgrades, and direct provider verification. All providers maintain active Florida Board sedation permits.</p>
     </section>
 
+    <!-- NEW: Dynamic internal links block (as instructed) – placed after comparison, before testimonials -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div id="dynamic-internal-links"></div>
+    </div>
+
     <section id="testimonials" class="max-w-screen-2xl mx-auto px-8 py-20">
         <div class="text-center mb-12">
             <div class="text-violet-600 text-sm font-medium">REAL STORIES • REAL RELIEF FROM ANXIETY</div>
@@ -583,6 +701,106 @@
             <div class="space-y-4" id="faqAccordion">
                 <!-- Populated by JS -->
             </div>
+        </div>
+    </section>
+
+    <!-- MOVED &amp; REDESIGNED SPECIALTY TABS – placed immediately after FAQs as instructed -->
+    <!-- All 18 specialties are fully included with correct links and descriptions -->
+    <section class="max-w-screen-2xl mx-auto px-8 py-16 border-t bg-white">
+        <div class="text-center mb-8">
+            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS – SARASOTA</span>
+        </div>
+        <div class="specialty-grid">
+            <!-- General Dentistry -->
+            <a href="index.html" class="specialty-tab">
+                <div class="name">General Dentistry</div>
+                <div class="desc">routine cleanings, fillings, preventive care</div>
+            </a>
+            <!-- Pediatric Dentistry -->
+            <a href="pd.html" class="specialty-tab">
+                <div class="name">Pediatric Dentistry</div>
+                <div class="desc">children &amp; adolescents (behavior management, sedation)</div>
+            </a>
+            <!-- Orthodontics &amp; Dentofacial Orthopedics -->
+            <a href="odo.html" class="specialty-tab">
+                <div class="name">Orthodontics &amp; Dentofacial Orthopedics</div>
+                <div class="desc">braces, Invisalign, jaw alignment</div>
+            </a>
+            <!-- Periodontics -->
+            <a href="per.html" class="specialty-tab">
+                <div class="name">Periodontics</div>
+                <div class="desc">gums, bone, periodontal surgery</div>
+            </a>
+            <!-- Endodontics -->
+            <a href="end.html" class="specialty-tab">
+                <div class="name">Endodontics</div>
+                <div class="desc">root canals, pulp therapy</div>
+            </a>
+            <!-- Oral &amp; Maxillofacial Surgery -->
+            <a href="oms.html" class="specialty-tab">
+                <div class="name">Oral &amp; Maxillofacial Surgery</div>
+                <div class="desc">extractions, trauma, jaw surgery, implants</div>
+            </a>
+            <!-- Prosthodontics -->
+            <a href="pro.html" class="specialty-tab">
+                <div class="name">Prosthodontics</div>
+                <div class="desc">crowns, bridges, dentures, full-mouth reconstruction</div>
+            </a>
+            <!-- Cosmetic Dentistry -->
+            <a href="cod.html" class="specialty-tab">
+                <div class="name">Cosmetic Dentistry</div>
+                <div class="desc">veneers, whitening, smile design</div>
+            </a>
+            <!-- Emergency Dentistry -->
+            <a href="emd.html" class="specialty-tab">
+                <div class="name">Emergency Dentistry</div>
+                <div class="desc">urgent pain, trauma, abscesses, 24/7 care</div>
+            </a>
+            <!-- Implant Dentistry -->
+            <a href="imd.html" class="specialty-tab">
+                <div class="name">Implant Dentistry</div>
+                <div class="desc">surgical placement &amp; restoration of implants</div>
+            </a>
+            <!-- Sedation Dentistry / Anesthesia (highlighted on this page) -->
+            <a href="sda.html" class="specialty-tab specialty-active">
+                <div class="name">Sedation Dentistry / Anesthesia</div>
+                <div class="desc">nitrous, oral, IV sedation for anxious patients</div>
+            </a>
+            <!-- Geriatric Dentistry -->
+            <a href="ged.html" class="specialty-tab">
+                <div class="name">Geriatric Dentistry</div>
+                <div class="desc">seniors, denture care, medically complex patients</div>
+            </a>
+            <!-- Special Needs Dentistry -->
+            <a href="snd.html" class="specialty-tab">
+                <div class="name">Special Needs Dentistry</div>
+                <div class="desc">patients with disabilities or medical conditions</div>
+            </a>
+            <!-- Restorative Dentistry -->
+            <a href="red.html" class="specialty-tab">
+                <div class="name">Restorative Dentistry</div>
+                <div class="desc">complex fillings, inlays/onlays</div>
+            </a>
+            <!-- Preventive / Wellness Dentistry -->
+            <a href="pwd.html" class="specialty-tab">
+                <div class="name">Preventive / Wellness Dentistry</div>
+                <div class="desc">hygiene, sealants, fluoride, education</div>
+            </a>
+            <!-- TMJ / TMD &amp; Orofacial Pain -->
+            <a href="ttop.html" class="specialty-tab">
+                <div class="name">TMJ / TMD &amp; Orofacial Pain</div>
+                <div class="desc">jaw joint disorders, headaches</div>
+            </a>
+            <!-- Laser Dentistry -->
+            <a href="lad.html" class="specialty-tab">
+                <div class="name">Laser Dentistry</div>
+                <div class="desc">minimally invasive procedures</div>
+            </a>
+            <!-- Sleep Dentistry / Snoring &amp; Sleep Apnea -->
+            <a href="sdssa.html" class="specialty-tab">
+                <div class="name">Sleep Dentistry / Snoring &amp; Sleep Apnea</div>
+                <div class="desc">oral appliances</div>
+            </a>
         </div>
     </section>
 
@@ -696,7 +914,7 @@
         </div>
     </footer>
 
-    <!-- FREE SEDATION CHECKLIST POPUP (specialty-specific) -->
+    <!-- FREE SEDATION CHECKLIST POPUP (specialty-specific) – retained exactly as original -->
     <div onclick="if(event.target.id === 'freePopup')hideFreePopup()" id="freePopup" class="hidden fixed inset-0 bg-black/70 flex items-end md:items-center justify-center z-[9999]">
         <div onclick="event.stopImmediatePropagation()" class="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-lg mx-4 md:mx-0 p-8">
             <h3 class="text-3xl font-semibold mb-2">Your Free Sedation Dentistry Checklist</h3>
@@ -1051,14 +1269,14 @@
         }
     </script>
 
-    <!-- GLOBAL SHARED SCRIPTS PLACEHOLDERS (same as index) -->
-    <script defer src="/js/registry.js"></script>
-    <script defer src="/js/root-config.js"></script>
-    <script defer src="/js/menu-system.js"></script>
-    <script defer src="/js/search-system.js"></script>
-    <script defer src="/js/schema.js"></script>
-    <script defer src="/js/internal-links.js"></script>
-    <script defer src="/js/legal-engine.js"></script>
+    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <script defer src="js/registry.js"></script>
+    <script defer src="js/root-config.js"></script>
+    <script defer src="js/menu-system.js"></script>
+    <script defer src="js/search-system.js"></script>
+    <script defer src="js/schema.js"></script>
+    <script defer src="js/internal-links.js"></script>
+    <script defer src="js/legal-engine.js"></script>
 
     <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>  
 </body>
