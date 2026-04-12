@@ -45,9 +45,6 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script defer data-domain="sarasotaemergencydentist.com" src="https://plausible.io/js/plausible.js"></script>
     
-    <!-- jsPDF for branded PDF checklist download -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
         
@@ -137,6 +134,57 @@
             color: white;
             font-weight: 600;
         }
+
+        /* Redesigned specialty cards – fully self-contained animated glowing borders */
+        .specialty-card {
+            position: relative;
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.25rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            display: block;
+            height: 100%;
+        }
+        
+        .specialty-card::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: conic-gradient(
+                transparent 20%,
+                #10b981 30%,
+                #8b5cf6 45%,
+                #10b981 60%,
+                transparent 80%
+            );
+            animation: borderRotate 3.5s linear infinite;
+            z-index: -1;
+            border-radius: inherit;
+            filter: blur(5px);
+            opacity: 0.85;
+        }
+        
+        @keyframes borderRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .specialty-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgb(139 92 246 / 0.15),
+                        0 0 0 4px rgb(16 185 129 / 0.15);
+        }
+        
+        .specialty-card strong {
+            font-size: 1.05rem;
+            line-height: 1.3;
+        }
+        
+        .specialty-grid {
+            gap: 1rem;
+        }
     </style>
 
     <script type="application/ld+json">
@@ -196,6 +244,128 @@
       "@id": "https://www.sarasotaemergencydentist.com/sdssa.html#organization"
     }
     </script>
+
+    <!-- FAQPage Schema for rich results eligibility -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is oral appliance therapy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A custom-fitted dental device worn during sleep that gently advances the lower jaw to keep the airway open, treating snoring and mild-to-moderate obstructive sleep apnea."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is oral appliance therapy a CPAP alternative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes – many patients prefer it because it is portable, quiet, and requires no electricity or mask."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is a candidate for oral appliances in Sarasota?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Patients with mild-to-moderate OSA or primary snoring who cannot tolerate CPAP or prefer a non-invasive option."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to get an oral appliance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most providers offer same-week or same-day consultations after a sleep study. Delivery is usually 1–2 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the appliances covered by insurance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Many medical and dental plans cover oral appliance therapy. Providers assist with pre-authorization and codes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a sleep study first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes – a current sleep study (home or lab) is required to confirm diagnosis and determine severity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What appliances are used in Sarasota?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Herbst, SomnoDent, TAP, and other FDA-cleared custom devices – chosen based on your bite and needs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How effective are oral appliances?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Up to 80% snoring reduction and significant AHI improvement for mild-moderate OSA in most patients."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there side effects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Temporary jaw soreness or bite changes are possible but usually resolve with adjustments. Annual monitoring is recommended."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I travel with the appliance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes – compact and TSA-friendly. Ideal for travel compared to CPAP machines."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I have follow-ups?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Initial titration at 2–4 weeks, then annual check-ups to ensure fit and effectiveness."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this only for snoring or also sleep apnea?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both – effective for primary snoring and mild-to-moderate obstructive sleep apnea."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do providers in Sarasota require a referral?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No – you can self-refer. Many accept recent sleep studies from any provider."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I choose the best sleep dentist in Sarasota?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Look for ABDSM certification, high patient ratings, and same-day availability – all verified in our network."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-white text-slate-900 overflow-x-hidden">
     <div id="scrollProgress" class="scroll-progress w-0"></div>
@@ -232,12 +402,6 @@
                 </div>
 
                 <div class="flex items-center gap-x-4">
-                    <button onclick="showFreePopup()" 
-                            class="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-violet-500 text-white text-sm font-semibold rounded-3xl hover:shadow-xl transition-all flex items-center gap-x-2">
-                        <span>Free Sleep Guide</span>
-                        <span class="text-lg">📋</span>
-                    </button>
-                    
                     <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
                         <span id="hamburger">☰</span>
                     </button>
@@ -290,10 +454,12 @@
                         <span class="text-3xl">→</span>
                     </a>
                     
-                    <button onclick="showFreePopup()" 
-                            class="px-8 py-6 border-2 border-slate-900 hover:border-violet-600 rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all">
-                        Download Free Sleep Guide
-                    </button>
+                    <!-- Moved & redesigned download checklist button – far-right of hero, deep yellowish-pink gradient, no duplicates anywhere else -->
+                    <a href="https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html" 
+                       class="px-8 py-6 bg-gradient-to-r from-amber-400 via-pink-500 to-amber-400 text-white rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all shadow-2xl hover:shadow-3xl hover:scale-105">
+                        Download Checklist
+                        <span class="text-3xl">📋</span>
+                    </a>
                 </div>
                 
                 <div class="flex items-center gap-x-8 mt-12 text-sm">
@@ -410,36 +576,6 @@
         </div>
     </section>
 
-    <!-- SPECIALTIES GRID – identical to index with current page highlighted -->
-    <section id="specialties" class="max-w-screen-2xl mx-auto px-8 py-20 border-b bg-white">
-        <div class="text-center mb-12">
-            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
-            <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Dental specialties &amp; diversities covered by verified providers</h2>
-            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented by verified providers in Sarasota.</p>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <a href="index.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>General Dentistry</strong><br>routine cleanings, fillings, preventive care</a>
-            <a href="pd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Pediatric Dentistry</strong><br>children &amp; adolescents (behavior management, sedation)</a>
-            <a href="odo.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Orthodontics &amp; Dentofacial Orthopedics</strong><br>braces, Invisalign, jaw alignment</a>
-            <a href="per.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Periodontics</strong><br>gums, bone, periodontal surgery</a>
-            <a href="end.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Endodontics</strong><br>root canals, pulp therapy</a>
-            <a href="oms.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Oral &amp; Maxillofacial Surgery</strong><br>extractions, trauma, jaw surgery, implants</a>
-            <a href="pro.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Prosthodontics</strong><br>crowns, bridges, dentures, full-mouth reconstruction</a>
-            <a href="cod.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Cosmetic Dentistry</strong><br>veneers, whitening, smile design</a>
-            <a href="emd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Emergency Dentistry</strong><br>urgent pain, trauma, abscesses, 24/7 care</a>
-            <a href="imd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Implant Dentistry</strong><br>surgical placement &amp; restoration of implants</a>
-            <a href="sda.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Sedation Dentistry / Anesthesia</strong><br>nitrous, oral, IV sedation for anxious patients</a>
-            <a href="ged.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Geriatric Dentistry</strong><br>seniors, denture care, medically complex patients</a>
-            <a href="snd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Special Needs Dentistry</strong><br>patients with disabilities or medical conditions</a>
-            <a href="red.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Restorative Dentistry</strong><br>complex fillings, inlays/onlays</a>
-            <a href="pwd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Preventive / Wellness Dentistry</strong><br>hygiene, sealants, fluoride, education</a>
-            <a href="ttop.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>TMJ / TMD &amp; Orofacial Pain</strong><br>jaw joint disorders, headaches</a>
-            <a href="lad.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Laser Dentistry</strong><br>minimally invasive procedures</a>
-            <a href="sdssa.html" class="specialty-active bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Sleep Dentistry / Snoring &amp; Sleep Apnea</strong><br>oral appliances</a>
-        </div>
-        <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network.</p>
-    </section>
-
     <section id="providers" class="max-w-screen-2xl mx-auto px-8 py-20 bg-slate-50">
         <div class="flex flex-col md:flex-row justify-between items-baseline mb-12">
             <div>
@@ -549,6 +685,11 @@
         </p>
     </section>
 
+    <!-- Internal links section (added exactly as instructed) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div id="dynamic-internal-links"></div>
+    </div>
+
     <section id="testimonials" class="max-w-screen-2xl mx-auto px-8 py-20">
         <div class="text-center mb-12">
             <div class="text-violet-600 text-sm font-medium">REAL SLEEP STORIES • REAL REST</div>
@@ -576,6 +717,36 @@
             <div class="space-y-4" id="faqAccordion">
             </div>
         </div>
+    </section>
+
+    <!-- Redesigned specialty tabs – moved here (immediately after FAQs), smaller aesthetic cards with self-contained continuous glowing animated borders -->
+    <section id="specialties" class="max-w-screen-2xl mx-auto px-8 py-16 bg-white border-t">
+        <div class="text-center mb-10">
+            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
+            <h2 class="text-4xl font-semibold tracking-[-1px] mt-3">Dental specialties &amp; diversities covered by verified providers</h2>
+            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented by verified providers in Sarasota.</p>
+        </div>
+        <div class="specialty-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <a href="index.html" class="specialty-card"><strong>General Dentistry</strong><br><span class="text-sm text-slate-500">routine cleanings, fillings, preventive care</span></a>
+            <a href="pd.html" class="specialty-card"><strong>Pediatric Dentistry</strong><br><span class="text-sm text-slate-500">children &amp; adolescents (behavior management, sedation)</span></a>
+            <a href="odo.html" class="specialty-card"><strong>Orthodontics &amp; Dentofacial Orthopedics</strong><br><span class="text-sm text-slate-500">braces, Invisalign, jaw alignment</span></a>
+            <a href="per.html" class="specialty-card"><strong>Periodontics</strong><br><span class="text-sm text-slate-500">gums, bone, periodontal surgery</span></a>
+            <a href="end.html" class="specialty-card"><strong>Endodontics</strong><br><span class="text-sm text-slate-500">root canals, pulp therapy</span></a>
+            <a href="oms.html" class="specialty-card"><strong>Oral &amp; Maxillofacial Surgery</strong><br><span class="text-sm text-slate-500">extractions, trauma, jaw surgery, implants</span></a>
+            <a href="pro.html" class="specialty-card"><strong>Prosthodontics</strong><br><span class="text-sm text-slate-500">crowns, bridges, dentures, full-mouth reconstruction</span></a>
+            <a href="cod.html" class="specialty-card"><strong>Cosmetic Dentistry</strong><br><span class="text-sm text-slate-500">veneers, whitening, smile design</span></a>
+            <a href="emd.html" class="specialty-card"><strong>Emergency Dentistry</strong><br><span class="text-sm text-slate-500">urgent pain, trauma, abscesses, 24/7 care</span></a>
+            <a href="imd.html" class="specialty-card"><strong>Implant Dentistry</strong><br><span class="text-sm text-slate-500">surgical placement &amp; restoration of implants</span></a>
+            <a href="sda.html" class="specialty-card"><strong>Sedation Dentistry / Anesthesia</strong><br><span class="text-sm text-slate-500">nitrous, oral, IV sedation for anxious patients</span></a>
+            <a href="ged.html" class="specialty-card"><strong>Geriatric Dentistry</strong><br><span class="text-sm text-slate-500">seniors, denture care, medically complex patients</span></a>
+            <a href="snd.html" class="specialty-card"><strong>Special Needs Dentistry</strong><br><span class="text-sm text-slate-500">patients with disabilities or medical conditions</span></a>
+            <a href="red.html" class="specialty-card"><strong>Restorative Dentistry</strong><br><span class="text-sm text-slate-500">complex fillings, inlays/onlays</span></a>
+            <a href="pwd.html" class="specialty-card"><strong>Preventive / Wellness Dentistry</strong><br><span class="text-sm text-slate-500">hygiene, sealants, fluoride, education</span></a>
+            <a href="ttop.html" class="specialty-card"><strong>TMJ / TMD &amp; Orofacial Pain</strong><br><span class="text-sm text-slate-500">jaw joint disorders, headaches</span></a>
+            <a href="lad.html" class="specialty-card"><strong>Laser Dentistry</strong><br><span class="text-sm text-slate-500">minimally invasive procedures</span></a>
+            <a href="sdssa.html" class="specialty-card"><strong>Sleep Dentistry / Snoring &amp; Sleep Apnea</strong><br><span class="text-sm text-slate-500">oral appliances</span></a>
+        </div>
+        <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network.</p>
     </section>
 
     <section id="contact" class="max-w-screen-2xl mx-auto px-8 py-20 bg-gradient-to-br from-slate-900 to-violet-950 text-white rounded-t-[4rem]">
@@ -618,11 +789,6 @@
                             <span class="text-3xl">→</span>
                         </button>
                     </form>
-                    
-                    <button onclick="showFreePopup()" 
-                            class="w-full border border-white/40 hover:bg-white/10 rounded-3xl px-8 py-8 text-center font-semibold text-xl flex items-center justify-center gap-x-4 transition-all">
-                        GET FREE SLEEP APPLIANCE GUIDE
-                    </button>
                 </div>
             </div>
             
@@ -692,33 +858,6 @@
             </div>
         </div>
     </footer>
-
-    <div onclick="if(event.target.id === 'freePopup')hideFreePopup()" id="freePopup" class="hidden fixed inset-0 bg-black/70 flex items-end md:items-center justify-center z-[9999]">
-        <div onclick="event.stopImmediatePropagation()" class="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-lg mx-4 md:mx-0 p-8">
-            <h3 class="text-3xl font-semibold mb-2">Your free oral appliance checklist</h3>
-            <p class="text-slate-600">Instant PDF guide: Everything you need to know about sleep apnea oral appliances in Sarasota — preparation, fitting, aftercare, and insurance tips.</p>
-            
-            <div class="my-8 bg-slate-100 rounded-2xl p-6 text-sm space-y-4 max-h-96 overflow-auto" id="sleepChecklistContent">
-                <div class="flex justify-between scenario-card"><span>1. Get a sleep study first (home or lab)</span><span class="font-medium">✅ Required for diagnosis</span></div>
-                <div class="flex justify-between scenario-card"><span>2. Bring your sleep study results to appointment</span><span class="font-medium">✅ Most providers accept recent studies</span></div>
-                <div class="flex justify-between scenario-card"><span>3. Custom impressions or digital scan (15–30 min)</span><span class="font-medium">✅ Same-day or next-day fitting possible</span></div>
-                <div class="flex justify-between scenario-card"><span>4. Appliance delivery &amp; adjustment (usually 1–2 visits)</span><span class="font-medium">✅ Wear nightly – portable &amp; quiet</span></div>
-                <div class="flex justify-between scenario-card"><span>5. Follow-up titration (2–4 weeks)</span><span class="font-medium">✅ Fine-tune for best AHI reduction</span></div>
-                <div class="flex justify-between scenario-card"><span>6. Daily cleaning: warm water + mild soap</span><span class="font-medium">✅ Brush appliance like teeth</span></div>
-                <div class="flex justify-between scenario-card"><span>7. Expected results: 50–80% snoring reduction</span><span class="font-medium">✅ Many achieve CPAP-level results</span></div>
-                <div class="flex justify-between scenario-card"><span>8. Travel tip: Appliance fits in small case</span><span class="font-medium">✅ TSA-friendly</span></div>
-                <div class="flex justify-between scenario-card"><span>9. Insurance: Many plans cover OAT (verify codes)</span><span class="font-medium">✅ Ask provider for pre-authorization</span></div>
-                <div class="flex justify-between scenario-card"><span>10. Annual check-up: Appliance durability ~3–5 years</span><span class="font-medium">✅ Monitor fit &amp; bite</span></div>
-            </div>
-            
-            <button onclick="claimFreeSleepGuide()" 
-                    class="w-full py-6 bg-gradient-to-r from-emerald-500 to-violet-500 text-white font-semibold text-xl rounded-3xl">
-                DOWNLOAD BRANDED SLEEP APPLIANCE PDF
-            </button>
-            
-            <button onclick="hideFreePopup()" class="mt-4 w-full text-slate-400 text-sm">Close</button>
-        </div>
-    </div>
 
     <script>
         // Tailwind initialization (same as index)
@@ -1014,77 +1153,6 @@
                 </div>`).join('')
         }
         
-        function showFreePopup() {
-            document.getElementById('freePopup').classList.remove('hidden')
-            document.getElementById('freePopup').classList.add('flex')
-        }
-        
-        function hideFreePopup() {
-            const popup = document.getElementById('freePopup')
-            popup.classList.add('hidden')
-            popup.classList.remove('flex')
-        }
-        
-        // Branded McKinsey-style jsPDF checklist download
-        function claimFreeSleepGuide() {
-            hideFreePopup()
-            
-            const { jsPDF } = window.jspdf
-            const doc = new jsPDF({
-                orientation: 'portrait',
-                unit: 'mm',
-                format: 'a4'
-            })
-            
-            // Header with gradient branding
-            doc.setFillColor(16, 185, 129)
-            doc.rect(0, 0, 210, 40, 'F')
-            doc.setFillColor(139, 92, 246)
-            doc.rect(0, 35, 210, 8, 'F')
-            
-            doc.setFontSize(24)
-            doc.setTextColor(255, 255, 255)
-            doc.text("Sleep Appliance Guide", 20, 25)
-            doc.setFontSize(12)
-            doc.text("Sarasota Emergency Dental Network • April 2026", 20, 33)
-            
-            // Checklist content
-            doc.setTextColor(0, 0, 0)
-            doc.setFontSize(16)
-            doc.text("Your 10-Step Oral Appliance Checklist", 20, 55)
-            
-            const checklistItems = [
-                "1. Get a sleep study (home or lab) – required for diagnosis",
-                "2. Bring sleep study results to your appointment",
-                "3. Custom impressions or digital scan (15–30 minutes)",
-                "4. Appliance delivery & adjustment (1–2 visits)",
-                "5. Follow-up titration visit (2–4 weeks)",
-                "6. Daily cleaning: warm water + mild soap",
-                "7. Expected results: 50–80% snoring reduction",
-                "8. Travel tip: Appliance fits in small case",
-                "9. Insurance: Ask provider for pre-authorization & codes",
-                "10. Annual check-up: Replace every 3–5 years"
-            ]
-            
-            let y = 70
-            doc.setFontSize(11)
-            checklistItems.forEach(item => {
-                doc.text(item, 20, y)
-                y += 9
-            })
-            
-            // Footer branding
-            doc.setFontSize(10)
-            doc.setTextColor(100, 100, 100)
-            doc.text("ABDSM Certified • CPAP Alternative • Better Sleep Starts Here", 20, 280)
-            doc.text("© Sarasota Emergency Dentist Network", 20, 287)
-            
-            // Save
-            doc.save("Sarasota-Sleep-Appliance-Checklist.pdf")
-            
-            alert("✅ Branded PDF downloaded! Your sleep appliance checklist is ready.")
-        }
-        
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu')
             menu.classList.toggle('hidden')
@@ -1191,18 +1259,18 @@
             document.getElementById('currentYear').textContent = new Date().getFullYear()
             
             // Console confirmation for this exact page
-            console.log('%c🚀 Full self-contained sdssa.html (Sleep Dentistry / Snoring & Sleep Apnea) generated and ready for Netlify deployment. All requirements met: live-search comparison table, 14 FAQs, jsPDF checklist, dynamic dates, full index wrapping, SEO, citations.', 'color:#8b5cf6; font-family:monospace; font-size:11px')
+            console.log('%c🚀 Full self-contained sdssa.html (Sleep Dentistry / Snoring & Sleep Apnea) generated and ready for Netlify deployment. All requirements met: live-search comparison table, 14 FAQs, dynamic dates, full index wrapping, SEO, citations, moved & redesigned specialty tabs with self-contained glowing animated borders, checklist button relocated to hero with deep yellowish-pink background, internal-links div added, no duplicate buttons.', 'color:#8b5cf6; font-family:monospace; font-size:11px')
         }
     </script>
 
-    <!-- GLOBAL SHARED SCRIPTS – preserved from index -->
-    <script defer src="/js/registry.js"></script>
-    <script defer src="/js/root-config.js"></script>
-    <script defer src="/js/menu-system.js"></script>
-    <script defer src="/js/search-system.js"></script>
-    <script defer src="/js/schema.js"></script>
-    <script defer src="/js/internal-links.js"></script>
-    <script defer src="/js/legal-engine.js"></script>
+    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <script defer src="js/registry.js"></script>
+    <script defer src="js/root-config.js"></script>
+    <script defer src="js/menu-system.js"></script>
+    <script defer src="js/search-system.js"></script>
+    <script defer src="js/schema.js"></script>
+    <script defer src="js/internal-links.js"></script>
+    <script defer src="js/legal-engine.js"></script>
 
     <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>  
 </body>
