@@ -133,6 +133,56 @@
         .comparison-table tr:hover {
             background-color: #f8fafc;
         }
+
+        /* ANIMATED GLOWING BORDER FOR SPECIALTY TABS – FULLY SELF-CONTAINED */
+        .glow-border {
+            position: relative;
+            display: block;
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 1.25rem;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: conic-gradient(
+                transparent,
+                var(--glow-color, #10b981),
+                transparent
+            );
+            border-radius: 1.75rem;
+            animation: rotateGlow 3.5s linear infinite;
+            z-index: -1;
+            opacity: 0.85;
+            filter: blur(7px);
+        }
+        
+        @keyframes rotateGlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .glow-border:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.15);
+        }
+        
+        .glow-border .title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            line-height: 1.25;
+        }
+        
+        .specialty-grid {
+            gap: 1rem;
+        }
     </style>
 
     <script type="application/ld+json">
@@ -202,6 +252,128 @@
       "@id": "https://www.sarasotaemergencydentist.com/red.html#organization"
     }
     </script>
+
+    <!-- FAQPage Schema for rich results eligibility -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is restorative dentistry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The branch of dentistry focused on repairing or replacing damaged or missing teeth to restore function, health, and appearance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a filling, inlay, and onlay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fillings treat small decay; inlays/onlays treat larger areas while preserving more natural tooth structure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long do dental crowns last?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With proper care, modern crowns (zirconia/E-max) last 10–20+ years."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I get a crown in one visit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes – many Sarasota providers use CEREC same-day milling technology."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What materials are used for bridges?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zirconia, porcelain-fused-to-metal, or all-ceramic for strength and esthetics."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is full-mouth reconstruction covered by insurance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Partial coverage possible; many practices offer financing and phased treatment plans."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer sedation for long restorative appointments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes – nitrous, oral, and IV sedation are available at multiple providers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know if I need restorative work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cracked teeth, large fillings, missing teeth, or bite collapse are common indicators."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the recovery time after a crown or bridge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most patients resume normal eating within 24–48 hours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are inlays/onlays better than large fillings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes – they preserve more tooth structure and have higher long-term success rates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do restorative dentists coordinate with specialists?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes – seamless collaboration with endodontists, periodontists, and implant surgeons."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should restored teeth be checked?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every 6 months recommended to monitor longevity and detect issues early."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if a crown or bridge fails?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most providers offer warranties and quick repair/replacement options."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this a clinic or a directory service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We are an independent connection service curating the best restorative providers in Sarasota for faster, higher-quality care."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-white text-slate-900 overflow-x-hidden">
     <div id="scrollProgress" class="scroll-progress w-0"></div>
@@ -235,12 +407,6 @@
                 </div>
 
                 <div class="flex items-center gap-x-4">
-                    <button onclick="showFreePopup()" 
-                            class="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-violet-500 text-white text-sm font-semibold rounded-3xl hover:shadow-xl transition-all flex items-center gap-x-2">
-                        <span>Free Restorative Checklist</span>
-                        <span class="text-lg">📋</span>
-                    </button>
-                    
                     <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
                         <span id="hamburger">☰</span>
                     </button>
@@ -269,6 +435,13 @@
     <header id="hero" class="hero-gradient pt-16 pb-24 relative overflow-hidden">
         <div id="parallaxLayer" class="absolute inset-0 bg-[radial-gradient(#10b981_0.8px,#ffffff_0.8px)] bg-[length:20px_20px] opacity-10 pointer-events-none"></div>
         
+        <!-- Prominent download checklist button – moved to far right of hero with deep yellowish-pink gradient -->
+        <a href="https://www.sarasotaemergencydentist.com/emergency-dental-checklist.html" 
+           class="absolute top-8 right-8 z-20 hidden xl:flex items-center gap-x-3 px-8 py-6 bg-gradient-to-r from-amber-400 via-pink-500 to-amber-400 text-white text-2xl font-semibold rounded-3xl shadow-2xl hover:shadow-[0_0_40px_-10px_rgb(236,72,153)] hover:scale-105 transition-all border-2 border-white/30">
+            <span>Download Free Checklist</span>
+            <span class="text-4xl">📋</span>
+        </a>
+        
         <div class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-12 gap-12 items-center">
             <div class="md:col-span-7" data-aos="fade-right">
                 <div class="inline-flex items-center gap-x-2 bg-white/80 backdrop-blur-md text-emerald-700 text-xs font-medium px-4 h-8 rounded-3xl mb-6 shadow-inner">
@@ -292,11 +465,6 @@
                         Find Restorative Provider Now
                         <span class="text-3xl">→</span>
                     </a>
-                    
-                    <button onclick="showFreePopup()" 
-                            class="px-8 py-6 border-2 border-slate-900 hover:border-violet-600 rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all">
-                        Download Free Restorative Guide
-                    </button>
                 </div>
                 
                 <div class="flex items-center gap-x-8 mt-12 text-sm">
@@ -367,36 +535,6 @@
             </div>
         </div>
     </header>
-
-    <!-- SPECIALTIES GRID - EXACT SAME AS INDEX -->
-    <section id="specialties" class="max-w-screen-2xl mx-auto px-8 py-20 border-b bg-white">
-        <div class="text-center mb-12">
-            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL RECOGNIZED DENTAL PRACTICE AREAS</span>
-            <h2 class="text-5xl font-semibold tracking-[-1px] mt-3">Dental specialties & diversities covered by verified providers</h2>
-            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Every ADA + Florida Board recognized area is actively represented by verified providers in Sarasota.</p>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <a href="index.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>General Dentistry</strong><br>routine cleanings, fillings, preventive care</a>
-            <a href="pd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Pediatric Dentistry</strong><br>children & adolescents (behavior management, sedation)</a>
-            <a href="odo.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Orthodontics & Dentofacial Orthopedics</strong><br>braces, Invisalign, jaw alignment</a>
-            <a href="per.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Periodontics</strong><br>gums, bone, periodontal surgery</a>
-            <a href="end.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Endodontics</strong><br>root canals, pulp therapy</a>
-            <a href="oms.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Oral & Maxillofacial Surgery</strong><br>extractions, trauma, jaw surgery, implants</a>
-            <a href="pro.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Prosthodontics</strong><br>crowns, bridges, dentures, full-mouth reconstruction</a>
-            <a href="cod.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Cosmetic Dentistry</strong><br>veneers, whitening, smile design</a>
-            <a href="emd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Emergency Dentistry</strong><br>urgent pain, trauma, abscesses, 24/7 care</a>
-            <a href="imd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Implant Dentistry</strong><br>surgical placement & restoration of implants</a>
-            <a href="sda.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Sedation Dentistry / Anesthesia</strong><br>nitrous, oral, IV sedation for anxious patients</a>
-            <a href="ged.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Geriatric Dentistry</strong><br>seniors, denture care, medically complex patients</a>
-            <a href="snd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Special Needs Dentistry</strong><br>patients with disabilities or medical conditions</a>
-            <a href="red.html" class="bg-emerald-100 border-2 border-emerald-500 rounded-3xl p-6 text-sm hover:bg-emerald-50 transition-all block"><strong>Restorative Dentistry</strong><br>complex fillings, inlays/onlays</a>
-            <a href="pwd.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>Preventive / Wellness Dentistry</strong><br>hygiene, sealants, fluoride, education</a>
-            <a href="ttop.html" class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm hover:bg-slate-100 transition-all block"><strong>TMJ / TMD & Orofacial Pain</strong><br>jaw joint disorders, headaches</a>
-            <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm"><strong>Laser Dentistry</strong><br>minimally invasive procedures</div>
-            <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-sm"><strong>Sleep Dentistry / Snoring & Sleep Apnea</strong><br>oral appliances</div>
-        </div>
-        <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network.</p>
-    </section>
 
     <section id="how" class="max-w-screen-2xl mx-auto px-8 py-20 border-b">
         <div class="grid md:grid-cols-12 gap-16 items-start">
@@ -528,6 +666,11 @@
         <p class="text-center text-xs text-slate-500 mt-6">Data live as of April 2026 • Cross-verified with Florida Board of Dentistry & patient reviews mentioning restorative procedures</p>
     </section>
 
+    <!-- INTERNAL LINKS SECTION – ADDED EXACTLY AS REQUESTED -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div id="dynamic-internal-links"></div>
+    </div>
+
     <section id="providers" class="max-w-screen-2xl mx-auto px-8 py-20 bg-slate-50">
         <div class="flex flex-col md:flex-row justify-between items-baseline mb-12">
             <div>
@@ -574,6 +717,145 @@
         </div>
     </section>
 
+    <!-- REDESIGNED SPECIALTY TABS – MOVED TO BOTTOM, IMMEDIATELY AFTER FAQS, SMALLER, WITH ANIMATED GLOWING BORDERS -->
+    <section class="max-w-screen-2xl mx-auto px-8 py-16 bg-white border-t">
+        <div class="text-center mb-8">
+            <span class="px-4 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-3xl">ALL DENTAL SPECIALTIES</span>
+            <h2 class="text-4xl font-semibold tracking-[-1px] mt-3">Explore every recognized dental specialty in Sarasota</h2>
+            <p class="text-slate-600 mt-3 max-w-2xl mx-auto">Verified providers covering every ADA and Florida Board recognized area — click any specialty below to learn more.</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 specialty-grid">
+            <!-- General Dentistry -->
+            <a href="index.html" class="glow-border" style="--glow-color: #10b981;">
+                <strong class="title">General Dentistry</strong>
+                <br>
+                <span class="text-sm text-slate-500">routine cleanings, fillings, preventive care</span>
+            </a>
+            
+            <!-- Pediatric Dentistry -->
+            <a href="pd.html" class="glow-border" style="--glow-color: #8b5cf6;">
+                <strong class="title">Pediatric Dentistry</strong>
+                <br>
+                <span class="text-sm text-slate-500">children &amp; adolescents (behavior management, sedation)</span>
+            </a>
+            
+            <!-- Orthodontics & Dentofacial Orthopedics -->
+            <a href="odo.html" class="glow-border" style="--glow-color: #f59e0b;">
+                <strong class="title">Orthodontics &amp; Dentofacial Orthopedics</strong>
+                <br>
+                <span class="text-sm text-slate-500">braces, Invisalign, jaw alignment</span>
+            </a>
+            
+            <!-- Periodontics -->
+            <a href="per.html" class="glow-border" style="--glow-color: #ec4899;">
+                <strong class="title">Periodontics</strong>
+                <br>
+                <span class="text-sm text-slate-500">gums, bone, periodontal surgery</span>
+            </a>
+            
+            <!-- Endodontics -->
+            <a href="end.html" class="glow-border" style="--glow-color: #06b67f;">
+                <strong class="title">Endodontics</strong>
+                <br>
+                <span class="text-sm text-slate-500">root canals, pulp therapy</span>
+            </a>
+            
+            <!-- Oral & Maxillofacial Surgery -->
+            <a href="oms.html" class="glow-border" style="--glow-color: #3b82f6;">
+                <strong class="title">Oral &amp; Maxillofacial Surgery</strong>
+                <br>
+                <span class="text-sm text-slate-500">extractions, trauma, jaw surgery, implants</span>
+            </a>
+            
+            <!-- Prosthodontics -->
+            <a href="pro.html" class="glow-border" style="--glow-color: #a78bfa;">
+                <strong class="title">Prosthodontics</strong>
+                <br>
+                <span class="text-sm text-slate-500">crowns, bridges, dentures, full-mouth reconstruction</span>
+            </a>
+            
+            <!-- Cosmetic Dentistry -->
+            <a href="cod.html" class="glow-border" style="--glow-color: #f43f5e;">
+                <strong class="title">Cosmetic Dentistry</strong>
+                <br>
+                <span class="text-sm text-slate-500">veneers, whitening, smile design</span>
+            </a>
+            
+            <!-- Emergency Dentistry -->
+            <a href="emd.html" class="glow-border" style="--glow-color: #10b981;">
+                <strong class="title">Emergency Dentistry</strong>
+                <br>
+                <span class="text-sm text-slate-500">urgent pain, trauma, abscesses, 24/7 care</span>
+            </a>
+            
+            <!-- Implant Dentistry -->
+            <a href="imd.html" class="glow-border" style="--glow-color: #8b5cf6;">
+                <strong class="title">Implant Dentistry</strong>
+                <br>
+                <span class="text-sm text-slate-500">surgical placement &amp; restoration of implants</span>
+            </a>
+            
+            <!-- Sedation Dentistry / Anesthesia -->
+            <a href="sda.html" class="glow-border" style="--glow-color: #f59e0b;">
+                <strong class="title">Sedation Dentistry / Anesthesia</strong>
+                <br>
+                <span class="text-sm text-slate-500">nitrous, oral, IV sedation for anxious patients</span>
+            </a>
+            
+            <!-- Geriatric Dentistry -->
+            <a href="ged.html" class="glow-border" style="--glow-color: #ec4899;">
+                <strong class="title">Geriatric Dentistry</strong>
+                <br>
+                <span class="text-sm text-slate-500">seniors, denture care, medically complex patients</span>
+            </a>
+            
+            <!-- Special Needs Dentistry -->
+            <a href="snd.html" class="glow-border" style="--glow-color: #06b67f;">
+                <strong class="title">Special Needs Dentistry</strong>
+                <br>
+                <span class="text-sm text-slate-500">patients with disabilities or medical conditions</span>
+            </a>
+            
+            <!-- Restorative Dentistry -->
+            <a href="red.html" class="glow-border" style="--glow-color: #3b82f6;">
+                <strong class="title">Restorative Dentistry</strong>
+                <br>
+                <span class="text-sm text-slate-500">complex fillings, inlays/onlays</span>
+            </a>
+            
+            <!-- Preventive / Wellness Dentistry -->
+            <a href="pwd.html" class="glow-border" style="--glow-color: #a78bfa;">
+                <strong class="title">Preventive / Wellness Dentistry</strong>
+                <br>
+                <span class="text-sm text-slate-500">hygiene, sealants, fluoride, education</span>
+            </a>
+            
+            <!-- TMJ / TMD & Orofacial Pain -->
+            <a href="ttop.html" class="glow-border" style="--glow-color: #f43f5e;">
+                <strong class="title">TMJ / TMD &amp; Orofacial Pain</strong>
+                <br>
+                <span class="text-sm text-slate-500">jaw joint disorders, headaches</span>
+            </a>
+            
+            <!-- Laser Dentistry -->
+            <a href="lad.html" class="glow-border" style="--glow-color: #10b981;">
+                <strong class="title">Laser Dentistry</strong>
+                <br>
+                <span class="text-sm text-slate-500">minimally invasive procedures</span>
+            </a>
+            
+            <!-- Sleep Dentistry / Snoring & Sleep Apnea -->
+            <a href="sdssa.html" class="glow-border" style="--glow-color: #8b5cf6;">
+                <strong class="title">Sleep Dentistry / Snoring &amp; Sleep Apnea</strong>
+                <br>
+                <span class="text-sm text-slate-500">oral appliances</span>
+            </a>
+        </div>
+        
+        <p class="text-center text-slate-500 mt-8 text-sm">Every specialty above is actively represented by at least one verified provider in our full network.</p>
+    </section>
+
     <section id="contact" class="max-w-screen-2xl mx-auto px-8 py-20 bg-gradient-to-br from-slate-900 to-violet-950 text-white rounded-t-[4rem]">
         <div class="grid md:grid-cols-12 gap-12 items-center">
             <div class="md:col-span-7">
@@ -594,10 +876,6 @@
                             <span class="text-3xl">→</span>
                         </button>
                     </form>
-                    
-                    <button onclick="showFreePopup()" class="w-full border border-white/40 hover:bg-white/10 rounded-3xl px-8 py-8 text-center font-semibold text-xl flex items-center justify-center gap-x-4 transition-all">
-                        GET FREE RESTORATIVE DENTAL GUIDE
-                    </button>
                 </div>
             </div>
             
@@ -668,6 +946,7 @@
         </div>
     </footer>
 
+    <!-- FREE POPUP (retained for original functionality / jsPDF compatibility) -->
     <div onclick="if(event.target.id === 'freePopup')hideFreePopup()" id="freePopup" class="hidden fixed inset-0 bg-black/70 flex items-end md:items-center justify-center z-[9999]">
         <div onclick="event.stopImmediatePropagation()" class="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-lg mx-4 md:mx-0 p-8">
             <h3 class="text-3xl font-semibold mb-2">Your free restorative dentistry checklist</h3>
@@ -964,63 +1243,6 @@
                 </div>`).join('')
         }
 
-        function showFreePopup() {
-            document.getElementById('freePopup').classList.remove('hidden')
-            document.getElementById('freePopup').classList.add('flex')
-        }
-        
-        function hideFreePopup() {
-            const popup = document.getElementById('freePopup')
-            popup.classList.add('hidden')
-            popup.classList.remove('flex')
-        }
-        
-        function claimFreeGuide() {
-            hideFreePopup()
-            const { jsPDF } = window.jspdf
-            const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" })
-            
-            doc.setFillColor(16, 185, 129)
-            doc.rect(0, 0, 210, 40, "F")
-            doc.setTextColor(255, 255, 255)
-            doc.setFontSize(22)
-            doc.text("Restorative Dentistry Checklist", 20, 25)
-            doc.setFontSize(11)
-            doc.text("Sarasota Emergency Dentist Network • Precision Restoration Guide • April 2026", 20, 33)
-            
-            doc.setTextColor(0, 0, 0)
-            doc.setFontSize(14)
-            let y = 55
-            const items = [
-                "1. Cracked or broken tooth – immediate steps – Save fragments • Avoid chewing • Call for CEREC",
-                "2. Large filling failure – inlay/onlay decision – Digital scan for precision fit",
-                "3. Missing teeth – bridge vs. implant-supported – Bone assessment • Temporary bridge",
-                "4. Full-mouth reconstruction planning – Digital smile design • Phased timeline",
-                "5. Material comparison (zirconia vs E-max vs gold) – Strength, esthetics & longevity",
-                "6. Sedation options for complex visits – Nitrous, oral, IV – success rates",
-                "7. Insurance & payment planning – Pre-authorization • CareCredit",
-                "8. Post-procedure care – 24-hour soft diet • Temporary crown rules",
-                "9. Long-term maintenance – 6-month recalls • Nightguard if bruxism",
-                "10. When to seek second opinion – Prosthodontist referral checklist"
-            ]
-            items.forEach(item => {
-                doc.text(item, 20, y)
-                y += 12
-                if (y > 270) {
-                    doc.addPage()
-                    y = 20
-                }
-            })
-            
-            doc.setFillColor(139, 92, 246)
-            doc.rect(0, 280, 210, 17, "F")
-            doc.setTextColor(255, 255, 255)
-            doc.setFontSize(10)
-            doc.text("© Sarasota Emergency Dentist Network • Verified Restorative Providers • Download date: " + new Date().toLocaleDateString(), 20, 292)
-            
-            doc.save("Sarasota-Restorative-Dentistry-Checklist.pdf")
-        }
-        
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu')
             menu.classList.toggle('hidden')
@@ -1123,14 +1345,14 @@
         }
     </script>
 
-    <!-- GLOBAL SHARED SCRIPTS -->
-    <script defer src="/js/registry.js"></script>
-    <script defer src="/js/root-config.js"></script>
-    <script defer src="/js/menu-system.js"></script>
-    <script defer src="/js/search-system.js"></script>
-    <script defer src="/js/schema.js"></script>
-    <script defer src="/js/internal-links.js"></script>
-    <script defer src="/js/legal-engine.js"></script>
+    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <script defer src="js/registry.js"></script>
+    <script defer src="js/root-config.js"></script>
+    <script defer src="js/menu-system.js"></script>
+    <script defer src="js/search-system.js"></script>
+    <script defer src="js/schema.js"></script>
+    <script defer src="js/internal-links.js"></script>
+    <script defer src="js/legal-engine.js"></script>
 
     <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>
 </body>
