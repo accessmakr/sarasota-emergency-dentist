@@ -101,6 +101,10 @@ window.SITE_REGISTRY = {
         "label": "Restorative Dentistry in Sarasota, FL • Crowns, Bridges, Inlays & Full-Mouth Reconstruction with Verified Experts"
       },
       {
+        "name": "sarasota-emergency-dentist.html",
+        "label": "Emergency Dentist Sarasota FL • 24/7 Same-Day Relief • Call (941) 375-4005"
+      },
+      {
         "name": "sda.html",
         "label": "Sedation Dentistry &amp; Anesthesia in Sarasota, FL • Anxiety-Free Care with Trusted Experts"
       },
