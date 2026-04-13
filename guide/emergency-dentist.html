@@ -1060,14 +1060,14 @@
             dateEl.textContent = formatted
         }
         
-        // IDLE REDIRECT SYSTEM (~25 seconds of inactivity → redirect to main CTA / homepage)
+        // IDLE REFRESH SYSTEM (45 seconds of inactivity → auto refresh the same page)
         let idleTimeout
         function resetIdleTimer() {
             clearTimeout(idleTimeout)
             idleTimeout = setTimeout(() => {
-                console.log('%c⏳ User idle detected – redirecting to main directory for faster help', 'color:#eab308; font-weight:bold')
-                window.location.href = 'https://www.sarasotaemergencydentist.com'
-            }, 25000)
+                console.log('%c⏳ User idle detected – refreshing page to update live availability', 'color:#eab308; font-weight:bold')
+                window.location.reload()
+            }, 45000)
         }
         
         window.onload = function () {
