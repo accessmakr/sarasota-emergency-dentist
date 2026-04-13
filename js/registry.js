@@ -139,10 +139,6 @@ window.SITE_REGISTRY = {
     "icon": "📁",
     "files": [
       {
-        "name": "location/Sarasota.html",
-        "label": "location/Sarasota.html"
-      },
-      {
         "name": "location/sarasota-emergency-dentist.html",
         "label": "Emergency Dentist in Sarasota FL | Same-Day Urgent Dental Care"
       }
