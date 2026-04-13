@@ -51,6 +51,9 @@
             animation: fadeIn 0.8s ease forwards;
         }
     </style>
+    <!-- Preconnect hints for performance -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body class="bg-gray-950 text-white">
 
@@ -343,7 +346,7 @@
                         <a href="https://sarasotaemergencydentist.com/disclaimer.html" class="block hover:text-emerald-400 mb-3">Disclaimer</a>
                     </div>
                     <div>
-                        <a href="https://sarasotaemergencydentist.com/dcma.html" class="block hover:text-emerald-400 mb-3">Dcma</a>
+                        <a href="https://sarasotaemergencydentist.com/dmca.html" class="block hover:text-emerald-400 mb-3">DMCA</a>
                         <a href="https://sarasotaemergencydentist.com/accessibility.html" class="block hover:text-emerald-400 mb-3">Accessibility</a>
                         <a href="https://sarasotaemergencydentist.com/do-not-sell-my-data.html" class="block hover:text-emerald-400 mb-3">Do Not Sell My Data</a>
                     </div>
@@ -390,6 +393,15 @@
     <!-- TOAST CONTAINER -->
     <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>
 
+    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <script defer src="js/registry.js"></script>
+    <script defer src="js/root-config.js"></script>
+    <script defer src="js/menu-system.js"></script>
+    <script defer src="js/search-system.js"></script>
+    <script defer src="js/schema.js"></script>
+    <script defer src="js/internal-links.js"></script>
+    <script defer src="js/legal-engine.js"></script>
+
     <!-- GLOBAL SHARED SCRIPTS -->
     <script>
         // Tailwind script already loaded
@@ -418,7 +430,7 @@
                 phone: "(941) 398-0609",
                 website: "https://www.idaflorida.com/",
                 location: "1435 S Tamiami Trail B, Sarasota, FL 34239",
-                rating: "5.0 ★ (Yelp verified)",
+                rating: "5.0 ★ (verified)",
                 review: "Same-day emergency appointments available. Highly recommended for urgent care.",
                 logoEmoji: "🦷"
             },
@@ -432,30 +444,30 @@
                 logoEmoji: "🦷"
             },
             {
-                name: "Emergency Dentistry",
-                phone: "(941) 375-4005",
-                website: "https://emergencydentistry.com/",
-                location: "5223 Avenida Navarra, Sarasota, FL 34242",
-                rating: "24/7 Service",
-                review: "Open 24 hours for true dental emergencies across Southwest Florida.",
-                logoEmoji: "🚨"
-            },
-            {
                 name: "Gulf Gate Dental",
                 phone: "(941) 921-2122",
                 website: "https://www.gulfgatedental.com/",
-                location: "Sarasota, FL (Gulf Gate area)",
+                location: "3212 Gulf Gate Dr, Sarasota, FL 34231",
                 rating: "4.8 ★",
                 review: "Prompt emergency dentistry for tooth pain, broken teeth &amp; infections.",
                 logoEmoji: "🦷"
             },
             {
-                name: "Dentistry on Fruitville",
-                phone: "(941) 529-0055",
-                website: "https://www.dentistryonfruitville.com/",
-                location: "7590 Fruitville Rd #100, Sarasota, FL 34240",
+                name: "Vital Dental Sarasota",
+                phone: "(941) 371-2022",
+                website: "https://www.vitaldentalsarasota.com/",
+                location: "Sarasota, FL 34233 area",
+                rating: "5.0 ★",
+                review: "Same-day emergency appointments and treatment for urgent dental needs.",
+                logoEmoji: "🦷"
+            },
+            {
+                name: "Waterside Dental Sarasota",
+                phone: "(941) 870-3322",
+                website: "https://watersidedentalsarasota.com/",
+                location: "1058 N Tamiami Trail, Sarasota, FL 34236",
                 rating: "4.9 ★",
-                review: "Emergency dental care for Sarasota residents — call immediately.",
+                review: "Same-day emergency dental appointments for pain relief and repairs.",
                 logoEmoji: "🦷"
             }
         ]
@@ -705,9 +717,6 @@
                 Updated ${CURRENT_MONTH_DAY} • Verified today
                 <span class="ml-2 bg-emerald-400 text-emerald-950 text-[10px] px-2 rounded-2xl">LIVE</span>
             `;
-            
-            // Schema dateModified (Monday auto-update simulation)
-            // Real schema is injected below
         }
 
         // Schema.org JSON-LD (full rich results)
@@ -743,6 +752,20 @@
                             }
                         },
                         "dateModified": CURRENT_DATE.toISOString().split('T')[0]
+                    },
+                    {
+                        "@type": "WebSite",
+                        "@id": "https://sarasotaemergencydentist.com/#website",
+                        "url": "https://sarasotaemergencydentist.com/",
+                        "name": "Sarasota Emergency Dentist",
+                        "potentialAction": {
+                            "@type": "SearchAction",
+                            "target": {
+                                "@type": "EntryPoint",
+                                "urlTemplate": "https://sarasotaemergencydentist.com/search?q={search_term_string}"
+                            },
+                            "query-input": "required name=search_term_string"
+                        }
                     },
                     {
                         "@type": "FAQPage",
