@@ -1,11 +1,10 @@
-// js/menu-system.js - V3 "The Aggressive Fix"
+// js/menu-system.js - V4 "The Bulletproof Subpage Fix"
 console.log('🚀 Menu System: Starting Deep Scan...');
 
 function buildMenuContent() {
-    // 1. DATA CHECK
     if (!window.SITE_REGISTRY || !window.SITE_REGISTRY.folders || Object.keys(window.SITE_REGISTRY.folders).length === 0) {
         console.error('❌ REGISTRY DATA MISSING');
-        return '<div class="p-4 text-red-500 text-xs font-bold">⚠️ DATA ERROR: registry.js is empty. Run GitHub Action.</div>';
+        return '<div class="p-4 text-red-500 text-xs font-bold">⚠️ DATA ERROR: registry.js is empty.</div>';
     }
 
     let html = `
@@ -13,6 +12,10 @@ function buildMenuContent() {
         <input type="text" placeholder="Search pages..." id="menu-search"
                class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-emerald-400">
     </div>`;
+
+    // Calculate relative prefix based on depth (so links work from inside subfolders!)
+    const depth = window.location.pathname.split('/').filter(Boolean).length;
+    const prefix = (depth > 0 && !window.location.pathname.endsWith('index.html') && window.location.pathname !== '/') ? '../' : '';
 
     Object.entries(window.SITE_REGISTRY.folders).forEach(([folderName, folder]) => {
         if (folder.files.length === 0) return;
@@ -23,7 +26,7 @@ function buildMenuContent() {
                 ${folder.icon || '📁'} ${folderName}
             </div>
             ${folder.files.map(file => `
-                <a href="${file.name === 'index.html' ? '/' : '/' + file.name}" 
+                <a href="${prefix}${file.name === 'index.html' ? '' : file.name}" 
                    class="flex items-center gap-x-3 px-3 py-2 hover:bg-emerald-50 rounded-xl text-sm text-slate-700 transition-all group">
                     <span class="text-xs opacity-40">📄</span>
                     <span class="font-medium group-hover:text-emerald-700">${file.label}</span>
@@ -37,23 +40,39 @@ function buildMenuContent() {
 function inject() {
     console.log('💉 Attempting injection...');
 
-    // DESKTOP: Find the button that says "Free Emergency Checklist"
-    const checklistBtn = document.querySelector('a[href="#emergency-checklist"]');
-    if (checklistBtn && !document.getElementById('desktop-nav-menu')) {
-        const wrapper = document.createElement('div');
-        wrapper.id = 'desktop-nav-menu';
-        wrapper.className = 'relative ml-2';
-        wrapper.innerHTML = `
-            <button onclick="document.getElementById('nav-dd').classList.toggle('hidden')" 
-                    class="px-5 py-3 bg-emerald-500 text-white text-xs font-bold uppercase rounded-full hover:bg-slate-900 transition-all flex items-center gap-2">
-                MENU <span class="text-[8px]">▼</span>
-            </button>
-            <div id="nav-dd" class="hidden absolute top-14 right-0 w-72 bg-white shadow-2xl rounded-3xl p-5 z-[9999] border border-slate-100 max-h-[80vh] overflow-y-auto">
-                ${buildMenuContent()}
-            </div>
-        `;
-        checklistBtn.parentNode.insertBefore(wrapper, checklistBtn);
-        console.log('✅ Desktop Menu Injected');
+    // DESKTOP: Find target element to inject next to
+    if (!document.getElementById('desktop-nav-menu')) {
+        let targetEl = document.querySelector('a[href="#emergency-checklist"]');
+        
+        // FALLBACK: If no checklist button on this page, look for the main nav or header
+        if (!targetEl) {
+            targetEl = document.querySelector('header nav') || document.querySelector('header');
+        }
+
+        if (targetEl) {
+            const wrapper = document.createElement('div');
+            wrapper.id = 'desktop-nav-menu';
+            wrapper.className = 'relative ml-2 flex items-center'; // Added flex to align well
+            wrapper.innerHTML = `
+                <button onclick="document.getElementById('nav-dd').classList.toggle('hidden')" 
+                        class="px-5 py-3 bg-emerald-500 text-white text-xs font-bold uppercase rounded-full hover:bg-slate-900 transition-all flex items-center gap-2">
+                    MENU <span class="text-[8px]">▼</span>
+                </button>
+                <div id="nav-dd" class="hidden absolute top-14 right-0 w-72 bg-white shadow-2xl rounded-3xl p-5 z-[9999] border border-slate-100 max-h-[80vh] overflow-y-auto">
+                    ${buildMenuContent()}
+                </div>
+            `;
+            
+            // Inject next to or inside the target
+            if (targetEl.tagName === 'A') {
+                targetEl.parentNode.insertBefore(wrapper, targetEl.nextSibling);
+            } else {
+                targetEl.appendChild(wrapper);
+            }
+            console.log('✅ Desktop Menu Injected');
+        } else {
+            console.warn('⚠️ Could not find <header> or <nav> to inject the desktop menu.');
+        }
     }
 
     // MOBILE: Find the #mobileMenu ID
@@ -61,16 +80,15 @@ function inject() {
     if (mobileContainer && !document.getElementById('mobile-nav-content')) {
         const mobileDiv = document.createElement('div');
         mobileDiv.id = 'mobile-nav-content';
-        mobileDiv.className = 'mt-10 pt-10 border-t border-slate-100 px-4';
+        mobileDiv.className = 'mt-10 pt-10 border-t border-slate-100 px-4 pb-20';
         mobileDiv.innerHTML = buildMenuContent();
-        mobileMenu.appendChild(mobileDiv);
+        mobileContainer.appendChild(mobileDiv);
         console.log('✅ Mobile Menu Injected');
     }
 }
 
-// Ensure it runs even if registry loads late
 function start() {
-    if (window.SITE_REGISTRY) {
+    if (window.SITE_REGISTRY && window.SITE_REGISTRY.folders) {
         inject();
     } else {
         console.log('⏳ Registry not ready, retrying...');
