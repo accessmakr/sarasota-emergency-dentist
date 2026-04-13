@@ -1,7 +1,7 @@
 // js/internal-links.js
 console.log('🚀 INTERNAL-LINKS engine loading...');
 
-// 1. Keep your original Smooth Scrolling
+// 1. Smooth Scrolling (unchanged)
 function activateSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -15,22 +15,21 @@ function activateSmoothScrolling() {
     console.log('✅ Smooth scrolling activated');
 }
 
-// 2. NEW: Dynamic Cross-Linking from Registry
+// 2. Dynamic Cross-Linking from Registry (FIXED)
 function injectDynamicLinks() {
-    // Wait until the registry is fully loaded
+    // Wait until registry is ready
     if (!window.SITE_REGISTRY || !window.SITE_REGISTRY.folders) {
         setTimeout(injectDynamicLinks, 200);
         return;
     }
 
-    // Find the spot on the page where you want the links to appear
     const container = document.getElementById('dynamic-internal-links');
     if (!container) {
-        console.log('ℹ️ No #dynamic-internal-links container found on this page. Skipping link injection.');
+        console.log('ℹ️ No #dynamic-internal-links container found on this page. Skipping.');
         return;
     }
 
-    // Gather all files from the specific folders you requested
+    // Gather files from guide + location folders
     let linksToInject = [];
     const targetFolders = ['guide', 'location'];
 
@@ -42,11 +41,7 @@ function injectDynamicLinks() {
 
     if (linksToInject.length === 0) return;
 
-    // Determine relative path (if you are inside /guide/ you need '../location/' to link properly)
-    const depth = window.location.pathname.split('/').filter(Boolean).length;
-    const prefix = depth > 0 && !window.location.pathname.endsWith('index.html') && window.location.pathname !== '/' ? '../' : '';
-
-    // Build the HTML for the links
+    // ALWAYS use absolute paths → works from root OR any subfolder
     let html = `
         <div class="mt-12 bg-emerald-50/50 border border-emerald-100 rounded-3xl p-8">
             <h3 class="text-xl font-semibold text-slate-900 mb-5">Explore More Local Sarasota Guides</h3>
@@ -54,11 +49,11 @@ function injectDynamicLinks() {
     `;
 
     linksToInject.forEach(file => {
-        // Don't link to the exact page we are currently looking at
+        // Skip current page
         if (window.location.pathname.includes(file.name)) return;
 
         html += `
-            <a href="${prefix}${file.name}" class="flex items-center gap-x-3 text-sm text-emerald-700 hover:text-violet-600 hover:translate-x-1 transition-all">
+            <a href="/${file.name}" class="flex items-center gap-x-3 text-sm text-emerald-700 hover:text-violet-600 hover:translate-x-1 transition-all">
                 <span class="text-lg">→</span>
                 <span class="font-medium">${file.label}</span>
             </a>
@@ -66,13 +61,12 @@ function injectDynamicLinks() {
     });
 
     html += `</div></div>`;
-    
-    // Inject it into the page
+
     container.innerHTML = html;
     console.log(`✅ Dynamically injected ${linksToInject.length} internal links from /guide/ and /location/`);
 }
 
-// Kick off both functions when the page loads
+// Run on page load
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         activateSmoothScrolling();
