@@ -141,6 +141,10 @@ window.SITE_REGISTRY = {
       {
         "name": "location/sarasota-emergency-dentist.html",
         "label": "Emergency Dentist in Sarasota FL | Same-Day Urgent Dental Care"
+      },
+      {
+        "name": "location/tampa-emergency-dentist.html",
+        "label": "Emergency Dentist in Tampa FL | Same-Day Urgent Dental Care"
       }
     ]
   }
