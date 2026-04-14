@@ -1,90 +1,64 @@
-// js/menu-system.js - V7 "The Sarasota Final"
-console.log('🚀 Menu System V7: Initializing...');
+// js/menu-system.js - V10 "The Silo Header Edition"
+console.log('🚀 Menu System V10: Initializing Silo Header...');
 
-function buildMenuContent() {
-    if (!window.SITE_REGISTRY || !window.SITE_REGISTRY.folders) return '';
-
+function getPrefix() {
     const depth = window.location.pathname.split('/').filter(Boolean).length;
-    const prefix = (depth > 0 && !window.location.pathname.endsWith('index.html') && window.location.pathname !== '/') ? '../' : '';
+    // Adjust if running on local file system or subdomains
+    return (depth > 0 && !window.location.pathname.endsWith('index.html') && window.location.pathname !== '/') ? '../' : '';
+}
 
-    let html = `
-    <div class="mb-4">
-        <input type="text" placeholder="Search pages..." id="menu-search"
-               class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-emerald-400">
-    </div>`;
+function buildFolderLinks(folderKey) {
+    if (!window.SITE_REGISTRY || !window.SITE_REGISTRY.folders[folderKey]) return '';
+    const folder = window.SITE_REGISTRY.folders[folderKey];
+    const prefix = getPrefix();
 
-    // SORTING LOGIC: Guide & Location first, Root (Directory) last
-    const folderKeys = Object.keys(window.SITE_REGISTRY.folders).sort((a, b) => {
-        if (a.toLowerCase() === 'root') return 1;
-        if (b.toLowerCase() === 'root') return -1;
-        return a.localeCompare(b);
-    });
+    return folder.files.map(file => `
+        <a href="${prefix}${file.name}" class="block px-4 py-2 hover:bg-emerald-500 hover:text-white rounded-lg transition-colors">
+            ${file.label.split(' • ')[0]}
+        </a>
+    `).join('');
+}
 
-    folderKeys.forEach(key => {
-        const folder = window.SITE_REGISTRY.folders[key];
-        if (!folder.files || folder.files.length === 0) return;
+function injectHeaderNav() {
+    const guideDock = document.getElementById('nav-guide-contents');
+    const locationDock = document.getElementById('nav-location-contents');
+    
+    if (guideDock) guideDock.innerHTML = buildFolderLinks('Guide');
+    if (locationDock) locationDock.innerHTML = buildFolderLinks('Location');
+}
 
-        // RENAME "Root" to "Directory"
+function buildDirectoryContent() {
+    if (!window.SITE_REGISTRY) return '';
+    const prefix = getPrefix();
+    let html = `<div class="mb-4"><a href="${prefix}index.html" class="flex items-center justify-center w-full py-2 bg-slate-900 text-white rounded-xl text-xs font-bold uppercase">🏠 Home</a></div>`;
+    
+    Object.keys(window.SITE_REGISTRY.folders).forEach(key => {
         const displayName = key.toLowerCase() === 'root' ? 'Main Directory' : key;
-
-        html += `
-        <div class="mb-4 menu-section">
-            <div class="text-[10px] font-black text-emerald-600 uppercase tracking-tighter mb-2 px-2 border-b border-emerald-50 pb-1">
-                ${folder.icon || '📁'} ${displayName}
-            </div>
-            ${folder.files.map(file => `
-                <a href="${prefix}${file.name}" 
-                   class="flex items-center gap-x-3 px-3 py-2 hover:bg-emerald-50 rounded-xl text-sm text-slate-700 transition-all group">
-                    <span class="text-xs opacity-40">📄</span>
-                    <span class="font-medium group-hover:text-emerald-700">${file.label}</span>
-                </a>
-            `).join('')}
+        html += `<div class="mb-4"><div class="text-[10px] font-black text-emerald-600 uppercase mb-1 border-b border-emerald-50">${displayName}</div>
+            ${window.SITE_REGISTRY.folders[key].files.map(f => `<a href="${prefix}${f.name}" class="block py-1 text-sm text-slate-600 hover:text-emerald-600">${f.label.split(' • ')[0]}</a>`).join('')}
         </div>`;
     });
     return html;
 }
 
 function inject() {
-    if (document.getElementById('nav-menu-wrapper')) return;
-
-    const dock = document.getElementById('master-nav-dock');
-    const wrapper = document.createElement('div');
-    wrapper.id = 'nav-menu-wrapper';
-    
-    // Using a more prominent button style
-    const buttonHTML = `
-        <div class="relative inline-block text-left">
-            <button onclick="document.getElementById('nav-dd').classList.toggle('hidden')" 
-                    class="px-6 py-2.5 bg-slate-900 text-white text-xs font-black uppercase rounded-full shadow-xl hover:bg-emerald-600 transition-all flex items-center gap-2">
-                MENU <span class="text-[8px]">▼</span>
-            </button>
-            <div id="nav-dd" class="hidden absolute top-12 right-0 w-80 bg-white shadow-2xl rounded-3xl p-5 z-[9999] border border-slate-100 max-h-[70vh] overflow-y-auto">
-                ${buildMenuContent()}
-            </div>
-        </div>
-    `;
-
-    if (dock) {
-        wrapper.innerHTML = buttonHTML;
-        dock.appendChild(wrapper);
-        console.log('✅ Menu Docked Successfully');
-    } else {
-        // Fallback if you forget to add the dock ID to a page
-        wrapper.className = 'fixed top-4 right-4 z-[9999]';
-        wrapper.innerHTML = buttonHTML;
-        document.body.appendChild(wrapper);
-        console.log('⚠️ No Dock found. Floating fallback used.');
+    const masterDock = document.getElementById('master-nav-dock');
+    if (masterDock && !document.getElementById('nav-menu-wrapper')) {
+        const wrapper = document.createElement('div');
+        wrapper.id = 'nav-menu-wrapper';
+        wrapper.innerHTML = `
+            <div class="relative inline-block text-left">
+                <button onclick="document.getElementById('nav-dd').classList.toggle('hidden')" 
+                        class="px-4 py-2 bg-emerald-500 text-white text-[10px] font-black uppercase rounded-full shadow-lg hover:bg-emerald-600 transition-all flex items-center gap-2">
+                    MENU ☰
+                </button>
+                <div id="nav-dd" class="hidden absolute top-12 right-0 w-64 bg-white shadow-2xl rounded-2xl p-4 z-[9999] border border-slate-100 max-h-[70vh] overflow-y-auto text-slate-800">
+                    ${buildDirectoryContent()}
+                </div>
+            </div>`;
+        masterDock.appendChild(wrapper);
     }
-
-    // MOBILE PANEL INJECTION
-    const mobilePanel = document.getElementById('mobileMenu') || document.getElementById('mobile-menu-panel');
-    if (mobilePanel && !document.getElementById('mobile-injected-content')) {
-        const div = document.createElement('div');
-        div.id = 'mobile-injected-content';
-        div.className = 'mt-10 pt-10 border-t border-slate-200/20 px-4 pb-20';
-        div.innerHTML = buildMenuContent();
-        mobilePanel.appendChild(div);
-    }
+    injectHeaderNav();
 }
 
 function init() {
@@ -92,9 +66,3 @@ function init() {
     else setTimeout(init, 500);
 }
 init();
-
-// Close on outside click
-document.addEventListener('click', (e) => {
-    const dd = document.getElementById('nav-dd');
-    if (dd && !dd.contains(e.target) && !e.target.closest('button')) dd.classList.add('hidden');
-});
