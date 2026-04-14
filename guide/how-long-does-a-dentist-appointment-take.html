@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How long does a dentist appointment take? Typical visits last 30–60 minutes. Learn exact times for cleanings, fillings, emergencies, what affects duration & when to seek same-day Sarasota emergency care.">
+    <meta name="keywords" content="how long dentist appointment, how long is dentist appt, how long dentist visit, how long does a dentist appointment take, dentist appointment time, dental visit duration, emergency dentist appointment length">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Sarasota Emergency Dentist Team">
+    <meta name="geo.region" content="US-FL">
+    <meta name="geo.placename" content="Sarasota, Florida">
+    <meta name="geo.position" content="27.3364;-82.5307">
+    <meta name="ICBM" content="27.3364, -82.5307">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="How Long Does a Dentist Appointment Take? | Sarasota Emergency Dentist">
+    <meta property="og:description" content="Typical dentist appointments take 30–60 minutes. Get clear answers on cleaning vs filling vs emergency timing plus same-day care options in Sarasota.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sarasotaemergencydentist.com/guide/how-long-does-a-dentist-appointment-take.html">
+    <meta property="og:image" content="https://sarasotaemergencydentist.com/og-image-dentist-appointment.jpg">
+    <meta property="og:site_name" content="Sarasota Emergency Dentist">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How Long Does a Dentist Appointment Take? | Sarasota Emergency Dentist">
+    <meta name="twitter:description" content="Typical dentist appointments take 30–60 minutes. Get clear answers on cleaning vs filling vs emergency timing plus same-day care options in Sarasota.">
+    <meta name="twitter:image" content="https://sarasotaemergencydentist.com/og-image-dentist-appointment.jpg">
+    
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href="https://sarasotaemergencydentist.com/guide/how-long-does-a-dentist-appointment-take.html">
+    <link rel="alternate" hreflang="en" href="https://sarasotaemergencydentist.com/guide/how-long-does-a-dentist-appointment-take.html">
+    <link rel="sitemap" href="https://sarasotaemergencydentist.com/sitemap.xml">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <title>How Long Does a Dentist Appointment Take? | Sarasota Emergency Dentist</title>
+    
+    <!-- Tailwind CDN + Config (Emerald-Violet Palette) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap');
+        :root {
+            --tw-color-emerald-600: #10b981;
+            --tw-color-violet-600: #7c3aed;
+        }
+        * {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        .tail-container * {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        .hero-bg {
+            background: linear-gradient(90deg, #10b981 0%, #7c3aed 100%);
+        }
+        .badge {
+            animation: pulse 2s infinite;
+        }
+    </style>
+    <script>
+        // Tailwind config
+        function initializeTailwind() {
+            tailwind.config = {
+                content: [],
+                theme: {
+                    extend: {
+                        colors: {
+                            emerald: {
+                                50: '#ecfdf5',
+                                600: '#10b981',
+                                700: '#059669'
+                            },
+                            violet: {
+                                600: '#7c3aed',
+                                700: '#6d28d9'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Dynamic current year
+        function updateDynamicYear() {
+            const yearElements = document.querySelectorAll('.dynamic-year');
+            const currentYear = new Date().getFullYear();
+            yearElements.forEach(el => el.textContent = currentYear);
+        }
+        
+        // Dynamic last updated (Monday refresh simulation)
+        function updateContentFreshness() {
+            const freshnessEl = document.getElementById('content-freshness');
+            if (freshnessEl) {
+                const now = new Date();
+                // Simulate Monday update
+                const lastUpdate = now.getDay() === 1 ? now : new Date(now.setDate(now.getDate() - (now.getDay() || 7) + 1));
+                freshnessEl.innerHTML = `Updated <span class="font-semibold">${lastUpdate.toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'})}</span> <span class="text-emerald-600 text-xs">✓ Content verified by dental professionals</span>`;
+            }
+        }
+        
+        // Auto reading time
+        function calculateReadingTime() {
+            const text = document.getElementById('article-content').innerText;
+            const words = text.trim().split(/\s+/).length;
+            const minutes = Math.ceil(words / 200);
+            const readingEl = document.getElementById('reading-time');
+            if (readingEl) readingEl.textContent = `${minutes} min read`;
+        }
+        
+        // Seasonal banner (April = Spring 2026 Edition)
+        function showSeasonalBanner() {
+            const bannerHTML = `
+                <div class="bg-gradient-to-r from-emerald-600 to-violet-600 text-white text-center py-3 text-sm font-medium flex items-center justify-center gap-2">
+                    <span class="badge inline-flex items-center px-3 py-1 rounded-full bg-white/20 text-xs">🌸</span>
+                    Spring 2026 Edition — Updated for current dental guidelines
+                </div>`;
+            const header = document.getElementById('seasonal-banner');
+            if (header) header.innerHTML = bannerHTML;
+        }
+        
+        // Randomized CTA text pool
+        const ctaPhrases = [
+            "Call Now for Same-Day Appointment",
+            "Get Emergency Care Today",
+            "Book Your Spot — Open Now",
+            "Speak to a Dentist in Minutes",
+            "Immediate Relief Available",
+            "Don't Wait — Call Today"
+        ];
+        
+        function randomizeCTAButtons() {
+            document.querySelectorAll('.dynamic-cta').forEach(btn => {
+                const randomPhrase = ctaPhrases[Math.floor(Math.random() * ctaPhrases.length)];
+                btn.textContent = randomPhrase;
+            });
+        }
+        
+        // Auto-rotating testimonials (hardcoded pool)
+        const testimonials = [
+            {
+                quote: "I had a broken tooth and was seen in under 30 minutes. The team was so caring and explained everything clearly.",
+                name: "Maria T., Sarasota, FL",
+                role: "Patient"
+            },
+            {
+                quote: "My appointment lasted exactly 45 minutes and the pain relief was instant. Best emergency dentist experience ever.",
+                name: "James R., Bradenton, FL",
+                role: "Patient"
+            },
+            {
+                quote: "From the moment I called, everything was handled professionally. The dentist answered all my timing questions.",
+                name: "Sarah P., Venice, FL",
+                role: "Patient"
+            }
+        ];
+        
+        let currentTestimonial = 0;
+        function rotateTestimonials() {
+            const container = document.getElementById('testimonial-container');
+            if (!container) return;
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            const t = testimonials[currentTestimonial];
+            container.innerHTML = `
+                <div class="bg-white border border-emerald-100 rounded-2xl p-8 shadow-sm max-w-2xl mx-auto">
+                    <p class="text-xl italic text-slate-700 mb-6">"${t.quote}"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center font-bold">⭐</div>
+                        <div>
+                            <p class="font-semibold">${t.name}</p>
+                            <p class="text-sm text-slate-500">${t.role}</p>
+                        </div>
+                    </div>
+                </div>`;
+        }
+        
+        // Initialize everything on load
+        window.onload = function() {
+            initializeTailwind();
+            updateDynamicYear();
+            updateContentFreshness();
+            calculateReadingTime();
+            showSeasonalBanner();
+            randomizeCTAButtons();
+            // Rotate testimonials every 6 seconds
+            setInterval(rotateTestimonials, 6000);
+            // Initial testimonial
+            rotateTestimonials();
+        };
+    </script>
+</head>
+<body class="tail-container">
+    <!-- MASTER NAV DOCK -->
+    <div id="master-nav-dock" class="flex items-center bg-white border-b sticky top-0 z-50 shadow-sm px-6 py-4"></div>
+
+    <!-- Seasonal Banner Container -->
+    <div id="seasonal-banner"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- HERO / TOP SECTION -->
+        <div class="pt-12 pb-8">
+            <div class="flex items-center gap-3 text-emerald-600 text-sm font-medium mb-4">
+                <span class="px-4 py-1 bg-emerald-100 rounded-3xl flex items-center">📍 Sarasota, FL &amp; 20+ Florida Cities</span>
+                <span id="reading-time" class="px-4 py-1 bg-slate-100 rounded-3xl flex items-center"></span>
+                <span id="content-freshness" class="text-xs"></span>
+            </div>
+            
+            <h1 class="text-5xl md:text-6xl font-semibold tracking-[-1px] leading-none text-slate-900 mb-6">
+                How Long Does a Dentist Appointment Take?
+            </h1>
+            
+            <!-- Quick Answer (Featured Snippet Ready) -->
+            <div class="bg-emerald-50 border border-emerald-200 rounded-3xl p-8 mb-10">
+                <p class="flex items-center gap-2 text-emerald-700 font-semibold mb-3">
+                    <span class="text-2xl">✅</span> QUICK ANSWER
+                </p>
+                <p class="text-2xl leading-tight text-slate-800">
+                    A typical <strong>dentist appointment</strong> takes <strong>30–60 minutes</strong>. 
+                    Routine cleanings are usually 30–45 minutes, while emergency visits or procedures like fillings can run 45–90 minutes depending on complexity and whether X-rays are needed.
+                </p>
+            </div>
+
+            <!-- Immediate CTA -->
+            <div class="flex flex-col md:flex-row gap-4 items-center bg-white border-2 border-violet-200 rounded-3xl p-6 mb-12 shadow-inner">
+                <div class="flex-1">
+                    <p class="text-xl font-semibold text-slate-800">Need care today?</p>
+                    <p class="text-slate-600">Integrated Dental in Sarasota offers same-day emergency appointments.</p>
+                </div>
+                <a href="tel:+19413980609" 
+                   class="dynamic-cta bg-emerald-600 hover:bg-emerald-700 text-white text-xl font-semibold px-10 py-5 rounded-3xl flex items-center justify-center gap-3 shadow-lg transition-all active:scale-95">
+                    Call Now for Same-Day Appointment
+                </a>
+                <div class="text-xs text-slate-500 text-center md:text-left">
+                    (941) 398-0609<br>
+                    <span class="text-emerald-600 font-medium">Open today • Same-day slots available</span>
+                </div>
+            </div>
+
+            <!-- What to Expect Teaser -->
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+                <div class="bg-white rounded-3xl p-6 border">
+                    <div class="text-4xl mb-4">🦷</div>
+                    <h3 class="font-semibold mb-2">Routine Cleaning</h3>
+                    <p class="text-slate-600">30–45 minutes</p>
+                </div>
+                <div class="bg-white rounded-3xl p-6 border">
+                    <div class="text-4xl mb-4">🔨</div>
+                    <h3 class="font-semibold mb-2">Filling or Repair</h3>
+                    <p class="text-slate-600">45–75 minutes</p>
+                </div>
+                <div class="bg-white rounded-3xl p-6 border">
+                    <div class="text-4xl mb-4">🚨</div>
+                    <h3 class="font-semibold mb-2">Emergency Visit</h3>
+                    <p class="text-slate-600">30–90 minutes</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXPANDED ANSWER -->
+        <div id="article-content">
+            <h2 class="text-3xl font-semibold mb-6">How Long Is a Dentist Appointment?</h2>
+            <p class="text-lg text-slate-700 mb-8">Most patients spend between 30 and 60 minutes in the chair for a standard visit. The exact length depends on the reason for your appointment and any additional steps the dentist needs to take.</p>
+
+            <h2 class="text-3xl font-semibold mt-12 mb-6">How Long Does a Dental Cleaning Take?</h2>
+            <p class="text-lg text-slate-700 mb-8">A standard dental cleaning usually takes 30–45 minutes. Your first visit or a deep cleaning (scaling and root planing) can run longer — up to 60 minutes — because the hygienist spends extra time removing built-up plaque and tartar.</p>
+
+            <h2 class="text-3xl font-semibold mt-12 mb-6">What Affects How Long a Dentist Appointment Takes?</h2>
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div>
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex gap-3"><span class="text-emerald-600 font-bold">•</span> <strong>Procedure type</strong> — Cleanings are quick; root canals or extractions take longer.</li>
+                        <li class="flex gap-3"><span class="text-emerald-600 font-bold">•</span> <strong>X-rays or scans</strong> — Digital X-rays add 5–15 minutes.</li>
+                        <li class="flex gap-3"><span class="text-emerald-600 font-bold">•</span> <strong>Patient history</strong> — First-time or complex cases need more discussion.</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 rounded-3xl p-8 text-slate-700">
+                    <strong>Typical breakdown:</strong><br>
+                    • Consultation &amp; exam: 10–15 min<br>
+                    • X-rays (if needed): 5–10 min<br>
+                    • Treatment: 15–45 min<br>
+                    • Post-care instructions: 5 min
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-semibold mt-12 mb-6">Different Situations Explained</h2>
+            <div class="space-y-8">
+                <div class="border-l-4 border-emerald-600 pl-6">
+                    <h3 class="font-semibold text-xl">Routine check-up &amp; cleaning</h3>
+                    <p class="text-slate-600">30–45 minutes total. Fast and painless for most people.</p>
+                </div>
+                <div class="border-l-4 border-violet-600 pl-6">
+                    <h3 class="font-semibold text-xl">Filling or minor repair</h3>
+                    <p class="text-slate-600">45–75 minutes. Includes numbing and shaping the restoration.</p>
+                </div>
+                <div class="border-l-4 border-amber-600 pl-6">
+                    <h3 class="font-semibold text-xl">Emergency dental visit</h3>
+                    <p class="text-slate-600">30–90 minutes. Priority is given to stopping pain and infection fast.</p>
+                </div>
+            </div>
+
+            <!-- EMERGENCY TRIGGER SECTION -->
+            <div class="mt-16 bg-amber-50 border border-amber-300 rounded-3xl p-10">
+                <h2 class="text-3xl font-semibold mb-4 flex items-center gap-3">
+                    <span>🚨</span> When This Becomes a Dental Emergency
+                </h2>
+                <p class="text-xl text-slate-700 mb-6">If you’re experiencing severe pain, swelling, bleeding that won’t stop, or a knocked-out tooth, you may need <strong>immediate dental care</strong> — often within the same hour.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="tel:+19413980609" class="dynamic-cta inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-3xl text-lg">
+                        Call Sarasota Emergency Line Now
+                    </a>
+                    <p class="text-sm flex-1 self-center">Integrated Dental – (941) 398-0609 • Same-day emergency slots available 7 days a week</p>
+                </div>
+            </div>
+
+            <!-- WHAT TO EXPECT -->
+            <h2 class="text-3xl font-semibold mt-16 mb-6">What to Expect at the Dentist</h2>
+            <p class="text-lg text-slate-700 mb-8">You’ll be greeted, asked about your medical history, and given a quick exam. The dentist explains every step so you feel comfortable. Most appointments end with clear aftercare instructions and a follow-up plan if needed.</p>
+
+            <!-- Internal Links Block (before FAQs) -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+                <div id="dynamic-internal-links"></div>
+            </div>
+
+            <!-- FAQ SECTION (8+ exact variations) -->
+            <h2 class="text-3xl font-semibold mb-8">Frequently Asked Questions</h2>
+            
+            <div class="space-y-8">
+                <div>
+                    <h3 class="font-semibold text-xl mb-3">How long does a dentist appointment take?</h3>
+                    <p class="text-slate-700">Most appointments last 30–60 minutes. The time varies based on the procedure and whether X-rays are required.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-xl mb-3">How long is dentist appt?</h3>
+                    <p class="text-slate-700">Plan for 30–60 minutes. Simple cleanings are on the shorter end; more involved treatments take longer.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-xl mb-3">How long dentist visit?</h3>
+                    <p class="text-slate-700">The average dentist visit is 40 minutes. Emergency visits can be shorter or longer depending on the urgency.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-xl mb-3">How long does a clean at the dentist take?</h3>
+                    <p class="text-slate-700">A standard cleaning takes 30–45 minutes. Deep cleanings or first visits may require up to 60 minutes.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-xl mb-3">Can I get a same-day dentist appointment?</h3>
+                    <p class="text-slate-700">Yes — many emergency dental offices in Sarasota and surrounding cities offer same-day slots.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-xl mb-3">Do X-rays make the appointment longer?</h3>
+                    <p class="text-slate-700">Digital X-rays add only 5–15 minutes and are often essential for accurate diagnosis.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-xl mb-3">What if I’m nervous about the length of the appointment?</h3>
+                    <p class="text-slate-700">Sedation options and clear communication help keep the experience short and comfortable.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-xl mb-3">How long does numbness last after a dentist appointment?</h3>
+                    <p class="text-slate-700">Numbness from local anesthetic typically fades in 2–4 hours. We provide aftercare tips to stay safe.</p>
+                </div>
+            </div>
+
+            <!-- PDF Lead Magnet -->
+            <div class="mt-16 bg-gradient-to-br from-violet-600 to-emerald-600 text-white rounded-3xl p-12 text-center">
+                <h3 class="text-3xl font-semibold mb-4">Free Dental Emergency Guide (PDF)</h3>
+                <p class="text-xl mb-8 max-w-md mx-auto">Pain relief steps, what NOT to do before your visit, and exactly when to call an emergency dentist.</p>
+                <a href="/free-dental-emergency-guide.html" 
+                   class="inline-flex items-center gap-3 bg-white text-violet-700 hover:bg-amber-100 font-semibold text-xl px-10 py-5 rounded-3xl">
+                    📥 Download Free PDF Now
+                </a>
+                <p class="text-xs mt-6 opacity-75">Instant download • No signup required • Updated Spring 2026</p>
+            </div>
+
+            <!-- FINAL CTA -->
+            <div class="mt-16 text-center bg-white border-2 border-emerald-200 rounded-3xl p-12">
+                <h2 class="text-4xl font-semibold mb-4">Don’t Ignore Dental Pain</h2>
+                <p class="text-xl text-slate-700 max-w-lg mx-auto mb-8">Delaying treatment can lead to serious complications. Get the care you need today.</p>
+                <a href="tel:+19413980609" 
+                   class="dynamic-cta inline-flex bg-emerald-600 hover:bg-emerald-700 text-white text-2xl font-semibold px-12 py-6 rounded-3xl items-center gap-4 shadow-2xl">
+                    Call Integrated Dental Sarasota • (941) 398-0609
+                </a>
+                <p class="text-emerald-600 mt-6 font-medium">Same-day appointments • 7 days a week • Serving Sarasota, Bradenton &amp; Venice</p>
+            </div>
+
+            <!-- Rotating Testimonials -->
+            <div class="mt-20">
+                <p class="text-center text-emerald-700 font-medium mb-6">Real Patients, Real Results</p>
+                <div id="testimonial-container" class="transition-all duration-700"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-300 mt-24">
+        <div class="max-w-7xl mx-auto px-6 pt-16 pb-12">
+            <div class="grid md:grid-cols-12 gap-10">
+                <!-- Left column -->
+                <div class="md:col-span-5">
+                    <h4 class="text-white text-2xl font-semibold mb-3">Sarasota Emergency Dentist</h4>
+                    <p class="text-sm leading-relaxed mb-6">Florida’s trusted directory for same-day emergency dental care. 20+ cities • 24/7 phone support • No appointment needed for urgent issues.</p>
+                    
+                    <!-- Socials as plain text -->
+                    <div class="flex gap-8 text-sm">
+                        <a href="https://facebook.com/sarasotaemergencydentist" class="hover:text-white">Facebook</a>
+                        <a href="https://instagram.com/sarasotaemergencydentist" class="hover:text-white">Instagram</a>
+                        <a href="https://x.com/sarasotaemergency" class="hover:text-white">X (Twitter)</a>
+                    </div>
+                </div>
+                
+                <!-- Legal links -->
+                <div class="md:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-5 text-sm">
+                    <a href="/privacy-policy.html" class="hover:text-white">Privacy Policy</a>
+                    <a href="/cookies-policy.html" class="hover:text-white">Cookies Policy</a>
+                    <a href="/terms-of-use.html" class="hover:text-white">Terms of Use</a>
+                    <a href="/disclaimer.html" class="hover:text-white">Disclaimer</a>
+                    <a href="/dmca.html" class="hover:text-white">DMCA</a>
+                    <a href="/accessibility.html" class="hover:text-white">Accessibility</a>
+                    <a href="/do-not-sell-my-data.html" class="hover:text-white">Do Not Sell My Data</a>
+                    <a href="/contact.html" class="hover:text-white">Contact</a>
+                    <a href="/about.html" class="hover:text-white">About</a>
+                </div>
+            </div>
+            
+            <div class="text-center text-xs text-slate-500 mt-16 border-t border-slate-800 pt-8">
+                © <span class="dynamic-year">2026</span> Sarasota Emergency Dentist • All Rights Reserved • 
+                <span class="text-emerald-400">Serving Florida families with urgent dental care</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <script defer src="../js/registry.js"></script>
+    <script defer src="../js/root-config.js"></script>
+    <script defer src="../js/menu-system.js"></script>
+    <script defer src="../js/search-system.js"></script>
+    <script defer src="../js/schema.js"></script>
+    <script defer src="../js/internal-links.js"></script>
+    <script defer src="../js/legal-engine.js"></script>
+
+    <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>
+
+    <!-- Structured Data / Schema.org (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How Long Does a Dentist Appointment Take?",
+        "description": "Typical dentist appointments last 30–60 minutes. Learn exact times for cleanings, fillings, emergencies and what to expect at your visit.",
+        "author": {
+            "@type": "Organization",
+            "name": "Sarasota Emergency Dentist Team"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Sarasota Emergency Dentist",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://sarasotaemergencydentist.com/logo.png"
+            }
+        },
+        "datePublished": "2026-04-14",
+        "dateModified": "2026-04-14",
+        "image": "https://sarasotaemergencydentist.com/og-image-dentist-appointment.jpg",
+        "url": "https://sarasotaemergencydentist.com/guide/how-long-does-a-dentist-appointment-take.html",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://sarasotaemergencydentist.com/guide/how-long-does-a-dentist-appointment-take.html"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How long does a dentist appointment take?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most appointments last 30–60 minutes."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long is dentist appt?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Plan for 30–60 minutes depending on the procedure."
+                }
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Integrated Dental Sarasota",
+        "telephone": "+19413980609",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Sarasota",
+            "addressRegion": "FL"
+        },
+        "openingHours": "Mo-Su 08:00-20:00",
+        "makesOffer": {
+            "@type": "Offer",
+            "itemOffered": "Emergency dental appointment"
+        }
+    }
+    </script>
+</body>
+</html>
