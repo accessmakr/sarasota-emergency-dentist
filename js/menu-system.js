@@ -1,8 +1,9 @@
-// js/menu-system.js - V10 "The Silo Header Edition" - UPDATED ORDER: Home → Guide → Location → Directory
-console.log('🚀 Menu System V10: Initializing Silo Header with exact order...');
+// js/menu-system.js - V10 "The Silo Header Edition"
+console.log('🚀 Menu System V10: Initializing Silo Header...');
 
 function getPrefix() {
     const depth = window.location.pathname.split('/').filter(Boolean).length;
+    // Adjust if running on local file system or subdomains
     return (depth > 0 && !window.location.pathname.endsWith('index.html') && window.location.pathname !== '/') ? '../' : '';
 }
 
@@ -29,31 +30,14 @@ function injectHeaderNav() {
 function buildDirectoryContent() {
     if (!window.SITE_REGISTRY) return '';
     const prefix = getPrefix();
+    let html = `<div class="mb-4"><a href="${prefix}index.html" class="flex items-center justify-center w-full py-2 bg-slate-900 text-white rounded-xl text-xs font-bold uppercase">🏠 Home</a></div>`;
     
-    let html = `<div class="mb-4">
-        <a href="${prefix}index.html" class="flex items-center justify-center w-full py-2 bg-slate-900 text-white rounded-xl text-xs font-bold uppercase">🏠 Home</a>
-    </div>`;
-
-    // EXACT ORDER YOU REQUESTED — NO ASSUMPTIONS
-    const orderedSections = [
-        { key: 'Guide',    display: 'Guide' },
-        { key: 'Location', display: 'Location' },
-        { key: 'root',     display: 'Directory' }
-    ];
-
-    orderedSections.forEach(({ key, display }) => {
-        if (!window.SITE_REGISTRY.folders[key]) return;
-        
-        html += `<div class="mb-4">
-            <div class="text-[10px] font-black text-emerald-600 uppercase mb-1 border-b border-emerald-50">${display}</div>
-            ${window.SITE_REGISTRY.folders[key].files.map(f => `
-                <a href="${prefix}${f.name}" class="block py-1 text-sm text-slate-600 hover:text-emerald-600">
-                    ${f.label.split(' • ')[0]}
-                </a>
-            `).join('')}
+    Object.keys(window.SITE_REGISTRY.folders).forEach(key => {
+        const displayName = key.toLowerCase() === 'root' ? 'Main Directory' : key;
+        html += `<div class="mb-4"><div class="text-[10px] font-black text-emerald-600 uppercase mb-1 border-b border-emerald-50">${displayName}</div>
+            ${window.SITE_REGISTRY.folders[key].files.map(f => `<a href="${prefix}${f.name}" class="block py-1 text-sm text-slate-600 hover:text-emerald-600">${f.label.split(' • ')[0]}</a>`).join('')}
         </div>`;
     });
-
     return html;
 }
 
