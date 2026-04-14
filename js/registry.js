@@ -132,6 +132,10 @@ window.SITE_REGISTRY = {
       {
         "name": "guide/emergency-dentist.html",
         "label": "Emergency Dentist Sarasota | 24/7 Walk-In Dental Care Near You"
+      },
+      {
+        "name": "guide/how-long-does-a-dentist-appointment-take.html",
+        "label": "How Long Does a Dentist Appointment Take? | Sarasota Emergency Dentist"
       }
     ]
   },
