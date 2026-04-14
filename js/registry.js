@@ -140,7 +140,7 @@ window.SITE_REGISTRY = {
     "files": [
       {
         "name": "location/sarasota-emergency-dentist.html",
-        "label": "Emergency Dentist in Sarasota, FL | Same-Day Urgent Care | Integrated Dental"
+        "label": "Emergency Dentist in Sarasota FL | Same-Day Urgent Dental Care"
       },
       {
         "name": "location/tampa-emergency-dentist.html",
