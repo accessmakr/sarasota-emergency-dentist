@@ -140,7 +140,7 @@ window.SITE_REGISTRY = {
     "files": [
       {
         "name": "location/sarasota-emergency-dentist.html",
-        "label": "Emergency Dentist in Sarasota FL | Same-Day Urgent Dental Care"
+        "label": "Emergency Dentist in Sarasota | Same-Day Urgent Dental Care (941) 398-0609"
       },
       {
         "name": "location/tampa-emergency-dentist.html",
