@@ -139,6 +139,10 @@ window.SITE_REGISTRY = {
     "icon": "📁",
     "files": [
       {
+        "name": "location/miami-emergency-dentist.html",
+        "label": "Emergency Dentist in Miami FL | Same-Day Urgent Dental Care"
+      },
+      {
         "name": "location/sarasota-emergency-dentist.html",
         "label": "Emergency Dentist in Sarasota FL | Same-Day Urgent Dental Care"
       },
