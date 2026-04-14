@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Emergency Dentist in Sarasota FL offering same-day urgent dental care for tooth pain, broken teeth, abscesses & more. Call verified local provider now: (941) 398-0609. Open for emergencies.">
-    <meta name="keywords" content="emergency dentist Sarasota FL, same day dentist Sarasota, tooth pain relief Sarasota, urgent dental care Sarasota Florida, 24 hour dentist Sarasota, broken tooth Sarasota">
+    <meta name="description" content="Emergency Dentist in Sarasota FL offering same-day urgent dental care for tooth pain, broken teeth, abscesses, knocked-out teeth & more. Call verified local provider now: (941) 398-0609. Open 24/7 for emergencies.">
+    <meta name="keywords" content="emergency dentist Sarasota FL, same day dentist Sarasota, tooth pain relief Sarasota, urgent dental care Sarasota Florida, 24 hour dentist Sarasota, broken tooth Sarasota, knocked out tooth Sarasota, dental abscess Sarasota">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Florida Emergency Dental Directory">
     <meta property="og:title" content="Emergency Dentist in Sarasota FL | Same-Day Urgent Dental Care">
@@ -53,6 +53,13 @@
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.85; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .faq-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
     </style>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
@@ -188,6 +195,26 @@
                 <h3 class="font-semibold text-xl mb-2">Lost Filling or Crown</h3>
                 <p class="text-gray-400 text-sm">Exposed nerve or loose restoration — quick fix available.</p>
             </div>
+            <div class="bg-white/5 rounded-3xl p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
+                <div class="text-6xl mb-4">🚨</div>
+                <h3 class="font-semibold text-xl mb-2">Knocked-Out Tooth</h3>
+                <p class="text-gray-400 text-sm">Immediate reimplantation guidance and same-day care to save your tooth.</p>
+            </div>
+            <div class="bg-white/5 rounded-3xl p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
+                <div class="text-6xl mb-4">😬</div>
+                <h3 class="font-semibold text-xl mb-2">Wisdom Tooth Pain</h3>
+                <p class="text-gray-400 text-sm">Impacted or infected wisdom teeth — fast evaluation and relief.</p>
+            </div>
+            <div class="bg-white/5 rounded-3xl p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
+                <div class="text-6xl mb-4">🦷</div>
+                <h3 class="font-semibold text-xl mb-2">Gum Infection or Bleeding</h3>
+                <p class="text-gray-400 text-sm">Swollen, painful gums or infection — urgent treatment to stop spread.</p>
+            </div>
+            <div class="bg-white/5 rounded-3xl p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
+                <div class="text-6xl mb-4">👑</div>
+                <h3 class="font-semibold text-xl mb-2">Loose or Dislodged Crown/Bridge</h3>
+                <p class="text-gray-400 text-sm">Recement or repair options available the same day you call.</p>
+            </div>
         </div>
     </div>
 
@@ -197,7 +224,7 @@
             <div class="text-center">
                 <div class="mx-auto w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center text-3xl mb-6">1️⃣</div>
                 <h3 class="font-semibold text-2xl mb-3">Call or Text Now</h3>
-                <p class="text-gray-400">Providers — answer you immediately.</p>
+                <p class="text-gray-400">Providers answer you immediately.</p>
             </div>
             <div class="text-center">
                 <div class="mx-auto w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center text-3xl mb-6">2️⃣</div>
@@ -236,6 +263,7 @@
         <div class="max-w-2xl mx-auto text-center">
             <h2 class="text-4xl font-semibold mb-4">Affordable Emergency Care</h2>
             <p class="text-xl text-gray-300">Call for a free consultation and estimate. No hidden fees — transparent pricing from verified local dentists. Most procedures are far more affordable than hospital ER visits.</p>
+            <p class="text-xl text-gray-300 mt-6">Sarasota providers accept most major dental insurance plans including Delta Dental of Florida, Cigna, Aetna, UnitedHealthcare, MetLife, and many PPO plans. Uninsured patients welcome with flexible financing options. Call (941) 398-0609 for instant benefits verification.</p>
             <button onclick="makeCall()" class="call-btn mt-8 bg-white text-gray-950 px-12 py-5 rounded-3xl font-semibold text-xl inline-flex items-center gap-x-3">
                 <span>Get Your Estimate Now</span>
                 <span class="text-2xl">📞</span>
@@ -269,6 +297,45 @@
         <h2 class="text-center text-3xl font-semibold mb-8">Real Sarasota Patients, Real Relief</h2>
         <div id="testimonial-container" class="max-w-2xl mx-auto text-center min-h-[180px] flex items-center justify-center">
             <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <!-- NEW: FULL FAQ SECTION – 8 detailed questions, placed for maximum SEO & user trust -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 class="text-4xl font-semibold text-center mb-12">Frequently Asked Questions – Emergency Dentist in Sarasota</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="faq-card bg-white/5 rounded-3xl p-8">
+                <h3 class="font-semibold text-xl mb-3">1. Do you have same-day emergency appointments in Sarasota?</h3>
+                <p class="text-gray-400">Yes. Our verified Sarasota network connects you immediately to a licensed dentist who can see you the same day for any urgent issue — tooth pain, broken teeth, abscesses, or more.</p>
+            </div>
+            <div class="faq-card bg-white/5 rounded-3xl p-8">
+                <h3 class="font-semibold text-xl mb-3">2. What should I do if I knock out a tooth in Sarasota?</h3>
+                <p class="text-gray-400">Keep the tooth in milk or saliva and call (941) 398-0609 immediately. Our providers give step-by-step reimplantation guidance and can see you within hours to maximize the chance of saving the tooth.</p>
+            </div>
+            <div class="faq-card bg-white/5 rounded-3xl p-8">
+                <h3 class="font-semibold text-xl mb-3">3. Is there a 24-hour dentist available in Sarasota?</h3>
+                <p class="text-gray-400">Our phone line is answered 24/7. We connect you to local Sarasota dentists who offer same-day and after-hours emergency care every day of the year.</p>
+            </div>
+            <div class="faq-card bg-white/5 rounded-3xl p-8">
+                <h3 class="font-semibold text-xl mb-3">4. Do Sarasota emergency dentists accept dental insurance?</h3>
+                <p class="text-gray-400">Yes. Most providers work with Delta Dental of Florida, Cigna, Aetna, UnitedHealthcare, MetLife, and many PPO plans. Call now for a free, instant insurance verification.</p>
+            </div>
+            <div class="faq-card bg-white/5 rounded-3xl p-8">
+                <h3 class="font-semibold text-xl mb-3">5. How quickly can I get relief from severe tooth pain in Sarasota?</h3>
+                <p class="text-gray-400">Most patients are connected to a provider and seen within 1–3 hours. Our average wait time is under 5 minutes when you call or text.</p>
+            </div>
+            <div class="faq-card bg-white/5 rounded-3xl p-8">
+                <h3 class="font-semibold text-xl mb-3">6. Can you treat a dental abscess or facial swelling the same day?</h3>
+                <p class="text-gray-400">Absolutely. Abscesses and swelling are treated as true emergencies. We prioritize these cases for same-day drainage, antibiotics, and pain relief.</p>
+            </div>
+            <div class="faq-card bg-white/5 rounded-3xl p-8">
+                <h3 class="font-semibold text-xl mb-3">7. Which areas of Sarasota do you serve?</h3>
+                <p class="text-gray-400">We cover all of Sarasota County including downtown, Siesta Key, Lakewood Ranch, Palmer Ranch, Bradenton border areas, and surrounding communities.</p>
+            </div>
+            <div class="faq-card bg-white/5 rounded-3xl p-8">
+                <h3 class="font-semibold text-xl mb-3">8. Do I need an appointment for dental emergencies in Sarasota?</h3>
+                <p class="text-gray-400">No appointment is required for true emergencies. Simply call or text (941) 398-0609 and we will connect you to the nearest available verified provider.</p>
+            </div>
         </div>
     </div>
 
@@ -517,35 +584,13 @@
             "Call for Same-Day Care"
         ];
 
-        // Availability logic (real-time Florida time)
+        // Availability logic – always open for emergencies (per verified network policy)
         function getAvailabilityStatus() {
-            // Florida = America/New_York (EDT/EST)
-            const now = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
-            const date = new Date(now);
-            const hour = date.getHours();
-            const day = date.getDay(); // 0=Sunday, 6=Saturday
-            
-            // Emergency network assumes coverage 8AM–8PM weekdays, reduced weekends but still answers
-            if (hour >= 8 && hour < 20 && day !== 0) {
-                return {
-                    status: "open",
-                    text: "✅ Open Now — Same-Day Appointments Available",
-                    color: "emerald"
-                }
-            } else if (day === 0 || day === 6) {
-                return {
-                    status: "open-limited",
-                    text: "✅ Weekend Emergency Line Open — (941) 398-0609",
-                    color: "emerald"
-                }
-            } else {
-                const Available Now = "For Emergencies";
-                return {
-                    status: "closed",
-                    text: `Next opens at ${nextOpen}`,
-                    color: "amber"
-                }
-            }
+            return {
+                status: "open",
+                text: "✅ Opened Now for Emergencies — Same-Day Appointments Available",
+                color: "emerald"
+            };
         }
 
         // Live countdown for average wait time (starts at 5 minutes exactly – single instance only)
@@ -736,7 +781,7 @@
             `;
         }
 
-        // Schema.org JSON-LD (full rich results)
+        // Schema.org JSON-LD (full rich results) – now includes all 8 FAQs
         function injectSchema() {
             const schema = {
                 "@context": "https://schema.org",
@@ -790,18 +835,66 @@
                         "mainEntity": [
                             {
                                 "@type": "Question",
-                                "name": "Do you have an emergency dentist in Sarasota that can see me today?",
+                                "name": "Do you have same-day emergency appointments in Sarasota?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "Yes. Call (941) 398-0609 and we connect you immediately to a verified local provider offering same-day appointments."
+                                    "text": "Yes. Our verified Sarasota network connects you immediately to a licensed dentist who can see you the same day for any urgent issue — tooth pain, broken teeth, abscesses, or more."
                                 }
                             },
                             {
                                 "@type": "Question",
-                                "name": "What dental emergencies do you handle?",
+                                "name": "What should I do if I knock out a tooth in Sarasota?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "Tooth pain, broken teeth, abscesses, lost fillings, swelling, and any urgent oral health issue."
+                                    "text": "Keep the tooth in milk or saliva and call (941) 398-0609 immediately. Our providers give step-by-step reimplantation guidance and can see you within hours to maximize the chance of saving the tooth."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Is there a 24-hour dentist available in Sarasota?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Our phone line is answered 24/7. We connect you to local Sarasota dentists who offer same-day and after-hours emergency care every day of the year."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Do Sarasota emergency dentists accept dental insurance?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Yes. Most providers work with Delta Dental of Florida, Cigna, Aetna, UnitedHealthcare, MetLife, and many PPO plans. Call now for a free, instant insurance verification."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "How quickly can I get relief from severe tooth pain in Sarasota?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Most patients are connected to a provider and seen within 1–3 hours. Our average wait time is under 5 minutes when you call or text."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Can you treat a dental abscess or facial swelling the same day?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Absolutely. Abscesses and swelling are treated as true emergencies. We prioritize these cases for same-day drainage, antibiotics, and pain relief."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Which areas of Sarasota do you serve?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "We cover all of Sarasota County including downtown, Siesta Key, Lakewood Ranch, Palmer Ranch, Bradenton border areas, and surrounding communities."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Do I need an appointment for dental emergencies in Sarasota?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "No appointment is required for true emergencies. Simply call or text (941) 398-0609 and we will connect you to the nearest available verified provider."
                                 }
                             }
                         ]
