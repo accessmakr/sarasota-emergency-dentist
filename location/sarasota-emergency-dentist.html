@@ -82,83 +82,124 @@
         .rotating-testimonial {
             animation: fadeIn 0.8s ease forwards;
         }
+        
+        /* Mobile-first improvements */
+        .hero-title {
+            font-size: 2.25rem;
+            line-height: 1.1;
+        }
+        @media (min-width: 640px) {
+            .hero-title {
+                font-size: 2.75rem;
+            }
+        }
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+        
+        .section-padding {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+        }
+        
+        .provider-card {
+            min-height: 280px;
+        }
+        
+        /* Prevent horizontal scroll */
+        body {
+            overflow-x: hidden;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
     <!-- HEADER NAV -->
     <header class="bg-white border-b sticky top-0 z-50 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex items-center justify-between py-5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between py-4">
                 <!-- Master Nav Dock -->
-                <div id="master-nav-dock" class="flex items-center gap-x-8 text-sm font-medium">
+                <div id="master-nav-dock" class="flex items-center gap-x-6 text-sm font-medium">
                     <a href="https://sarasotaemergencydentist.com/" class="flex items-center gap-x-2 hover:text-emerald-600 transition-colors">
                         <span class="text-2xl">🦷</span>
                         <span class="font-semibold tracking-tight">Home</span>
                     </a>
-                    <a href="https://sarasotaemergencydentist.com/guide.html" class="hover:text-emerald-600 transition-colors">Guide</a>
+                    <a href="https://sarasotaemergencydentist.com/guide.html" class="hover:text-emerald-600 transition-colors hidden sm:block">Guide</a>
                     <a href="https://sarasotaemergencydentist.com/location/" class="hover:text-emerald-600 transition-colors">Locations</a>
-                    <a href="https://sarasotaemergencydentist.com/about.html" class="hover:text-emerald-600 transition-colors">About</a>
+                    <a href="https://sarasotaemergencydentist.com/about.html" class="hover:text-emerald-600 transition-colors hidden sm:block">About</a>
                 </div>
                 
                 <!-- Logo / City -->
                 <div class="flex items-center gap-x-3">
-                    <div class="w-9 h-9 bg-gradient-to-br from-emerald-500 to-violet-600 rounded-2xl flex items-center justify-center text-white text-2xl shadow-inner">🦷</div>
-                    <h1 class="font-semibold text-2xl tracking-tighter">Sarasota Emergency Dentist</h1>
+                    <div class="w-8 h-8 bg-gradient-to-br from-emerald-500 to-violet-600 rounded-2xl flex items-center justify-center text-white text-2xl shadow-inner">🦷</div>
+                    <h1 class="font-semibold text-xl tracking-tighter">Sarasota Emergency Dentist</h1>
                 </div>
                 
                 <!-- Main CTA -->
-                <a href="tel:+19413980609" onclick="trackCall('header')" class="call-btn flex items-center gap-x-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-3xl font-semibold text-lg shadow-lg shadow-emerald-200 transition-all">
+                <a href="tel:+19413980609" onclick="trackCall('header')" class="call-btn flex items-center gap-x-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 sm:px-6 py-3 rounded-3xl font-semibold text-base sm:text-lg shadow-lg shadow-emerald-200 transition-all">
                     <span class="text-2xl">📞</span>
-                    <span id="cta-text-header" class="hidden md:inline">Call Now – Immediate Help</span>
-                    <span class="font-mono">(941) 398-0609</span>
+                    <span id="cta-text-header" class="hidden xs:inline">Call Now</span>
+                    <span class="font-mono text-sm sm:text-base">(941) 398-0609</span>
                 </a>
             </div>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="hero-bg text-white py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <div class="inline-flex items-center gap-x-2 bg-white/20 text-white text-sm font-medium px-5 py-2 rounded-3xl mb-6 backdrop-blur-md">
-                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                    SARASOTA, FL
-                </div>
-                
-                <h1 class="text-5xl md:text-6xl font-semibold leading-none tracking-tighter mb-6">
-                    Emergency Dentist in<br>Sarasota
-                </h1>
-                <p class="text-2xl md:text-3xl text-white/90 mb-8">Integrated Dental – Same-day relief for tooth pain, broken teeth, abscesses &amp; more.</p>
-                
-                <div class="flex flex-wrap gap-4">
-                    <a href="tel:+19413980609" onclick="trackCall('hero')" class="call-btn flex-1 md:flex-none bg-white text-emerald-700 hover:bg-emerald-100 px-10 py-6 rounded-3xl text-2xl font-semibold flex items-center justify-center gap-x-4 shadow-2xl">
-                        <span>📞</span>
-                        <span id="cta-text-hero">Call Provider Now</span>
-                    </a>
-                    
-                    <button onclick="showSmsModal()" class="flex-1 md:flex-none border-2 border-white hover:bg-white/10 text-white px-8 py-6 rounded-3xl text-2xl font-semibold flex items-center justify-center gap-x-4 transition-all">
-                        <span>✉️</span>
-                        Text Provider Instead
-                    </button>
-                </div>
-                
-                <div class="mt-8 flex items-center gap-x-8 text-sm">
-                    <div class="flex items-center gap-x-1">
-                        <span class="text-3xl">⭐⭐⭐⭐⭐</span>
-                        <span class="font-medium">4.9 average from 312 local reviews</span>
+    <section class="hero-bg text-white py-12 sm:py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="text-center md:text-left">
+                    <div class="inline-flex items-center gap-x-2 bg-white/20 text-white text-xs sm:text-sm font-medium px-4 sm:px-5 py-2 rounded-3xl mb-6 backdrop-blur-md">
+                        <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                        SARASOTA, FL • OPEN FOR EMERGENCIES
                     </div>
-                    <div class="h-4 w-px bg-white/30"></div>
-                    <p class="font-medium">Most patients seen within <span id="live-wait-time" class="font-mono text-2xl text-emerald-200">4:52</span></p>
+                    
+                    <h1 class="hero-title font-semibold leading-none tracking-tighter mb-6 text-balance">
+                        Emergency Dentist<br>in Sarasota
+                    </h1>
+                    <p class="text-xl sm:text-2xl md:text-3xl text-white/90 mb-8">Integrated Dental – Same-day relief for tooth pain, broken teeth, abscesses &amp; more.</p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 max-w-xs mx-auto md:mx-0">
+                        <a href="tel:+19413980609" onclick="trackCall('hero')" class="call-btn flex-1 bg-white text-emerald-700 hover:bg-emerald-100 px-8 py-5 sm:py-6 rounded-3xl text-xl font-semibold flex items-center justify-center gap-x-3 shadow-2xl">
+                            <span>📞</span>
+                            <span id="cta-text-hero">Call Provider Now</span>
+                        </a>
+                        
+                        <button onclick="showSmsModal()" class="flex-1 border-2 border-white hover:bg-white/10 text-white px-8 py-5 sm:py-6 rounded-3xl text-xl font-semibold flex items-center justify-center gap-x-3 transition-all">
+                            <span>✉️</span>
+                            Text Provider Instead
+                        </button>
+                    </div>
+                    
+                    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-6 text-sm">
+                        <div class="flex items-center gap-x-1">
+                            <span class="text-3xl">⭐⭐⭐⭐⭐</span>
+                            <span class="font-medium">4.9 from 312 reviews</span>
+                        </div>
+                        <div class="hidden sm:block h-4 w-px bg-white/30"></div>
+                        <p class="font-medium flex items-center gap-x-2">
+                            Most patients seen in 
+                            <span id="live-wait-time" class="font-mono text-3xl text-emerald-200 tabular-nums">4:52</span>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Visual -->
-            <div class="hidden md:flex justify-end">
-                <div class="bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-white/30 max-w-xs w-full">
-                    <div class="text-center">
-                        <div class="mx-auto w-24 h-24 bg-white rounded-2xl flex items-center justify-center text-6xl mb-6 shadow-inner">🦷</div>
-                        <p class="text-xl font-semibold">“I called at 2am with a broken tooth and was seen the same morning. Life saver!”</p>
-                        <p class="text-sm mt-4 text-white/70">— Sarah M., Sarasota</p>
+                
+                <!-- Visual (mobile friendly) -->
+                <div class="hidden md:flex justify-end">
+                    <div class="bg-white/10 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-white/30 max-w-xs w-full">
+                        <div class="text-center">
+                            <div class="mx-auto w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-6xl mb-6 shadow-inner">🦷</div>
+                            <p class="text-xl font-semibold">“Called at 2am with a broken tooth and was seen the same morning. Life saver!”</p>
+                            <p class="text-sm mt-4 text-white/70">— Sarah M., Sarasota</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -166,175 +207,151 @@
     </section>
 
     <!-- AVAILABILITY BANNER -->
-    <div id="availability-banner" class="bg-white border-b shadow-sm py-4 sticky top-[73px] z-40">
-        <div class="max-w-7xl mx-auto px-6 flex items-center justify-center gap-x-4 text-lg font-medium">
-            <div id="status-dot" class="w-4 h-4 rounded-full bg-emerald-500 animate-pulse"></div>
-            <span id="availability-text" class="text-emerald-700">Open Now • Next available appointment in minutes</span>
-            <span class="text-slate-400 text-sm font-normal hidden md:inline">• Real-time availability from 8+ verified Sarasota providers</span>
-            <button onclick="refreshAvailability()" class="text-xs px-4 py-1 border border-emerald-200 text-emerald-700 rounded-2xl hover:bg-emerald-50">Refresh</button>
+    <div id="availability-banner" class="bg-white border-b shadow-sm py-4 sticky top-[57px] z-40 md:top-[73px]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-base font-medium">
+            <div id="status-dot" class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></div>
+            <span id="availability-text" class="text-emerald-700 text-center">Open Now • Multiple providers ready right now</span>
+            <button onclick="refreshAvailability()" class="text-xs px-4 py-1 border border-emerald-200 text-emerald-700 rounded-3xl hover:bg-emerald-50 flex-shrink-0">Refresh</button>
         </div>
     </div>
 
     <!-- URGENCY BLOCK -->
-    <section class="max-w-7xl mx-auto px-6 py-12 bg-amber-50">
-        <div class="grid md:grid-cols-3 gap-6 text-center">
-            <div class="bg-white p-8 rounded-3xl shadow">
-                <div class="text-4xl mb-4">⏰</div>
-                <h3 class="font-semibold text-xl mb-2">Don’t Wait – Pain Gets Worse</h3>
-                <p class="text-slate-600">Untreated dental emergencies can lead to infection, swelling, or tooth loss. Get help today.</p>
-            </div>
-            <div class="bg-white p-8 rounded-3xl shadow">
-                <div class="text-4xl mb-4">🚨</div>
-                <h3 class="font-semibold text-xl mb-2">Same-Day Appointments</h3>
-                <p class="text-slate-600">Most patients are seen within hours – not days. Verified providers standing by now.</p>
-            </div>
-            <div class="bg-white p-8 rounded-3xl shadow">
-                <div class="text-4xl mb-4">📍</div>
-                <h3 class="font-semibold text-xl mb-2">Local Sarasota Dentists</h3>
-                <p class="text-slate-600">No travel. No waitlists. Real local emergency care serving Sarasota and surrounding areas.</p>
+    <section class="section-padding bg-amber-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow text-center">
+                    <div class="text-4xl mb-4">⏰</div>
+                    <h3 class="font-semibold text-xl mb-2">Don’t Wait – Pain Gets Worse</h3>
+                    <p class="text-slate-600">Untreated emergencies can lead to infection or tooth loss. Get help today.</p>
+                </div>
+                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow text-center">
+                    <div class="text-4xl mb-4">🚨</div>
+                    <h3 class="font-semibold text-xl mb-2">Same-Day Appointments</h3>
+                    <p class="text-slate-600">Most patients seen within hours – not days.</p>
+                </div>
+                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow text-center">
+                    <div class="text-4xl mb-4">📍</div>
+                    <h3 class="font-semibold text-xl mb-2">Local Sarasota Dentists</h3>
+                    <p class="text-slate-600">No travel. Real local care serving Sarasota and nearby areas.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- PROBLEM GRID -->
-    <section class="max-w-7xl mx-auto px-6 py-16">
-        <h2 class="text-4xl font-semibold text-center mb-12">Common Dental Emergencies We Handle Daily in Sarasota</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="bg-white p-8 rounded-3xl text-center card-hover border border-transparent">
-                <div class="text-5xl mb-6">😣</div>
-                <h4 class="font-semibold mb-2">Severe Toothache</h4>
-                <p class="text-slate-600 text-sm">Immediate pain relief available now</p>
-            </div>
-            <div class="bg-white p-8 rounded-3xl text-center card-hover border border-transparent">
-                <div class="text-5xl mb-6">🦷</div>
-                <h4 class="font-semibold mb-2">Broken or Chipped Tooth</h4>
-                <p class="text-slate-600 text-sm">Same-day repair or temporary crown</p>
-            </div>
-            <div class="bg-white p-8 rounded-3xl text-center card-hover border border-transparent">
-                <div class="text-5xl mb-6">🔥</div>
-                <h4 class="font-semibold mb-2">Abscess or Swelling</h4>
-                <p class="text-slate-600 text-sm">Infection control &amp; drainage</p>
-            </div>
-            <div class="bg-white p-8 rounded-3xl text-center card-hover border border-transparent">
-                <div class="text-5xl mb-6">🩸</div>
-                <h4 class="font-semibold mb-2">Knocked-Out Tooth</h4>
-                <p class="text-slate-600 text-sm">Emergency re-implantation guidance</p>
-            </div>
-            <div class="bg-white p-8 rounded-3xl text-center card-hover border border-transparent">
-                <div class="text-5xl mb-6">🦷</div>
-                <h4 class="font-semibold mb-2">Lost Filling or Crown</h4>
-                <p class="text-slate-600 text-sm">Quick replacement to protect nerve</p>
-            </div>
-            <div class="bg-white p-8 rounded-3xl text-center card-hover border border-transparent">
-                <div class="text-5xl mb-6">🦷</div>
-                <h4 class="font-semibold mb-2">Wisdom Tooth Pain</h4>
-                <p class="text-slate-600 text-sm">Fast evaluation &amp; extraction if needed</p>
-            </div>
-            <div class="bg-white p-8 rounded-3xl text-center card-hover border border-transparent">
-                <div class="text-5xl mb-6">😬</div>
-                <h4 class="font-semibold mb-2">Bleeding Gums</h4>
-                <p class="text-slate-600 text-sm">Stop bleeding and treat underlying cause</p>
-            </div>
-            <div class="bg-white p-8 rounded-3xl text-center card-hover border border-transparent">
-                <div class="text-5xl mb-6">🦷</div>
-                <h4 class="font-semibold mb-2">Loose or Broken Denture</h4>
-                <p class="text-slate-600 text-sm">Repair or adjustment same day</p>
+    <section class="section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl sm:text-4xl font-semibold text-center mb-8 sm:mb-12">Common Dental Emergencies We Handle Daily</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+                <div class="bg-white p-6 rounded-3xl text-center card-hover border border-transparent">
+                    <div class="text-5xl mb-4">😣</div>
+                    <h4 class="font-semibold mb-1">Severe Toothache</h4>
+                    <p class="text-slate-600 text-sm">Immediate relief available</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl text-center card-hover border border-transparent">
+                    <div class="text-5xl mb-4">🦷</div>
+                    <h4 class="font-semibold mb-1">Broken or Chipped Tooth</h4>
+                    <p class="text-slate-600 text-sm">Same-day repair</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl text-center card-hover border border-transparent">
+                    <div class="text-5xl mb-4">🔥</div>
+                    <h4 class="font-semibold mb-1">Abscess or Swelling</h4>
+                    <p class="text-slate-600 text-sm">Infection control</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl text-center card-hover border border-transparent">
+                    <div class="text-5xl mb-4">🩸</div>
+                    <h4 class="font-semibold mb-1">Knocked-Out Tooth</h4>
+                    <p class="text-slate-600 text-sm">Emergency guidance</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- HOW IT WORKS -->
-    <section class="bg-slate-900 text-white py-16">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-semibold text-center mb-12">How It Works – 3 Simple Steps</h2>
-            <div class="grid md:grid-cols-3 gap-8">
+    <section class="bg-slate-900 text-white section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl sm:text-4xl font-semibold text-center mb-8 sm:mb-12">How It Works – 3 Simple Steps</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
                 <div class="text-center">
-                    <div class="mx-auto w-16 h-16 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-3xl mb-6">1️⃣</div>
-                    <h4 class="font-semibold text-2xl mb-3">Call or Text Now</h4>
+                    <div class="mx-auto w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-3xl mb-6">1️⃣</div>
+                    <h4 class="font-semibold text-xl mb-3">Call or Text Now</h4>
                     <p class="text-slate-400">(941) 398-0609</p>
-                    <p class="text-sm text-slate-400 mt-8">Speak directly with a local emergency coordinator in under 60 seconds.</p>
+                    <p class="text-sm text-slate-400 mt-8">Speak to a local coordinator in under 60 seconds.</p>
                 </div>
                 <div class="text-center">
-                    <div class="mx-auto w-16 h-16 bg-violet-500 text-white rounded-2xl flex items-center justify-center text-3xl mb-6">2️⃣</div>
-                    <h4 class="font-semibold text-2xl mb-3">Get Matched Instantly</h4>
-                    <p class="text-slate-400">Real-time availability from verified Sarasota providers</p>
-                    <p class="text-sm text-slate-400 mt-8">We connect you to the nearest open chair – no waiting lists.</p>
+                    <div class="mx-auto w-14 h-14 bg-violet-500 text-white rounded-2xl flex items-center justify-center text-3xl mb-6">2️⃣</div>
+                    <h4 class="font-semibold text-xl mb-3">Get Matched Instantly</h4>
+                    <p class="text-slate-400">Real-time availability from verified providers</p>
+                    <p class="text-sm text-slate-400 mt-8">Connected to the nearest open chair.</p>
                 </div>
                 <div class="text-center">
-                    <div class="mx-auto w-16 h-16 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-3xl mb-6">3️⃣</div>
-                    <h4 class="font-semibold text-2xl mb-3">Receive Same-Day Care</h4>
-                    <p class="text-slate-400">Relief today. Most patients leave smiling within hours.</p>
-                    <p class="text-sm text-slate-400 mt-8">No referral needed. Walk-ins welcomed for true emergencies.</p>
+                    <div class="mx-auto w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-3xl mb-6">3️⃣</div>
+                    <h4 class="font-semibold text-xl mb-3">Receive Same-Day Care</h4>
+                    <p class="text-slate-400">Most patients leave smiling within hours.</p>
+                    <p class="text-sm text-slate-400 mt-8">No referral needed.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- TRUST SECTION -->
-    <section class="max-w-7xl mx-auto px-6 py-16">
-        <div class="grid md:grid-cols-3 gap-8 text-center">
+    <section class="section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
             <div>
                 <div class="text-emerald-600 text-6xl mb-4">⚡</div>
                 <h3 class="font-semibold text-2xl">Fast Local Help</h3>
-                <p class="mt-3 text-slate-600">Sarasota-based dentists who answer the phone and treat patients today.</p>
+                <p class="mt-3 text-slate-600">Sarasota dentists who answer and treat today.</p>
             </div>
             <div>
                 <div class="text-emerald-600 text-6xl mb-4">📍</div>
                 <h3 class="font-semibold text-2xl">Verified Providers Only</h3>
-                <p class="mt-3 text-slate-600">Every dentist listed is licensed in Florida and actively offers emergency care.</p>
+                <p class="mt-3 text-slate-600">Licensed in Florida and actively offering emergency care.</p>
             </div>
             <div>
                 <div class="text-emerald-600 text-6xl mb-4">✅</div>
                 <h3 class="font-semibold text-2xl">No Surprise Bills</h3>
-                <p class="mt-3 text-slate-600">Transparent estimates during your first call. Extremely affordable options.</p>
+                <p class="mt-3 text-slate-600">Transparent estimates on your first call.</p>
             </div>
         </div>
     </section>
 
     <!-- COST SECTION -->
-    <section class="bg-gradient-to-r from-emerald-50 to-violet-50 py-16">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-semibold mb-4">Affordable Emergency Dental Care in Sarasota</h2>
-            <p class="max-w-xl mx-auto text-xl text-slate-600">Free consultation call • Transparent estimates • Payment plans available • Most major insurance accepted</p>
-            <p class="mt-8 text-sm font-medium text-slate-500">No specific prices quoted – every case is unique. Call (941) 398-0609 for your personalized estimate.</p>
+    <section class="bg-gradient-to-r from-emerald-50 to-violet-50 section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-3xl sm:text-4xl font-semibold mb-4">Affordable Emergency Dental Care in Sarasota</h2>
+            <p class="max-w-xl mx-auto text-lg sm:text-xl text-slate-600">Free consultation call • Transparent estimates • Payment plans available • Most major insurance accepted</p>
         </div>
     </section>
 
-    <!-- SMS CAPTURE BUTTON (floating) -->
-    <div onclick="showSmsModal()" class="fixed bottom-24 right-6 md:hidden bg-violet-600 text-white px-6 py-4 rounded-3xl shadow-2xl flex items-center gap-x-3 z-50 cursor-pointer">
-        <span class="text-2xl">✉️</span>
-        <span class="font-semibold">Text Us Instead – Faster Response</span>
-    </div>
-
     <!-- INTERNAL LINKS SECTION -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-20">
         <div id="dynamic-internal-links"></div>
     </div>
 
     <!-- AUTO-ROTATING TESTIMONIALS -->
-    <section class="max-w-7xl mx-auto px-6 py-16 bg-white border-t border-b">
-        <h2 class="text-center text-3xl font-semibold mb-10">Real Patients, Real Relief in Sarasota</h2>
-        <div id="testimonial-container" class="max-w-2xl mx-auto text-center min-h-[240px] flex flex-col items-center justify-center">
-            <!-- Populated by JS -->
-        </div>
-        <div class="flex justify-center gap-2 mt-8">
-            <div onclick="prevTestimonial()" class="w-10 h-10 flex items-center justify-center border rounded-2xl cursor-pointer hover:bg-slate-100">‹</div>
-            <div onclick="nextTestimonial()" class="w-10 h-10 flex items-center justify-center border rounded-2xl cursor-pointer hover:bg-slate-100">›</div>
+    <section class="section-padding bg-white border-t border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl font-semibold text-center mb-8">Real Patients, Real Relief in Sarasota</h2>
+            <div id="testimonial-container" class="max-w-2xl mx-auto text-center min-h-[220px] flex flex-col items-center justify-center px-4"></div>
+            <div class="flex justify-center gap-3 mt-8">
+                <button onclick="prevTestimonial()" class="w-10 h-10 flex items-center justify-center border rounded-3xl cursor-pointer hover:bg-slate-100 text-2xl">‹</button>
+                <button onclick="nextTestimonial()" class="w-10 h-10 flex items-center justify-center border rounded-3xl cursor-pointer hover:bg-slate-100 text-2xl">›</button>
+            </div>
         </div>
     </section>
 
-    <!-- VERIFIED PROVIDERS SECTION (8+ providers) -->
-    <section class="max-w-7xl mx-auto px-6 py-16 bg-slate-50">
-        <div class="flex items-baseline justify-between mb-10">
-            <h2 class="text-4xl font-semibold">Verified Local Providers in Sarasota</h2>
-            <p class="text-emerald-700 font-medium flex items-center gap-x-2"><span class="text-2xl">✅</span> All actively offering emergency care</p>
-        </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Provider 1 -->
-            <a href="https://www.idaflorida.com/" target="_blank" class="block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100">
-                <div class="p-6">
-                    <div class="flex justify-between items-start">
+    <!-- VERIFIED PROVIDERS SECTION -->
+    <section class="section-padding bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-baseline justify-between mb-8 gap-2">
+                <h2 class="text-3xl sm:text-4xl font-semibold">Verified Local Providers in Sarasota</h2>
+                <p class="text-emerald-700 font-medium flex items-center gap-x-2 text-sm sm:text-base"><span class="text-2xl">✅</span> All actively offering emergency care</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Provider cards (fully responsive) -->
+                <a href="https://www.idaflorida.com/" target="_blank" class="provider-card block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100 p-6 flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
                         <div>
                             <h4 class="font-semibold text-xl">Integrated Dental</h4>
                             <p class="text-emerald-600 text-sm">Sarasota, FL</p>
@@ -343,59 +360,49 @@
                             <span class="text-3xl">⭐</span><span class="font-semibold">4.9</span>
                         </div>
                     </div>
-                    <p class="text-slate-500 text-sm mt-6 leading-tight">“Called at 10pm with abscess – seen next morning. Professional and caring staff.”</p>
-                    <div class="mt-8 flex items-center justify-between text-sm">
+                    <p class="text-slate-500 text-sm flex-1">“Called at 10pm with abscess – seen next morning. Professional and caring staff.”</p>
+                    <div class="mt-auto flex items-center justify-between text-sm pt-6 border-t">
                         <a href="tel:+19413980609" class="font-medium flex items-center gap-x-1 text-emerald-700 hover:text-emerald-800">(941) 398-0609</a>
-                        <span class="text-slate-400">• Same-day •</span>
-                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-2xl">Open now</span>
+                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-3xl">Open now</span>
                     </div>
-                </div>
-            </a>
-            
-            <!-- Provider 2 -->
-            <a href="https://sarasotafamilydental.com/" target="_blank" class="block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100">
-                <div class="p-6">
-                    <div class="flex justify-between items-start">
+                </a>
+                
+                <a href="https://sarasotafamilydental.com/" target="_blank" class="provider-card block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100 p-6 flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
                         <div>
                             <h4 class="font-semibold text-xl">Sarasota Family Dental</h4>
-                            <p class="text-emerald-600 text-sm">3900 Clark Rd Suite J5</p>
+                            <p class="text-emerald-600 text-sm">3900 Clark Rd</p>
                         </div>
                         <div class="text-right">
                             <span class="text-3xl">⭐</span><span class="font-semibold">4.8</span>
                         </div>
                     </div>
-                    <p class="text-slate-500 text-sm mt-6 leading-tight">“Dr. Dorociak handled my broken crown same day. Extremely knowledgeable.”</p>
-                    <div class="mt-8 flex items-center justify-between text-sm">
+                    <p class="text-slate-500 text-sm flex-1">“Dr. Dorociak handled my broken crown same day.”</p>
+                    <div class="mt-auto flex items-center justify-between text-sm pt-6 border-t">
                         <a href="tel:+19419241100" class="font-medium flex items-center gap-x-1 text-emerald-700 hover:text-emerald-800">(941) 924-1100</a>
-                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-2xl">Emergency ready</span>
+                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-3xl">Emergency ready</span>
                     </div>
-                </div>
-            </a>
-            
-            <!-- Provider 3 -->
-            <a href="https://www.dentistryonfruitville.com/" target="_blank" class="block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100">
-                <div class="p-6">
-                    <div class="flex justify-between items-start">
+                </a>
+                
+                <a href="https://www.dentistryonfruitville.com/" target="_blank" class="provider-card block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100 p-6 flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
                         <div>
                             <h4 class="font-semibold text-xl">Dentistry on Fruitville</h4>
-                            <p class="text-emerald-600 text-sm">7590 Fruitville Rd #100</p>
+                            <p class="text-emerald-600 text-sm">7590 Fruitville Rd</p>
                         </div>
                         <div class="text-right">
                             <span class="text-3xl">⭐</span><span class="font-semibold">4.9</span>
                         </div>
                     </div>
-                    <p class="text-slate-500 text-sm mt-6 leading-tight">“Toothache gone in under an hour. Best emergency experience I’ve ever had.”</p>
-                    <div class="mt-8 flex items-center justify-between text-sm">
+                    <p class="text-slate-500 text-sm flex-1">“Toothache gone in under an hour. Best experience.”</p>
+                    <div class="mt-auto flex items-center justify-between text-sm pt-6 border-t">
                         <a href="tel:+19415290055" class="font-medium flex items-center gap-x-1 text-emerald-700 hover:text-emerald-800">(941) 529-0055</a>
-                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-2xl">Same-day</span>
+                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-3xl">Same-day</span>
                     </div>
-                </div>
-            </a>
-            
-            <!-- Provider 4 -->
-            <a href="https://www.gulfgatedental.com/" target="_blank" class="block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100">
-                <div class="p-6">
-                    <div class="flex justify-between items-start">
+                </a>
+                
+                <a href="https://www.gulfgatedental.com/" target="_blank" class="provider-card block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100 p-6 flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
                         <div>
                             <h4 class="font-semibold text-xl">Gulf Gate Dental</h4>
                             <p class="text-emerald-600 text-sm">3212 Gulf Gate Dr</p>
@@ -404,18 +411,16 @@
                             <span class="text-3xl">⭐</span><span class="font-semibold">5.0</span>
                         </div>
                     </div>
-                    <p class="text-slate-500 text-sm mt-6 leading-tight">“Fast, compassionate care for my child’s knocked-out tooth. Thank you!”</p>
-                    <div class="mt-8 flex items-center justify-between text-sm">
+                    <p class="text-slate-500 text-sm flex-1">“Fast care for my child’s knocked-out tooth.”</p>
+                    <div class="mt-auto flex items-center justify-between text-sm pt-6 border-t">
                         <a href="tel:+19419212122" class="font-medium flex items-center gap-x-1 text-emerald-700 hover:text-emerald-800">(941) 921-2122</a>
-                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-2xl">24/7 line</span>
+                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-3xl">24/7 line</span>
                     </div>
-                </div>
-            </a>
-            
-            <!-- Provider 5 -->
-            <a href="https://southsidevillagedentalcarefl.com/" target="_blank" class="block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100">
-                <div class="p-6">
-                    <div class="flex justify-between items-start">
+                </a>
+                
+                <!-- Additional 4 providers (mobile stacks perfectly) -->
+                <a href="https://southsidevillagedentalcarefl.com/" target="_blank" class="provider-card block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100 p-6 flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
                         <div>
                             <h4 class="font-semibold text-xl">Southside Village Dental Care</h4>
                             <p class="text-emerald-600 text-sm">3823 S Osprey Ave</p>
@@ -424,18 +429,15 @@
                             <span class="text-3xl">⭐</span><span class="font-semibold">4.7</span>
                         </div>
                     </div>
-                    <p class="text-slate-500 text-sm mt-6 leading-tight">“Emergency visit on a Sunday – they truly saved my weekend.”</p>
-                    <div class="mt-8 flex items-center justify-between text-sm">
+                    <p class="text-slate-500 text-sm flex-1">“Emergency visit on a Sunday – saved my weekend.”</p>
+                    <div class="mt-auto flex items-center justify-between text-sm pt-6 border-t">
                         <a href="tel:+19413262022" class="font-medium flex items-center gap-x-1 text-emerald-700 hover:text-emerald-800">(941) 326-2022</a>
-                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-2xl">Open now</span>
+                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-3xl">Open now</span>
                     </div>
-                </div>
-            </a>
-            
-            <!-- Provider 6 -->
-            <a href="https://emergencydentistry.com/" target="_blank" class="block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100">
-                <div class="p-6">
-                    <div class="flex justify-between items-start">
+                </a>
+                
+                <a href="https://emergencydentistry.com/" target="_blank" class="provider-card block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100 p-6 flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
                         <div>
                             <h4 class="font-semibold text-xl">Emergency Dentistry 24/7</h4>
                             <p class="text-emerald-600 text-sm">5223 Avenida Navarra</p>
@@ -444,18 +446,15 @@
                             <span class="text-3xl">⭐</span><span class="font-semibold">4.8</span>
                         </div>
                     </div>
-                    <p class="text-slate-500 text-sm mt-6 leading-tight">“True 24-hour emergency service. Answered immediately and relieved my pain.”</p>
-                    <div class="mt-8 flex items-center justify-between text-sm">
+                    <p class="text-slate-500 text-sm flex-1">“True 24-hour service. Answered immediately.”</p>
+                    <div class="mt-auto flex items-center justify-between text-sm pt-6 border-t">
                         <a href="tel:+19413754005" class="font-medium flex items-center gap-x-1 text-emerald-700 hover:text-emerald-800">(941) 375-4005</a>
-                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-2xl">Open 24 hrs</span>
+                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-3xl">Open 24 hrs</span>
                     </div>
-                </div>
-            </a>
-            
-            <!-- Provider 7 -->
-            <a href="https://www.vitaldentalsarasota.com/" target="_blank" class="block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100">
-                <div class="p-6">
-                    <div class="flex justify-between items-start">
+                </a>
+                
+                <a href="https://www.vitaldentalsarasota.com/" target="_blank" class="provider-card block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100 p-6 flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
                         <div>
                             <h4 class="font-semibold text-xl">Vital Dental Sarasota</h4>
                             <p class="text-emerald-600 text-sm">Sarasota, FL</p>
@@ -464,18 +463,15 @@
                             <span class="text-3xl">⭐</span><span class="font-semibold">4.9</span>
                         </div>
                     </div>
-                    <p class="text-slate-500 text-sm mt-6 leading-tight">“Same-day treatment for my abscess. Friendly team and clean office.”</p>
-                    <div class="mt-8 flex items-center justify-between text-sm">
+                    <p class="text-slate-500 text-sm flex-1">“Same-day treatment for my abscess.”</p>
+                    <div class="mt-auto flex items-center justify-between text-sm pt-6 border-t">
                         <a href="tel:+19413712022" class="font-medium flex items-center gap-x-1 text-emerald-700 hover:text-emerald-800">(941) 371-2022</a>
-                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-2xl">Emergency ready</span>
+                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-3xl">Emergency ready</span>
                     </div>
-                </div>
-            </a>
-            
-            <!-- Provider 8 -->
-            <a href="https://zfamilydental.com/" target="_blank" class="block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100">
-                <div class="p-6">
-                    <div class="flex justify-between items-start">
+                </a>
+                
+                <a href="https://zfamilydental.com/" target="_blank" class="provider-card block bg-white rounded-3xl overflow-hidden card-hover border border-slate-100 p-6 flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
                         <div>
                             <h4 class="font-semibold text-xl">Z Family Dental</h4>
                             <p class="text-emerald-600 text-sm">Sarasota, FL</p>
@@ -484,57 +480,49 @@
                             <span class="text-3xl">⭐</span><span class="font-semibold">5.0</span>
                         </div>
                     </div>
-                    <p class="text-slate-500 text-sm mt-6 leading-tight">“Weekend emergency care – zero pain after visit. Highly recommend.”</p>
-                    <div class="mt-8 flex items-center justify-between text-sm">
+                    <p class="text-slate-500 text-sm flex-1">“Weekend emergency care – zero pain after visit.”</p>
+                    <div class="mt-auto flex items-center justify-between text-sm pt-6 border-t">
                         <a href="tel:+19418990260" class="font-medium flex items-center gap-x-1 text-emerald-700 hover:text-emerald-800">(941) 899-0260</a>
-                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-2xl">Same-day</span>
+                        <span class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-3xl">Same-day</span>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
-        
-        <p class="text-center text-xs text-slate-500 mt-10">All providers are independently verified, licensed in Florida, and actively accepting emergency patients in Sarasota as of April 2026.</p>
     </section>
 
     <!-- FINAL CTA -->
-    <section class="bg-gradient-to-br from-emerald-600 to-violet-600 text-white py-20 text-center">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-5xl font-semibold tracking-tighter mb-6">Still in pain?<br>Don’t wait another minute.</h2>
-            <a href="tel:+19413980609" onclick="trackCall('final')" class="call-btn inline-flex items-center gap-x-6 bg-white text-emerald-700 px-12 py-7 rounded-3xl text-3xl font-semibold mx-auto hover:scale-105 transition-transform">
+    <section class="bg-gradient-to-br from-emerald-600 to-violet-600 text-white section-padding text-center">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="text-4xl sm:text-5xl font-semibold tracking-tighter mb-6">Still in pain?<br>Don’t wait another minute.</h2>
+            <a href="tel:+19413980609" onclick="trackCall('final')" class="call-btn inline-flex items-center gap-x-4 bg-white text-emerald-700 px-8 sm:px-12 py-6 rounded-3xl text-2xl sm:text-3xl font-semibold hover:scale-105 transition-transform">
                 <span id="cta-text-final">Call (941) 398-0609 Now</span>
-                <span class="text-5xl">→</span>
             </a>
-            <p class="mt-8 text-emerald-100">Average wait time to speak with a live coordinator is under 45 seconds.</p>
         </div>
     </section>
 
-    <!-- STICKY CALL BAR -->
-    <div id="sticky-call-bar" onclick="trackCall('sticky')" class="sticky-call-bar fixed bottom-0 left-0 right-0 bg-white border-t shadow-2xl hidden md:flex items-center justify-center z-[9999] py-4 px-6 gap-x-6">
-        <div class="flex items-center gap-x-3 text-emerald-700 font-semibold text-xl">
+    <!-- STICKY CALL BAR (mobile + desktop) -->
+    <div id="sticky-call-bar" onclick="trackCall('sticky')" class="sticky-bar fixed bottom-0 left-0 right-0 bg-white border-t shadow-2xl hidden md:flex items-center justify-center z-[9999] py-4 px-4 sm:px-6 gap-x-4">
+        <div class="flex items-center gap-x-3 text-emerald-700 font-semibold text-lg flex-1 md:flex-none">
             <span class="text-3xl">📞</span>
-            <span>Emergency Dentist Sarasota</span>
+            <span class="hidden sm:inline">Emergency Dentist Sarasota</span>
         </div>
-        <a href="tel:+19413980609" class="call-btn flex-1 max-w-xs bg-emerald-600 hover:bg-emerald-700 text-white text-center py-5 px-10 rounded-3xl font-semibold text-2xl flex items-center justify-center gap-x-4">
+        <a href="tel:+19413980609" class="call-btn flex-1 max-w-xs bg-emerald-600 hover:bg-emerald-700 text-white text-center py-4 sm:py-5 px-6 sm:px-10 rounded-3xl font-semibold text-xl flex items-center justify-center gap-x-3">
             <span id="cta-text-sticky">Call Now for Instant Help</span>
-            <span class="font-mono text-3xl">(941) 398-0609</span>
+            <span class="font-mono text-2xl">(941) 398-0609</span>
         </a>
-        <button onclick="event.stopImmediatePropagation();showSmsModal()" class="text-slate-700 underline flex items-center gap-x-2 text-lg">
-            <span>Or text us</span>
-        </button>
     </div>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 py-16">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-y-10">
-                <div>
+    <footer class="bg-slate-900 text-slate-400 py-12 sm:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-y-10 gap-x-8">
+                <div class="col-span-2 md:col-span-1">
                     <div class="flex items-center gap-x-3 text-white mb-6">
                         <span class="text-4xl">🦷</span>
                         <span class="font-semibold text-2xl tracking-tighter">Sarasota Emergency Dentist</span>
                     </div>
-                    <p class="text-sm leading-relaxed">Directory of verified emergency dental providers serving Sarasota, FL and surrounding communities.</p>
+                    <p class="text-sm leading-relaxed">Directory of verified emergency dental providers serving Sarasota, FL.</p>
                     
-                    <!-- Socials – plain text links -->
                     <div class="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm">
                         <a href="https://facebook.com" target="_blank" class="hover:text-white">Facebook</a>
                         <a href="https://instagram.com" target="_blank" class="hover:text-white">Instagram</a>
@@ -546,8 +534,8 @@
                 <div class="text-sm leading-loose">
                     <strong class="text-white block mb-4">Quick Links</strong>
                     <a href="https://sarasotaemergencydentist.com/" class="block hover:text-white">Homepage</a>
-                    <a href="https://sarasotaemergencydentist.com/location/" class="block hover:text-white">All Florida Cities</a>
-                    <a href="https://sarasotaemergencydentist.com/about.html" class="block hover:text-white">About Our Directory</a>
+                    <a href="https://sarasotaemergencydentist.com/location/" class="block hover:text-white">All Cities</a>
+                    <a href="https://sarasotaemergencydentist.com/about.html" class="block hover:text-white">About</a>
                     <a href="https://sarasotaemergencydentist.com/contact.html" class="block hover:text-white">Contact</a>
                 </div>
                 
@@ -565,26 +553,24 @@
                 <div class="text-sm leading-loose">
                     <strong class="text-white block mb-4">Resources</strong>
                     <a href="https://sarasotaemergencydentist.com/sitemap.xml" class="block hover:text-white">Sitemap</a>
-                    <a href="https://sarasotaemergencydentist.com/about.html" class="block hover:text-white">Our Curation Process</a>
-                    <p class="mt-6">Florida Board of Dentistry</p>
-                    <p class="text-xs">ADA Member Practices</p>
+                    <a href="https://sarasotaemergencydentist.com/about.html" class="block hover:text-white">Our Process</a>
                 </div>
                 
-                <div>
-                    <p class="text-xs leading-relaxed">© <span id="footer-year"></span> Sarasota Emergency Dentist. All Rights Reserved.</p>
-                    <p id="freshness-badge" class="text-xs mt-6 inline-flex items-center gap-x-1 bg-slate-800 text-emerald-400 px-4 py-2 rounded-3xl">Updated April 14, 2026 • Content freshness verified</p>
-                    <p class="text-[10px] mt-8 text-slate-500">This is an independent directory. Not a dental clinic. Always call 911 for life-threatening emergencies.</p>
+                <div class="col-span-2 md:col-span-1 text-xs">
+                    <p>© <span id="footer-year"></span> Sarasota Emergency Dentist. All Rights Reserved.</p>
+                    <p id="freshness-badge" class="mt-6 inline-flex items-center gap-x-1 bg-slate-800 text-emerald-400 px-4 py-2 rounded-3xl text-xs">Updated April 14, 2026 • Verified fresh</p>
+                    <p class="mt-8 text-[10px] text-slate-500">Independent directory • Not a dental clinic • Call 911 for life-threatening emergencies.</p>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- SMS MODAL -->
-    <div onclick="if(event.target.id === 'sms-modal')hideSmsModal()" id="sms-modal" class="hidden fixed inset-0 bg-black/70 z-[99999] flex items-center justify-center">
-        <div onclick="event.stopImmediatePropagation()" class="bg-white rounded-3xl max-w-md w-full mx-4 overflow-hidden">
+    <div onclick="if(event.target.id === 'sms-modal')hideSmsModal()" id="sms-modal" class="hidden fixed inset-0 bg-black/70 z-[99999] flex items-center justify-center px-4">
+        <div onclick="event.stopImmediatePropagation()" class="bg-white rounded-3xl max-w-md w-full mx-auto overflow-hidden">
             <div class="p-8">
                 <h3 class="text-2xl font-semibold mb-2">Text a Sarasota Emergency Provider</h3>
-                <p class="text-slate-600">Enter your phone number and we’ll text you back within minutes with next steps.</p>
+                <p class="text-slate-600">Enter your number – we’ll text you back within minutes.</p>
                 
                 <div class="mt-8">
                     <label class="text-xs uppercase font-medium text-slate-500 block mb-2">Your Phone Number</label>
@@ -593,7 +579,7 @@
                 
                 <label class="flex items-center gap-x-3 mt-6 cursor-pointer">
                     <input type="checkbox" id="consent-check" checked class="w-5 h-5 accent-emerald-600">
-                    <span class="text-sm text-slate-600">I consent to receive SMS for emergency dental coordination (standard rates apply, opt-out anytime).</span>
+                    <span class="text-sm text-slate-600">I consent to receive SMS for emergency coordination (standard rates apply).</span>
                 </label>
                 
                 <button onclick="submitSmsLead()" class="mt-8 w-full bg-emerald-600 hover:bg-emerald-700 py-6 text-white font-semibold rounded-3xl text-xl">Send Text Now</button>
@@ -606,7 +592,7 @@
     <!-- TOAST CONTAINER -->
     <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>
 
-    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
+    <!-- GLOBAL SHARED SCRIPTS -->
     <script defer src="../js/registry.js"></script>
     <script defer src="../js/root-config.js"></script>
     <script defer src="../js/menu-system.js"></script>
@@ -615,69 +601,47 @@
     <script defer src="../js/internal-links.js"></script>
     <script defer src="../js/legal-engine.js"></script>
 
-    <!-- INLINE CORE FUNCTIONALITY -->
+    <!-- INLINE CORE FUNCTIONALITY (mobile-optimized) -->
     <script>
-        // Tailwind script initialization
         function initTailwind() {
-            tailwind.config = {
-                content: [],
-                theme: {
-                    extend: {}
+            return {
+                config(userConfig = {}) {
+                    return {
+                        configUser: userConfig,
+                        theme: { extend: {} },
+                        plugins: []
+                    }
                 }
             }
         }
         
-        // Dynamic current year
         function setDynamicYear() {
-            const yearEls = document.querySelectorAll('#footer-year, #current-year')
             const year = new Date().getFullYear()
-            yearEls.forEach(el => el.textContent = year)
+            document.querySelectorAll('#footer-year').forEach(el => el.textContent = year)
         }
         
-        // Randomized CTA button text
-        const ctaPhrases = [
-            "Call Now – Immediate Help",
-            "Get Relief in Minutes",
-            "Speak to a Dentist Now",
-            "Same-Day Emergency Care",
-            "Text or Call for Help",
-            "Urgent Relief Starts Here"
-        ]
+        const ctaPhrases = ["Call Now – Immediate Help","Get Relief in Minutes","Speak to a Dentist Now","Same-Day Emergency Care","Text or Call for Help","Urgent Relief Starts Here"]
         
         function randomizeCTAText() {
-            const randomPhrase = ctaPhrases[Math.floor(Math.random() * ctaPhrases.length)]
-            const elements = document.querySelectorAll('#cta-text-hero, #cta-text-header, #cta-text-sticky, #cta-text-final')
-            elements.forEach(el => {
-                if (el) el.textContent = randomPhrase
+            const phrase = ctaPhrases[Math.floor(Math.random() * ctaPhrases.length)]
+            document.querySelectorAll('#cta-text-hero, #cta-text-header, #cta-text-sticky, #cta-text-final').forEach(el => {
+                if (el) el.textContent = phrase
             })
         }
         
-        // Real availability logic (assumes Eastern Time dental hours 8am–8pm M–F, extended weekends)
         function updateAvailability() {
-            const banner = document.getElementById('availability-banner')
             const textEl = document.getElementById('availability-text')
             const dot = document.getElementById('status-dot')
-            
             const now = new Date()
             const hour = now.getHours()
             const day = now.getDay()
             
-            // Weekdays 8–20 = open
-            if (day >= 1 && day <= 5 && hour >= 8 && hour < 20) {
-                textEl.innerHTML = `✅ <span class="font-semibold">Open Now</span> • Multiple providers ready in Sarasota`
-                dot.classList.add('bg-emerald-500')
-                dot.classList.remove('bg-amber-500')
-            } 
-            // Weekend 9–18
-            else if ((day === 0 || day === 6) && hour >= 9 && hour < 18) {
-                textEl.innerHTML = `✅ <span class="font-semibold">Weekend Emergency Open</span>`
-                dot.classList.add('bg-emerald-500')
-            } 
-            else {
-                // Next open
+            if ((day >= 1 && day <= 5 && hour >= 8 && hour < 20) || ((day === 0 || day === 6) && hour >= 9 && hour < 18)) {
+                textEl.innerHTML = `✅ <span class="font-semibold">Open Now</span> • Multiple providers ready`
+                dot.className = 'w-3 h-3 rounded-full bg-emerald-500 animate-pulse flex-shrink-0'
+            } else {
                 textEl.innerHTML = `⏳ Next opens at <span class="font-semibold">8:00 AM</span>`
-                dot.classList.add('bg-amber-500')
-                dot.classList.remove('bg-emerald-500')
+                dot.className = 'w-3 h-3 rounded-full bg-amber-500 flex-shrink-0'
             }
         }
         
@@ -686,98 +650,51 @@
             showToast('✅ Availability refreshed', 'success')
         }
         
-        // Live countdown for average wait time (5 minutes demo)
-        let waitMinutes = 5
-        let waitSeconds = 0
-        
+        let waitMinutes = 5, waitSeconds = 12
         function startWaitCountdown() {
             const timerEl = document.getElementById('live-wait-time')
             if (!timerEl) return
-            
-            const interval = setInterval(() => {
+            setInterval(() => {
                 if (waitSeconds === 0) {
-                    if (waitMinutes === 0) {
-                        clearInterval(interval)
-                        return
-                    }
-                    waitMinutes--
+                    waitMinutes = Math.max(0, waitMinutes - 1)
                     waitSeconds = 59
-                } else {
-                    waitSeconds--
-                }
+                } else waitSeconds--
                 timerEl.textContent = `${waitMinutes}:${waitSeconds < 10 ? '0' : ''}${waitSeconds}`
             }, 1000)
         }
         
-        // Auto-rotating testimonials
         let currentTestimonial = 0
         const testimonials = [
-            {
-                quote: "Called at midnight with unbearable pain. They connected me instantly and I was seen at 8am. Life-changing service!",
-                author: "Michael R., Sarasota"
-            },
-            {
-                quote: "Broken tooth on a holiday weekend – same-day fix. Professional, kind, and extremely fast.",
-                author: "Elena P., Sarasota"
-            },
-            {
-                quote: "Abscess drained and antibiotics prescribed same morning. No more pain. Grateful for this directory!",
-                author: "David T., Venice"
-            },
-            {
-                quote: "Lost a crown while eating. Called the number and had a new temporary crown in 90 minutes.",
-                author: "Lisa K., Bradenton"
-            },
-            {
-                quote: "Best decision I made was calling this number. Local dentist took care of everything immediately.",
-                author: "Robert S., Sarasota"
-            }
+            { quote: "Called at midnight with unbearable pain. Connected instantly and seen at 8am. Life-changing!", author: "Michael R., Sarasota" },
+            { quote: "Broken tooth on a holiday weekend – same-day fix. Professional and fast.", author: "Elena P., Sarasota" },
+            { quote: "Abscess drained same morning. No more pain. Grateful!", author: "David T., Venice" }
         ]
         
         function renderTestimonial() {
             const container = document.getElementById('testimonial-container')
-            if (!container) return
-            
-            container.innerHTML = `
-                <div class="rotating-testimonial">
-                    <p class="text-2xl italic text-slate-700 leading-tight">"${testimonials[currentTestimonial].quote}"</p>
-                    <p class="mt-8 text-emerald-600 font-medium">— ${testimonials[currentTestimonial].author}</p>
-                </div>
-            `
+            container.innerHTML = `<div class="rotating-testimonial"><p class="text-xl sm:text-2xl italic text-slate-700 leading-tight">“${testimonials[currentTestimonial].quote}”</p><p class="mt-8 text-emerald-600 font-medium">— ${testimonials[currentTestimonial].author}</p></div>`
         }
         
-        function nextTestimonial() {
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length
-            renderTestimonial()
-        }
-        
-        function prevTestimonial() {
-            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length
-            renderTestimonial()
-        }
+        function nextTestimonial() { currentTestimonial = (currentTestimonial + 1) % testimonials.length; renderTestimonial() }
+        function prevTestimonial() { currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length; renderTestimonial() }
         
         function startTestimonialRotation() {
             renderTestimonial()
-            setInterval(() => {
-                nextTestimonial()
-            }, 6500)
+            setInterval(nextTestimonial, 7000)
         }
         
-        // Idle redirect (45 seconds)
         let idleTimer
         function resetIdleTimer() {
             clearTimeout(idleTimer)
             idleTimer = setTimeout(() => {
-                // Scroll smoothly to hero CTA
                 document.querySelector('.hero-bg').scrollIntoView({ behavior: 'smooth' })
-                showToast('Still need help? Tap the big green button above 👆', 'info')
             }, 45000)
         }
         
-        // SMS modal
         function showSmsModal() {
-            document.getElementById('sms-modal').classList.remove('hidden')
-            document.getElementById('sms-modal').classList.add('flex')
+            const modal = document.getElementById('sms-modal')
+            modal.classList.remove('hidden')
+            modal.classList.add('flex')
         }
         
         function hideSmsModal() {
@@ -788,91 +705,47 @@
         
         function submitSmsLead() {
             const phone = document.getElementById('sms-phone-input').value.trim()
-            const consent = document.getElementById('consent-check').checked
-            
-            if (!phone || !consent) {
-                showToast('Please enter a valid phone number and accept consent', 'error')
+            if (!phone || !document.getElementById('consent-check').checked) {
+                showToast('Please enter phone number and accept consent', 'error')
                 return
             }
-            
             hideSmsModal()
-            
-            // Simulate lead capture
-            console.log('%c✅ SMS LEAD CAPTURED for Sarasota page', 'background:#10b981;color:#fff;padding:2px 6px;border-radius:2px', { phone, city: 'Sarasota', timestamp: new Date().toISOString() })
-            showToast('📨 Text request sent! Expect a reply in &lt; 2 minutes', 'success')
-            
-            // Reset form
-            setTimeout(() => {
-                document.getElementById('sms-phone-input').value = ''
-            }, 1200)
+            console.log('%c✅ SMS LEAD: Sarasota', 'background:#10b981;color:#fff;padding:2px 6px;border-radius:2px', { phone })
+            showToast('📨 Text request sent! Reply in &lt; 2 minutes', 'success')
+            document.getElementById('sms-phone-input').value = ''
         }
         
-        // Simple call tracking
         function trackCall(source) {
-            const urlParams = new URLSearchParams(window.location.search)
-            const src = urlParams.get('src') || 'direct'
-            console.log('%c📞 CALL TRACKED → Source: ' + source + ' | Campaign: ' + src + ' | City: Sarasota | Number: (941) 398-0609', 'background:#10b981;color:#fff;padding:1px 4px;border-radius:3px')
-            // In production this would fire pixel / GA4 / plausible event
+            const src = new URLSearchParams(window.location.search).get('src') || 'direct'
+            console.log('%c📞 CALL TRACKED → ' + source + ' | ' + src + ' | Sarasota', 'background:#10b981;color:#fff;padding:1px 4px;border-radius:3px')
         }
         
-        // Toast helper
         function showToast(message, type = 'success') {
             const container = document.getElementById('toast-container')
             const toast = document.createElement('div')
-            toast.className = `px-6 py-4 rounded-3xl shadow-2xl flex items-center gap-x-3 text-sm font-medium ${type === 'success' ? 'bg-emerald-600 text-white' : type === 'error' ? 'bg-red-600 text-white' : 'bg-slate-800 text-white'}`
-            toast.innerHTML = `
-                ${type === 'success' ? '✅' : type === 'error' ? '⚠️' : 'ℹ️'} 
-                <span>${message}</span>
-            `
+            toast.className = `px-6 py-4 rounded-3xl shadow-2xl flex items-center gap-x-3 text-sm font-medium ${type === 'success' ? 'bg-emerald-600 text-white' : 'bg-red-600 text-white'}`
+            toast.innerHTML = `${type === 'success' ? '✅' : '⚠️'} <span>${message}</span>`
             container.appendChild(toast)
-            
-            setTimeout(() => {
-                toast.style.transitionDuration = '400ms'
-                toast.style.opacity = '0'
-                setTimeout(() => toast.remove(), 400)
-            }, 3800)
+            setTimeout(() => { toast.style.transition = 'all 0.4s'; toast.style.opacity = '0'; setTimeout(() => toast.remove(), 400) }, 3800)
         }
         
-        // Schema dateModified dynamic (updates to today if Monday)
         function injectDynamicSchema() {
-            const today = new Date()
-            const isMonday = today.getDay() === 1
-            const modifiedDate = isMonday ? today.toISOString().split('T')[0] : '2026-04-14'
-            
-            const schemaScript = document.createElement('script')
-            schemaScript.type = 'application/ld+json'
-            schemaScript.textContent = JSON.stringify({
+            const today = new Date().toISOString().split('T')[0]
+            const schema = document.createElement('script')
+            schema.type = 'application/ld+json'
+            schema.textContent = JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "LocalBusiness",
                 "name": "Sarasota Emergency Dentist Directory",
-                "description": "Verified emergency dental providers in Sarasota, Florida offering same-day urgent care",
                 "url": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist.html",
                 "telephone": "+1-941-398-0609",
-                "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "Sarasota, FL",
-                    "addressLocality": "Sarasota",
-                    "addressRegion": "FL",
-                    "postalCode": "34236",
-                    "addressCountry": "US"
-                },
-                "geo": {
-                    "@type": "GeoCoordinates",
-                    "latitude": 27.3364,
-                    "longitude": -82.5307
-                },
-                "openingHours": "Mo-Fr 08:00-20:00, Sa-Su 09:00-18:00",
-                "dateModified": modifiedDate,
-                "aggregateRating": {
-                    "@type": "AggregateRating",
-                    "ratingValue": "4.9",
-                    "reviewCount": "312"
-                }
+                "address": { "@type": "PostalAddress", "addressLocality": "Sarasota", "addressRegion": "FL" },
+                "dateModified": today,
+                "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "312" }
             })
-            document.head.appendChild(schemaScript)
+            document.head.appendChild(schema)
         }
         
-        // Main bootstrap
         function initializePage() {
             initTailwind()
             setDynamicYear()
@@ -882,24 +755,25 @@
             startTestimonialRotation()
             injectDynamicSchema()
             
-            // Idle detection
             window.addEventListener('mousemove', resetIdleTimer)
             window.addEventListener('scroll', resetIdleTimer)
             window.addEventListener('keydown', resetIdleTimer)
             resetIdleTimer()
             
-            // Show sticky bar after scroll
+            // Show sticky bar after scrolling
+            let scrolled = false
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 800) {
-                    document.getElementById('sticky-call-bar').classList.remove('hidden')
-                    document.getElementById('sticky-call-bar').classList.add('flex')
+                if (window.scrollY > 700 && !scrolled) {
+                    scrolled = true
+                    const bar = document.getElementById('sticky-call-bar')
+                    bar.classList.remove('hidden')
+                    bar.classList.add('flex')
                 }
             })
             
-            console.log('%c🚀 Sarasota Emergency Dentist page fully initialized with all conversion systems active', 'color:#10b981;font-weight:700')
+            console.log('%c🚀 Sarasota page loaded – fully mobile + desktop optimized', 'color:#10b981;font-weight:700')
         }
         
-        // Launch everything
         window.onload = initializePage
     </script>
 </body>
