@@ -35,9 +35,9 @@
     <!-- Preconnect -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Favicon (corrected relative path for /guide/ folder) -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
     
     <title>How Long Does a Dentist Appointment Take? | Sarasota Emergency Dentist</title>
     
@@ -122,13 +122,13 @@
             }
         }
         
-        // Auto reading time
+        // Auto reading time – corrected to blueprint spec (225 wpm)
         function calculateReadingTime() {
             const text = document.getElementById('article-content').innerText;
             const words = text.trim().split(/\s+/).length;
-            const minutes = Math.ceil(words / 200);
-            const readingEl = document.getElementById('reading-time');
-            if (readingEl) readingEl.textContent = `${minutes} min read`;
+            const time = Math.ceil(words / 225);
+            const readingEl = document.getElementById('read-time');
+            if (readingEl) readingEl.innerText = `${time} min read`;
         }
         
         // Seasonal banner – TRUE dynamic based on current month
@@ -230,8 +230,8 @@
                 </div>`;
         }
         
-        // Initialize everything on load
-        window.onload = function() {
+        // Initialize everything on load (switched to DOMContentLoaded for reliability)
+        window.addEventListener('DOMContentLoaded', () => {
             initializeTailwind();
             updateDynamicYear();
             updateContentFreshness();
@@ -242,7 +242,7 @@
             setInterval(rotateTestimonials, 6000);
             // Initial testimonial
             rotateTestimonials();
-        };
+        });
     </script>
 </head>
 <body class="tail-container">
@@ -279,7 +279,7 @@
         <div class="pt-12 pb-8">
             <div class="flex items-center gap-3 text-emerald-600 text-sm font-medium mb-4">
                 <span class="px-4 py-1 bg-emerald-100 rounded-3xl flex items-center">📍 Sarasota, FL &amp; 50+ Florida Cities</span>
-                <span id="reading-time" class="px-4 py-1 bg-slate-100 rounded-3xl flex items-center"></span>
+                <span id="read-time" class="px-4 py-1 bg-slate-100 rounded-3xl flex items-center"></span>
                 <span id="content-freshness" class="text-xs"></span>
             </div>
             
@@ -287,7 +287,7 @@
                 How Long Does a Dentist Appointment Take?
             </h1>
             
-            <!-- Quick Answer (Featured Snippet Ready) -->
+            <!-- Quick Answer (Featured Snippet Ready) – surgically moved to sit immediately after H1 with zero blocks in between -->
             <div class="bg-emerald-50 border border-emerald-200 rounded-3xl p-8 mb-10">
                 <p class="flex items-center gap-2 text-emerald-700 font-semibold mb-3">
                     <span class="text-2xl">✅</span> QUICK ANSWER
@@ -354,7 +354,7 @@
         <div id="article-content">
             <h2 id="how-long-is-a-dentist-appointment" class="text-3xl font-semibold mb-6">How Long Is a Dentist Appointment?</h2>
             <p class="text-lg text-slate-700 mb-8">Most patients spend between 30 and 60 minutes in the chair for a standard visit. The exact length depends on the reason for your appointment and any additional steps the dentist needs to take.</p>
-            <p class="text-lg text-slate-700 mb-8">From what we've heard time and again from our Sarasota patients, knowing these times upfront takes away a lot of the anxiety that comes with sitting in the dental chair.</p>
+            <p class="text-lg text-slate-700 mb-8">From what we've heard time and again from our Sarasota patients, knowing these times upfront takes away a lot of the anxiety that comes with sitting in the dental chair. Whether you're wondering "how long is dentist appt" or planning a full procedure, the answer is almost always under an hour for most routine care.</p>
 
             <h2 id="how-long-does-a-dental-cleaning-take" class="text-3xl font-semibold mt-12 mb-6">How Long Does a Dental Cleaning Take?</h2>
             <p class="text-lg text-slate-700 mb-8">A standard dental cleaning usually takes 30–45 minutes. Your first visit or a deep cleaning (scaling and root planing) can run longer — up to 60 minutes — because the hygienist spends extra time removing built-up plaque and tartar.</p>
@@ -483,7 +483,7 @@
             <div class="mt-16 bg-gradient-to-br from-violet-600 to-emerald-600 text-white rounded-3xl p-12 text-center">
                 <h3 class="text-3xl font-semibold mb-4">Free Dental Emergency Guide (PDF)</h3>
                 <p class="text-xl mb-8 max-w-md mx-auto">Pain relief steps, what NOT to do before your visit, and exactly when to call an emergency dentist.</p>
-                <a href="/free-dental-emergency-guide.html" 
+                <a href="../free-dental-emergency-guide.html" 
                    class="inline-flex items-center gap-3 bg-white text-violet-700 hover:bg-amber-100 font-semibold text-xl px-10 py-5 rounded-3xl">
                     📥 Download Free PDF Now
                 </a>
@@ -529,17 +529,17 @@
                     </div>
                 </div>
                 
-                <!-- Legal links -->
+                <!-- Legal links (corrected to relative paths for /guide/ folder) -->
                 <div class="md:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-5 text-sm">
-                    <a href="/privacy-policy.html" class="hover:text-white">Privacy Policy</a>
-                    <a href="/cookies-policy.html" class="hover:text-white">Cookies Policy</a>
-                    <a href="/terms-of-use.html" class="hover:text-white">Terms of Use</a>
-                    <a href="/disclaimer.html" class="hover:text-white">Disclaimer</a>
-                    <a href="/dmca.html" class="hover:text-white">DMCA</a>
-                    <a href="/accessibility.html" class="hover:text-white">Accessibility</a>
-                    <a href="/do-not-sell-my-data.html" class="hover:text-white">Do Not Sell My Data</a>
-                    <a href="/contact.html" class="hover:text-white">Contact</a>
-                    <a href="/about.html" class="hover:text-white">About</a>
+                    <a href="../privacy-policy.html" class="hover:text-white">Privacy Policy</a>
+                    <a href="../cookies-policy.html" class="hover:text-white">Cookies Policy</a>
+                    <a href="../terms-of-use.html" class="hover:text-white">Terms of Use</a>
+                    <a href="../disclaimer.html" class="hover:text-white">Disclaimer</a>
+                    <a href="../dmca.html" class="hover:text-white">DMCA</a>
+                    <a href="../accessibility.html" class="hover:text-white">Accessibility</a>
+                    <a href="../do-not-sell-my-data.html" class="hover:text-white">Do Not Sell My Data</a>
+                    <a href="../contact.html" class="hover:text-white">Contact</a>
+                    <a href="../about.html" class="hover:text-white">About</a>
                 </div>
             </div>
             
@@ -562,7 +562,7 @@
     <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>
 
     <!-- Structured Data / Schema.org (JSON-LD) – full comprehensive set -->
-    <!-- Article Schema (ID for dynamic dateModified) -->
+    <!-- Article Schema (ID for dynamic dateModified) – corrected dates and canonical entity -->
     <script id="article-schema" type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -581,8 +581,8 @@
                 "url": "https://sarasotaemergencydentist.com/logo.png"
             }
         },
-        "datePublished": "2026-04-14",
-        "dateModified": "2026-04-14",
+        "datePublished": "2026-04-15",
+        "dateModified": "2026-04-15",
         "image": "https://sarasotaemergencydentist.com/og-image-dentist-appointment.jpg",
         "url": "https://sarasotaemergencydentist.com/guide/how-long-does-a-dentist-appointment-take.html",
         "mainEntityOfPage": {
@@ -742,12 +742,12 @@
     }
     </script>
     
-    <!-- LocalBusiness Schema -->
+    <!-- LocalBusiness Schema – corrected to canonical directory entity (no single provider ownership) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        "name": "Integrated Dental Sarasota",
+        "name": "Sarasota Emergency Dentist",
         "telephone": "+19413980609",
         "address": {
             "@type": "PostalAddress",
