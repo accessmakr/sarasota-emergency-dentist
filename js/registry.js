@@ -150,6 +150,10 @@ window.SITE_REGISTRY = {
         "label": "How to Get Rid of Numbness After the Dentist Fast | Sarasota Emergency Dentist"
       },
       {
+        "name": "guide/what-kind-of-dentist-does-implants.html",
+        "label": "What Kind of Dentist Does Implants? | Sarasota Emergency Dentist"
+      },
+      {
         "name": "guide/what-type-of-dentist-does-dental-implants.html",
         "label": "What Type of Dentist Does Dental Implants? | Sarasota Emergency Dentist"
       }
