@@ -136,6 +136,10 @@ window.SITE_REGISTRY = {
       {
         "name": "guide/how-long-does-a-dentist-appointment-take.html",
         "label": "How Long Does a Dentist Appointment Take? | Sarasota Emergency Dentist"
+      },
+      {
+        "name": "guide/how-to-get-rid-of-numbness-after-the-dentist-fast.html",
+        "label": "How to Get Rid of Numbness After the Dentist Fast | Sarasota Emergency Dentist"
       }
     ]
   },
