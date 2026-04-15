@@ -354,6 +354,7 @@
         <div id="article-content">
             <h2 id="how-long-is-a-dentist-appointment" class="text-3xl font-semibold mb-6">How Long Is a Dentist Appointment?</h2>
             <p class="text-lg text-slate-700 mb-8">Most patients spend between 30 and 60 minutes in the chair for a standard visit. The exact length depends on the reason for your appointment and any additional steps the dentist needs to take.</p>
+            <p class="text-lg text-slate-700 mb-8">From what we've heard time and again from our Sarasota patients, knowing these times upfront takes away a lot of the anxiety that comes with sitting in the dental chair.</p>
 
             <h2 id="how-long-does-a-dental-cleaning-take" class="text-3xl font-semibold mt-12 mb-6">How Long Does a Dental Cleaning Take?</h2>
             <p class="text-lg text-slate-700 mb-8">A standard dental cleaning usually takes 30–45 minutes. Your first visit or a deep cleaning (scaling and root planing) can run longer — up to 60 minutes — because the hygienist spends extra time removing built-up plaque and tartar.</p>
@@ -377,6 +378,7 @@
             </div>
 
             <h2 id="different-situations-explained" class="text-3xl font-semibold mt-12 mb-6">Different Situations Explained</h2>
+            <p class="text-lg text-slate-700 mb-8">Every appointment is a little different, but here's what we've seen most often in our local offices.</p>
             <div class="space-y-8">
                 <div class="border-l-4 border-emerald-600 pl-6">
                     <h3 class="font-semibold text-xl">Routine check-up &amp; cleaning</h3>
@@ -504,6 +506,9 @@
                 <p class="text-center text-emerald-700 font-medium mb-6">Real Patients, Real Results</p>
                 <div id="testimonial-container" class="transition-all duration-700"></div>
             </div>
+
+            <!-- Required informational disclaimer (added per blueprint) -->
+            <p class="text-slate-500 text-sm italic border-t border-slate-200 pt-8 mt-12">This is for informational purposes only. For medical advice or a diagnosis, consult a professional.</p>
         </div>
     </div>
 
@@ -615,7 +620,7 @@
     }
     </script>
     
-    <!-- Full FAQPage Schema (14 questions) -->
+    <!-- Full FAQPage Schema (14 questions – EXACTLY synced with visible FAQs) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -626,7 +631,7 @@
                 "name": "How long does a dentist appointment take?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Most appointments last 30–60 minutes."
+                    "text": "Most appointments last 30–60 minutes. The time varies based on the procedure and whether X-rays are required."
                 }
             },
             {
@@ -634,7 +639,7 @@
                 "name": "How long is dentist appt?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Plan for 30–60 minutes depending on the procedure."
+                    "text": "Plan for 30–60 minutes. Simple cleanings are on the shorter end; more involved treatments take longer."
                 }
             },
             {
@@ -642,7 +647,7 @@
                 "name": "How long dentist visit?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "The average dentist visit is 40 minutes."
+                    "text": "The average dentist visit is 40 minutes. Emergency visits can be shorter or longer depending on the urgency."
                 }
             },
             {
@@ -650,7 +655,7 @@
                 "name": "How long does a clean at the dentist take?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "A standard cleaning takes 30–45 minutes."
+                    "text": "A standard cleaning takes 30–45 minutes. Deep cleanings or first visits may require up to 60 minutes."
                 }
             },
             {
@@ -666,7 +671,15 @@
                 "name": "Do X-rays make the appointment longer?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Digital X-rays add only 5–15 minutes."
+                    "text": "Digital X-rays add only 5–15 minutes and are often essential for accurate diagnosis."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What if I’m nervous about the length of the appointment?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sedation options and clear communication help keep the experience short and comfortable."
                 }
             },
             {
@@ -674,7 +687,7 @@
                 "name": "How long does numbness last after a dentist appointment?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Numbness from local anesthetic typically fades in 2–4 hours."
+                    "text": "Numbness from local anesthetic typically fades in 2–4 hours. We provide aftercare tips to stay safe."
                 }
             },
             {
@@ -682,7 +695,7 @@
                 "name": "How long does an emergency dentist appointment take?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Emergency visits usually take 30–90 minutes."
+                    "text": "Emergency visits usually take 30–90 minutes so we can stop pain and address infection quickly."
                 }
             },
             {
@@ -690,7 +703,7 @@
                 "name": "How long is a dental filling appointment?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "A standard filling takes 45–75 minutes."
+                    "text": "A standard filling takes 45–75 minutes including numbing, drilling, and shaping the restoration."
                 }
             },
             {
@@ -698,7 +711,7 @@
                 "name": "How long does a tooth extraction appointment take?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Simple extractions take 30–60 minutes."
+                    "text": "Simple extractions take 30–60 minutes; surgical extractions may require up to 90 minutes."
                 }
             },
             {
@@ -706,7 +719,7 @@
                 "name": "How long does a dental exam take?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "A routine dental exam usually takes 10–20 minutes."
+                    "text": "A routine dental exam usually takes 10–20 minutes before any cleaning or treatment begins."
                 }
             },
             {
@@ -714,7 +727,7 @@
                 "name": "Can dentist appointments be done in one visit?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes — many procedures are completed in a single visit."
+                    "text": "Yes — many procedures including cleanings, fillings, and simple extractions are completed in a single visit."
                 }
             },
             {
@@ -722,15 +735,7 @@
                 "name": "How long do dental X-rays take during an appointment?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Digital X-rays add only 5–10 minutes."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How long should a routine dentist visit last?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Routine visits usually last 30–45 minutes."
+                    "text": "Digital X-rays add only 5–10 minutes and are completed right in the chair."
                 }
             }
         ]
