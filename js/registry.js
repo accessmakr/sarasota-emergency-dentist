@@ -53,6 +53,10 @@ window.SITE_REGISTRY = {
         "label": "Endodontics in Sarasota, FL • Root Canal Specialists &amp; Same-Day Pain Relief with Trusted Local Experts"
       },
       {
+        "name": "free-dental-emergency-guide.html",
+        "label": "Free Dental Emergency Guide | Sarasota Emergency Dentist"
+      },
+      {
         "name": "ged.html",
         "label": "Geriatric Dentistry in Sarasota, FL • Senior &amp; Medically Complex Dental Care"
       },
