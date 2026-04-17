@@ -50,7 +50,7 @@ window.SITE_REGISTRY = {
       },
       {
         "name": "end.html",
-        "label": "Endodontics in Sarasota, FL • Root Canal Specialists &amp; Same-Day Pain Relief with Trusted Local Experts"
+        "label": "Endodontics in Sarasota, FL • Same-Day Root Canal Specialists &amp; Emergency Pain Relief"
       },
       {
         "name": "free-dental-emergency-guide.html",
