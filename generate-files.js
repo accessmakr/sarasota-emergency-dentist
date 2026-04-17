@@ -1,4 +1,4 @@
-// generate-files.js — V4 (GREEDY REGEX FIX)
+// generate-files.js — V5 (SITEMAP, JSON, AND REGEX FIXES)
 const fs = require('fs');
 const path = require('path');
 
@@ -14,7 +14,8 @@ try {
     const entries = fs.readdirSync(dir, { withFileTypes: true });
     for (const entry of entries) {
       const fullPath = path.join(dir, entry.name);
-      if (entry.isDirectory() && !entry.name.startsWith('.') && entry.name !== 'node_modules') {
+      // Skip hidden folders, node_modules, and the js folder
+      if (entry.isDirectory() && !entry.name.startsWith('.') && entry.name !== 'node_modules' && entry.name !== 'js') {
         files = files.concat(getAllHtmlFiles(fullPath));
       } else if (entry.isFile() && entry.name.endsWith('.html')) {
         files.push(fullPath);
@@ -43,7 +44,21 @@ try {
     pages.push({ path: relativePath, title: title });
   });
 
-  // START BUILDING THE FILE
+  // 1. GENERATE AND SAVE pages.json
+  fs.writeFileSync('pages.json', JSON.stringify(pages, null, 2));
+  console.log('✅ pages.json written successfully.');
+
+  // 2. GENERATE AND SAVE sitemap.xml
+  let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+  pages.forEach(page => {
+    let urlPath = page.path === 'index.html' ? '' : page.path;
+    sitemapContent += `  <url>\n    <loc>${DOMAIN}/${urlPath}</loc>\n    <changefreq>weekly</changefreq>\n  </url>\n`;
+  });
+  sitemapContent += `</urlset>`;
+  fs.writeFileSync('sitemap.xml', sitemapContent);
+  console.log('✅ sitemap.xml written successfully.');
+
+  // 3. GENERATE js/registry.js
   let registryContent = `window.SITE_REGISTRY = {
     version: "2026.04.11-Fixed",
     folders: ${JSON.stringify(folderMap, null, 2)},
@@ -57,18 +72,16 @@ try {
     }
 };\n\n`;
 
-  // EXTRACT DENTISTS (Improved Regex to prevent cutting off)
+  // EXTRACT DENTISTS
   if (fs.existsSync(MAIN_HTML)) {
     const mainContent = fs.readFileSync(MAIN_HTML, 'utf8');
-    // We search for everything from 'const dentists =' until the specific comment marker
     const dentistsMatch = mainContent.match(/const\s+dentists\s*=\s*([\s\S]*?);\s*\/\/\s*\{\{DYNAMIC_NEW_PROVIDERS_INSERT\}\}/i);
     
     if (dentistsMatch && dentistsMatch[1]) {
       registryContent += `window.SITE_REGISTRY.dentists = ${dentistsMatch[1]};`;
       console.log('✅ Successfully extracted full dentist array.');
     } else {
-      console.error('❌ Could not find dentists with the DYNAMIC_NEW_PROVIDERS_INSERT marker.');
-      // Fallback: If no marker, just use an empty array so it doesn't crash the file
+      console.error('❌ Could not find dentists with the DYNAMIC_NEW_PROVIDERS_INSERT marker in index.html.');
       registryContent += `window.SITE_REGISTRY.dentists = [];`;
     }
   }
