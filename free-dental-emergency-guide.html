@@ -45,6 +45,14 @@
         body { font-family: 'Inter', system-ui, sans-serif; scroll-behavior: smooth; }
         .print-btn { transition: transform 0.2s; }
         .print-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4); }
+        
+        /* Enhanced toolkit image icons */
+        .toolkit-icon {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .toolkit-icon:hover {
+            transform: scale(1.08);
+        }
     </style>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -181,98 +189,97 @@
         <h2 id="toolkit" class="text-2xl font-bold text-slate-900 mb-4">Essential Emergency Oral Care Toolkit</h2>
         <p class="text-slate-600 mb-6">To be prepared for future incidents, we highly recommend keeping these 6 essential items in your home medicine cabinet. Each is clinically selected for its proven ability to provide immediate protection and relief during a dental emergency until you can reach professional care.</p>
         
-        <!-- Enhanced product recommendations with exact Amazon-style product images (surgically integrated without altering original text or links) -->
+        <!-- Enhanced toolkit with WebP-optimized product icons (upper-left placement, smaller for canvas fit, fully responsive) -->
         <div class="space-y-4 mb-12">
-            
             <!-- Product 1 -->
-            <div class="flex flex-col sm:flex-row gap-6 bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                <div class="flex-shrink-0 mx-auto sm:mx-0">
-                    <img src="https://m.media-amazon.com/images/I/71k5p4QJ2ZL._AC_SL1500_.jpg" alt="Dentemp Temporary Filling Kit - exact Amazon product packaging" class="w-32 h-32 object-contain rounded-2xl shadow-sm border border-slate-100">
-                </div>
+            <div class="flex flex-col sm:flex-row gap-4 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                <img src="https://m.media-amazon.com/images/I/81Rz9875EOL._AC_SX296_SY426_FMwebp_QL65_.jpg" 
+                     alt="Dentemp Temporary Filling Kit" 
+                     class="toolkit-icon w-20 h-20 flex-shrink-0 object-contain rounded-2xl shadow-sm bg-white border border-slate-100">
                 <div class="flex-1">
                     <span class="font-semibold text-slate-900 block">Dentemp Temporary Filling Kit</span>
                     <p class="text-sm text-slate-600 mt-1">Zinc oxide-based temporary filling material to seal cavities and protect exposed nerves if a filling falls out.</p>
                 </div>
-                <a href="https://amzn.to/4ctcFGa" target="_blank" rel="noopener noreferrer" class="print-btn inline-flex items-center px-7 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-2xl transition-colors shadow-sm whitespace-nowrap self-start sm:self-center">
+                <a href="https://amzn.to/4ctcFGa" target="_blank" rel="noopener noreferrer" class="print-btn self-start sm:self-center inline-flex items-center px-7 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-2xl transition-colors shadow-sm whitespace-nowrap">
                     Get on Amazon
                 </a>
             </div>
 
             <!-- Product 2 -->
-            <div class="flex flex-col sm:flex-row gap-6 bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                <div class="flex-shrink-0 mx-auto sm:mx-0">
-                    <img src="https://m.media-amazon.com/images/I/61o5b9fKqL._AC_SL1500_.jpg" alt="Save-A-Tooth Emergency Tooth Preservation Kit - exact Amazon product packaging" class="w-32 h-32 object-contain rounded-2xl shadow-sm border border-slate-100">
-                </div>
+            <div class="flex flex-col sm:flex-row gap-4 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                <img src="https://m.media-amazon.com/images/I/71nSyEufOZL._AC_SX296_SY426_FMwebp_QL65_.jpg" 
+                     alt="Save-A-Tooth Emergency Tooth Preservation Kit" 
+                     class="toolkit-icon w-20 h-20 flex-shrink-0 object-contain rounded-2xl shadow-sm bg-white border border-slate-100">
                 <div class="flex-1">
                     <span class="font-semibold text-slate-900 block">Save-A-Tooth Emergency Tooth Preservation Kit</span>
                     <p class="text-sm text-slate-600 mt-1">FDA-approved kit that preserves a knocked-out tooth in a safe solution for successful reimplantation.</p>
                 </div>
-                <a href="https://amzn.to/4vltP13" target="_blank" rel="noopener noreferrer" class="print-btn inline-flex items-center px-7 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-2xl transition-colors shadow-sm whitespace-nowrap self-start sm:self-center">
+                <a href="https://amzn.to/4vltP13" target="_blank" rel="noopener noreferrer" class="print-btn self-start sm:self-center inline-flex items-center px-7 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-2xl transition-colors shadow-sm whitespace-nowrap">
                     Get on Amazon
                 </a>
             </div>
 
             <!-- Product 3 -->
-            <div class="flex flex-col sm:flex-row gap-6 bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                <div class="flex-shrink-0 mx-auto sm:mx-0">
-                    <img src="https://m.media-amazon.com/images/I/71k5p4QJ2ZL._AC_SL1500_.jpg" alt="Orthodontic Relief Wax (3-Pack) - exact Amazon product packaging" class="w-32 h-32 object-contain rounded-2xl shadow-sm border border-slate-100">
-                </div>
+            <div class="flex flex-col sm:flex-row gap-4 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                <img src="https://m.media-amazon.com/images/I/719wjhc4NoL._AC_SX296_SY426_FMwebp_QL65_.jpg" 
+                     alt="Orthodontic Relief Wax (3-Pack)" 
+                     class="toolkit-icon w-20 h-20 flex-shrink-0 object-contain rounded-2xl shadow-sm bg-white border border-slate-100">
                 <div class="flex-1">
                     <span class="font-semibold text-slate-900 block">Orthodontic Relief Wax (3-Pack)</span>
                     <p class="text-sm text-slate-600 mt-1">Covers sharp edges from broken teeth, wires, or braces to prevent cheek and gum irritation.</p>
                 </div>
-                <a href="https://amzn.to/4mxq7gM" target="_blank" rel="noopener noreferrer" class="print-btn inline-flex items-center px-7 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-2xl transition-colors shadow-sm whitespace-nowrap self-start sm:self-center">
+                <a href="https://amzn.to/4mxq7gM" target="_blank" rel="noopener noreferrer" class="print-btn self-start sm:self-center inline-flex items-center px-7 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-2xl transition-colors shadow-sm whitespace-nowrap">
                     Get on Amazon
                 </a>
             </div>
 
             <!-- Product 4 -->
-            <div class="flex flex-col sm:flex-row gap-6 bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                <div class="flex-shrink-0 mx-auto sm:mx-0">
-                    <img src="https://m.media-amazon.com/images/I/71k5p4QJ2ZL._AC_SL1500_.jpg" alt="Sterile Gauze Pads 4x4 (50ct) - exact Amazon product packaging" class="w-32 h-32 object-contain rounded-2xl shadow-sm border border-slate-100">
-                </div>
+            <div class="flex flex-col sm:flex-row gap-4 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                <img src="https://m.media-amazon.com/images/I/61a31ft455L._AC_SX296_SY426_FMwebp_QL65_.jpg" 
+                     alt="Sterile Gauze Pads 4x4 (50ct)" 
+                     class="toolkit-icon w-20 h-20 flex-shrink-0 object-contain rounded-2xl shadow-sm bg-white border border-slate-100">
                 <div class="flex-1">
                     <span class="font-semibold text-slate-900 block">Sterile Gauze Pads 4x4 (50ct)</span>
                     <p class="text-sm text-slate-600 mt-1">Individually wrapped sterile pads for controlling bleeding and protecting oral wounds.</p>
                 </div>
-                <a href="https://amzn.to/4spM3vD" target="_blank" rel="noopener noreferrer" class="print-btn inline-flex items-center px-7 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-2xl transition-colors shadow-sm whitespace-nowrap self-start sm:self-center">
+                <a href="https://amzn.to/4spM3vD" target="_blank" rel="noopener noreferrer" class="print-btn self-start sm:self-center inline-flex items-center px-7 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-2xl transition-colors shadow-sm whitespace-nowrap">
                     Get on Amazon
                 </a>
             </div>
 
             <!-- Product 5 -->
-            <div class="flex flex-col sm:flex-row gap-6 bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                <div class="flex-shrink-0 mx-auto sm:mx-0">
-                    <img src="https://m.media-amazon.com/images/I/71k5p4QJ2ZL._AC_SL1500_.jpg" alt="Clove Essential Oil (Temporary Relief) - exact Amazon product packaging" class="w-32 h-32 object-contain rounded-2xl shadow-sm border border-slate-100">
-                </div>
+            <div class="flex flex-col sm:flex-row gap-4 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                <img src="https://m.media-amazon.com/images/I/71yoy+KuO3L._AC_SX296_SY426_FMwebp_QL65_.jpg" 
+                     alt="Clove Essential Oil (Temporary Relief)" 
+                     class="toolkit-icon w-20 h-20 flex-shrink-0 object-contain rounded-2xl shadow-sm bg-white border border-slate-100">
                 <div class="flex-1">
                     <span class="font-semibold text-slate-900 block">Clove Essential Oil (Temporary Relief)</span>
                     <p class="text-sm text-slate-600 mt-1">Natural eugenol source for targeted numbing of tooth pain (apply sparingly with cotton swab).</p>
                 </div>
-                <a href="https://amzn.to/4vrf4tr" target="_blank" rel="noopener noreferrer" class="print-btn inline-flex items-center px-7 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-2xl transition-colors shadow-sm whitespace-nowrap self-start sm:self-center">
+                <a href="https://amzn.to/4vrf4tr" target="_blank" rel="noopener noreferrer" class="print-btn self-start sm:self-center inline-flex items-center px-7 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-2xl transition-colors shadow-sm whitespace-nowrap">
                     Get on Amazon
                 </a>
             </div>
 
             <!-- Product 6 -->
-            <div class="flex flex-col sm:flex-row gap-6 bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                <div class="flex-shrink-0 mx-auto sm:mx-0">
-                    <img src="https://m.media-amazon.com/images/I/61o5b9fKqL._AC_SL1500_.jpg" alt="Chlorhexidine Oral Rinse (0.12%) - exact Amazon product packaging" class="w-32 h-32 object-contain rounded-2xl shadow-sm border border-slate-100">
-                </div>
+            <div class="flex flex-col sm:flex-row gap-4 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                <img src="https://m.media-amazon.com/images/I/71ywXuEM4RL._AC_SX296_SY426_FMwebp_QL65_.jpg" 
+                     alt="Chlorhexidine Oral Rinse (0.12%)" 
+                     class="toolkit-icon w-20 h-20 flex-shrink-0 object-contain rounded-2xl shadow-sm bg-white border border-slate-100">
                 <div class="flex-1">
                     <span class="font-semibold text-slate-900 block">Chlorhexidine Oral Rinse (0.12%)</span>
                     <p class="text-sm text-slate-600 mt-1">Powerful antiseptic rinse to reduce bacteria and help prevent infection spread in the mouth.</p>
                 </div>
-                <a href="https://amzn.to/3Q3ToUc" target="_blank" rel="noopener noreferrer" class="print-btn inline-flex items-center px-7 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-2xl transition-colors shadow-sm whitespace-nowrap self-start sm:self-center">
+                <a href="https://amzn.to/3Q3ToUc" target="_blank" rel="noopener noreferrer" class="print-btn self-start sm:self-center inline-flex items-center px-7 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-2xl transition-colors shadow-sm whitespace-nowrap">
                     Get on Amazon
                 </a>
             </div>
         </div>
 
-        <!-- Affiliate Disclosure (added exactly as requested at the bottom of the toolkit section) -->
-        <p class="text-xs text-slate-500 italic mt-8 border-t border-slate-200 pt-6">
-            Affiliate Disclosure: The “Get on Amazon” links above are Amazon affiliate links. As an Amazon Associate, Sarasota Emergency Dentist may earn a small commission from qualifying purchases at no additional cost to you. We only recommend products we have clinically verified as essential for genuine dental emergencies. This helps keep this free guide available to everyone.
-        </p>
+        <!-- Short affiliate disclosure (added at bottom of toolkit section) -->
+        <div class="text-xs text-slate-400 italic text-center mt-6 px-4 mb-12">
+            Affiliate Disclosure: As an Amazon Associate, we earn from qualifying purchases made via the links above. This helps keep our free dental emergency guides available at no extra cost to you.
+        </div>
 
         <div class="flex justify-center mb-16 pt-8 border-t">
             <button onclick="generatePDF()" class="print-btn w-full sm:w-auto bg-violet-600 text-white px-10 py-5 rounded-2xl font-bold text-xl shadow-2xl flex items-center justify-center gap-3">
