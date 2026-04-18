@@ -1,4 +1,4 @@
-// generate-files.js — V6 (CLEAN URL & SITEMAP MASTER)
+// generate-files.js — V7 (METICULOUS EDITION)
 const fs = require('fs');
 const path = require('path');
 
@@ -6,7 +6,7 @@ const DOMAIN = 'https://www.sarasotaemergencydentist.com';
 const MAIN_HTML = 'index.html';
 const REGISTRY_OUTPUT = path.join('js', 'registry.js');
 
-console.log('🚀 Starting surgical auto-generation...');
+console.log('🚀 Starting A-to-Z surgical generation...');
 
 try {
   function getAllHtmlFiles(dir) {
@@ -43,24 +43,32 @@ try {
     pages.push({ path: relativePath, title: title });
   });
 
-  // 1. SAVE pages.json
+  // 1. WRITE pages.json
   fs.writeFileSync('pages.json', JSON.stringify(pages, null, 2));
-  console.log('✅ pages.json generated.');
 
-  // 2. SAVE sitemap.xml (CLEAN URLS)
+  // 2. WRITE sitemap.xml (CLEAN URLS + REAL LASTMOD)
   let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
   pages.forEach(page => {
     let cleanPath = page.path.replace('.html', '');
     if (cleanPath === 'index') cleanPath = ''; 
-    sitemapContent += `  <url>\n    <loc>${DOMAIN}/${cleanPath}</loc>\n    <changefreq>weekly</changefreq>\n  </url>\n`;
+
+    // Get true file modification time
+    const stats = fs.statSync(page.path);
+    const lastMod = stats.mtime.toISOString().split('T')[0];
+
+    sitemapContent += `  <url>\n`;
+    sitemapContent += `    <loc>${DOMAIN}/${cleanPath}</loc>\n`;
+    sitemapContent += `    <lastmod>${lastMod}</lastmod>\n`;
+    sitemapContent += `    <changefreq>weekly</changefreq>\n`;
+    sitemapContent += `    <priority>${cleanPath === '' ? '1.0' : '0.8'}</priority>\n`;
+    sitemapContent += `  </url>\n`;
   });
   sitemapContent += `</urlset>`;
   fs.writeFileSync('sitemap.xml', sitemapContent);
-  console.log('✅ sitemap.xml generated with Clean URLs.');
 
-  // 3. SAVE js/registry.js
+  // 3. WRITE js/registry.js
   let registryContent = `window.SITE_REGISTRY = {
-    version: "2026.04.18-Clean",
+    version: "2026.04.18-Surgical",
     folders: ${JSON.stringify(folderMap, null, 2)},
     dentists: [],
     getAllPages: function() {
@@ -72,23 +80,20 @@ try {
     }
 };\n\n`;
 
+  // EXTRACT DENTISTS
   if (fs.existsSync(MAIN_HTML)) {
     const mainContent = fs.readFileSync(MAIN_HTML, 'utf8');
     const dentistsMatch = mainContent.match(/const\s+dentists\s*=\s*([\s\S]*?);\s*\/\/\s*\{\{DYNAMIC_NEW_PROVIDERS_INSERT\}\}/i);
     if (dentistsMatch && dentistsMatch[1]) {
       registryContent += `window.SITE_REGISTRY.dentists = ${dentistsMatch[1]};`;
-      console.log('✅ Dentist array successfully extracted.');
-    } else {
-      console.error('❌ Marker {{DYNAMIC_NEW_PROVIDERS_INSERT}} not found in index.html.');
-      registryContent += `window.SITE_REGISTRY.dentists = [];`;
+      console.log('✅ Success: All files and dentist data synced.');
     }
   }
 
   if (!fs.existsSync('js')) fs.mkdirSync('js');
   fs.writeFileSync(REGISTRY_OUTPUT, registryContent);
-  console.log('✅ registry.js written successfully.');
 
 } catch (err) {
-  console.error('💥 ERROR:', err.message);
+  console.error('💥 Error:', err.message);
   process.exit(1);
 }
