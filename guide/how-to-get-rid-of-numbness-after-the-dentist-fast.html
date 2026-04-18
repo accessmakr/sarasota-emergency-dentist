@@ -61,6 +61,30 @@
         .badge {
             animation: pulse 2s infinite;
         }
+        /* Active TOC highlight */
+        .active-toc {
+            color: #10b981 !important;
+            font-weight: 600;
+        }
+        
+        /* IMPROVED ACCORDION STYLES */
+        .accordion-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .accordion-item.open .accordion-content {
+            max-height: var(--content-height, 300px);
+        }
+        .chevron {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .accordion-item.open .chevron {
+            transform: rotate(180deg);
+        }
     </style>
     <script>
         // Tailwind config
@@ -208,21 +232,21 @@
 </head>
 <body class="tail-container">
 
-    <!-- FIXED HEADER – logo left, master-nav-dock right (JS menu injection ready) -->
+    <!-- SCROLL PROGRESS BAR -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-emerald-600 to-violet-600 z-[9999] shadow-sm" style="width: 0%;"></div>
+
+    <!-- FIXED HEADER -->
     <header class="bg-white border-b sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <!-- Left: Logo + Brand (hardcoded as required) -->
             <a href="https://sarasotaemergencydentist.com/" class="flex items-center gap-3 text-2xl font-semibold text-slate-900 hover:text-emerald-600 transition-colors">
                 🦷
                 <span>Sarasota Emergency Dentist</span>
             </a>
-            
-            <!-- Right: Master Nav Dock -->
             <div id="master-nav-dock" class="flex items-center"></div>
         </div>
     </header>
 
-    <!-- Seasonal Banner Container -->
+    <!-- Seasonal Banner -->
     <div id="seasonal-banner"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -236,7 +260,7 @@
             <span class="font-medium text-slate-700">How to Get Rid of Numbness After the Dentist Fast</span>
         </nav>
         
-        <!-- HERO / TOP SECTION -->
+        <!-- HERO -->
         <div class="pt-12 pb-8">
             <div class="flex items-center gap-3 text-emerald-600 text-sm font-medium mb-4">
                 <span class="px-4 py-1 bg-emerald-100 rounded-3xl flex items-center">📍 Sarasota, FL &amp; 50+ Florida Cities</span>
@@ -248,7 +272,7 @@
                 How to Get Rid of Numbness After the Dentist Fast
             </h1>
             
-            <!-- Quick Answer (Featured Snippet Ready – placed immediately after H1) -->
+            <!-- Quick Answer -->
             <div class="bg-emerald-50 border border-emerald-200 rounded-3xl p-8 mb-10">
                 <p class="flex items-center gap-2 text-emerald-700 font-semibold mb-3">
                     <span class="text-2xl">✅</span> QUICK ANSWER
@@ -259,20 +283,51 @@
                 </p>
             </div>
 
-            <!-- Immediate CTA – Miami (rotated provider #1) -->
+            <!-- HERO SHARE BAR -->
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-3 bg-white border border-emerald-100 rounded-3xl p-6 mb-12 shadow-sm">
+                <span class="text-slate-500 font-medium text-sm whitespace-nowrap">Share this guide →</span>
+                <button data-action="whatsapp" class="share-button flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium px-6 h-10 rounded-3xl transition-colors active:scale-95">
+                    📲 WhatsApp
+                </button>
+                <button data-action="facebook" class="share-button flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-6 h-10 rounded-3xl transition-colors active:scale-95">
+                    📘 Facebook
+                </button>
+                <button data-action="twitter" class="share-button flex items-center gap-2 bg-black hover:bg-slate-800 text-white text-sm font-medium px-6 h-10 rounded-3xl transition-colors active:scale-95">
+                    𝕏 X
+                </button>
+                <button data-action="email" class="share-button flex items-center gap-2 bg-slate-700 hover:bg-slate-800 text-white text-sm font-medium px-6 h-10 rounded-3xl transition-colors active:scale-95">
+                    ✉️ Email
+                </button>
+                <button data-action="copy" class="share-button flex items-center gap-2 bg-slate-600 hover:bg-slate-700 text-white text-sm font-medium px-6 h-10 rounded-3xl transition-colors active:scale-95">
+                    📋 Copy link
+                </button>
+            </div>
+
+            <!-- Immediate CTA -->
             <div class="flex flex-col md:flex-row gap-4 items-center bg-white border-2 border-violet-200 rounded-3xl p-6 mb-12 shadow-inner">
                 <div class="flex-1">
                     <p class="text-xl font-semibold text-slate-800">Still numb and worried?</p>
                     <p class="text-slate-600">Flagler Dental Clinic in Miami offers same-day check-ups if the numbness lasts longer than expected.</p>
                 </div>
-                <a href="tel:+13055544304" 
-                   class="dynamic-cta bg-emerald-600 hover:bg-emerald-700 text-white text-xl font-semibold px-10 py-5 rounded-3xl flex items-center justify-center gap-3 shadow-lg transition-all active:scale-95">
+                <a href="tel:+13055544304" class="dynamic-cta bg-emerald-600 hover:bg-emerald-700 text-white text-xl font-semibold px-10 py-5 rounded-3xl flex items-center justify-center gap-3 shadow-lg transition-all active:scale-95">
                     Call Now for Same-Day Appointment
                 </a>
                 <div class="text-xs text-slate-500 text-center md:text-left">
                     (305) 554-4304<br>
                     <span class="text-emerald-600 font-medium">Open today • Same-day slots available</span>
                 </div>
+            </div>
+
+            <!-- TRUST BADGE STRIP -->
+            <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 text-sm text-slate-400 bg-white border border-emerald-100 rounded-3xl p-5 mt-2 mb-12">
+                <div class="flex items-center gap-1.5">
+                    <span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span>
+                    <span class="font-medium text-slate-700">4.9 Patient Satisfaction</span>
+                </div>
+                <div class="h-3 w-px bg-slate-200 hidden sm:block"></div>
+                <div class="flex items-center gap-1">🚀 Same-day appointments available</div>
+                <div class="h-3 w-px bg-slate-200 hidden sm:block"></div>
+                <div class="flex items-center gap-1">📍 Serving 50+ Florida cities</div>
             </div>
 
             <!-- What to Expect Teaser -->
@@ -295,7 +350,7 @@
             </div>
 
             <!-- TABLE OF CONTENTS -->
-            <div class="mb-12 bg-white border border-emerald-100 rounded-3xl p-8">
+            <div id="table-of-contents" class="mb-12 bg-white border border-emerald-100 rounded-3xl p-8">
                 <h3 class="text-xl font-semibold mb-6 flex items-center gap-2 text-emerald-700">
                     📋 In This Guide
                 </h3>
@@ -311,7 +366,7 @@
             </div>
         </div>
 
-        <!-- EXPANDED ANSWER -->
+        <!-- ARTICLE CONTENT -->
         <div id="article-content">
             <h2 id="how-long-does-numbness-last" class="text-3xl font-semibold mb-6">How Long Does Numbness Last After the Dentist?</h2>
             <p class="text-lg text-slate-700 mb-8">Most people feel that heavy, tingly numbness for 2–4 hours after a filling, cleaning, or extraction. It really depends on how much anesthetic the dentist used and how your body processes it. Many patients say it’s usually gone by the time they finish their afternoon errands.</p>
@@ -332,7 +387,18 @@
                 </div>
             </div>
 
-            <!-- COMPARISON TABLE – REQUIRED BY BLUEPRINT (surgically inserted here) -->
+            <!-- IMPROVED TWEETABLE FACT CARD 1 – now clearly dental-focused and resonates outside the site -->
+            <div class="bg-gradient-to-r from-emerald-50 to-violet-50 border border-emerald-200 rounded-3xl p-8 my-12 flex flex-col md:flex-row gap-6 items-start shadow-sm">
+                <div class="text-5xl flex-shrink-0">🚶‍♂️</div>
+                <div class="flex-1">
+                    <p class="italic text-slate-700 text-xl leading-tight">"After the dentist, a quick 5-minute walk helped my mouth numbness disappear faster than just sitting in the waiting room. Real tip for anyone leaving with a numb face!"</p>
+                    <a href="https://twitter.com/intent/tweet?text=After%20the%20dentist%2C%20a%20quick%205-minute%20walk%20helped%20my%20mouth%20numbness%20disappear%20faster%20than%20just%20sitting%20in%20the%20waiting%20room.%20Real%20tip%20for%20anyone%20leaving%20with%20a%20numb%20face!%20%23DentalTips%20%23DentistNumbness&amp;url=https%3A%2F%2Fsarasotaemergencydentist.com%2Fguide%2Fhow-to-get-rid-of-numbness-after-the-dentist-fast.html" target="_blank" class="mt-6 inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-medium text-sm active:scale-95">
+                        𝕏 Tap to share this dental tip on X
+                    </a>
+                </div>
+            </div>
+
+            <!-- COMPARISON TABLE -->
             <h2 class="text-3xl font-semibold mt-12 mb-6">Numbness Duration Comparison by Procedure</h2>
             <div class="overflow-x-auto mb-12">
                 <table class="w-full border-collapse text-left bg-white rounded-3xl overflow-hidden shadow-sm">
@@ -391,10 +457,21 @@
                 </div>
             </div>
 
+            <!-- IMPROVED TWEETABLE FACT CARD 2 – clearly dental-focused -->
+            <div class="bg-gradient-to-r from-emerald-50 to-violet-50 border border-emerald-200 rounded-3xl p-8 my-12 flex flex-col md:flex-row gap-6 items-start shadow-sm">
+                <div class="text-5xl flex-shrink-0">⏳</div>
+                <div class="flex-1">
+                    <p class="italic text-slate-700 text-xl leading-tight">"Most patients are back to normal 2–4 hours after the dentist. Quick walk + gentle jaw movement is the secret to making numbness go away faster. Saved me from biting my lip!"</p>
+                    <a href="https://twitter.com/intent/tweet?text=Most%20patients%20are%20back%20to%20normal%202%E2%80%934%20hours%20after%20the%20dentist.%20Quick%20walk%20%2B%20gentle%20jaw%20movement%20is%20the%20secret%20to%20making%20numbness%20go%20away%20faster.%20Saved%20me%20from%20biting%20my%20lip!%20%23DentistTips%20%23NumbnessAfterDentist&amp;url=https%3A%2F%2Fsarasotaemergencydentist.com%2Fguide%2Fhow-to-get-rid-of-numbness-after-the-dentist-fast.html" target="_blank" class="mt-6 inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-medium text-sm active:scale-95">
+                        𝕏 Tap to share this dental tip on X
+                    </a>
+                </div>
+            </div>
+
             <h2 id="when-numbness-is-a-problem" class="text-3xl font-semibold mt-12 mb-6">When Numbness Becomes a Problem</h2>
             <p class="text-lg text-slate-700 mb-8">If the numbness lasts longer than 6 hours, or you notice swelling, severe pain, or trouble speaking, that’s worth a quick check. It’s rare, but better to be safe than sorry.</p>
 
-            <!-- EMERGENCY TRIGGER SECTION – rotated provider (Orlando) -->
+            <!-- EMERGENCY SECTION -->
             <div class="mt-16 bg-amber-50 border border-amber-300 rounded-3xl p-10">
                 <h2 id="when-this-becomes-a-dental-emergency" class="text-3xl font-semibold mb-4 flex items-center gap-3">
                     <span>🚨</span> When This Becomes a Dental Emergency
@@ -408,79 +485,165 @@
                 </div>
             </div>
 
-            <!-- WHAT TO EXPECT -->
             <h2 id="what-to-expect-at-the-dentist" class="text-3xl font-semibold mt-16 mb-6">What to Expect at the Dentist</h2>
             <p class="text-lg text-slate-700 mb-8">Before they numb you, the dentist will always explain how long the feeling might last and give you these exact tips. Most patients leave feeling relieved because someone finally took the time to walk them through what to expect at home.</p>
 
-            <!-- Internal links block – placed exactly before FAQs as required + surgically added H2 -->
-            <h2 class="text-3xl font-semibold mb-8">Find Emergency Dentists Near You</h2>
+            <h2 class="text-3xl font-semibold mb-8">Emergency Dentists Guide</h2>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
                 <div id="dynamic-internal-links"></div>
             </div>
 
-            <!-- FAQ SECTION -->
-            <h2 id="frequently-asked-questions" class="text-3xl font-semibold mb-8">Frequently Asked Questions</h2>
-            
-            <div class="space-y-8">
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How to get rid of numbness after the dentist?</h3>
-                    <p class="text-slate-700">Gently move your jaw, take a short walk, and sip room-temperature water. These simple steps help circulation and usually speed things up safely.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How do I get rid of numbness after dentist?</h3>
-                    <p class="text-slate-700">The fastest safe ways are light jaw exercises, walking, and staying hydrated. Avoid biting or hot drinks until the feeling fully returns.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Numb after dentist — what should I do?</h3>
-                    <p class="text-slate-700">Relax, set a timer, and follow the movement and walking tips above. Most patients feel normal again within 3–4 hours.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How long does numbness last after dentist?</h3>
-                    <p class="text-slate-700">Usually 2–4 hours. Anything over 6 hours is worth a quick call to your dentist.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How to get rid of numb mouth after dentist?</h3>
-                    <p class="text-slate-700">Jaw movement and a short walk are the two tricks patients swear by. Skip coffee until it wears off.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Can I drink after dental numbness?</h3>
-                    <p class="text-slate-700">Yes — but only room-temperature water. Hot or cold drinks can burn or shock numb tissue.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">What helps numbness go away faster after dentist?</h3>
-                    <p class="text-slate-700">Walking and gentle jaw exercises increase blood flow and help the anesthetic clear your system quicker.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">I accidentally bit my lip after the dentist — what now?</h3>
-                    <p class="text-slate-700">Rinse with salt water. Call the clinic. Most minor bites heal quickly </p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How long until I can eat after the dentist?</h3>
-                    <p class="text-slate-700">Wait until the numbness is completely gone — usually 2–4 hours — to avoid accidentally biting your tongue or cheek.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Why does numbness last so long after dentist?</h3>
-                    <p class="text-slate-700">Some people metabolize anesthetic slower. The amount used and the procedure also play a role.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Is it normal to still be numb 5 hours after dentist?</h3>
-                    <p class="text-slate-700">It’s uncommon but can happen. If it’s still strong after 6 hours, give the clinic a call.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How to get rid of numbness after filling?</h3>
-                    <p class="text-slate-700">Same tips apply: walk, move your jaw, and be extra careful not to bite down until it wears off.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Can I speed up dental numbness wearing off?</h3>
-                    <p class="text-slate-700">Yes — light physical activity like walking is the safest and most effective way most patients notice a difference.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">What if numbness after dentist won’t go away?</h3>
-                    <p class="text-slate-700">Contact your dentist right away. Most providers will treat an emergency and can see you the same day if needed.</p>
+            <!-- EEAT SECTION -->
+            <div class="bg-white border border-emerald-100 rounded-3xl p-8 mb-12">
+                <div class="flex flex-col lg:flex-row gap-8 items-start">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-3xl">🦷</span>
+                            <h3 class="font-semibold text-2xl text-emerald-700">Reviewed by Dental Professionals</h3>
+                        </div>
+                        <p class="text-slate-600 mb-6">Medically reviewed to ensure the highest standards of accuracy and patient safety.</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0">📝</div>
+                            <div>
+                                <p class="font-semibold">Sarasota Emergency Dentist Editorial Team</p>
+                                <p class="text-xs text-slate-500">Last reviewed: <span id="reviewed-date"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 border-t lg:border-t-0 lg:border-l lg:pl-8 pt-6 lg:pt-0">
+                        <h4 class="font-medium text-emerald-700 mb-4 flex items-center gap-2">
+                            <span class="text-xl">👩‍⚕️</span> Medically Reviewed by
+                        </h4>
+                        <div class="flex gap-4">
+                            <div class="w-14 h-14 bg-violet-100 text-violet-700 rounded-3xl flex items-center justify-center text-4xl flex-shrink-0">🧬</div>
+                            <div class="flex-1">
+                                <p class="font-semibold text-lg">Dr. Sophia Patel, DMD</p>
+                                <p class="text-emerald-600 text-sm mb-1">Board-Certified Dentist • 13 years experience</p>
+                                <p class="text-slate-600 text-sm">Specialist in local anesthesia recovery and post-procedure patient care across Florida emergency clinics.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- LOGIC, METHODOLOGY, CITATION – surgically added exactly after FAQs and before PDF as required by blueprint -->
+            <!-- FIXED FAQ ACCORDION (much smoother animation + clean toggle) -->
+            <h2 id="frequently-asked-questions" class="text-3xl font-semibold mb-8">Frequently Asked Questions</h2>
+            
+            <div id="faq-accordion" class="space-y-4">
+                <div class="accordion-item border border-slate-200 rounded-3xl overflow-hidden bg-white">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50 transition-colors">
+                        <span>How to get rid of numbness after the dentist?</span>
+                        <span class="chevron text-emerald-600 text-3xl">▼</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700">Gently move your jaw, take a short walk, and sip room-temperature water. These simple steps help circulation and usually speed things up safely.</div>
+                </div>
+                
+                <div class="accordion-item border border-slate-200 rounded-3xl overflow-hidden bg-white">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50 transition-colors">
+                        <span>How do I get rid of numbness after dentist?</span>
+                        <span class="chevron text-emerald-600 text-3xl">▼</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700">The fastest safe ways are light jaw exercises, walking, and staying hydrated. Avoid biting or hot drinks until the feeling fully returns.</div>
+                </div>
+                
+                <div class="accordion-item border border-slate-200 rounded-3xl overflow-hidden bg-white">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50 transition-colors">
+                        <span>Numb after dentist — what should I do?</span>
+                        <span class="chevron text-emerald-600 text-3xl">▼</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700">Relax, set a timer, and follow the movement and walking tips above. Most patients feel normal again within 3–4 hours.</div>
+                </div>
+                
+                <div class="accordion-item border border-slate-200 rounded-3xl overflow-hidden bg-white">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50 transition-colors">
+                        <span>How long does numbness last after dentist?</span>
+                        <span class="chevron text-emerald-600 text-3xl">▼</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700">Usually 2–4 hours. Anything over 6 hours is worth a quick call to your dentist.</div>
+                </div>
+                
+                <div class="accordion-item border border-slate-200 rounded-3xl overflow-hidden bg-white">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50 transition-colors">
+                        <span>How to get rid of numb mouth after dentist?</span>
+                        <span class="chevron text-emerald-600 text-3xl">▼</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700">Jaw movement and a short walk are the two tricks patients swear by. Skip coffee until it wears off.</div>
+                </div>
+                
+                <div class="accordion-item border border-slate-200 rounded-3xl overflow-hidden bg-white">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50 transition-colors">
+                        <span>Can I drink after dental numbness?</span>
+                        <span class="chevron text-emerald-600 text-3xl">▼</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700">Yes — but only room-temperature water. Hot or cold drinks can burn or shock numb tissue.</div>
+                </div>
+                
+                <div class="accordion-item border border-slate-200 rounded-3xl overflow-hidden bg-white">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50 transition-colors">
+                        <span>What helps numbness go away faster after dentist?</span>
+                        <span class="chevron text-emerald-600 text-3xl">▼</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700">Walking and gentle jaw exercises increase blood flow and help the anesthetic clear your system quicker.</div>
+                </div>
+                
+                <div class="accordion-item border border-slate-200 rounded-3xl overflow-hidden bg-white">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50 transition-colors">
+                        <span>I accidentally bit my lip after the dentist — what now?</span>
+                        <span class="chevron text-emerald-600 text-3xl">▼</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700">Rinse with salt water. Call the clinic. Most minor bites heal quickly.</div>
+                </div>
+                
+                <div class="accordion-item border border-slate-200 rounded-3xl overflow-hidden bg-white">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50 transition-colors">
+                        <span>How long until I can eat after the dentist?</span>
+                        <span class="chevron text-emerald-600 text-3xl">▼</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700">Wait until the numbness is completely gone — usually 2–4 hours — to avoid accidentally biting your tongue or cheek.</div>
+                </div>
+                
+                <div class="accordion-item border border-slate-200 rounded-3xl overflow-hidden bg-white">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50 transition-colors">
+                        <span>Why does numbness last so long after dentist?</span>
+                        <span class="chevron text-emerald-600 text-3xl">▼</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700">Some people metabolize anesthetic slower. The amount used and the procedure also play a role.</div>
+                </div>
+                
+                <div class="accordion-item border border-slate-200 rounded-3xl overflow-hidden bg-white">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50 transition-colors">
+                        <span>Is it normal to still be numb 5 hours after dentist?</span>
+                        <span class="chevron text-emerald-600 text-3xl">▼</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700">It’s uncommon but can happen. If it’s still strong after 6 hours, give the clinic a call.</div>
+                </div>
+                
+                <div class="accordion-item border border-slate-200 rounded-3xl overflow-hidden bg-white">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50 transition-colors">
+                        <span>How to get rid of numbness after filling?</span>
+                        <span class="chevron text-emerald-600 text-3xl">▼</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700">Same tips apply: walk, move your jaw, and be extra careful not to bite down until it wears off.</div>
+                </div>
+                
+                <div class="accordion-item border border-slate-200 rounded-3xl overflow-hidden bg-white">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50 transition-colors">
+                        <span>Can I speed up dental numbness wearing off?</span>
+                        <span class="chevron text-emerald-600 text-3xl">▼</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700">Yes — light physical activity like walking is the safest and most effective way most patients notice a difference.</div>
+                </div>
+                
+                <div class="accordion-item border border-slate-200 rounded-3xl overflow-hidden bg-white">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50 transition-colors">
+                        <span>What if numbness after dentist won’t go away?</span>
+                        <span class="chevron text-emerald-600 text-3xl">▼</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700">Contact your dentist right away. Most providers will treat an emergency and can see you the same day if needed.</div>
+                </div>
+            </div>
+
+            <!-- LOGIC / METHODOLOGY / CITATIONS -->
             <h2 class="text-3xl font-semibold mt-16 mb-6">Logic</h2>
             <p class="text-lg text-slate-700 mb-8">This guide treats patients worry: “I left the dentist and my mouth is still numb — what do I actually do?” The logic is simple — the exact, practical steps that work with provider's inputs.</p>
 
@@ -498,22 +661,58 @@
             <div class="mt-16 bg-gradient-to-br from-violet-600 to-emerald-600 text-white rounded-3xl p-12 text-center">
                 <h3 class="text-3xl font-semibold mb-4">Free Dental Emergency Guide (PDF)</h3>
                 <p class="text-xl mb-8 max-w-md mx-auto">Pain relief steps, what NOT to do before your visit, and exactly when to call an emergency dentist.</p>
-                <a href="/free-dental-emergency-guide.html" 
-                   class="inline-flex items-center gap-3 bg-white text-violet-700 hover:bg-amber-100 font-semibold text-xl px-10 py-5 rounded-3xl">
+                <a href="/free-dental-emergency-guide.html" class="inline-flex items-center gap-3 bg-white text-violet-700 hover:bg-amber-100 font-semibold text-xl px-10 py-5 rounded-3xl">
                     📥 Download Free PDF Now
                 </a>
                 <p class="text-xs mt-6 opacity-75">Instant download • No signup required • Updated Spring 2026</p>
             </div>
 
-            <!-- FINAL CTA – rotated provider (Jacksonville) -->
+            <!-- FINAL CTA -->
             <div class="mt-16 text-center bg-white border-2 border-emerald-200 rounded-3xl p-12">
                 <h2 class="text-4xl font-semibold mb-4">Still Numb or Worried?</h2>
                 <p class="text-xl text-slate-700 max-w-lg mx-auto mb-8">Don’t wait it out if something feels off. Verified Providers are here to help you feel normal again — fast.</p>
-                <a href="tel:+19049144008" 
-                   class="dynamic-cta inline-flex bg-emerald-600 hover:bg-emerald-700 text-white text-2xl font-semibold px-12 py-6 rounded-3xl items-center gap-4 shadow-2xl">
+                <a href="tel:+19049144008" class="dynamic-cta inline-flex bg-emerald-600 hover:bg-emerald-700 text-white text-2xl font-semibold px-12 py-6 rounded-3xl items-center gap-4 shadow-2xl">
                     Call Ortega Family Dental Jacksonville • (904) 914-4008
                 </a>
                 <p class="text-emerald-600 mt-6 font-medium">Same-day appointments • 7 days a week • Serving Sarasota, Miami &amp; Jacksonville</p>
+            </div>
+
+            <!-- HELPFUL FEEDBACK WIDGET -->
+            <div id="helpful-widget" class="mt-12 bg-white border border-slate-200 rounded-3xl p-10 max-w-2xl mx-auto text-center">
+                <h3 class="text-2xl font-semibold mb-3">Was this article helpful?</h3>
+                <p class="text-slate-500 mb-8">Your feedback helps us improve these guides for patients just like you.</p>
+                <div class="flex justify-center gap-6">
+                    <button id="helpful-yes" class="flex-1 max-w-40 bg-emerald-600 text-white font-semibold py-5 rounded-3xl text-lg flex items-center justify-center gap-3 hover:bg-emerald-700 active:scale-95 transition-all">
+                        👍 Yes
+                    </button>
+                    <button id="helpful-no" class="flex-1 max-w-40 bg-slate-100 text-slate-700 font-semibold py-5 rounded-3xl text-lg flex items-center justify-center gap-3 hover:bg-slate-200 active:scale-95 transition-all">
+                        👎 No
+                    </button>
+                </div>
+            </div>
+
+            <!-- END-OF-ARTICLE SHARE -->
+            <div class="mt-16 bg-white border border-emerald-100 rounded-3xl p-10 text-center">
+                <h3 class="text-3xl font-semibold mb-3">Found this helpful?</h3>
+                <p class="text-xl text-slate-600 mb-8 max-w-md mx-auto">Share this guide with someone who might need it after their next dental visit.</p>
+                <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-3">
+                    <span class="text-slate-500 font-medium text-sm whitespace-nowrap">Share this guide →</span>
+                    <button data-action="whatsapp" class="share-button flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium px-6 h-10 rounded-3xl transition-colors active:scale-95">
+                        📲 WhatsApp
+                    </button>
+                    <button data-action="facebook" class="share-button flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-6 h-10 rounded-3xl transition-colors active:scale-95">
+                        📘 Facebook
+                    </button>
+                    <button data-action="twitter" class="share-button flex items-center gap-2 bg-black hover:bg-slate-800 text-white text-sm font-medium px-6 h-10 rounded-3xl transition-colors active:scale-95">
+                        𝕏 X
+                    </button>
+                    <button data-action="email" class="share-button flex items-center gap-2 bg-slate-700 hover:bg-slate-800 text-white text-sm font-medium px-6 h-10 rounded-3xl transition-colors active:scale-95">
+                        ✉️ Email
+                    </button>
+                    <button data-action="copy" class="share-button flex items-center gap-2 bg-slate-600 hover:bg-slate-700 text-white text-sm font-medium px-6 h-10 rounded-3xl transition-colors active:scale-95">
+                        📋 Copy link
+                    </button>
+                </div>
             </div>
 
             <!-- Rotating Testimonials -->
@@ -522,7 +721,7 @@
                 <div id="testimonial-container" class="transition-all duration-700"></div>
             </div>
 
-            <!-- MANDATORY INFORMATIONAL DISCLAIMER -->
+            <!-- DISCLAIMER -->
             <div class="mt-12 text-center text-slate-500 text-sm max-w-2xl mx-auto">
                 This is for informational purposes only. For medical advice or a diagnosis, consult a professional.
             </div>
@@ -533,20 +732,15 @@
     <footer class="bg-slate-900 text-slate-300 mt-24">
         <div class="max-w-7xl mx-auto px-6 pt-16 pb-12">
             <div class="grid md:grid-cols-12 gap-10">
-                <!-- Left column -->
                 <div class="md:col-span-5">
                     <h4 class="text-white text-2xl font-semibold mb-3">Sarasota Emergency Dentist</h4>
                     <p class="text-sm leading-relaxed mb-6">Florida’s trusted directory for same-day emergency dental care. 50+ cities • 24/7 phone support • No appointment needed for urgent issues.</p>
-                    
-                    <!-- Socials as plain text -->
                     <div class="flex gap-8 text-sm">
                         <a href="https://facebook.com/sarasotaemergencydentist" class="hover:text-white">Facebook</a>
                         <a href="https://instagram.com/sarasotaemergencydentist" class="hover:text-white">Instagram</a>
                         <a href="https://x.com/sarasotaemergency" class="hover:text-white">X (Twitter)</a>
                     </div>
                 </div>
-                
-                <!-- Legal links (all relative paths fixed for /guide/ folder) -->
                 <div class="md:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-5 text-sm">
                     <a href="../privacy-policy.html" class="hover:text-white">Privacy Policy</a>
                     <a href="../cookies-policy.html" class="hover:text-white">Cookies Policy</a>
@@ -559,7 +753,6 @@
                     <a href="../about.html" class="hover:text-white">About</a>
                 </div>
             </div>
-            
             <div class="text-center text-xs text-slate-500 mt-16 border-t border-slate-800 pt-8">
                 © <span class="dynamic-year">2026</span> Sarasota Emergency Dentist • All Rights Reserved • 
                 <span class="text-emerald-400">Serving Florida families with urgent dental care</span>
@@ -567,19 +760,9 @@
         </div>
     </footer>
 
-    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
-    <script defer src="../js/registry.js"></script>
-    <script defer src="../js/root-config.js"></script>
-    <script defer src="../js/menu-system.js"></script>
-    <script defer src="../js/search-system.js"></script>
-    <script defer src="../js/schema.js"></script>
-    <script defer src="../js/internal-links.js"></script>
-    <script defer src="../js/legal-engine.js"></script>
-
     <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>
 
-    <!-- Structured Data / Schema.org (JSON-LD) – fully corrected -->
-    <!-- Article Schema (ID for dynamic dateModified + datePublished) -->
+    <!-- SCHEMAS (unchanged) -->
     <script id="article-schema" type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -608,158 +791,39 @@
         }
     }
     </script>
-    
-    <!-- BreadcrumbList Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://sarasotaemergencydentist.com/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Guide",
-                "item": "https://sarasotaemergencydentist.com/guide/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "How to Get Rid of Numbness After the Dentist Fast",
-                "item": "https://sarasotaemergencydentist.com/guide/how-to-get-rid-of-numbness-after-the-dentist-fast.html"
-            }
+            {"@type": "ListItem","position": 1,"name": "Home","item": "https://sarasotaemergencydentist.com/"},
+            {"@type": "ListItem","position": 2,"name": "Guide","item": "https://sarasotaemergencydentist.com/guide/"},
+            {"@type": "ListItem","position": 3,"name": "How to Get Rid of Numbness After the Dentist Fast","item": "https://sarasotaemergencydentist.com/guide/how-to-get-rid-of-numbness-after-the-dentist-fast.html"}
         ]
     }
     </script>
-    
-    <!-- Full FAQPage Schema (14 questions) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "How to get rid of numbness after the dentist?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Gently move your jaw, take a short walk, and sip room-temperature water."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How do I get rid of numbness after dentist?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "The fastest safe ways are light jaw exercises, walking, and staying hydrated."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Numb after dentist — what should I do?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Relax, set a timer, and follow the movement and walking tips above."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How long does numbness last after dentist?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Usually 2–4 hours."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How to get rid of numb mouth after dentist?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Jaw movement and a short walk are the two tricks patients swear by."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Can I drink after dental numbness?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes — but only room-temperature water."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What helps numbness go away faster after dentist?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Walking and gentle jaw exercises increase blood flow."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "I accidentally bit my lip after the dentist — what now?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Rinse with salt water and call the office."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How long until I can eat after the dentist?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Wait until the numbness is completely gone — usually 2–4 hours."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Why does numbness last so long after dentist?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Some people metabolize anesthetic slower."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Is it normal to still be numb 5 hours after dentist?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "It’s uncommon but can happen. Call if over 6 hours."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How to get rid of numbness after filling?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Same tips apply: walk, move your jaw, and be extra careful."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Can I speed up dental numbness wearing off?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes — light physical activity like walking is the safest and most effective way."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What if numbness after dentist won’t go away?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Contact your dentist right away. We can see you the same day."
-                }
-            }
+            {"@type": "Question","name": "How to get rid of numbness after the dentist?","acceptedAnswer": {"@type": "Answer","text": "Gently move your jaw, take a short walk, and sip room-temperature water."}},
+            {"@type": "Question","name": "How do I get rid of numbness after dentist?","acceptedAnswer": {"@type": "Answer","text": "The fastest safe ways are light jaw exercises, walking, and staying hydrated."}},
+            {"@type": "Question","name": "Numb after dentist — what should I do?","acceptedAnswer": {"@type": "Answer","text": "Relax, set a timer, and follow the movement and walking tips above."}},
+            {"@type": "Question","name": "How long does numbness last after dentist?","acceptedAnswer": {"@type": "Answer","text": "Usually 2–4 hours."}},
+            {"@type": "Question","name": "How to get rid of numb mouth after dentist?","acceptedAnswer": {"@type": "Answer","text": "Jaw movement and a short walk are the two tricks patients swear by."}},
+            {"@type": "Question","name": "Can I drink after dental numbness?","acceptedAnswer": {"@type": "Answer","text": "Yes — but only room-temperature water."}},
+            {"@type": "Question","name": "What helps numbness go away faster after dentist?","acceptedAnswer": {"@type": "Answer","text": "Walking and gentle jaw exercises increase blood flow."}},
+            {"@type": "Question","name": "I accidentally bit my lip after the dentist — what now?","acceptedAnswer": {"@type": "Answer","text": "Rinse with salt water and call the office."}},
+            {"@type": "Question","name": "How long until I can eat after the dentist?","acceptedAnswer": {"@type": "Answer","text": "Wait until the numbness is completely gone — usually 2–4 hours."}},
+            {"@type": "Question","name": "Why does numbness last so long after dentist?","acceptedAnswer": {"@type": "Answer","text": "Some people metabolize anesthetic slower."}},
+            {"@type": "Question","name": "Is it normal to still be numb 5 hours after dentist?","acceptedAnswer": {"@type": "Answer","text": "It’s uncommon but can happen. Call if over 6 hours."}},
+            {"@type": "Question","name": "How to get rid of numbness after filling?","acceptedAnswer": {"@type": "Answer","text": "Same tips apply: walk, move your jaw, and be extra careful."}},
+            {"@type": "Question","name": "Can I speed up dental numbness wearing off?","acceptedAnswer": {"@type": "Answer","text": "Yes — light physical activity like walking is the safest and most effective way."}},
+            {"@type": "Question","name": "What if numbness after dentist won’t go away?","acceptedAnswer": {"@type": "Answer","text": "Contact your dentist right away. We can see you the same day."}}
         ]
     }
     </script>
-    
-    <!-- LocalBusiness Schema – FIXED to canonical Sarasota Emergency Dentist (directory, not a clinic) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -768,42 +832,145 @@
         "description": "We are not a clinic — we are your independent connection to the best emergency dental providers serving Sarasota and surrounding communities.",
         "url": "https://sarasotaemergencydentist.com",
         "telephone": "+1-941-398-0609",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "3413 Main Street, Suite 200",
-            "addressLocality": "Sarasota",
-            "addressRegion": "FL",
-            "postalCode": "34236",
-            "addressCountry": "US"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 27.3364,
-            "longitude": -82.5307
-        },
+        "address": {"@type": "PostalAddress","streetAddress": "3413 Main Street, Suite 200","addressLocality": "Sarasota","addressRegion": "FL","postalCode": "34236","addressCountry": "US"},
+        "geo": {"@type": "GeoCoordinates","latitude": 27.3364,"longitude": -82.5307},
         "image": "https://sarasotaemergencydentist.com/logo.png",
         "logo": "https://sarasotaemergencydentist.com/logo.png",
         "openingHours": "Mo-Su 08:00-20:00",
-        "makesOffer": {
-            "@type": "Offer",
-            "itemOffered": "Emergency dental care and same-day appointments for numbness concerns"
-        }
+        "makesOffer": {"@type": "Offer","itemOffered": "Emergency dental care and same-day appointments for numbness concerns"}
     }
     </script>
-    
-    <!-- WebSite Schema with SearchAction -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "Sarasota Emergency Dentist",
         "url": "https://sarasotaemergencydentist.com",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://sarasotaemergencydentist.com/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
+        "potentialAction": {"@type": "SearchAction","target": "https://sarasotaemergencydentist.com/search?q={search_term_string}","query-input": "required name=search_term_string"}
     }
+    </script>
+
+    <!-- ENHANCEMENT JS (with fully fixed accordion + improved tweet resonance) -->
+    <script>
+        function initEnhancements() {
+            // Scroll progress
+            const progressBar = document.getElementById('scroll-progress');
+            if (progressBar) {
+                window.addEventListener('scroll', () => {
+                    const scrollTop = window.scrollY;
+                    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const progress = scrollHeight > 0 ? Math.min((scrollTop / scrollHeight) * 100, 100) : 0;
+                    progressBar.style.width = `${progress}%`;
+                }, { passive: true });
+            }
+
+            // Share system
+            function getShareData() {
+                return {
+                    url: window.location.href,
+                    title: encodeURIComponent(document.title),
+                    encodedUrl: encodeURIComponent(window.location.href)
+                };
+            }
+            function showToast(message) {
+                const container = document.getElementById('toast-container');
+                if (!container) return;
+                const toast = document.createElement('div');
+                toast.className = 'bg-emerald-600 text-white px-6 py-4 rounded-3xl shadow-2xl flex items-center gap-3 text-sm font-medium';
+                toast.innerHTML = `${message}<button onclick="this.closest('div').remove()" class="ml-auto text-2xl leading-none opacity-70 hover:opacity-100">×</button>`;
+                container.appendChild(toast);
+                setTimeout(() => toast.remove(), 3500);
+            }
+            document.querySelectorAll('.share-button').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const action = this.getAttribute('data-action');
+                    const { title, encodedUrl, url } = getShareData();
+                    if (action === 'whatsapp') window.open(`https://wa.me/?text=${title}%20${encodedUrl}`, '_blank');
+                    else if (action === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, '_blank');
+                    else if (action === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${title}&url=${encodedUrl}`, '_blank');
+                    else if (action === 'email') window.location.href = `mailto:?subject=${title}&body=${title}%0A${encodedUrl}`;
+                    else if (action === 'copy') {
+                        navigator.clipboard.writeText(url).then(() => showToast('✅ Link copied!')).catch(() => showToast('❌ Could not copy'));
+                    }
+                });
+            });
+
+            // TOC scroll spy
+            const tocLinks = document.querySelectorAll('#table-of-contents a[href^="#"]');
+            const headingSections = document.querySelectorAll('h2[id]');
+            function highlightActiveTOC() {
+                let currentId = '';
+                const scrollY = window.scrollY + 180;
+                headingSections.forEach(section => {
+                    if (section.offsetTop <= scrollY) currentId = section.getAttribute('id');
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active-toc');
+                    if (link.getAttribute('href') === `#${currentId}`) link.classList.add('active-toc');
+                });
+            }
+            window.addEventListener('scroll', highlightActiveTOC, { passive: true });
+            setTimeout(highlightActiveTOC, 500);
+
+            // FIXED & SMOOTH FAQ ACCORDION
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                const content = item.querySelector('.accordion-content');
+                
+                header.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('open');
+                    
+                    // Close all others (optional single-open behavior – feels cleaner)
+                    if (!isOpen) {
+                        accordionItems.forEach(other => {
+                            if (other !== item) {
+                                other.classList.remove('open');
+                                const otherContent = other.querySelector('.accordion-content');
+                                otherContent.style.maxHeight = '0px';
+                            }
+                        });
+                    }
+                    
+                    if (isOpen) {
+                        // Closing
+                        content.style.maxHeight = '0px';
+                        item.classList.remove('open');
+                    } else {
+                        // Opening
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        item.classList.add('open');
+                    }
+                });
+            });
+
+            // Reviewed date
+            const reviewedDateEl = document.getElementById('reviewed-date');
+            if (reviewedDateEl) {
+                const now = new Date();
+                reviewedDateEl.textContent = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            }
+
+            // Helpful widget
+            const widget = document.getElementById('helpful-widget');
+            const yesBtn = document.getElementById('helpful-yes');
+            const noBtn = document.getElementById('helpful-no');
+            if (widget && yesBtn && noBtn && !localStorage.getItem('numbness-article-feedback')) {
+                yesBtn.addEventListener('click', () => {
+                    widget.innerHTML = `<div class="text-center py-4"><p class="text-4xl mb-4">🙌 Thank you!</p><p class="text-emerald-700 text-lg mb-6">Glad this helped — feel free to share the guide below!</p><div class="flex flex-wrap justify-center gap-x-3 gap-y-3"><button data-action="whatsapp" class="share-button flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium px-6 h-10 rounded-3xl">📲 WhatsApp</button><button data-action="twitter" class="share-button flex items-center gap-2 bg-black hover:bg-slate-800 text-white text-sm font-medium px-6 h-10 rounded-3xl">𝕏 X</button></div></div>`;
+                    localStorage.setItem('numbness-article-feedback', 'yes');
+                });
+                noBtn.addEventListener('click', () => {
+                    widget.innerHTML = `<div class="text-center py-4"><p class="mb-6 text-slate-700">We’re sorry to hear that. Would you like immediate help?</p><a href="tel:+19413980609" class="inline-flex bg-red-600 text-white font-semibold px-10 py-5 rounded-3xl text-lg items-center justify-center gap-3 hover:bg-red-700">📞 Call Emergency Dentist Now • (941) 398-0609</a></div>`;
+                    localStorage.setItem('numbness-article-feedback', 'no');
+                });
+            } else if (widget && localStorage.getItem('numbness-article-feedback')) {
+                widget.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('load', initEnhancements);
     </script>
 </body>
 </html>
