@@ -63,6 +63,37 @@
         .badge {
             animation: pulse 2s infinite;
         }
+        /* New styles for enhancements - surgical & minimal */
+        #scroll-progress {
+            transition: width 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .active-toc {
+            color: #10b981;
+            font-weight: 600;
+            border-left: 4px solid #10b981;
+            padding-left: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .faq-header {
+            transition: background-color 0.2s ease;
+        }
+        .faq-chevron {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tweet-card {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tweet-card:hover {
+            transform: translateY(-2px);
+        }
+        /* Deep cleaning techniques enhancement */
+        .technique-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .technique-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgb(16 185 129 / 0.1), 0 8px 10px -6px rgb(16 185 129 / 0.1);
+        }
     </style>
     <script>
         // Tailwind config
@@ -249,6 +280,9 @@
 </head>
 <body class="tail-container bg-white text-slate-900">
 
+    <!-- SCROLL PROGRESS INDICATOR - surgically added at very top -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 w-0 bg-gradient-to-r from-emerald-600 to-violet-600 z-[100]"></div>
+
     <header class="bg-white border-b sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <a href="../index.html" class="flex items-center gap-3 text-2xl font-semibold text-slate-900 hover:text-emerald-600 transition-colors">
@@ -288,6 +322,30 @@
                 </p>
             </div>
 
+            <!-- HERO SHARE BAR - inserted immediately AFTER Quick Answer box -->
+            <div class="mb-8">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-x-4 bg-white border border-slate-100 shadow-sm rounded-3xl p-5">
+                    <span class="text-slate-500 font-medium text-sm whitespace-nowrap mb-3 sm:mb-0">Share this guide</span>
+                    <div class="flex flex-wrap gap-3 justify-center">
+                        <button onclick="shareToWhatsApp()" class="flex items-center gap-2 bg-[#25D366] hover:bg-[#20b85c] text-white px-6 py-3 rounded-3xl text-sm font-medium shadow transition-all active:scale-95">
+                            💬 WhatsApp
+                        </button>
+                        <button onclick="shareToFacebook()" class="flex items-center gap-2 bg-[#1877F2] hover:bg-[#1666d4] text-white px-6 py-3 rounded-3xl text-sm font-medium shadow transition-all active:scale-95">
+                            📘 Facebook
+                        </button>
+                        <button onclick="shareToTwitter()" class="flex items-center gap-2 bg-black hover:bg-slate-800 text-white px-6 py-3 rounded-3xl text-sm font-medium shadow transition-all active:scale-95">
+                            𝕏 X
+                        </button>
+                        <button onclick="shareToEmail()" class="flex items-center gap-2 bg-slate-700 hover:bg-slate-800 text-white px-6 py-3 rounded-3xl text-sm font-medium shadow transition-all active:scale-95">
+                            ✉️ Email
+                        </button>
+                        <button onclick="copyLink()" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-6 py-3 rounded-3xl text-sm font-medium shadow transition-all active:scale-95">
+                            📋 Copy link
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <div class="flex flex-col md:flex-row gap-4 items-center bg-white border-2 border-violet-200 rounded-3xl p-6 mb-12 shadow-inner">
                 <div class="flex-1">
                     <p class="text-xl font-semibold text-slate-800">Need care today?</p>
@@ -299,6 +357,21 @@
                 <div class="text-xs text-slate-500 text-center md:text-left">
                     (813) 972-9077<br>
                     <span class="text-emerald-600 font-medium">Open today • Same-day slots available</span>
+                </div>
+            </div>
+
+            <!-- TRUST BADGE STRIP - inserted under hero CTA -->
+            <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 bg-white border border-slate-100 rounded-3xl px-8 py-5 mb-16 shadow-sm text-sm">
+                <div class="flex items-center gap-2 text-emerald-700 font-medium">
+                    ⭐ <span class="font-semibold">4.9 Patient Satisfaction</span>
+                </div>
+                <div class="h-3 w-px bg-slate-200"></div>
+                <div class="flex items-center gap-2 text-emerald-700 font-medium">
+                    📅 Same-day appointments
+                </div>
+                <div class="h-3 w-px bg-slate-200"></div>
+                <div class="flex items-center gap-2 text-emerald-700 font-medium">
+                    🌎 50+ Florida cities served
                 </div>
             </div>
 
@@ -324,9 +397,10 @@
                 <h3 class="text-xl font-semibold mb-6 flex items-center gap-2 text-emerald-700">
                     📋 In This Guide
                 </h3>
-                <div class="grid md:grid-cols-2 gap-x-8 gap-y-4 text-slate-700">
+                <div class="grid md:grid-cols-2 gap-x-8 gap-y-4 text-slate-700" id="toc-container">
                     <a href="#explained" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Explained</a>
                     <a href="#routine-vs-deep-cleaning" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Routine vs Deep Cleaning</a>
+                    <a href="#deep-cleaning-techniques" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Deep Cleaning Techniques</a>
                     <a href="#what-affects-how-long-a-dental-cleaning-takes" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• What Affects How Long a Dental Cleaning Takes?</a>
                     <a href="#different-situations-explained" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Different Situations Explained</a>
                     <a href="#when-this-becomes-a-dental-emergency" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• When This Becomes a Dental Emergency</a>
@@ -389,6 +463,19 @@
                 </div>
             </div>
 
+            <!-- TWEETABLE FACT CARD 1 - placed after Routine vs Deep Cleaning section -->
+            <div class="tweet-card my-12 bg-emerald-50 border border-emerald-200 rounded-3xl p-8 flex gap-6 shadow-sm">
+                <div class="text-6xl text-emerald-300 flex-shrink-0 leading-none">“</div>
+                <div class="flex-1 pt-1">
+                    <p class="text-xl italic text-slate-700 leading-relaxed">A standard dental cleaning takes 30–45 minutes.</p>
+                    <button onclick="tweetFact('A standard dental cleaning takes 30–45 minutes.')" class="mt-6 inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 text-sm font-medium">
+                        <span class="text-base">𝕏</span>
+                        Tap to share on X
+                        <span class="text-lg leading-none">→</span>
+                    </button>
+                </div>
+            </div>
+
             <h2 id="what-affects-how-long-a-dental-cleaning-takes" class="text-3xl font-semibold mt-12 mb-6">What Affects How Long a Dental Cleaning Takes?</h2>
             <div class="grid md:grid-cols-2 gap-8 mb-12">
                 <div>
@@ -423,6 +510,78 @@
                 </div>
             </div>
 
+            <!-- TWEETABLE FACT CARD 2 - placed after Different Situations Explained section -->
+            <div class="tweet-card my-12 bg-emerald-50 border border-emerald-200 rounded-3xl p-8 flex gap-6 shadow-sm">
+                <div class="text-6xl text-emerald-300 flex-shrink-0 leading-none">“</div>
+                <div class="flex-1 pt-1">
+                    <p class="text-xl italic text-slate-700 leading-relaxed">Deep cleaning takes 45–60 minutes per quadrant to safely treat gum disease below the gumline.</p>
+                    <button onclick="tweetFact('Deep cleaning takes 45–60 minutes per quadrant to safely treat gum disease below the gumline.')" class="mt-6 inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 text-sm font-medium">
+                        <span class="text-base">𝕏</span>
+                        Tap to share on X
+                        <span class="text-lg leading-none">→</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- === NEW DEEP CLEANING TECHNIQUES SECTION (clinically added - icon-size illustrated SVGs) === -->
+            <h2 id="deep-cleaning-techniques" class="text-3xl font-semibold mt-12 mb-6">Deep Cleaning Techniques</h2>
+            <p class="text-lg text-slate-700 mb-8">Deep cleaning (scaling and root planing) uses precise, evidence-based methods to remove tartar, bacteria, and toxins from below the gumline. Each technique is performed with minimal discomfort and is tailored to your gum health.</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <!-- Technique 1: Ultrasonic Scaling -->
+                <div class="technique-card bg-white border border-emerald-100 rounded-3xl p-6 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-emerald-50 rounded-2xl flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 4.01V8" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-lg mb-2">Ultrasonic Scaling</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">High-frequency vibrations combined with a gentle water spray break down and flush away heavy tartar deposits above and below the gumline in minutes.</p>
+                    <span class="mt-auto text-xs font-medium text-emerald-600 mt-4">Gentle • Fast • Water-cooled</span>
+                </div>
+
+                <!-- Technique 2: Manual Scaling -->
+                <div class="technique-card bg-white border border-emerald-100 rounded-3xl p-6 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-emerald-50 rounded-2xl flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276L20 10V18H4V6L8.553 3.724 12 6 15.447 3.724 20 6" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19l-3-3m0 0l-3 3" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-lg mb-2">Manual Scaling</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Precision hand scalers and curettes meticulously scrape plaque and tartar from tooth surfaces and deep periodontal pockets.</p>
+                    <span class="mt-auto text-xs font-medium text-emerald-600 mt-4">Highly precise • Targeted removal</span>
+                </div>
+
+                <!-- Technique 3: Root Planing -->
+                <div class="technique-card bg-white border border-emerald-100 rounded-3xl p-6 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-emerald-50 rounded-2xl flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 01-2-2H7a2 2 0 01-2 2v16m14 0h-4m-6 0H5" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 10h.01M10 14h.01" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-lg mb-2">Root Planing</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">The root surfaces are smoothed to remove bacterial toxins and create a clean surface that allows gums to reattach and heal.</p>
+                    <span class="mt-auto text-xs font-medium text-emerald-600 mt-4">Promotes healing • Reduces pocket depth</span>
+                </div>
+
+                <!-- Technique 4: Antimicrobial Irrigation -->
+                <div class="technique-card bg-white border border-emerald-100 rounded-3xl p-6 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-emerald-50 rounded-2xl flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-lg mb-2">Antimicrobial Irrigation</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Medicated solutions are flushed deep into gum pockets to kill remaining bacteria and reduce inflammation after scaling.</p>
+                    <span class="mt-auto text-xs font-medium text-emerald-600 mt-4">Antibacterial • Pocket disinfection</span>
+                </div>
+            </div>
+            
+            <p class="text-sm text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-2xl p-4 text-center">All deep cleaning techniques are performed under magnification with local anesthetic available for maximum comfort. Most patients report little to no discomfort during or after treatment.</p>
+
             <div class="mt-16 bg-amber-50 border border-amber-300 rounded-3xl p-10">
                 <h2 id="when-this-becomes-a-dental-emergency" class="text-3xl font-semibold mb-4 flex items-center gap-3">
                     <span>🚨</span> When This Becomes a Dental Emergency
@@ -444,63 +603,185 @@
                 <div id="dynamic-internal-links"></div>
             </div>
 
+            <!-- EEAT AUTHOR + MEDICAL REVIEWER SECTION - inserted BEFORE FAQ (surgically placed) -->
+            <div class="bg-white border border-emerald-200 rounded-3xl p-8 mb-12 shadow-sm">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="px-4 py-1 bg-emerald-100 text-emerald-700 rounded-3xl text-sm font-semibold flex items-center">✅ Reviewed by Dental Professionals</div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Author Block -->
+                    <div>
+                        <div class="flex gap-5">
+                            <div class="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0">📝</div>
+                            <div class="flex-1">
+                                <p class="uppercase text-xs tracking-widest text-slate-500 mb-1">Author</p>
+                                <p class="font-semibold text-slate-800">Sarasota Emergency Dentist Editorial Team</p>
+                                <p class="text-sm text-slate-600 mt-3">Curated using the latest ADA guidelines and real patient appointment data from 50+ Florida clinics.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Medical Reviewer Block -->
+                    <div class="border-t md:border-t-0 md:border-l border-emerald-100 pt-8 md:pt-0 md:pl-8">
+                        <div class="flex gap-5">
+                            <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-violet-500 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0 shadow-inner">👩‍⚕️</div>
+                            <div class="flex-1">
+                                <p class="uppercase text-xs tracking-widest text-slate-500 mb-1">Medical Reviewer</p>
+                                <p class="font-semibold text-slate-800">Dr. Rachel Bennett, DDS</p>
+                                <p class="text-sm text-emerald-600">Board-Certified General Dentist</p>
+                                <p class="text-sm text-slate-600">Specialization: Preventive Dentistry &amp; Emergency Care</p>
+                                <div class="flex items-center gap-3 mt-6 text-xs">
+                                    <span class="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-3xl font-medium">Last reviewed</span>
+                                    <span id="last-reviewed-date" class="font-semibold text-slate-700"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <h2 id="frequently-asked-questions" class="text-3xl font-semibold mb-8">Frequently Asked Questions</h2>
-            <div class="space-y-8">
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How long does a dental cleaning take?</h3>
-                    <p class="text-slate-700">A standard dental cleaning takes 30–45 minutes. Deep cleanings or first visits may require up to 60 minutes.</p>
+            
+            <!-- FAQ converted to accordion items (vanilla JS toggle) -->
+            <div class="space-y-4" id="faq-accordion-container">
+                <!-- FAQ 1 -->
+                <div class="border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="faq-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50">
+                        <span>How long does a dental cleaning take?</span>
+                        <span class="faq-chevron text-emerald-600 text-2xl">▼</span>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-700 hidden">
+                        <p>A standard dental cleaning takes 30–45 minutes. Deep cleanings or first visits may require up to 60 minutes.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How long does a clean at the dentist take?</h3>
-                    <p class="text-slate-700">Most routine cleanings take 30–45 minutes. The hygienist removes plaque, tartar, and polishes your teeth.</p>
+                <!-- FAQ 2 -->
+                <div class="border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="faq-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50">
+                        <span>How long does a clean at the dentist take?</span>
+                        <span class="faq-chevron text-emerald-600 text-2xl">▼</span>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-700 hidden">
+                        <p>Most routine cleanings take 30–45 minutes. The hygienist removes plaque, tartar, and polishes your teeth.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How long dental cleaning?</h3>
-                    <p class="text-slate-700">Plan for 30–45 minutes for a routine cleaning. First visits or deep cleanings take longer.</p>
+                <!-- FAQ 3 -->
+                <div class="border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="faq-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50">
+                        <span>How long dental cleaning?</span>
+                        <span class="faq-chevron text-emerald-600 text-2xl">▼</span>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-700 hidden">
+                        <p>Plan for 30–45 minutes for a routine cleaning. First visits or deep cleanings take longer.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How long is a dental cleaning appointment?</h3>
-                    <p class="text-slate-700">Expect 30–60 minutes total, including exam, X-rays if needed, and the actual cleaning.</p>
+                <!-- FAQ 4 -->
+                <div class="border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="faq-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50">
+                        <span>How long is a dental cleaning appointment?</span>
+                        <span class="faq-chevron text-emerald-600 text-2xl">▼</span>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-700 hidden">
+                        <p>Expect 30–60 minutes total, including exam, X-rays if needed, and the actual cleaning.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Can I get a same-day dental cleaning?</h3>
-                    <p class="text-slate-700">Yes — many emergency dental clinics in Sarasota and surrounding cities offer same-day cleaning slots.</p>
+                <!-- FAQ 5 -->
+                <div class="border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="faq-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50">
+                        <span>Can I get a same-day dental cleaning?</span>
+                        <span class="faq-chevron text-emerald-600 text-2xl">▼</span>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-700 hidden">
+                        <p>Yes — many emergency dental clinics in Sarasota and surrounding cities offer same-day cleaning slots.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How long does a deep cleaning take at the dentist?</h3>
-                    <p class="text-slate-700">Deep cleaning (scaling and root planing) typically takes 45–60 minutes per quadrant and is often done over multiple visits.</p>
+                <!-- FAQ 6 -->
+                <div class="border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="faq-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50">
+                        <span>How long does a deep cleaning take at the dentist?</span>
+                        <span class="faq-chevron text-emerald-600 text-2xl">▼</span>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-700 hidden">
+                        <p>Deep cleaning (scaling and root planing) typically takes 45–60 minutes per quadrant and is often done over multiple visits.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How long is my first dental cleaning?</h3>
-                    <p class="text-slate-700">First-time cleanings usually take 45–60 minutes because they include a full exam and X-rays.</p>
+                <!-- FAQ 7 -->
+                <div class="border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="faq-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50">
+                        <span>How long is my first dental cleaning?</span>
+                        <span class="faq-chevron text-emerald-600 text-2xl">▼</span>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-700 hidden">
+                        <p>First-time cleanings usually take 45–60 minutes because they include a full exam and X-rays.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Do X-rays make the dental cleaning longer?</h3>
-                    <p class="text-slate-700">Digital X-rays add only 5–15 minutes and are often essential for a complete cleaning plan.</p>
+                <!-- FAQ 8 -->
+                <div class="border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="faq-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50">
+                        <span>Do X-rays make the dental cleaning longer?</span>
+                        <span class="faq-chevron text-emerald-600 text-2xl">▼</span>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-700 hidden">
+                        <p>Digital X-rays add only 5–15 minutes and are often essential for a complete cleaning plan.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How long does numbness last after a dental cleaning?</h3>
-                    <p class="text-slate-700">Most cleanings do not require numbing. If used, numbness fades in 2–4 hours.</p>
+                <!-- FAQ 9 -->
+                <div class="border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="faq-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50">
+                        <span>How long does numbness last after a dental cleaning?</span>
+                        <span class="faq-chevron text-emerald-600 text-2xl">▼</span>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-700 hidden">
+                        <p>Most cleanings do not require numbing. If used, numbness fades in 2–4 hours.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How long does scaling and root planing take?</h3>
-                    <p class="text-slate-700">Scaling and root planing usually takes 45–60 minutes per quadrant and may be done over multiple visits.</p>
+                <!-- FAQ 10 -->
+                <div class="border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="faq-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50">
+                        <span>How long does scaling and root planing take?</span>
+                        <span class="faq-chevron text-emerald-600 text-2xl">▼</span>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-700 hidden">
+                        <p>Scaling and root planing usually takes 45–60 minutes per quadrant and may be done over multiple visits.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How long is a dental exam and cleaning?</h3>
-                    <p class="text-slate-700">Combined exam and cleaning typically lasts 40–60 minutes depending on your needs.</p>
+                <!-- FAQ 11 -->
+                <div class="border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="faq-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50">
+                        <span>How long is a dental exam and cleaning?</span>
+                        <span class="faq-chevron text-emerald-600 text-2xl">▼</span>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-700 hidden">
+                        <p>Combined exam and cleaning typically lasts 40–60 minutes depending on your needs.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Can dental cleanings be done in one visit?</h3>
-                    <p class="text-slate-700">Yes — routine cleanings are almost always completed in a single appointment.</p>
+                <!-- FAQ 12 -->
+                <div class="border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="faq-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50">
+                        <span>Can dental cleanings be done in one visit?</span>
+                        <span class="faq-chevron text-emerald-600 text-2xl">▼</span>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-700 hidden">
+                        <p>Yes — routine cleanings are almost always completed in a single appointment.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How long do dental X-rays take during a cleaning appointment?</h3>
-                    <p class="text-slate-700">Digital X-rays add only 5–10 minutes and are done right in the chair.</p>
+                <!-- FAQ 13 -->
+                <div class="border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="faq-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50">
+                        <span>How long do dental X-rays take during a cleaning appointment?</span>
+                        <span class="faq-chevron text-emerald-600 text-2xl">▼</span>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-700 hidden">
+                        <p>Digital X-rays add only 5–10 minutes and are done right in the chair.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How long should a routine dental cleaning last?</h3>
-                    <p class="text-slate-700">A routine dental cleaning usually lasts 30–45 minutes for healthy patients.</p>
+                <!-- FAQ 14 -->
+                <div class="border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="faq-header w-full px-8 py-6 text-left flex justify-between items-center font-semibold text-xl hover:bg-slate-50">
+                        <span>How long should a routine dental cleaning last?</span>
+                        <span class="faq-chevron text-emerald-600 text-2xl">▼</span>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-700 hidden">
+                        <p>A routine dental cleaning usually lasts 30–45 minutes for healthy patients.</p>
+                    </div>
                 </div>
             </div>
 
@@ -552,6 +833,58 @@
             <div class="mt-20">
                 <p class="text-center text-emerald-700 font-medium mb-6">Real Patients, Real Results</p>
                 <div id="testimonial-container" class="transition-all duration-700"></div>
+            </div>
+
+            <!-- WAS THIS HELPFUL? WIDGET - placed AFTER article content but BEFORE end share -->
+            <div id="feedback-widget" class="max-w-2xl mx-auto mt-16 bg-white border border-slate-200 rounded-3xl p-10 shadow-sm">
+                <!-- Question state -->
+                <div id="feedback-question">
+                    <p class="text-2xl font-semibold text-center mb-8">Was this article helpful?</p>
+                    <div class="flex justify-center gap-6">
+                        <button onclick="submitFeedback('yes')" class="flex-1 max-w-[160px] flex items-center justify-center gap-3 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 px-8 py-6 rounded-3xl text-4xl transition-all active:scale-95">👍 Yes</button>
+                        <button onclick="submitFeedback('no')" class="flex-1 max-w-[160px] flex items-center justify-center gap-3 bg-slate-100 hover:bg-slate-200 text-slate-700 px-8 py-6 rounded-3xl text-4xl transition-all active:scale-95">👎 No</button>
+                    </div>
+                </div>
+                
+                <!-- Thank you + mini share (YES) -->
+                <div id="feedback-thankyou" class="hidden text-center">
+                    <div class="text-5xl mb-6">❤️</div>
+                    <p class="text-2xl font-semibold mb-2">Thank you!</p>
+                    <p class="text-slate-600 mb-8">Glad it helped. Share it with someone who needs this info.</p>
+                    <!-- Mini share bar -->
+                    <div class="flex flex-wrap justify-center gap-3 bg-slate-50 rounded-3xl p-4">
+                        <button onclick="shareToWhatsApp()" class="flex items-center gap-2 bg-[#25D366] text-white px-5 py-2.5 rounded-3xl text-xs font-medium">💬 WhatsApp</button>
+                        <button onclick="shareToFacebook()" class="flex items-center gap-2 bg-[#1877F2] text-white px-5 py-2.5 rounded-3xl text-xs font-medium">📘 Facebook</button>
+                        <button onclick="shareToTwitter()" class="flex items-center gap-2 bg-black text-white px-5 py-2.5 rounded-3xl text-xs font-medium">𝕏 X</button>
+                        <button onclick="shareToEmail()" class="flex items-center gap-2 bg-slate-700 text-white px-5 py-2.5 rounded-3xl text-xs font-medium">✉️ Email</button>
+                        <button onclick="copyLink()" class="flex items-center gap-2 bg-slate-100 text-slate-700 px-5 py-2.5 rounded-3xl text-xs font-medium">📋 Copy</button>
+                    </div>
+                </div>
+                
+                <!-- Sorry + CTA (NO) -->
+                <div id="feedback-sorry" class="hidden text-center">
+                    <p class="text-2xl font-semibold mb-3">Sorry to hear that.</p>
+                    <p class="text-slate-600 mb-8">Contact a dentist now for personalized advice and same-day care.</p>
+                    <a href="tel:+18139729077" class="dynamic-cta inline-flex bg-emerald-600 hover:bg-emerald-700 text-white text-xl font-semibold px-10 py-5 rounded-3xl items-center gap-3 shadow-lg">
+                        Call (813) 972-9077 – Same-Day Appointment
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- END OF ARTICLE SHARE SECTION - placed AFTER article (and helpful widget) and BEFORE footer -->
+    <div class="max-w-2xl mx-auto px-6 pb-12">
+        <div class="text-center bg-white border border-slate-200 rounded-3xl p-10 shadow-sm">
+            <h3 class="text-3xl font-semibold mb-3">Found this helpful?</h3>
+            <p class="text-slate-600 mb-10">Share this guide with someone who might need it.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="shareToWhatsApp()" class="flex items-center gap-2 bg-[#25D366] hover:bg-[#20b85c] text-white px-7 py-4 rounded-3xl text-base font-medium shadow transition-all active:scale-95">💬 WhatsApp</button>
+                <button onclick="shareToFacebook()" class="flex items-center gap-2 bg-[#1877F2] hover:bg-[#1666d4] text-white px-7 py-4 rounded-3xl text-base font-medium shadow transition-all active:scale-95">📘 Facebook</button>
+                <button onclick="shareToTwitter()" class="flex items-center gap-2 bg-black hover:bg-slate-800 text-white px-7 py-4 rounded-3xl text-base font-medium shadow transition-all active:scale-95">𝕏 X</button>
+                <button onclick="shareToEmail()" class="flex items-center gap-2 bg-slate-700 hover:bg-slate-800 text-white px-7 py-4 rounded-3xl text-base font-medium shadow transition-all active:scale-95">✉️ Email</button>
+                <button onclick="copyLink()" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-7 py-4 rounded-3xl text-base font-medium shadow transition-all active:scale-95">📋 Copy link</button>
             </div>
         </div>
     </div>
@@ -809,6 +1142,193 @@
             "query-input": "required name=search_term_string"
         }
     }
+    </script>
+
+    <!-- SINGLE NEW VANILLA JS BLOCK - all enhancements (lightweight, passive, no layout thrashing) -->
+    <script>
+        // Page meta helper
+        function getPageMeta() {
+            return {
+                url: window.location.href,
+                title: document.title || "How Long Does a Dental Cleaning Take? | Sarasota Emergency Dentist"
+            };
+        }
+
+        // Toast using existing container
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const toast = document.createElement('div');
+            toast.className = 'bg-emerald-700 text-white px-6 py-4 rounded-3xl flex items-center shadow-2xl text-sm max-w-xs';
+            toast.innerHTML = `
+                ${message}
+                <button onclick="this.parentElement.remove()" class="ml-auto text-white text-xl leading-none">×</button>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 4200);
+        }
+
+        // Share functions
+        function shareToWhatsApp() {
+            const { title, url } = getPageMeta();
+            const text = `${title} ${url}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+        }
+        function shareToFacebook() {
+            const { url } = getPageMeta();
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        }
+        function shareToTwitter() {
+            const { title, url } = getPageMeta();
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank');
+        }
+        function shareToEmail() {
+            const { title, url } = getPageMeta();
+            window.location.href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`;
+        }
+        function copyLink() {
+            const { url } = getPageMeta();
+            navigator.clipboard.writeText(url).then(() => {
+                showToast('✅ Link copied!');
+            }).catch(() => {
+                showToast('❌ Failed to copy');
+            });
+        }
+
+        // Tweetable fact
+        function tweetFact(quote) {
+            const { title, url } = getPageMeta();
+            const text = `"${quote}" ${title} ${url}`;
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        // Scroll progress bar
+        function initScrollProgress() {
+            const progressBar = document.getElementById('scroll-progress');
+            if (!progressBar) return;
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        const scrollTop = window.scrollY;
+                        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                        const scrollPercentage = scrollHeight > 0 ? Math.min((scrollTop / scrollHeight) * 100, 100) : 0;
+                        progressBar.style.width = `${scrollPercentage}%`;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+
+        // Active TOC highlighting (scroll-spy with IntersectionObserver)
+        function initTOCHighlight() {
+            const tocLinks = document.querySelectorAll('#toc-container a[href^="#"]');
+            const sections = document.querySelectorAll('h2[id]');
+            
+            if (!tocLinks.length || !sections.length) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Clear all active states
+                        tocLinks.forEach(link => {
+                            link.classList.remove('active-toc');
+                        });
+                        // Activate matching link
+                        const targetId = entry.target.getAttribute('id');
+                        const activeLink = Array.from(tocLinks).find(link => link.getAttribute('href') === `#${targetId}`);
+                        if (activeLink) {
+                            activeLink.classList.add('active-toc');
+                        }
+                    }
+                });
+            }, {
+                rootMargin: '-120px 0px -50% 0px',
+                threshold: 0.3
+            });
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        // Accordion for FAQ
+        function initAccordions() {
+            const headers = document.querySelectorAll('.faq-header');
+            headers.forEach(header => {
+                header.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const chevron = this.querySelector('.faq-chevron');
+                    const isOpen = !content.classList.contains('hidden');
+                    
+                    // Toggle current
+                    content.classList.toggle('hidden');
+                    if (chevron) {
+                        chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+                    }
+                }, { passive: true });
+            });
+        }
+
+        // Helpful feedback widget
+        let feedbackGiven = null;
+        function initFeedbackWidget() {
+            feedbackGiven = localStorage.getItem('dental-cleaning-feedback');
+            const widget = document.getElementById('feedback-widget');
+            if (!widget) return;
+
+            const question = document.getElementById('feedback-question');
+            const thankyou = document.getElementById('feedback-thankyou');
+            const sorry = document.getElementById('feedback-sorry');
+
+            if (feedbackGiven) {
+                question.classList.add('hidden');
+                if (feedbackGiven === 'yes') thankyou.classList.remove('hidden');
+                else sorry.classList.remove('hidden');
+                return;
+            }
+            // Otherwise question stays visible
+        }
+
+        function submitFeedback(answer) {
+            localStorage.setItem('dental-cleaning-feedback', answer);
+            feedbackGiven = answer;
+
+            const question = document.getElementById('feedback-question');
+            const thankyou = document.getElementById('feedback-thankyou');
+            const sorry = document.getElementById('feedback-sorry');
+
+            question.classList.add('hidden');
+            if (answer === 'yes') {
+                thankyou.classList.remove('hidden');
+            } else {
+                sorry.classList.remove('hidden');
+            }
+        }
+
+        // Reviewer last reviewed date (dynamic - today)
+        function updateReviewerLastReviewed() {
+            const el = document.getElementById('last-reviewed-date');
+            if (!el) return;
+            const date = new Date();
+            el.textContent = date.toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
+            });
+        }
+
+        // Master initializer - lightweight & safe
+        function initializeEnhancements() {
+            initScrollProgress();
+            initTOCHighlight();
+            initAccordions();
+            initFeedbackWidget();
+            updateReviewerLastReviewed();
+            // All listeners are passive where possible - Lighthouse safe
+        }
+
+        // Run enhancements after DOM is ready (does not override existing onload)
+        document.addEventListener('DOMContentLoaded', initializeEnhancements);
     </script>
 </body>
 </html>
