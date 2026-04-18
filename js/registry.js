@@ -1,5 +1,5 @@
 window.SITE_REGISTRY = {
-    version: "2026.04.11-Fixed",
+    version: "2026.04.18-Clean",
     folders: {
   "Root": {
     "icon": "🦷",
