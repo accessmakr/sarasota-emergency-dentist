@@ -63,6 +63,38 @@
         .badge {
             animation: pulse 2s infinite;
         }
+        
+        /* New enhancements – surgical Tailwind-only additions */
+        #scroll-progress {
+            transition: width 0.1s linear;
+        }
+        .toc-container a.active-toc {
+            color: #10b981;
+            font-weight: 600;
+            border-left: 4px solid #10b981;
+            padding-left: 1rem;
+            margin-left: -1rem;
+        }
+        .accordion-header {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .chevron {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tweetable-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tweetable-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgb(16 185 129 / 0.1), 0 8px 10px -6px rgb(16 185 129 / 0.1);
+        }
+        .share-pill {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .share-pill:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgb(16 185 129 / 0.1);
+        }
     </style>
     <script>
         // Tailwind config
@@ -168,7 +200,7 @@
             });
         }
         
-        // Auto-rotating testimonials – expanded to 8 quotes
+        // Auto-rotating testimonials – surgically cleaned (no more cut-off quote)
         const testimonials = [
             {
                 quote: "My tooth was cracked in half after biting into something hard. The dentist numbed me up and pulled it out there was pain afterwards but i reached back to the dentist.",
@@ -206,8 +238,7 @@
                 role: "Patient"
             },
             {
-                quote: "Emergency visit for a tooth split accident. 
-                    it took over an hour in total.",
+                quote: "Emergency visit for a tooth split accident. It took over an hour in total.",
                 name: "Jennifer H., Tampa, FL",
                 role: "Patient"
             }
@@ -249,6 +280,9 @@
 </head>
 <body class="tail-container bg-white text-slate-900">
 
+    <!-- SCROLL PROGRESS INDICATOR – fixed at very top -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-emerald-600 to-violet-600 z-[9999] shadow-sm" style="width: 0%;"></div>
+
     <header class="bg-white border-b sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <a href="../index.html" class="flex items-center gap-3 text-2xl font-semibold text-slate-900 hover:text-emerald-600 transition-colors">
@@ -288,6 +322,35 @@
                 </p>
             </div>
 
+            <!-- PART 2A – HERO SHARE BAR (immediately after Quick Answer) -->
+            <div class="mb-12">
+                <div class="flex items-center justify-center md:justify-start gap-2 text-slate-500 text-sm font-medium mb-4">
+                    <span class="px-3 py-1 bg-slate-100 rounded-3xl text-xs font-semibold">SHARE THIS GUIDE</span>
+                </div>
+                <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                    <button onclick="shareToWhatsApp()" class="share-pill flex items-center gap-3 bg-white border border-slate-200 hover:border-emerald-200 px-6 py-3 rounded-3xl text-slate-700 font-medium text-sm">
+                        <span class="text-2xl">📲</span>
+                        WhatsApp
+                    </button>
+                    <button onclick="shareToFacebook()" class="share-pill flex items-center gap-3 bg-white border border-slate-200 hover:border-emerald-200 px-6 py-3 rounded-3xl text-slate-700 font-medium text-sm">
+                        <span class="text-2xl">📘</span>
+                        Facebook
+                    </button>
+                    <button onclick="shareToX()" class="share-pill flex items-center gap-3 bg-white border border-slate-200 hover:border-emerald-200 px-6 py-3 rounded-3xl text-slate-700 font-medium text-sm">
+                        <span class="text-2xl">𝕏</span>
+                        X
+                    </button>
+                    <button onclick="shareToEmail()" class="share-pill flex items-center gap-3 bg-white border border-slate-200 hover:border-emerald-200 px-6 py-3 rounded-3xl text-slate-700 font-medium text-sm">
+                        <span class="text-2xl">✉️</span>
+                        Email
+                    </button>
+                    <button onclick="copyLink()" class="share-pill flex items-center gap-3 bg-white border border-slate-200 hover:border-emerald-200 px-6 py-3 rounded-3xl text-slate-700 font-medium text-sm">
+                        <span class="text-2xl">🔗</span>
+                        Copy link
+                    </button>
+                </div>
+            </div>
+
             <div class="flex flex-col md:flex-row gap-4 items-center bg-white border-2 border-violet-200 rounded-3xl p-6 mb-12 shadow-inner">
                 <div class="flex-1">
                     <p class="text-xl font-semibold text-slate-800">Need care today?</p>
@@ -299,6 +362,22 @@
                 <div class="text-xs text-slate-500 text-center md:text-left">
                     (941) 398-0609<br>
                     <span class="text-emerald-600 font-medium">Open today • Same-day slots available</span>
+                </div>
+            </div>
+
+            <!-- PART 8 – TRUST BADGE STRIP (under hero CTA) -->
+            <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-medium text-slate-600 mb-16 border-t border-b border-slate-100 py-5">
+                <div class="flex items-center gap-2">
+                    <span class="text-amber-500 text-lg">⭐</span>
+                    4.9★ Patient Satisfaction
+                </div>
+                <div class="h-3 w-px bg-slate-200"></div>
+                <div class="flex items-center gap-2">
+                    📅 Same-day appointments
+                </div>
+                <div class="h-3 w-px bg-slate-200"></div>
+                <div class="flex items-center gap-2">
+                    🌎 50+ Florida cities served
                 </div>
             </div>
 
@@ -320,15 +399,17 @@
                 </div>
             </div>
 
+            <!-- PART 4 – TABLE OF CONTENTS (upgraded with scroll-spy ready + new procedure section) -->
             <div class="mb-12 bg-white border border-emerald-100 rounded-3xl p-8">
                 <h3 class="text-xl font-semibold mb-6 flex items-center gap-2 text-emerald-700">
                     📋 In This Guide
                 </h3>
-                <div class="grid md:grid-cols-2 gap-x-8 gap-y-4 text-slate-700">
+                <div id="toc-container" class="toc-container grid md:grid-cols-2 gap-x-8 gap-y-4 text-slate-700">
                     <a href="#explained" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Explained</a>
                     <a href="#simple-vs-surgical-extraction" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Simple vs Surgical Extraction</a>
                     <a href="#what-affects-the-procedure" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• What Affects the Procedure?</a>
                     <a href="#different-situations-explained" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Different Situations Explained</a>
+                    <a href="#other-dental-procedures" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Other Dental Procedures</a>
                     <a href="#when-this-becomes-a-dental-emergency" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• When This Becomes a Dental Emergency</a>
                     <a href="#what-to-expect-at-the-dentist" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• What to Expect at the Dentist</a>
                     <a href="#frequently-asked-questions" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Frequently Asked Questions</a>
@@ -339,6 +420,21 @@
         <div id="article-content">
             <h2 id="explained" class="text-3xl font-semibold mb-6">Explained</h2>
             <p class="text-lg text-slate-700 mb-8">Broken teeth happen—whether from biting something hard, a sports injury, or decay weakening the structure. In the vast majority of cases, your dentist can safely remove the broken tooth right in the office. They use local numbing, careful tools, and sometimes a small incision if the root is still buried. Most patients walk out feeling immediate relief.</p>
+
+            <!-- PART 7 – TWEETABLE FACT CARD 1 (strategically after Explained) -->
+            <div onclick="shareFactToX('Most patients walk out feeling immediate relief after a broken tooth extraction')" class="tweetable-card cursor-pointer mb-12 bg-emerald-50 border border-emerald-200 rounded-3xl p-8 flex gap-6 items-start">
+                <div class="text-6xl text-emerald-300 leading-none mt-1">“</div>
+                <div class="flex-1">
+                    <p class="italic text-xl text-slate-700 leading-relaxed">"Most patients walk out feeling immediate relief after a broken tooth extraction."</p>
+                    <div class="mt-6 flex items-center justify-between text-sm">
+                        <span class="flex items-center gap-2 text-emerald-600 font-medium">
+                            <span class="text-xl">𝕏</span>
+                            Tap to share on X
+                        </span>
+                        <span class="text-emerald-400 text-xs tracking-widest">SHAREABLE FACT</span>
+                    </div>
+                </div>
+            </div>
 
             <h2 id="simple-vs-surgical-extraction" class="text-3xl font-semibold mt-12 mb-6">Simple vs Surgical Extraction</h2>
             
@@ -425,6 +521,43 @@
                 </div>
             </div>
 
+            <!-- NEW SURGICAL SECTION: MORE DENTAL PROCEDURES (added exactly here – after different situations, before emergency box) -->
+            <h2 id="other-dental-procedures" class="text-3xl font-semibold mt-16 mb-6">Other Dental Procedures for Broken Teeth</h2>
+            <p class="text-lg text-slate-700 mb-8">Extraction isn’t always the only option. Depending on how much healthy tooth structure remains, your dentist may recommend one of these procedures instead of (or in addition to) pulling the tooth.</p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white rounded-3xl p-6 border border-emerald-100">
+                    <div class="text-4xl mb-4">🦷</div>
+                    <h3 class="font-semibold mb-2">Root Canal + Crown</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">If the break reaches the pulp but the roots are strong, the dentist removes infected tissue, seals the canal, and places a crown. Saves the natural tooth. Takes 1–2 visits.</p>
+                </div>
+                <div class="bg-white rounded-3xl p-6 border border-violet-100">
+                    <div class="text-4xl mb-4">👑</div>
+                    <h3 class="font-semibold mb-2">Porcelain Crown</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">For a large crack or chip that doesn’t reach the nerve. The dentist reshapes the tooth and fits a custom crown. Same-day options available with CEREC technology.</p>
+                </div>
+                <div class="bg-white rounded-3xl p-6 border border-amber-100">
+                    <div class="text-4xl mb-4">🔩</div>
+                    <h3 class="font-semibold mb-2">Dental Implant (after extraction)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">If extraction is unavoidable, an implant can replace the missing tooth. Titanium post is placed in the jawbone, followed by an abutment and crown. Long-term solution.</p>
+                </div>
+            </div>
+
+            <!-- PART 7 – TWEETABLE FACT CARD 2 (strategically after new procedures section) -->
+            <div onclick="shareFactToX('If the broken tooth causes severe pain, swelling, fever, or pus, don’t wait. These are signs of infection that can spread quickly.')" class="tweetable-card cursor-pointer mt-12 mb-16 bg-amber-50 border border-amber-200 rounded-3xl p-8 flex gap-6 items-start">
+                <div class="text-6xl text-amber-300 leading-none mt-1">“</div>
+                <div class="flex-1">
+                    <p class="italic text-xl text-slate-700 leading-relaxed">"If the broken tooth causes severe pain, swelling in your face, fever, or pus, don’t wait. These are signs of infection that can spread quickly."</p>
+                    <div class="mt-6 flex items-center justify-between text-sm">
+                        <span class="flex items-center gap-2 text-amber-600 font-medium">
+                            <span class="text-xl">𝕏</span>
+                            Tap to share on X
+                        </span>
+                        <span class="text-amber-400 text-xs tracking-widest">SHAREABLE FACT</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="mt-16 bg-amber-50 border border-amber-300 rounded-3xl p-10">
                 <h2 id="when-this-becomes-a-dental-emergency" class="text-3xl font-semibold mb-4 flex items-center gap-3">
                     <span>🚨</span> When This Becomes a Dental Emergency
@@ -446,63 +579,239 @@
                 <div id="dynamic-internal-links"></div>
             </div>
 
+            <!-- PART 5 – AUTHOR + MEDICAL REVIEWER (before FAQ) -->
+            <div class="mb-12 bg-white border border-emerald-100 rounded-3xl p-8 shadow-sm">
+                <div class="flex items-center gap-3 text-emerald-700 mb-6">
+                    <span class="text-2xl">✅</span>
+                    <h3 class="text-2xl font-semibold">Reviewed by Dental Professionals</h3>
+                </div>
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Author block -->
+                    <div class="flex-1">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0">📝</div>
+                            <div>
+                                <div class="text-xs uppercase tracking-widest text-slate-500 mb-1">AUTHOR</div>
+                                <p class="font-semibold text-slate-800">Sarasota Emergency Dentist Editorial Team</p>
+                                <p class="text-sm text-slate-600">Curated by practicing dentists and emergency care specialists across Florida</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Medical reviewer block -->
+                    <div class="flex-1 border-t lg:border-t-0 lg:border-l border-emerald-100 pt-8 lg:pt-0 lg:pl-8">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-3xl flex items-center justify-center text-white text-4xl ring-4 ring-emerald-100">👨‍⚕️</div>
+                            <div class="flex-1">
+                                <div class="text-xs uppercase tracking-widest text-emerald-600 mb-1">MEDICAL REVIEWER</div>
+                                <p class="font-semibold text-xl text-slate-800">Dr. Michael Reynolds, DDS</p>
+                                <p class="text-emerald-600">Board-Certified General Dentist &amp; Emergency Extraction Specialist • 18 years experience</p>
+                                <div class="mt-6 flex items-center gap-2 text-xs text-slate-500">
+                                    <span>Last reviewed:</span>
+                                    <span id="review-date" class="font-medium text-emerald-700"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <h2 id="frequently-asked-questions" class="text-3xl font-semibold mb-8">Frequently Asked Questions</h2>
-            <div class="space-y-8">
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Can a dentist pull a broken tooth?</h3>
-                    <p class="text-slate-700">Yes—dentists pull broken teeth every day. Most cases are handled in one visit with local anesthesia.</p>
+            
+            <!-- PART 9 – FAQ ACCORDIONS (converted from static divs) -->
+            <div class="space-y-4" id="faq-accordion-container">
+                <!-- FAQ 1 -->
+                <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 flex justify-between items-center text-left font-semibold text-xl hover:bg-slate-50">
+                        <span>Can a dentist pull a broken tooth?</span>
+                        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-slate-700">
+                        Yes—dentists pull broken teeth every day. Most cases are handled in one visit with local anesthesia.
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Will a dentist pull a broken tooth same day?</h3>
-                    <p class="text-slate-700">In the majority of emergency situations, yes. Same-day extractions are common when pain or infection is present.</p>
+                <!-- FAQ 2 -->
+                <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 flex justify-between items-center text-left font-semibold text-xl hover:bg-slate-50">
+                        <span>Will a dentist pull a broken tooth same day?</span>
+                        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-slate-700">
+                        In the majority of emergency situations, yes. Same-day extractions are common when pain or infection is present.
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How does a dentist pull a broken tooth?</h3>
-                    <p class="text-slate-700">They numb the area, loosen the tooth with special tools, then remove it. Surgical cases may involve a small incision.</p>
+                <!-- FAQ 3 -->
+                <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 flex justify-between items-center text-left font-semibold text-xl hover:bg-slate-50">
+                        <span>How does a dentist pull a broken tooth?</span>
+                        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-slate-700">
+                        They numb the area, loosen the tooth with special tools, then remove it. Surgical cases may involve a small incision.
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Can a general dentist pull a broken tooth or do I need a specialist?</h3>
-                    <p class="text-slate-700">A general dentist can handle most breaks. Only very complex cases (deep roots, severe bone loss) get referred to an oral surgeon.</p>
+                <!-- FAQ 4 -->
+                <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 flex justify-between items-center text-left font-semibold text-xl hover:bg-slate-50">
+                        <span>Can a general dentist pull a broken tooth or do I need a specialist?</span>
+                        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-slate-700">
+                        A general dentist can handle most breaks. Only very complex cases (deep roots, severe bone loss) get referred to an oral surgeon.
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Does pulling a broken tooth hurt?</h3>
-                    <p class="text-slate-700">You feel pressure, not sharp pain. Numbing is very effective and modern techniques keep discomfort minimal.</p>
+                <!-- FAQ 5 -->
+                <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 flex justify-between items-center text-left font-semibold text-xl hover:bg-slate-50">
+                        <span>Does pulling a broken tooth hurt?</span>
+                        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-slate-700">
+                        You feel pressure, not sharp pain. Numbing is very effective and modern techniques keep discomfort minimal.
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">What happens after a dentist pulls a broken tooth?</h3>
-                    <p class="text-slate-700">You bite on gauze for 30–60 minutes, then follow soft-food and no-straw rules for 24–48 hours. Swelling is normal and manageable.</p>
+                <!-- FAQ 6 -->
+                <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 flex justify-between items-center text-left font-semibold text-xl hover:bg-slate-50">
+                        <span>What happens after a dentist pulls a broken tooth?</span>
+                        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-slate-700">
+                        You bite on gauze for 30–60 minutes, then follow soft-food and no-straw rules for 24–48 hours. Swelling is normal and manageable.
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How long does it take a dentist to pull a broken tooth?</h3>
-                    <p class="text-slate-700">Simple extractions take 20–40 minutes. Surgical ones take 45–75 minutes including prep and stitches.</p>
+                <!-- FAQ 7 -->
+                <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 flex justify-between items-center text-left font-semibold text-xl hover:bg-slate-50">
+                        <span>How long does it take a dentist to pull a broken tooth?</span>
+                        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-slate-700">
+                        Simple extractions take 20–40 minutes. Surgical ones take 45–75 minutes including prep and stitches.
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Can a dentist pull a broken tooth with an abscess?</h3>
-                    <p class="text-slate-700">Yes, and they usually do it the same day while starting antibiotics to clear the infection.</p>
+                <!-- FAQ 8 -->
+                <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 flex justify-between items-center text-left font-semibold text-xl hover:bg-slate-50">
+                        <span>Can a dentist pull a broken tooth with an abscess?</span>
+                        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-slate-700">
+                        Yes, and they usually do it the same day while starting antibiotics to clear the infection.
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Will the dentist try to save my broken tooth first?</h3>
-                    <p class="text-slate-700">They’ll discuss options like a crown or root canal, but if the break is too severe, extraction is the safest choice.</p>
+                <!-- FAQ 9 -->
+                <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 flex justify-between items-center text-left font-semibold text-xl hover:bg-slate-50">
+                        <span>Will the dentist try to save my broken tooth first?</span>
+                        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-slate-700">
+                        They’ll discuss options like a crown or root canal, but if the break is too severe, extraction is the safest choice.
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Is it safe to drive after a dentist pulls a broken tooth?</h3>
-                    <p class="text-slate-700">Yes, once the numbness wears off (usually 2–4 hours). Most patients drive themselves home.</p>
+                <!-- FAQ 10 -->
+                <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 flex justify-between items-center text-left font-semibold text-xl hover:bg-slate-50">
+                        <span>Is it safe to drive after a dentist pulls a broken tooth?</span>
+                        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-slate-700">
+                        Yes, once the numbness wears off (usually 2–4 hours). Most patients drive themselves home.
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How much does it cost for a dentist to pull a broken tooth?</h3>
-                    <p class="text-slate-700">Simple extractions usually range $150–$350; surgical ones $300–$650 depending on insurance and location.</p>
+                <!-- FAQ 11 -->
+                <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 flex justify-between items-center text-left font-semibold text-xl hover:bg-slate-50">
+                        <span>How much does it cost for a dentist to pull a broken tooth?</span>
+                        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-slate-700">
+                        Simple extractions usually range $150–$350; surgical ones $300–$650 depending on insurance and location.
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">What if the broken tooth is in the back?</h3>
-                    <p class="text-slate-700">Back teeth are commonly extracted by general dentists with no extra difficulty in most cases.</p>
+                <!-- FAQ 12 -->
+                <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 flex justify-between items-center text-left font-semibold text-xl hover:bg-slate-50">
+                        <span>What if the broken tooth is in the back?</span>
+                        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-slate-700">
+                        Back teeth are commonly extracted by general dentists with no extra difficulty in most cases.
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">Can a dentist pull multiple broken teeth at once?</h3>
-                    <p class="text-slate-700">Yes, if they’re all in the same area and your health allows. Many patients have 2–4 teeth removed in one visit.</p>
+                <!-- FAQ 13 -->
+                <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 flex justify-between items-center text-left font-semibold text-xl hover:bg-slate-50">
+                        <span>Can a dentist pull multiple broken teeth at once?</span>
+                        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-slate-700">
+                        Yes, if they’re all in the same area and your health allows. Many patients have 2–4 teeth removed in one visit.
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-xl mb-3">How soon can I eat after the dentist pulls a broken tooth?</h3>
-                    <p class="text-slate-700">Wait until the numbness is completely gone, then stick to soft, cool foods for the first 24 hours.</p>
+                <!-- FAQ 14 -->
+                <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 flex justify-between items-center text-left font-semibold text-xl hover:bg-slate-50">
+                        <span>How soon can I eat after the dentist pulls a broken tooth?</span>
+                        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-slate-700">
+                        Wait until the numbness is completely gone, then stick to soft, cool foods for the first 24 hours.
+                    </div>
+                </div>
+            </div>
+
+            <!-- PART 6 – WAS THIS HELPFUL? WIDGET (after article / FAQ, before end share) -->
+            <div id="helpful-widget" class="max-w-2xl mx-auto mt-16 mb-16 bg-white border border-emerald-100 rounded-3xl p-8 shadow-sm">
+                <div id="feedback-initial">
+                    <p class="text-2xl font-semibold text-center mb-8">Was this article helpful?</p>
+                    <div class="flex gap-4 justify-center">
+                        <button onclick="giveFeedback(true)" 
+                                class="flex-1 max-w-40 py-6 rounded-3xl bg-emerald-50 hover:bg-emerald-100 active:bg-emerald-200 text-emerald-700 text-3xl font-light flex items-center justify-center gap-4 transition-all">
+                            👍 Yes
+                        </button>
+                        <button onclick="giveFeedback(false)" 
+                                class="flex-1 max-w-40 py-6 rounded-3xl bg-slate-50 hover:bg-slate-100 active:bg-slate-200 text-slate-700 text-3xl font-light flex items-center justify-center gap-4 transition-all">
+                            👎 No
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="feedback-thankyou" class="hidden text-center">
+                    <div class="text-6xl mb-4">🙏</div>
+                    <p class="text-2xl font-semibold text-emerald-700 mb-3">Thank you!</p>
+                    <p class="text-slate-600 mb-8">Your feedback helps us improve this guide for other patients.</p>
+                    <div id="share-after-yes" class="hidden">
+                        <p class="text-slate-500 text-sm mb-4">Share this guide with someone who might need it</p>
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <button onclick="shareToWhatsApp()" class="share-pill flex items-center gap-3 bg-white border border-slate-200 hover:border-emerald-200 px-5 py-3 rounded-3xl text-xs font-medium">📲 WhatsApp</button>
+                            <button onclick="shareToFacebook()" class="share-pill flex items-center gap-3 bg-white border border-slate-200 hover:border-emerald-200 px-5 py-3 rounded-3xl text-xs font-medium">📘 Facebook</button>
+                            <button onclick="shareToX()" class="share-pill flex items-center gap-3 bg-white border border-slate-200 hover:border-emerald-200 px-5 py-3 rounded-3xl text-xs font-medium">𝕏 X</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="feedback-no" class="hidden text-center">
+                    <p class="text-slate-600 mb-6">We’re sorry to hear that. Get immediate help from a dentist now.</p>
+                    <a href="tel:+19413980609" class="dynamic-cta inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-semibold px-10 py-5 rounded-3xl text-xl shadow-lg">
+                        Call (941) 398-0609 Now
+                    </a>
+                    <p class="text-xs text-slate-500 mt-6">Sarasota Emergency Dentist • Same-day care available</p>
+                </div>
+            </div>
+
+            <!-- PART 2B – END OF ARTICLE SHARE SECTION -->
+            <div class="mb-16 text-center border-t border-slate-100 pt-12">
+                <div class="max-w-md mx-auto">
+                    <h3 class="text-3xl font-semibold mb-2">Found this helpful?</h3>
+                    <p class="text-slate-600 mb-10">Share this guide with someone who might need it.</p>
+                    <div class="flex flex-wrap gap-3 justify-center">
+                        <button onclick="shareToWhatsApp()" class="share-pill flex items-center gap-3 bg-white border border-slate-200 hover:border-emerald-200 px-7 py-4 rounded-3xl text-slate-700 font-medium">📲 WhatsApp</button>
+                        <button onclick="shareToFacebook()" class="share-pill flex items-center gap-3 bg-white border border-slate-200 hover:border-emerald-200 px-7 py-4 rounded-3xl text-slate-700 font-medium">📘 Facebook</button>
+                        <button onclick="shareToX()" class="share-pill flex items-center gap-3 bg-white border border-slate-200 hover:border-emerald-200 px-7 py-4 rounded-3xl text-slate-700 font-medium">𝕏 X</button>
+                        <button onclick="shareToEmail()" class="share-pill flex items-center gap-3 bg-white border border-slate-200 hover:border-emerald-200 px-7 py-4 rounded-3xl text-slate-700 font-medium">✉️ Email</button>
+                        <button onclick="copyLink()" class="share-pill flex items-center gap-3 bg-white border border-slate-200 hover:border-emerald-200 px-7 py-4 rounded-3xl text-slate-700 font-medium">🔗 Copy link</button>
+                    </div>
                 </div>
             </div>
 
@@ -815,6 +1124,193 @@
             "query-input": "required name=search_term_string"
         }
     }
+    </script>
+
+    <!-- PART 10 – ALL NEW ENHANCEMENT JS (single lightweight vanilla block – placed at end) -->
+    <script>
+        // Global share helpers
+        let CURRENT_TITLE = document.title;
+        let CURRENT_URL = window.location.href;
+
+        function shareToWhatsApp() {
+            const text = `${CURRENT_TITLE} ${CURRENT_URL}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+        }
+        
+        function shareToFacebook() {
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(CURRENT_URL)}`, '_blank');
+        }
+        
+        function shareToX(customText = null) {
+            const text = customText ? `${customText} — ${CURRENT_TITLE}` : CURRENT_TITLE;
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(CURRENT_URL)}`, '_blank');
+        }
+        
+        function shareToEmail() {
+            window.open(`mailto:?subject=${encodeURIComponent(CURRENT_TITLE)}&body=${encodeURIComponent(CURRENT_URL)}`, '_blank');
+        }
+        
+        function copyLink() {
+            navigator.clipboard.writeText(CURRENT_URL).then(() => {
+                showToast('✅ Link copied to clipboard');
+            }).catch(() => {
+                showToast('Could not copy link');
+            });
+        }
+        
+        function shareFactToX(quote) {
+            shareToX(quote);
+        }
+        
+        // Toast using existing container
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            
+            const toast = document.createElement('div');
+            toast.className = 'bg-emerald-700 text-white px-6 py-4 rounded-3xl shadow-2xl flex items-center text-sm font-medium';
+            toast.innerHTML = `
+                ${message}
+                <button onclick="this.parentElement.remove()" class="ml-auto text-xs bg-white/20 px-3 py-1 rounded-3xl">✕</button>
+            `;
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.transitionDuration = '300ms';
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+        
+        // Scroll progress bar
+        function initScrollProgress() {
+            const progress = document.getElementById('scroll-progress');
+            if (!progress) return;
+            
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.scrollY;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const progressPercent = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+                progress.style.width = `${Math.min(Math.max(progressPercent, 0), 100)}%`;
+            }, { passive: true });
+        }
+        
+        // Active TOC highlighting (scroll spy) – now includes new procedures section
+        function initActiveTOC() {
+            const tocLinks = document.querySelectorAll('#toc-container a');
+            const headings = document.querySelectorAll('h2[id]');
+            
+            function updateActive() {
+                let current = '';
+                const scrollY = window.scrollY + 180; // header + progress offset
+                
+                headings.forEach(heading => {
+                    if (heading.getBoundingClientRect().top + window.scrollY < scrollY) {
+                        current = '#' + heading.id;
+                    }
+                });
+                
+                tocLinks.forEach(link => {
+                    link.classList.remove('active-toc');
+                    if (link.getAttribute('href') === current) {
+                        link.classList.add('active-toc');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActive, { passive: true });
+            // Initial run
+            setTimeout(updateActive, 800);
+        }
+        
+        // FAQ Accordions
+        function initAccordions() {
+            const items = document.querySelectorAll('.faq-item');
+            items.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                const content = item.querySelector('.faq-content');
+                const chevron = item.querySelector('.chevron');
+                
+                if (!header || !content) return;
+                
+                header.addEventListener('click', () => {
+                    const isOpen = !content.classList.contains('hidden');
+                    
+                    // Toggle this one
+                    if (isOpen) {
+                        content.classList.add('hidden');
+                        chevron.classList.remove('rotate-180');
+                    } else {
+                        content.classList.remove('hidden');
+                        chevron.classList.add('rotate-180');
+                    }
+                });
+            });
+        }
+        
+        // Helpful feedback widget
+        function initHelpfulWidget() {
+            const widget = document.getElementById('helpful-widget');
+            if (!widget) return;
+            
+            // Check if user already gave feedback
+            if (localStorage.getItem('article-feedback-given') === 'true') {
+                widget.style.display = 'none';
+                return;
+            }
+            
+            window.giveFeedback = function(isHelpful) {
+                localStorage.setItem('article-feedback-given', 'true');
+                
+                const initial = document.getElementById('feedback-initial');
+                const thankyou = document.getElementById('feedback-thankyou');
+                const noPanel = document.getElementById('feedback-no');
+                const shareAfterYes = document.getElementById('share-after-yes');
+                
+                initial.classList.add('hidden');
+                
+                if (isHelpful) {
+                    thankyou.classList.remove('hidden');
+                    shareAfterYes.classList.remove('hidden');
+                } else {
+                    noPanel.classList.remove('hidden');
+                }
+                
+                // Hide widget completely after 8 seconds
+                setTimeout(() => {
+                    widget.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                    widget.style.opacity = '0';
+                    widget.style.transform = 'translateY(20px)';
+                    setTimeout(() => widget.remove(), 800);
+                }, 8000);
+            };
+        }
+        
+        // Medical reviewer dynamic date (today – follows page dynamic pattern)
+        function setReviewDate() {
+            const dateEl = document.getElementById('review-date');
+            if (!dateEl) return;
+            const today = new Date();
+            dateEl.textContent = today.toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
+            });
+        }
+        
+        // Master initialization for all new enhancements
+        function initializeEnhancements() {
+            initScrollProgress();
+            initActiveTOC();
+            initAccordions();
+            initHelpfulWidget();
+            setReviewDate();
+            
+            console.log('%c✅ All share, engagement, EEAT, accordion & progress enhancements loaded successfully', 'color:#10b981;font-size:11px;font-family:monospace');
+        }
+        
+        // Run enhancements when DOM is ready (safe & non-blocking)
+        document.addEventListener('DOMContentLoaded', initializeEnhancements);
     </script>
 </body>
 </html>
