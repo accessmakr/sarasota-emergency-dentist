@@ -134,6 +134,10 @@ window.SITE_REGISTRY = {
     "icon": "📁",
     "files": [
       {
+        "name": "guide/can-a-dentist-pull-a-broken-tooth.html",
+        "label": "Can a Dentist Pull a Broken Tooth? | Sarasota Emergency Dentist"
+      },
+      {
         "name": "guide/emergency-dentist.html",
         "label": "Emergency Dentist Sarasota | 24/7 Walk-In Dental Care Near You"
       },
