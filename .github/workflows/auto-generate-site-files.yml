@@ -1,11 +1,10 @@
-name: Auto-Generate pages.json + registry.js + sitemap.xml
+name: Auto-Generate Site Files (A to Z Fix)
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:   # allows manual trigger from GitHub UI
+  workflow_dispatch:
 
-# Required so github-actions[bot] can push changes back to the repo
 permissions:
   contents: write
 
@@ -17,14 +16,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # CRITICAL: Allows script to see real file modification dates
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Generate pages.json, registry.js & sitemap.xml
+      - name: Run Surgical Generation Script
         run: node generate-files.js
 
       - name: Commit and push generated files
@@ -32,12 +31,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # Fixed: registry.js is now inside the js/ folder
+          # Add all three generated files
           git add pages.json js/registry.js sitemap.xml
           
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: auto-generate pages.json, js/registry.js, sitemap.xml (dynamic + subfolders support)"
+            git commit -m "chore: A-to-Z surgical update (Clean URLs + Timestamps)"
             git push
           fi
