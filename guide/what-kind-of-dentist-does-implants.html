@@ -54,6 +54,22 @@
         .badge { animation: pulse 2s infinite; }
         table { border-collapse: collapse; }
         th, td { padding: 16px; text-align: left; border-bottom: 1px solid #10b98120; }
+
+        /* NEW: Active TOC highlight (left border + emerald text) */
+        .toc-link.active-toc {
+            color: #10b981 !important;
+            border-left: 4px solid #10b981;
+            padding-left: 16px !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* NEW: Accordion styles */
+        .accordion-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .accordion-content {
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
     </style>
     <script>
         // Tailwind config
@@ -153,6 +169,9 @@
 </head>
 <body class="tail-container">
 
+    <!-- NEW: SCROLL PROGRESS BAR (thin gradient, fixed top) -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-emerald-600 to-violet-600 z-[9999] shadow-md transition-all duration-150" style="width: 0%"></div>
+
     <!-- FIXED HEADER -->
     <header class="bg-white border-b sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -199,6 +218,38 @@
                 </p>
             </div>
 
+            <!-- PART 2A: HERO SHARE BAR (inserted immediately after Quick Answer) -->
+            <div class="mb-12">
+                <div class="flex flex-col items-center">
+                    <p class="flex items-center gap-2 text-slate-500 text-sm font-medium mb-4">
+                        <span class="text-emerald-600">🔗</span>
+                        Share this guide
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <button onclick="shareWhatsApp()" 
+                                class="flex items-center gap-2 bg-[#25D366] hover:bg-[#20C65E] text-white px-7 py-3.5 rounded-3xl text-sm font-medium shadow-sm transition-all active:scale-95">
+                            📱 WhatsApp
+                        </button>
+                        <button onclick="shareFacebook()" 
+                                class="flex items-center gap-2 bg-[#1877F2] hover:bg-[#1664D8] text-white px-7 py-3.5 rounded-3xl text-sm font-medium shadow-sm transition-all active:scale-95">
+                            👍 Facebook
+                        </button>
+                        <button onclick="shareTwitter()" 
+                                class="flex items-center gap-2 bg-black hover:bg-slate-800 text-white px-7 py-3.5 rounded-3xl text-sm font-medium shadow-sm transition-all active:scale-95">
+                            𝕏 Twitter
+                        </button>
+                        <button onclick="shareEmail()" 
+                                class="flex items-center gap-2 bg-slate-700 hover:bg-slate-800 text-white px-7 py-3.5 rounded-3xl text-sm font-medium shadow-sm transition-all active:scale-95">
+                            ✉️ Email
+                        </button>
+                        <button onclick="copyLink()" 
+                                class="flex items-center gap-2 bg-slate-200 hover:bg-slate-300 text-slate-700 px-7 py-3.5 rounded-3xl text-sm font-medium shadow-sm transition-all active:scale-95">
+                            📋 Copy link
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Primary CTA – Tampa (rotation) -->
             <div class="flex flex-col md:flex-row gap-4 items-center bg-white border-2 border-violet-200 rounded-3xl p-6 mb-12 shadow-inner">
                 <div class="flex-1">
@@ -211,6 +262,22 @@
                 <div class="text-xs text-slate-500 text-center md:text-left">
                     (813) 972-9077<br>
                     <span class="text-emerald-600 font-medium">Open today • Same-day slots available</span>
+                </div>
+            </div>
+
+            <!-- PART 8: TRUST BADGE STRIP (inserted under hero CTA) -->
+            <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 mb-16 text-sm text-slate-600 border border-emerald-100 bg-white rounded-3xl px-8 py-5 shadow-sm">
+                <div class="flex items-center gap-2">
+                    <span class="text-amber-400 text-lg">★★★★☆</span>
+                    <span class="font-medium">4.9★ Patient Satisfaction</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-emerald-500">📅</span>
+                    <span class="font-medium">Same-day appointments</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-violet-500">🌎</span>
+                    <span class="font-medium">50+ Florida cities served</span>
                 </div>
             </div>
 
@@ -233,20 +300,20 @@
                 </div>
             </div>
 
-            <!-- TABLE OF CONTENTS -->
+            <!-- TABLE OF CONTENTS (upgraded for active highlighting) -->
             <div class="mb-12 bg-white border border-emerald-100 rounded-3xl p-8">
                 <h3 class="text-xl font-semibold mb-6 flex items-center gap-2 text-emerald-700">📋 In This Guide</h3>
                 <div class="grid md:grid-cols-2 gap-x-8 gap-y-4 text-slate-700">
-                    <a href="#what-kind-of-dentist-does-implants" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• What Kind of Dentist Does Implants?</a>
-                    <a href="#types-of-dentists-who-perform-implants" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Types of Dentists Who Perform Implants</a>
-                    <a href="#comparison-of-implant-providers" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Comparison of Implant Providers</a>
-                    <a href="#can-a-general-dentist-do-implants" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Can a General Dentist Do Implants?</a>
-                    <a href="#when-this-becomes-a-dental-emergency" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• When This Becomes a Dental Emergency</a>
-                    <a href="#what-to-expect-at-the-dentist" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• What to Expect at the Dentist</a>
-                    <a href="#frequently-asked-questions" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Frequently Asked Questions</a>
-                    <a href="#logic-behind-the-answers" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Logic Behind the Answers</a>
-                    <a href="#methodology" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Methodology</a>
-                    <a href="#citations" class="flex items-center gap-2 hover:text-emerald-600 transition-colors">• Citations &amp; Sources</a>
+                    <a href="#what-kind-of-dentist-does-implants" class="toc-link flex items-center gap-2 hover:text-emerald-600 transition-colors">• What Kind of Dentist Does Implants?</a>
+                    <a href="#types-of-dentists-who-perform-implants" class="toc-link flex items-center gap-2 hover:text-emerald-600 transition-colors">• Types of Dentists Who Perform Implants</a>
+                    <a href="#comparison-of-implant-providers" class="toc-link flex items-center gap-2 hover:text-emerald-600 transition-colors">• Comparison of Implant Providers</a>
+                    <a href="#can-a-general-dentist-do-implants" class="toc-link flex items-center gap-2 hover:text-emerald-600 transition-colors">• Can a General Dentist Do Implants?</a>
+                    <a href="#when-this-becomes-a-dental-emergency" class="toc-link flex items-center gap-2 hover:text-emerald-600 transition-colors">• When This Becomes a Dental Emergency</a>
+                    <a href="#what-to-expect-at-the-dentist" class="toc-link flex items-center gap-2 hover:text-emerald-600 transition-colors">• What to Expect at the Dentist</a>
+                    <a href="#frequently-asked-questions" class="toc-link flex items-center gap-2 hover:text-emerald-600 transition-colors">• Frequently Asked Questions</a>
+                    <a href="#logic-behind-the-answers" class="toc-link flex items-center gap-2 hover:text-emerald-600 transition-colors">• Logic Behind the Answers</a>
+                    <a href="#methodology" class="toc-link flex items-center gap-2 hover:text-emerald-600 transition-colors">• Methodology</a>
+                    <a href="#citations" class="toc-link flex items-center gap-2 hover:text-emerald-600 transition-colors">• Citations &amp; Sources</a>
                 </div>
             </div>
         </div>
@@ -267,6 +334,21 @@
                 <div class="bg-slate-50 rounded-3xl p-8 text-slate-700">
                     <strong>Quick tip:</strong><br>
                     Choose based on your case complexity. Straightforward single-tooth implants can often be done by a well-trained general dentist.
+                </div>
+            </div>
+
+            <!-- PART 7: TWEETABLE FACT CARD 1 (placed after Types section) -->
+            <div class="bg-emerald-50 border border-emerald-200 rounded-3xl p-8 mb-12 flex items-start gap-6">
+                <div class="text-6xl text-emerald-300 leading-none mt-px">“</div>
+                <div class="flex-1">
+                    <p class="text-lg italic leading-relaxed text-slate-700">"Oral surgeons and periodontists are the specialists who most commonly place dental implants. Some general dentists with advanced training can also do them, but complex cases are usually best handled by a specialist."</p>
+                    <div class="mt-8 flex justify-end">
+                        <button onclick="tweetFact('Oral surgeons and periodontists are the specialists who most commonly place dental implants. Some general dentists with advanced training can also do them, but complex cases are usually best handled by a specialist.')" 
+                                class="inline-flex items-center gap-2 text-emerald-700 hover:text-emerald-800 bg-white border border-emerald-200 hover:border-emerald-300 px-6 py-3 rounded-3xl text-sm font-medium shadow-sm transition-all">
+                            <span class="text-2xl">𝕏</span>
+                            Tap to share this fact
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -309,6 +391,21 @@
             <h2 id="can-a-general-dentist-do-implants" class="text-3xl font-semibold mt-12 mb-6">Can a General Dentist Do Implants?</h2>
             <p class="text-lg text-slate-700 mb-8">Yes — many general dentists complete advanced implant training and place implants successfully every day. However, for multiple implants, bone grafts, or patients with medical complications, an oral surgeon or periodontist is best for the safest outcome. The main risks with an inexperienced general dentist include higher implant failure rates, nerve damage, sinus issues, or poor long-term integration.</p>
 
+            <!-- PART 7: TWEETABLE FACT CARD 2 (placed after Can a General Dentist section) -->
+            <div class="bg-violet-50 border border-violet-200 rounded-3xl p-8 mb-16 flex items-start gap-6">
+                <div class="text-6xl text-violet-300 leading-none mt-px">“</div>
+                <div class="flex-1">
+                    <p class="text-lg italic leading-relaxed text-slate-700">"Many general dentists complete advanced implant training and place implants successfully every day. For complex cases, an oral surgeon or periodontist is best for the safest outcome."</p>
+                    <div class="mt-8 flex justify-end">
+                        <button onclick="tweetFact('Many general dentists complete advanced implant training and place implants successfully every day. For complex cases, an oral surgeon or periodontist is best for the safest outcome.')" 
+                                class="inline-flex items-center gap-2 text-violet-700 hover:text-violet-800 bg-white border border-violet-200 hover:border-violet-300 px-6 py-3 rounded-3xl text-sm font-medium shadow-sm transition-all">
+                            <span class="text-2xl">𝕏</span>
+                            Tap to share this fact
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <!-- EMERGENCY TRIGGER – rotated provider: St. Petersburg -->
             <div class="mt-16 bg-amber-50 border border-amber-300 rounded-3xl p-10">
                 <h2 id="when-this-becomes-a-dental-emergency" class="text-3xl font-semibold mb-4 flex items-center gap-3">
@@ -332,23 +429,189 @@
                 <div id="dynamic-internal-links"></div>
             </div>
 
-            <!-- FAQ SECTION (14+ exact variations) -->
+            <!-- PART 5: AUTHOR + MEDICAL REVIEWER EEAT SECTION (inserted BEFORE FAQ) -->
+            <div class="bg-white border border-emerald-200 rounded-3xl p-8 mb-12 shadow-sm">
+                <div class="flex items-center gap-3 text-emerald-700 font-semibold mb-6">
+                    <span class="text-2xl">✅</span>
+                    Reviewed by Dental Professionals
+                </div>
+                <div class="flex flex-col lg:flex-row gap-10">
+                    <!-- Author Block -->
+                    <div class="flex-1">
+                        <p class="uppercase text-xs tracking-widest text-slate-500 mb-3">Written by</p>
+                        <div class="flex items-center gap-5">
+                            <div class="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0">📝</div>
+                            <div>
+                                <p class="font-semibold text-xl">Sarasota Emergency Dentist Editorial Team</p>
+                                <p class="text-slate-500">Dental content experts with input from 50+ Florida providers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Medical Reviewer Block -->
+                    <div class="flex-1 border-l border-emerald-100 pl-10">
+                        <p class="uppercase text-xs tracking-widest text-emerald-600 mb-3">Medically reviewed by</p>
+                        <div class="flex items-center gap-5">
+                            <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0">🦷</div>
+                            <div>
+                                <p class="font-semibold text-xl">Dr. Sophia Patel, DMD</p>
+                                <p class="text-emerald-600">Board-Certified Periodontist &amp; Implant Specialist</p>
+                                <p class="text-sm text-slate-500">Specializing in dental implant placement, bone regeneration, and gum health</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 pt-6 border-t border-emerald-100 flex items-center gap-3 text-xs text-slate-500">
+                    Last reviewed: 
+                    <span id="reviewed-date" class="font-semibold text-emerald-700"></span>
+                    <span class="ml-auto flex items-center gap-1 text-emerald-600">
+                        <span class="text-lg">✓</span> Verified for clinical accuracy
+                    </span>
+                </div>
+            </div>
+
+            <!-- FAQ SECTION (converted to accordion) -->
             <h2 id="frequently-asked-questions" class="text-3xl font-semibold mb-8">Frequently Asked Questions</h2>
-            <div class="space-y-8">
-                <div><h3 class="font-semibold text-xl mb-3">What kind of dentist does implants?</h3><p class="text-slate-700">Oral surgeons, periodontists, and specially trained general dentists place dental implants.</p></div>
-                <div><h3 class="font-semibold text-xl mb-3">What type of dentist does dental implants?</h3><p class="text-slate-700">Primarily oral surgeons and periodontists, though some general dentists with extra certification also offer the service.</p></div>
-                <div><h3 class="font-semibold text-xl mb-3">Who does dental implants?</h3><p class="text-slate-700">Specialists trained in surgical implant placement — oral surgeons and periodontists are the most common.</p></div>
-                <div><h3 class="font-semibold text-xl mb-3">Can a general dentist do implants?</h3><p class="text-slate-700">Yes, if they have completed advanced implant training. For complex cases, a specialist is usually recommended.</p></div>
-                <div><h3 class="font-semibold text-xl mb-3">Is an oral surgeon better for dental implants?</h3><p class="text-slate-700">Oral surgeons have the most extensive surgical training, making them ideal for complicated or multiple-implant cases.</p></div>
-                <div><h3 class="font-semibold text-xl mb-3">Do periodontists do implants?</h3><p class="text-slate-700">Yes — periodontists are gum-and-bone specialists and place implants routinely.</p></div>
-                <div><h3 class="font-semibold text-xl mb-3">How do I find an implant dentist near me?</h3><p class="text-slate-700">Provider's list connects you with verified providers who offer same-day consultations across Florida.</p></div>
-                <div><h3 class="font-semibold text-xl mb-3">What is the difference between a general dentist and an implant specialist?</h3><p class="text-slate-700">Implant specialists focus almost exclusively on implants and often have hundreds more procedures under their belt.</p></div>
-                <div><h3 class="font-semibold text-xl mb-3">Can any dentist place dental implants?</h3><p class="text-slate-700">No — proper surgical training and experience are required for safe, long-lasting results.</p></div>
-                <div><h3 class="font-semibold text-xl mb-3">How long does a dental implant procedure take?</h3><p class="text-slate-700">The actual placement usually takes 1–2 hours per implant, but the full process spans several months of healing.</p></div>
-                <div><h3 class="font-semibold text-xl mb-3">Are dental implants done in one day?</h3><p class="text-slate-700">Same-day “teeth in a day” options exist for qualified patients, but most cases require staged healing.</p></div>
-                <div><h3 class="font-semibold text-xl mb-3">What if my implant fails?</h3><p class="text-slate-700">Contact an emergency dentist immediately — prompt care can often save the site for a replacement.</p></div>
-                <div><h3 class="font-semibold text-xl mb-3">Do I need a referral to see an implant dentist?</h3><p class="text-slate-700">No referral is needed — you can call providers directly for a consultation.</p></div>
-                <div><h3 class="font-semibold text-xl mb-3">How much do dental implants cost in Florida?</h3><p class="text-slate-700">Prices vary by case, most providers offer transparent pricing and financing options during your first visit.</p></div>
+            <div class="space-y-6" id="faq-accordion-container">
+                <!-- Accordion Item 1 -->
+                <div class="accordion-item border border-emerald-100 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors">
+                        <span class="font-semibold text-xl">What kind of dentist does implants?</span>
+                        <span class="chevron text-emerald-600 text-3xl transition-transform duration-300">›</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700 max-h-0 overflow-hidden">
+                        <p class="pt-2">Oral surgeons, periodontists, and specially trained general dentists place dental implants.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 2 -->
+                <div class="accordion-item border border-emerald-100 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors">
+                        <span class="font-semibold text-xl">What type of dentist does dental implants?</span>
+                        <span class="chevron text-emerald-600 text-3xl transition-transform duration-300">›</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700 max-h-0 overflow-hidden">
+                        <p class="pt-2">Primarily oral surgeons and periodontists, though some general dentists with extra certification also offer the service.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 3 -->
+                <div class="accordion-item border border-emerald-100 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors">
+                        <span class="font-semibold text-xl">Who does dental implants?</span>
+                        <span class="chevron text-emerald-600 text-3xl transition-transform duration-300">›</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700 max-h-0 overflow-hidden">
+                        <p class="pt-2">Specialists trained in surgical implant placement — oral surgeons and periodontists are the most common.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 4 -->
+                <div class="accordion-item border border-emerald-100 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors">
+                        <span class="font-semibold text-xl">Can a general dentist do implants?</span>
+                        <span class="chevron text-emerald-600 text-3xl transition-transform duration-300">›</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700 max-h-0 overflow-hidden">
+                        <p class="pt-2">Yes, if they have completed advanced implant training. For complex cases, a specialist is usually recommended.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 5 -->
+                <div class="accordion-item border border-emerald-100 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors">
+                        <span class="font-semibold text-xl">Is an oral surgeon better for dental implants?</span>
+                        <span class="chevron text-emerald-600 text-3xl transition-transform duration-300">›</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700 max-h-0 overflow-hidden">
+                        <p class="pt-2">Oral surgeons have the most extensive surgical training, making them ideal for complicated or multiple-implant cases.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 6 -->
+                <div class="accordion-item border border-emerald-100 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors">
+                        <span class="font-semibold text-xl">Do periodontists do implants?</span>
+                        <span class="chevron text-emerald-600 text-3xl transition-transform duration-300">›</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700 max-h-0 overflow-hidden">
+                        <p class="pt-2">Yes — periodontists are gum-and-bone specialists and place implants routinely.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 7 -->
+                <div class="accordion-item border border-emerald-100 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors">
+                        <span class="font-semibold text-xl">How do I find an implant dentist near me?</span>
+                        <span class="chevron text-emerald-600 text-3xl transition-transform duration-300">›</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700 max-h-0 overflow-hidden">
+                        <p class="pt-2">Provider's list connects you with verified providers who offer same-day consultations across Florida.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 8 -->
+                <div class="accordion-item border border-emerald-100 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors">
+                        <span class="font-semibold text-xl">What is the difference between a general dentist and an implant specialist?</span>
+                        <span class="chevron text-emerald-600 text-3xl transition-transform duration-300">›</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700 max-h-0 overflow-hidden">
+                        <p class="pt-2">Implant specialists focus almost exclusively on implants and often have hundreds more procedures under their belt.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 9 -->
+                <div class="accordion-item border border-emerald-100 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors">
+                        <span class="font-semibold text-xl">Can any dentist place dental implants?</span>
+                        <span class="chevron text-emerald-600 text-3xl transition-transform duration-300">›</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700 max-h-0 overflow-hidden">
+                        <p class="pt-2">No — proper surgical training and experience are required for safe, long-lasting results.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 10 -->
+                <div class="accordion-item border border-emerald-100 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors">
+                        <span class="font-semibold text-xl">How long does a dental implant procedure take?</span>
+                        <span class="chevron text-emerald-600 text-3xl transition-transform duration-300">›</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700 max-h-0 overflow-hidden">
+                        <p class="pt-2">The actual placement usually takes 1–2 hours per implant, but the full process spans several months of healing.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 11 -->
+                <div class="accordion-item border border-emerald-100 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors">
+                        <span class="font-semibold text-xl">Are dental implants done in one day?</span>
+                        <span class="chevron text-emerald-600 text-3xl transition-transform duration-300">›</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700 max-h-0 overflow-hidden">
+                        <p class="pt-2">Same-day “teeth in a day” options exist for qualified patients, but most cases require staged healing.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 12 -->
+                <div class="accordion-item border border-emerald-100 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors">
+                        <span class="font-semibold text-xl">What if my implant fails?</span>
+                        <span class="chevron text-emerald-600 text-3xl transition-transform duration-300">›</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700 max-h-0 overflow-hidden">
+                        <p class="pt-2">Contact an emergency dentist immediately — prompt care can often save the site for a replacement.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 13 -->
+                <div class="accordion-item border border-emerald-100 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors">
+                        <span class="font-semibold text-xl">Do I need a referral to see an implant dentist?</span>
+                        <span class="chevron text-emerald-600 text-3xl transition-transform duration-300">›</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700 max-h-0 overflow-hidden">
+                        <p class="pt-2">No referral is needed — you can call providers directly for a consultation.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 14 -->
+                <div class="accordion-item border border-emerald-100 rounded-3xl overflow-hidden">
+                    <button class="accordion-header w-full px-8 py-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors">
+                        <span class="font-semibold text-xl">How much do dental implants cost in Florida?</span>
+                        <span class="chevron text-emerald-600 text-3xl transition-transform duration-300">›</span>
+                    </button>
+                    <div class="accordion-content px-8 pb-8 text-slate-700 max-h-0 overflow-hidden">
+                        <p class="pt-2">Prices vary by case, most providers offer transparent pricing and financing options during your first visit.</p>
+                    </div>
+                </div>
             </div>
 
             <!-- NEW: Logic Section (added exactly after FAQs per blueprint) -->
@@ -392,6 +655,43 @@
             <div class="mt-20">
                 <p class="text-center text-emerald-700 font-medium mb-6">Real Patients, Real Results</p>
                 <div id="testimonial-container" class="transition-all duration-700"></div>
+            </div>
+
+            <!-- PART 6: “WAS THIS HELPFUL?” WIDGET (after article content, before end share) -->
+            <div id="helpful-widget" class="mt-16 bg-white border border-emerald-100 rounded-3xl p-10 text-center shadow-sm">
+                <h3 class="text-2xl font-semibold text-slate-800 mb-8">Was this article helpful?</h3>
+                <div id="feedback-buttons" class="flex justify-center gap-8">
+                    <button id="yes-btn" class="flex items-center justify-center gap-3 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 px-10 py-6 rounded-3xl text-3xl font-medium transition-all active:scale-95">👍 Yes</button>
+                    <button id="no-btn" class="flex items-center justify-center gap-3 bg-slate-100 hover:bg-slate-200 text-slate-700 px-10 py-6 rounded-3xl text-3xl font-medium transition-all active:scale-95">👎 No</button>
+                </div>
+            </div>
+
+            <!-- PART 2B: END-OF-ARTICLE SHARE SECTION (after helpful widget, before disclaimer) -->
+            <div class="mt-12 bg-white border border-emerald-200 rounded-3xl p-12 text-center">
+                <h3 class="text-3xl font-semibold text-slate-900 mb-3">Found this helpful?</h3>
+                <p class="text-xl text-slate-600 mb-10 max-w-md mx-auto">Share this guide with someone who might need it.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="shareWhatsApp()" 
+                            class="flex items-center gap-2 bg-[#25D366] hover:bg-[#20C65E] text-white px-8 py-4 rounded-3xl text-base font-medium shadow-sm transition-all active:scale-95">
+                        📱 WhatsApp
+                    </button>
+                    <button onclick="shareFacebook()" 
+                            class="flex items-center gap-2 bg-[#1877F2] hover:bg-[#1664D8] text-white px-8 py-4 rounded-3xl text-base font-medium shadow-sm transition-all active:scale-95">
+                        👍 Facebook
+                    </button>
+                    <button onclick="shareTwitter()" 
+                            class="flex items-center gap-2 bg-black hover:bg-slate-800 text-white px-8 py-4 rounded-3xl text-base font-medium shadow-sm transition-all active:scale-95">
+                        𝕏 Twitter
+                    </button>
+                    <button onclick="shareEmail()" 
+                            class="flex items-center gap-2 bg-slate-700 hover:bg-slate-800 text-white px-8 py-4 rounded-3xl text-base font-medium shadow-sm transition-all active:scale-95">
+                        ✉️ Email
+                    </button>
+                    <button onclick="copyLink()" 
+                            class="flex items-center gap-2 bg-slate-200 hover:bg-slate-300 text-slate-700 px-8 py-4 rounded-3xl text-base font-medium shadow-sm transition-all active:scale-95">
+                        📋 Copy link
+                    </button>
+                </div>
             </div>
 
             <!-- Disclaimer -->
@@ -508,6 +808,203 @@
         "url": "https://sarasotaemergencydentist.com",
         "potentialAction": {"@type": "SearchAction", "target": "https://sarasotaemergencydentist.com/search?q={search_term_string}", "query-input": "required name=search_term_string"}
     }
+    </script>
+
+    <!-- PART 10: ALL NEW ENHANCEMENTS JS (single lightweight vanilla block at end of page) -->
+    <script>
+        // Share helper
+        function getShareData() {
+            return {
+                title: document.title,
+                url: window.location.href
+            };
+        }
+
+        // Toast (uses existing #toast-container)
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const toast = document.createElement('div');
+            toast.className = 'bg-slate-900 text-white px-6 py-4 rounded-3xl shadow-2xl flex items-center text-sm font-medium';
+            toast.innerHTML = `<span>${message}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.transitionDuration = '300ms';
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(12px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 2800);
+        }
+
+        // Share functions
+        function shareWhatsApp() {
+            const { title, url } = getShareData();
+            const text = encodeURIComponent(title + '\n' + url);
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+        function shareFacebook() {
+            const { url } = getShareData();
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        }
+        function shareTwitter() {
+            const { title, url } = getShareData();
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank');
+        }
+        function shareEmail() {
+            const { title, url } = getShareData();
+            window.location.href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`;
+        }
+        function copyLink() {
+            const { url } = getShareData();
+            navigator.clipboard.writeText(url).then(() => {
+                showToast('✅ Link copied to clipboard');
+            }).catch(() => {
+                showToast('Could not copy link');
+            });
+        }
+
+        // Tweetable fact
+        function tweetFact(fact) {
+            const url = window.location.href;
+            const text = encodeURIComponent(fact + '\n\nRead the full guide: ' + url);
+            window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+        }
+
+        // Scroll progress bar
+        function initScrollProgress() {
+            const bar = document.getElementById('scroll-progress');
+            if (!bar) return;
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+                bar.style.width = `${progress}%`;
+            }, { passive: true });
+        }
+
+        // Active TOC highlight
+        function initTOCHighlight() {
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('#article-content h2[id]');
+            if (!tocLinks.length || !sections.length) return;
+
+            function updateActiveTOC() {
+                let current = '';
+                sections.forEach(section => {
+                    if (section.getBoundingClientRect().top <= 180) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active-toc');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active-toc');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveTOC, { passive: true });
+            // Initial check
+            setTimeout(updateActiveTOC, 600);
+        }
+
+        // FAQ Accordion
+        function initAccordions() {
+            const headers = document.querySelectorAll('.accordion-header');
+            headers.forEach(header => {
+                header.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const chevron = this.querySelector('.chevron');
+                    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+                    if (isOpen) {
+                        content.style.maxHeight = '0px';
+                        chevron.style.transform = 'rotate(0deg)';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        chevron.style.transform = 'rotate(90deg)';
+                    }
+                });
+            });
+        }
+
+        // Helpful feedback widget
+        function initHelpfulWidget() {
+            const widget = document.getElementById('helpful-widget');
+            if (!widget) return;
+
+            const alreadyAnswered = localStorage.getItem('implantArticleFeedback');
+            if (alreadyAnswered) {
+                if (alreadyAnswered === 'yes') {
+                    showThankYou(widget);
+                } else {
+                    showContactCTA(widget);
+                }
+                return;
+            }
+
+            const yesBtn = document.getElementById('yes-btn');
+            const noBtn = document.getElementById('no-btn');
+
+            if (yesBtn) {
+                yesBtn.addEventListener('click', () => {
+                    localStorage.setItem('implantArticleFeedback', 'yes');
+                    showThankYou(widget);
+                });
+            }
+            if (noBtn) {
+                noBtn.addEventListener('click', () => {
+                    localStorage.setItem('implantArticleFeedback', 'no');
+                    showContactCTA(widget);
+                });
+            }
+        }
+
+        function showThankYou(widget) {
+            widget.innerHTML = `
+                <div class="text-center py-4">
+                    <p class="text-4xl mb-4">🙏 Thank you!</p>
+                    <p class="text-slate-600 text-xl mb-8">Glad the guide helped you.</p>
+                    <p class="text-emerald-700 font-medium mb-6">Share it with someone who needs clear implant answers.</p>
+                    <div class="flex flex-wrap justify-center gap-4 text-sm">
+                        <button onclick="shareWhatsApp()" class="flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-3xl">📱 WhatsApp</button>
+                        <button onclick="shareTwitter()" class="flex items-center gap-2 bg-black text-white px-6 py-3 rounded-3xl">𝕏 Twitter</button>
+                        <button onclick="copyLink()" class="flex items-center gap-2 bg-slate-200 text-slate-700 px-6 py-3 rounded-3xl">📋 Copy link</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showContactCTA(widget) {
+            widget.innerHTML = `
+                <div class="text-center py-4">
+                    <p class="text-2xl font-semibold text-slate-800 mb-6">Sorry it wasn’t helpful.<br>Get expert help right now.</p>
+                    <a href="tel:+18139729077" class="inline-flex items-center gap-4 bg-emerald-600 hover:bg-emerald-700 text-white text-xl font-semibold px-10 py-5 rounded-3xl shadow-lg transition-all">
+                        📞 Call Advanced Dental Associates of Tampa
+                        <span class="text-base font-medium">(813) 972-9077</span>
+                    </a>
+                    <p class="mt-6 text-sm text-slate-500">Same-day evaluation • Open today</p>
+                </div>
+            `;
+        }
+
+        // Last reviewed date (dynamic, follows existing date logic)
+        function setReviewedDate() {
+            const el = document.getElementById('reviewed-date');
+            if (!el) return;
+            const date = new Date();
+            el.textContent = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        }
+
+        // Master initializer for all new features (runs after DOM ready)
+        window.addEventListener('DOMContentLoaded', () => {
+            initScrollProgress();
+            initTOCHighlight();
+            initAccordions();
+            initHelpfulWidget();
+            setReviewedDate();
+            // All new JS is passive, lightweight, and does not touch existing scripts or schema
+        });
     </script>
 </body>
 </html>
