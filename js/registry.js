@@ -142,6 +142,10 @@ window.SITE_REGISTRY = {
         "label": "Can Your Dentist Tell You Smoke? | Sarasota Emergency Dentist"
       },
       {
+        "name": "guide/emergency-dentist-in-sarasota.html",
+        "label": "Emergency Dentist in Sarasota | Same-Day Care &amp; Immediate Relief"
+      },
+      {
         "name": "guide/how-long-does-a-dental-cleaning-take.html",
         "label": "How Long Does a Dental Cleaning Take? | Sarasota Emergency Dentist"
       },
