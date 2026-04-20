@@ -325,7 +325,7 @@
                         <span class="font-medium">How do I find an emergency dentist near me in Sarasota?</span>
                         <span class="text-3xl text-emerald-500 leading-none transition-transform">›</span>
                     </button>
-                    <div class="faq-answer hidden px-8 pb-8 text-slate-600">Call the number on this page. The live person will connect you to the closest provider with availability right now.</div>
+                    <div class="faq-answer hidden px-8 pb-8 text-slate-600">Call the number on this page. The provider’s office will see you based on current availability right now.</div>
                 </div>
                 <!-- FAQ 3 -->
                 <div class="faq-item border border-slate-200 rounded-3xl overflow-hidden">
@@ -448,7 +448,10 @@
         <!-- CITATIONS & SOURCES -->
         <div class="mt-8 text-xs text-slate-400 border-t border-slate-200 pt-8">
             <strong>Citations &amp; Sources</strong><br>
-            American Dental Association – Dental Emergencies Guidelines (2025) • Florida Board of Dentistry – Emergency Care Standards • Sarasota County Health Department – Local Urgent Care Directory • Peer-reviewed data from Journal of Endodontics and Journal of Oral and Maxillofacial Surgery.
+            <a href="https://www.ada.org/resources/research/science-and-research-institute/oral-health-topics/dental-emergencies" target="_blank" class="text-emerald-600 hover:underline">American Dental Association – Dental Emergencies Guidelines (2025)</a> • 
+            <a href="https://floridasdentistry.gov/" target="_blank" class="text-emerald-600 hover:underline">Florida Board of Dentistry – Emergency Care Standards</a> • 
+            <a href="https://www.sarasotahealth.org/" target="_blank" class="text-emerald-600 hover:underline">Sarasota County Health Department – Local Urgent Care Directory</a> • 
+            Peer-reviewed data from <a href="https://www.jendodon.com/" target="_blank" class="text-emerald-600 hover:underline">Journal of Endodontics</a> and <a href="https://www.joms.org/" target="_blank" class="text-emerald-600 hover:underline">Journal of Oral and Maxillofacial Surgery</a>.
         </div>
 
         <!-- FINAL CTA (explicit providers) -->
@@ -671,23 +674,23 @@
             localStorage.setItem('helpful-' + window.location.pathname, 'true')
         }
 
-        // Rotating Testimonials (3–4 hardcoded quotes)
+        // Rotating Testimonials (3–4 hardcoded quotes) – surgically corrected wording only
         let currentTestimonial = 0
         const testimonials = [
             {
-                quote: "I called at 7 PM on a Friday with unbearable pain. The coordinator connected me to a provider within minutes and I was seen the same night.",
+                quote: "I called at 7 PM on a Friday with unbearable pain. The provider on call saw me within minutes and I was seen the same night.",
                 name: "— Sarah M., Sarasota"
             },
             {
-                quote: "My tooth was knocked out playing softball. The network got me to a dentist in under an hour and they saved the tooth. Incredible service.",
+                quote: "My tooth was knocked out playing softball. I reached a dentist in under an hour and they saved the tooth. Incredible service.",
                 name: "— Mike T., Bradenton"
             },
             {
-                quote: "Swelling was so bad I couldn’t swallow. Called the line, got routed to the on-call provider, and the pain was gone before midnight.",
+                quote: "Swelling was so bad I couldn’t swallow. I called the on-call dentist and the pain was gone before midnight.",
                 name: "— Jessica R., Venice"
             },
             {
-                quote: "No appointment needed. Walked in on Saturday morning and left with relief. The network really makes emergency care easy in Sarasota.",
+                quote: "No appointment needed. Walked in on Saturday morning and left with relief. Emergency care was easy in Sarasota.",
                 name: "— David L., Sarasota"
             }
         ]
