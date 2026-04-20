@@ -142,10 +142,6 @@ window.SITE_REGISTRY = {
         "label": "Can Your Dentist Tell You Smoke? | Sarasota Emergency Dentist"
       },
       {
-        "name": "guide/emergency-dentist.html",
-        "label": "Emergency Dentist Sarasota | 24/7 Walk-In Dental Care Near You"
-      },
-      {
         "name": "guide/how-long-does-a-dental-cleaning-take.html",
         "label": "How Long Does a Dental Cleaning Take? | Sarasota Emergency Dentist"
       },
