@@ -43,6 +43,9 @@
         #scroll-progress { transition: width 0.1s ease-out; }
         .toc-link.active { border-left: 4px solid #10b981; color: #10b981; font-weight: 600; }
         .testimonial-slide { transition: opacity 0.5s ease-in-out; }
+        /* Refined protocol visuals */
+        .protocol-step { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .protocol-step:hover { transform: translateX(4px); }
     </style>
 </head>
 <body class="bg-slate-50">
@@ -216,32 +219,92 @@
             </div>
 
             <h2 id="protocols">Dental Emergency Protocols: What to Do Right Now</h2>
-            <p class="text-lg leading-relaxed">While you’re on the way to your Sarasota emergency dentist, these immediate protocols can protect your teeth, reduce pain, and prevent further damage. Follow them exactly until you are seen.</p>
+            <p class="text-lg leading-relaxed">While you’re on the way to your Sarasota emergency dentist, these immediate protocols can protect your teeth, reduce pain, and prevent further damage. Follow them exactly until you are seen. Each step includes simple visual cues for quick reference.</p>
             
             <div class="grid md:grid-cols-2 gap-6 mt-6">
+                <!-- Expanded Protocol 1 -->
                 <div class="bg-white border border-slate-200 rounded-3xl p-6 flex items-start gap-4">
                     <div class="flex-shrink-0 text-4xl mt-0.5">🦷</div>
-                    <div><strong>Severe tooth pain or cracked tooth:</strong> Rinse mouth gently with warm salt water. Take an over-the-counter pain reliever like ibuprofen. Avoid very hot or cold foods/drinks. Do not apply heat to the face.</div>
+                    <div class="flex-1">
+                        <strong class="text-slate-900">Severe tooth pain or cracked tooth:</strong>
+                        <ul class="mt-4 text-sm space-y-3">
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🧼</span> <span>Rinse mouth gently with warm salt water to clean debris</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">💊</span> <span>Take an over-the-counter pain reliever like ibuprofen (follow label dosage)</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🌡️</span> <span>Avoid very hot or cold foods/drinks</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🚫</span> <span>Do not apply heat to the face</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🍽️</span> <span>Avoid chewing on the affected side</span></li>
+                        </ul>
+                    </div>
                 </div>
+                
+                <!-- Expanded Protocol 2 -->
                 <div class="bg-white border border-slate-200 rounded-3xl p-6 flex items-start gap-4">
                     <div class="flex-shrink-0 text-4xl mt-0.5">🩸</div>
-                    <div><strong>Facial swelling or jaw swelling:</strong> Apply a cold compress (ice wrapped in cloth) to the outside of the face for 10 minutes on, 10 minutes off. Keep your head elevated. This may signal infection — call immediately.</div>
+                    <div class="flex-1">
+                        <strong class="text-slate-900">Facial swelling or jaw swelling:</strong>
+                        <ul class="mt-4 text-sm space-y-3">
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">❄️</span> <span>Apply a cold compress (ice wrapped in cloth) to the outside of the face for 10 minutes on, 10 minutes off</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">📐</span> <span>Keep your head elevated to reduce pressure</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🚨</span> <span>This may signal a spreading infection — call immediately</span></li>
+                        </ul>
+                    </div>
                 </div>
+                
+                <!-- Expanded Protocol 3 -->
                 <div class="bg-white border border-slate-200 rounded-3xl p-6 flex items-start gap-4">
                     <div class="flex-shrink-0 text-4xl mt-0.5">🦷</div>
-                    <div><strong>Knocked-out permanent tooth:</strong> Hold the tooth by the crown (white part), not the root. Rinse gently with milk or saline if dirty. Place the tooth back in the socket if possible, or store in milk/saliva. Get to the dentist within 60 minutes for best chance of saving it.</div>
+                    <div class="flex-1">
+                        <strong class="text-slate-900">Knocked-out permanent tooth:</strong>
+                        <ul class="mt-4 text-sm space-y-3">
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">👑</span> <span>Hold the tooth by the crown (white part), never the root</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🧼</span> <span>Rinse gently with milk or saline if dirty — do not scrub or touch the root</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🔄</span> <span>Try to place the tooth back in the socket if possible</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🥛</span> <span>If not, store in milk or your own saliva (never water)</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">⏰</span> <span>Get to the dentist within 60 minutes for the best chance of saving it</span></li>
+                        </ul>
+                    </div>
                 </div>
+                
+                <!-- Expanded Protocol 4 -->
                 <div class="bg-white border border-slate-200 rounded-3xl p-6 flex items-start gap-4">
                     <div class="flex-shrink-0 text-4xl mt-0.5">🦷</div>
-                    <div><strong>Broken tooth with exposed nerve:</strong> Rinse with warm water. Cover the broken area with sugar-free gum or dental wax if available. Take pain medication and avoid chewing on that side.</div>
+                    <div class="flex-1">
+                        <strong class="text-slate-900">Broken tooth with exposed nerve:</strong>
+                        <ul class="mt-4 text-sm space-y-3">
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🧼</span> <span>Rinse with warm water to clear debris</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🍭</span> <span>Cover the broken area with sugar-free gum or dental wax if available</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">💊</span> <span>Take pain medication as directed</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🚫</span> <span>Avoid chewing on that side</span></li>
+                        </ul>
+                    </div>
                 </div>
+                
+                <!-- Expanded Protocol 5 -->
                 <div class="bg-white border border-slate-200 rounded-3xl p-6 flex items-start gap-4">
                     <div class="flex-shrink-0 text-4xl mt-0.5">🦠</div>
-                    <div><strong>Abscess, pus, or fever:</strong> Rinse gently with warm salt water. Do not pop or squeeze the swelling. Take ibuprofen for pain and fever. This is a serious infection — seek care the same day.</div>
+                    <div class="flex-1">
+                        <strong class="text-slate-900">Abscess, pus, or fever:</strong>
+                        <ul class="mt-4 text-sm space-y-3">
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🧼</span> <span>Rinse gently with warm salt water</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🚫</span> <span>Do not pop or squeeze the swelling</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">💊</span> <span>Take ibuprofen for pain and fever</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🚨</span> <span>This is a serious infection — seek care the same day</span></li>
+                        </ul>
+                    </div>
                 </div>
+                
+                <!-- Expanded Protocol 6 -->
                 <div class="bg-white border border-slate-200 rounded-3xl p-6 flex items-start gap-4">
                     <div class="flex-shrink-0 text-4xl mt-0.5">🏥</div>
-                    <div><strong>Trauma from sports or accident:</strong> Control bleeding with clean gauze. Apply cold compress. If a tooth is loose or displaced, do not force it back. Call the emergency line immediately.</div>
+                    <div class="flex-1">
+                        <strong class="text-slate-900">Trauma from sports or accident:</strong>
+                        <ul class="mt-4 text-sm space-y-3">
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🩹</span> <span>Control bleeding with clean gauze pressed firmly</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">❄️</span> <span>Apply cold compress to reduce swelling</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">🚫</span> <span>If a tooth is loose or displaced, do not force it back</span></li>
+                            <li class="protocol-step flex items-start gap-2"><span class="text-emerald-500 flex-shrink-0 text-xl">📞</span> <span>Call the emergency line immediately</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
