@@ -138,6 +138,10 @@ window.SITE_REGISTRY = {
         "label": "Can a Dentist Pull a Broken Tooth? | Sarasota Emergency Dentist"
       },
       {
+        "name": "guide/can-your-dentist-tell-if-you-smoke-or-vape.html",
+        "label": "Can Your Dentist Tell If You Smoke or Vape? | Sarasota Emergency Dentist"
+      },
+      {
         "name": "guide/can-your-dentist-tell-you-smoke.html",
         "label": "Can Your Dentist Tell You Smoke? | Sarasota Emergency Dentist"
       },
