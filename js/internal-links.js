@@ -1,14 +1,14 @@
-// js/internal-links.js - AI-ASSISTED SEO LINKING ENGINE (FULL VERSION)
+// js/internal-links.js - FIXED AI SEO LINK ENGINE
 
-console.log("🚀 AI Internal Linking Engine (FULL SYSTEM) Initialized");
+console.log("🚀 Internal Linking Engine (FIXED VERSION) STARTED");
 
 // ================= CONFIG =================
 const CONFIG = {
     MAX_INLINE_LINKS: 5,
     MAX_PER_KEYWORD: 1,
-    MIN_RELEVANCE_SCORE: 5,
+    MIN_SCORE: 5,
     DEBUG: true,
-    MAX_RELATED_LINKS: 4
+    MAX_RELATED: 4
 };
 
 // ================= STATE =================
@@ -17,7 +17,7 @@ let keywordUsage = {};
 
 // ================= INIT =================
 document.addEventListener("DOMContentLoaded", () => {
-    waitForRegistry(initEngine);
+    waitForRegistry(init);
 });
 
 function waitForRegistry(cb) {
@@ -28,29 +28,28 @@ function waitForRegistry(cb) {
     cb();
 }
 
-// ================= MAIN ENGINE =================
-function initEngine() {
-    const pages = extractPages();
+// ================= MAIN =================
+function init() {
+    const pages = getPages();
     const currentPath = location.pathname.toLowerCase();
 
-    const filteredPages = pages.filter(p => !currentPath.includes(p.slug));
+    const usablePages = pages.filter(p => !currentPath.includes(p.slug));
 
-    const keywordMap = buildKeywordMap(filteredPages);
+    const keywordMap = buildKeywordMap(usablePages);
 
-    const content = detectContentContainer();
+    const content = detectContent();
 
-    if (content) {
-        log("📍 Content detected:", content);
-        walkDOM(content, keywordMap);
-    } else {
-        log("❌ No content container found");
-    }
+    log("📍 Content detected:", content);
 
-    injectRelatedLinks(filteredPages);
+    walkDOM(content, keywordMap);
+
+    injectRelated(usablePages);
+
+    log("✅ DONE. Links created:", linkCount);
 }
 
-// ================= REGISTRY EXTRACTION =================
-function extractPages() {
+// ================= REGISTRY =================
+function getPages() {
     let pages = [];
 
     Object.entries(window.SITE_REGISTRY.folders).forEach(([folder, data]) => {
@@ -69,7 +68,7 @@ function extractPages() {
     return pages;
 }
 
-// ================= KEYWORD MAP =================
+// ================= KEYWORDS =================
 function buildKeywordMap(pages) {
     let map = {};
 
@@ -82,8 +81,8 @@ function buildKeywordMap(pages) {
     return map;
 }
 
-// ================= AUTO CONTENT DETECTION =================
-function detectContentContainer() {
+// ================= CONTENT DETECTION =================
+function detectContent() {
     const selectors = [".post-content", "article", "main", "[role='main']"];
 
     for (let sel of selectors) {
@@ -113,8 +112,8 @@ function detectContentContainer() {
     return best || document.body;
 }
 
-// ================= SEMANTIC SAFETY FILTER =================
-function isSafeSemanticContext(node) {
+// ================= SEMANTIC SAFETY =================
+function isSafe(node) {
     const parent = node.parentElement;
     if (!parent) return false;
 
@@ -123,7 +122,6 @@ function isSafeSemanticContext(node) {
     const blocked = ["nav", "footer", "header", "button", "form", "aside"];
 
     if (blocked.includes(tag)) return false;
-
     if (parent.closest("nav") || parent.closest("footer")) return false;
 
     const text = parent.innerText?.trim() || "";
@@ -132,35 +130,39 @@ function isSafeSemanticContext(node) {
     return true;
 }
 
-// ================= AI-STYLE RELEVANCE SCORING =================
-function scoreContext(text, keyword) {
-    let score = 0;
+// ================= AI SCORING =================
+function score(text, keyword) {
+    let s = 0;
 
     const t = text.toLowerCase();
     const words = t.split(/\s+/);
 
-    // direct match
-    if (t.includes(keyword)) score += 2;
+    if (t.includes(keyword)) s += 2;
 
-    // semantic overlap
     keyword.split(" ").forEach(w => {
-        if (words.includes(w)) score += 1;
+        if (words.includes(w)) s += 1;
     });
 
-    // content richness
-    if (text.length > 120) score += 1;
+    if (text.length > 120) s += 1;
 
-    // noise penalty
-    if (text.length < 80) score -= 3;
-
-    return score;
+    return s;
 }
 
-// ================= BULLETPROOF DOM WALKER =================
+// ================= DOM WALKER (FIXED CORE) =================
 function walkDOM(node, keywords) {
     if (linkCount >= CONFIG.MAX_INLINE_LINKS) return;
 
-    if (node.nodeType === 3 && isSafeSemanticContext(node)) {
+    // ONLY SKIP STRUCTURAL ELEMENTS (NOT TEXT TRAVERSAL)
+    if (
+        node.nodeName === "A" ||
+        node.nodeName === "SCRIPT" ||
+        node.nodeName === "STYLE"
+    ) return;
+
+    // TEXT NODE PROCESSING
+    if (node.nodeType === 3) {
+
+        if (!isSafe(node)) return;
 
         let text = node.nodeValue;
 
@@ -169,12 +171,11 @@ function walkDOM(node, keywords) {
             if (linkCount >= CONFIG.MAX_INLINE_LINKS) break;
             if ((keywordUsage[keyword] || 0) >= CONFIG.MAX_PER_KEYWORD) continue;
 
-            const score = scoreContext(text, keyword);
+            const scoreValue = score(text, keyword);
 
-            if (score < CONFIG.MIN_RELEVANCE_SCORE) {
-                log("🚫 Skipped (low score):", keyword, score);
-                continue;
-            }
+            log("🔍 SCORE:", keyword, scoreValue);
+
+            if (scoreValue < CONFIG.MIN_SCORE) continue;
 
             const regex = new RegExp(`\\b(${escapeRegex(keyword)})\\b`, "i");
 
@@ -182,15 +183,14 @@ function walkDOM(node, keywords) {
 
                 const url = "/" + keywords[keyword];
 
-                const html = text.replace(
+                const span = document.createElement("span");
+
+                span.innerHTML = text.replace(
                     regex,
-                    `<a href="${url}" data-score="${score}">$1</a>`
+                    `<a href="${url}" data-score="${scoreValue}">$1</a>`
                 );
 
-                const span = document.createElement("span");
-                span.innerHTML = html;
-
-                log("✅ LINK:", { keyword, url, score });
+                log("✅ LINK CREATED:", { keyword, url, scoreValue });
 
                 node.replaceWith(span);
 
@@ -202,60 +202,43 @@ function walkDOM(node, keywords) {
         }
     }
 
-    if (
-        node.nodeName === "A" ||
-        node.nodeName === "SCRIPT" ||
-        node.nodeName === "STYLE" ||
-        node.nodeName === "H1" ||
-        node.nodeName === "H2"
-    ) return;
-
-    Array.from(node.childNodes).forEach(n => walkDOM(n, keywords));
+    Array.from(node.childNodes).forEach(child => walkDOM(child, keywords));
 }
 
-// ================= RELATED LINKS ENGINE =================
-function injectRelatedLinks(pages) {
+// ================= RELATED LINKS =================
+function injectRelated(pages) {
     const container = document.getElementById("dynamic-internal-links");
     if (!container) return;
 
     const current = location.pathname.toLowerCase();
 
     let scored = pages.map(p => {
-        let score = 0;
+        let s = 0;
 
-        if (current.includes(p.slug)) score += 2;
-        if (current.includes(p.folder)) score += 4;
+        if (current.includes(p.slug)) s += 2;
+        if (current.includes(p.folder)) s += 4;
 
         p.slug.split("-").forEach(w => {
-            if (current.includes(w)) score += 1;
+            if (current.includes(w)) s += 1;
         });
 
-        return { ...p, score };
+        return { ...p, score: s };
     });
 
-    let relevant = scored
-        .filter(p => p.score > 0)
-        .sort((a, b) => b.score - a.score);
+    let relevant = scored.sort((a, b) => b.score - a.score);
 
-    if (relevant.length < CONFIG.MAX_RELATED_LINKS) {
-        relevant = [
-            ...relevant,
-            ...pages.sort(() => Math.random() - 0.5)
-        ];
-    }
-
-    const final = relevant.slice(0, CONFIG.MAX_RELATED_LINKS);
+    const final = relevant.slice(0, CONFIG.MAX_RELATED);
 
     let html = `
-        <div class="mt-12 bg-emerald-50/50 border border-emerald-100 rounded-3xl p-8 shadow-sm">
-            <h3 class="text-xl font-bold text-slate-900 mb-6">Explore More Resources</h3>
+        <div class="mt-12 bg-emerald-50/50 border border-emerald-100 rounded-3xl p-8">
+            <h3 class="text-xl font-bold mb-4">Explore More Resources</h3>
             <div class="grid sm:grid-cols-2 gap-4">
     `;
 
     final.forEach(p => {
         html += `
-            <a href="/${p.url}" class="group p-3 rounded-2xl hover:bg-white hover:shadow-md border border-transparent hover:border-emerald-100">
-                <span class="text-sm font-medium">${p.label}</span>
+            <a href="/${p.url}" class="block p-3 rounded-xl hover:bg-white">
+                ${p.label}
             </a>
         `;
     });
@@ -268,7 +251,7 @@ function injectRelatedLinks(pages) {
 // ================= DEBUG =================
 function log(...args) {
     if (CONFIG.DEBUG) {
-        console.log("[INLINE AI ENGINE]", ...args);
+        console.log("[LINK ENGINE]", ...args);
     }
 }
 
