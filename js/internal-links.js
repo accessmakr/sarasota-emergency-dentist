@@ -1,187 +1,236 @@
-// js/internal-links.js - UNIFIED AUTO-DETECT INLINE + RELATED ENGINE
+// js/internal-links.js - AI-ASSISTED SEO LINKING ENGINE (FULL VERSION)
 
-console.log("🚀 Unified Internal Linking Engine (Auto-Detect Mode)");
+console.log("🚀 AI Internal Linking Engine (FULL SYSTEM) Initialized");
 
-// ===== CONFIG =====
+// ================= CONFIG =================
 const CONFIG = {
     MAX_INLINE_LINKS: 5,
-    MAX_LINKS_PER_KEYWORD: 1,
+    MAX_PER_KEYWORD: 1,
+    MIN_RELEVANCE_SCORE: 5,
+    DEBUG: true,
     MAX_RELATED_LINKS: 4
 };
 
-// ===== STATE =====
-let inlineCount = 0;
-let keywordCounts = {};
+// ================= STATE =================
+let linkCount = 0;
+let keywordUsage = {};
 
-// ===== INIT =====
+// ================= INIT =================
 document.addEventListener("DOMContentLoaded", () => {
     waitForRegistry(initEngine);
 });
 
-function waitForRegistry(callback) {
+function waitForRegistry(cb) {
     if (!window.SITE_REGISTRY || !window.SITE_REGISTRY.folders) {
-        setTimeout(() => waitForRegistry(callback), 200);
+        setTimeout(() => waitForRegistry(cb), 200);
         return;
     }
-    callback();
+    cb();
 }
 
-// ===== MAIN =====
+// ================= MAIN ENGINE =================
 function initEngine() {
-    const pages = extractAllPages();
-    const currentPath = window.location.pathname.toLowerCase();
+    const pages = extractPages();
+    const currentPath = location.pathname.toLowerCase();
 
-    const otherPages = pages.filter(p => !currentPath.includes(p.slug));
+    const filteredPages = pages.filter(p => !currentPath.includes(p.slug));
 
-    const keywordMap = buildKeywordMap(otherPages);
+    const keywordMap = buildKeywordMap(filteredPages);
 
-    const contentContainer = detectContentContainer();
+    const content = detectContentContainer();
 
-    if (contentContainer) {
-        injectInlineLinks(contentContainer, keywordMap);
+    if (content) {
+        log("📍 Content detected:", content);
+        walkDOM(content, keywordMap);
     } else {
-        console.warn("⚠️ No content container detected for inline linking");
+        log("❌ No content container found");
     }
 
-    injectRelatedLinks(otherPages);
+    injectRelatedLinks(filteredPages);
 }
 
-// ===== EXTRACT PAGES =====
-function extractAllPages() {
+// ================= REGISTRY EXTRACTION =================
+function extractPages() {
     let pages = [];
 
-    Object.entries(window.SITE_REGISTRY.folders).forEach(([folderName, folder]) => {
-        if (folder.files) {
-            folder.files.forEach(file => {
-                pages.push({
-                    label: file.label,
-                    slug: file.name.replace(".html", "").toLowerCase(),
-                    url: file.name.replace(".html", ""),
-                    folder: folderName.toLowerCase()
-                });
+    Object.entries(window.SITE_REGISTRY.folders).forEach(([folder, data]) => {
+        if (!data.files) return;
+
+        data.files.forEach(file => {
+            pages.push({
+                label: file.label.toLowerCase(),
+                slug: file.name.replace(".html", "").toLowerCase(),
+                url: file.name.replace(".html", ""),
+                folder: folder.toLowerCase()
             });
-        }
+        });
     });
 
     return pages;
 }
 
-// ===== KEYWORD MAP =====
+// ================= KEYWORD MAP =================
 function buildKeywordMap(pages) {
     let map = {};
 
-    pages.forEach(page => {
-        const keyword = page.label.toLowerCase();
-        map[keyword] = page.url;
+    pages.forEach(p => {
+        if (p.label) {
+            map[p.label] = p.url;
+        }
     });
 
     return map;
 }
 
-// ===== AUTO-DETECT CONTENT CONTAINER =====
+// ================= AUTO CONTENT DETECTION =================
 function detectContentContainer() {
-    // 1. explicit
-    let el = document.querySelector(".post-content");
-    if (el) return el;
+    const selectors = [".post-content", "article", "main", "[role='main']"];
 
-    // 2. semantic
-    el = document.querySelector("article");
-    if (el) return el;
-
-    el = document.querySelector("main");
-    if (el) return el;
-
-    // 3. heuristic: largest text block
-    let candidates = Array.from(document.querySelectorAll("div, section"));
+    for (let sel of selectors) {
+        const el = document.querySelector(sel);
+        if (el && el.innerText.trim().length > 200) {
+            return el;
+        }
+    }
 
     let best = null;
     let max = 0;
 
-    candidates.forEach(node => {
-        const text = node.innerText?.trim() || "";
-        const len = text.length;
+    document.querySelectorAll("div, section").forEach(el => {
+        const text = el.innerText?.trim() || "";
 
-        if (len < 300) return;
-        if (node.closest("nav") || node.closest("footer")) return;
-
-        if (len > max) {
-            max = len;
-            best = node;
+        if (
+            text.length > max &&
+            text.length > 300 &&
+            !el.closest("nav") &&
+            !el.closest("footer")
+        ) {
+            max = text.length;
+            best = el;
         }
     });
 
     return best || document.body;
 }
 
-// ===== INLINE LINKING =====
-function injectInlineLinks(container, keywordMap) {
+// ================= SEMANTIC SAFETY FILTER =================
+function isSafeSemanticContext(node) {
+    const parent = node.parentElement;
+    if (!parent) return false;
 
-    function processNode(node) {
-        if (inlineCount >= CONFIG.MAX_INLINE_LINKS) return;
+    const tag = parent.tagName.toLowerCase();
 
-        if (node.nodeType === 3) {
-            let text = node.nodeValue;
+    const blocked = ["nav", "footer", "header", "button", "form", "aside"];
 
-            for (let keyword in keywordMap) {
-                if (inlineCount >= CONFIG.MAX_INLINE_LINKS) break;
-                if ((keywordCounts[keyword] || 0) >= CONFIG.MAX_LINKS_PER_KEYWORD) continue;
+    if (blocked.includes(tag)) return false;
 
-                const regex = new RegExp(`\\b(${escapeRegex(keyword)})\\b`, "i");
+    if (parent.closest("nav") || parent.closest("footer")) return false;
 
-                if (regex.test(text)) {
-                    const span = document.createElement("span");
+    const text = parent.innerText?.trim() || "";
+    if (text.length < 80) return false;
 
-                    span.innerHTML = text.replace(
-                        regex,
-                        `<a href="/${keywordMap[keyword]}">$1</a>`
-                    );
-
-                    node.replaceWith(span);
-
-                    inlineCount++;
-                    keywordCounts[keyword] = (keywordCounts[keyword] || 0) + 1;
-
-                    return;
-                }
-            }
-        }
-
-        if (
-            node.nodeName === "A" ||
-            node.nodeName === "SCRIPT" ||
-            node.nodeName === "STYLE" ||
-            node.nodeName === "H1" ||
-            node.nodeName === "H2"
-        ) return;
-
-        Array.from(node.childNodes).forEach(child => processNode(child));
-    }
-
-    processNode(container);
+    return true;
 }
 
-// ===== RELATED LINKS =====
+// ================= AI-STYLE RELEVANCE SCORING =================
+function scoreContext(text, keyword) {
+    let score = 0;
+
+    const t = text.toLowerCase();
+    const words = t.split(/\s+/);
+
+    // direct match
+    if (t.includes(keyword)) score += 2;
+
+    // semantic overlap
+    keyword.split(" ").forEach(w => {
+        if (words.includes(w)) score += 1;
+    });
+
+    // content richness
+    if (text.length > 120) score += 1;
+
+    // noise penalty
+    if (text.length < 80) score -= 3;
+
+    return score;
+}
+
+// ================= BULLETPROOF DOM WALKER =================
+function walkDOM(node, keywords) {
+    if (linkCount >= CONFIG.MAX_INLINE_LINKS) return;
+
+    if (node.nodeType === 3 && isSafeSemanticContext(node)) {
+
+        let text = node.nodeValue;
+
+        for (let keyword in keywords) {
+
+            if (linkCount >= CONFIG.MAX_INLINE_LINKS) break;
+            if ((keywordUsage[keyword] || 0) >= CONFIG.MAX_PER_KEYWORD) continue;
+
+            const score = scoreContext(text, keyword);
+
+            if (score < CONFIG.MIN_RELEVANCE_SCORE) {
+                log("🚫 Skipped (low score):", keyword, score);
+                continue;
+            }
+
+            const regex = new RegExp(`\\b(${escapeRegex(keyword)})\\b`, "i");
+
+            if (regex.test(text)) {
+
+                const url = "/" + keywords[keyword];
+
+                const html = text.replace(
+                    regex,
+                    `<a href="${url}" data-score="${score}">$1</a>`
+                );
+
+                const span = document.createElement("span");
+                span.innerHTML = html;
+
+                log("✅ LINK:", { keyword, url, score });
+
+                node.replaceWith(span);
+
+                linkCount++;
+                keywordUsage[keyword] = (keywordUsage[keyword] || 0) + 1;
+
+                return;
+            }
+        }
+    }
+
+    if (
+        node.nodeName === "A" ||
+        node.nodeName === "SCRIPT" ||
+        node.nodeName === "STYLE" ||
+        node.nodeName === "H1" ||
+        node.nodeName === "H2"
+    ) return;
+
+    Array.from(node.childNodes).forEach(n => walkDOM(n, keywords));
+}
+
+// ================= RELATED LINKS ENGINE =================
 function injectRelatedLinks(pages) {
     const container = document.getElementById("dynamic-internal-links");
     if (!container) return;
 
-    const currentPath = window.location.pathname.toLowerCase();
+    const current = location.pathname.toLowerCase();
 
-    const depth = currentPath.split('/').filter(Boolean).length;
-    const isSubpage = depth > 0 && !currentPath.endsWith('index.html') && currentPath !== '/';
-    const prefix = isSubpage ? '../' : '';
-
-    let scored = pages.map(page => {
+    let scored = pages.map(p => {
         let score = 0;
 
-        if (currentPath.includes(page.slug)) score += 2;
-        if (currentPath.includes(page.folder)) score += 4;
+        if (current.includes(p.slug)) score += 2;
+        if (current.includes(p.folder)) score += 4;
 
-        page.slug.split('-').forEach(word => {
-            if (currentPath.includes(word)) score += 1;
+        p.slug.split("-").forEach(w => {
+            if (current.includes(w)) score += 1;
         });
 
-        return { ...page, score };
+        return { ...p, score };
     });
 
     let relevant = scored
@@ -189,28 +238,24 @@ function injectRelatedLinks(pages) {
         .sort((a, b) => b.score - a.score);
 
     if (relevant.length < CONFIG.MAX_RELATED_LINKS) {
-        const fallback = pages.sort(() => Math.random() - 0.5);
-        relevant = [...relevant, ...fallback];
+        relevant = [
+            ...relevant,
+            ...pages.sort(() => Math.random() - 0.5)
+        ];
     }
 
-    const finalLinks = relevant.slice(0, CONFIG.MAX_RELATED_LINKS);
+    const final = relevant.slice(0, CONFIG.MAX_RELATED_LINKS);
 
     let html = `
         <div class="mt-12 bg-emerald-50/50 border border-emerald-100 rounded-3xl p-8 shadow-sm">
-            <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <span class="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm">🔍</span>
-                Explore More Resources
-            </h3>
+            <h3 class="text-xl font-bold text-slate-900 mb-6">Explore More Resources</h3>
             <div class="grid sm:grid-cols-2 gap-4">
     `;
 
-    finalLinks.forEach(page => {
+    final.forEach(p => {
         html += `
-            <a href="${prefix}${page.url}" class="group flex items-start gap-x-3 p-3 rounded-2xl hover:bg-white hover:shadow-md transition-all border border-transparent hover:border-emerald-100">
-                <span class="text-emerald-500 group-hover:translate-x-1 transition-transform">→</span>
-                <span class="text-sm font-medium text-slate-700 group-hover:text-emerald-600 leading-tight">
-                    ${page.label}
-                </span>
+            <a href="/${p.url}" class="group p-3 rounded-2xl hover:bg-white hover:shadow-md border border-transparent hover:border-emerald-100">
+                <span class="text-sm font-medium">${p.label}</span>
             </a>
         `;
     });
@@ -220,7 +265,14 @@ function injectRelatedLinks(pages) {
     container.innerHTML = html;
 }
 
-// ===== UTILITY =====
-function escapeRegex(text) {
-    return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+// ================= DEBUG =================
+function log(...args) {
+    if (CONFIG.DEBUG) {
+        console.log("[INLINE AI ENGINE]", ...args);
+    }
+}
+
+// ================= UTILS =================
+function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
