@@ -31,7 +31,7 @@
     <link rel="apple-touch-icon" href="../apple-touch-icon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
         :root {
             --tw-color-emerald-600: #10b981;
             --tw-color-violet-600: #7c3aed;
@@ -316,18 +316,6 @@
             </ul>
             <p class="text-slate-600 mt-4">Quitting isn’t just healthier — it’s significantly cheaper for your smile and your bank account.</p>
 
-            <h2 id="patient-transformations">Real Patient Transformations: Before &amp; After</h2>
-            <div class="grid md:grid-cols-2 gap-6 mt-6">
-                <div class="bg-white border border-slate-200 rounded-3xl p-6">
-                    <p class="italic">"My dentist spotted the gray gums and staining from vaping immediately. I was honest, got a custom plan, and within four months my gums were pink again. Best decision I ever made."</p>
-                    <p class="text-xs text-slate-500 mt-4">— Jessica T., Bradenton (vaped 3 years, now 8 months nicotine-free)</p>
-                </div>
-                <div class="bg-white border border-slate-200 rounded-3xl p-6">
-                    <p class="italic">"I thought I hid my smoking well until the hygienist showed me the recession on camera. The timeline they gave me motivated me to quit. My next visit looked completely different."</p>
-                    <p class="text-xs text-slate-500 mt-4">— Marcus P., Sarasota (smoked 12 years, quit 14 months ago)</p>
-                </div>
-            </div>
-
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
                 <div id="dynamic-internal-links"></div>
             </div>
@@ -537,7 +525,6 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
-    <!-- GLOBAL SHARED SCRIPTS – FIXED PATHS FOR YOUR REPO -->
     <script defer src="../js/registry.js"></script>
     <script defer src="../js/root-config.js"></script>
     <script defer src="../js/menu-system.js"></script>
@@ -731,6 +718,7 @@
 
         // Rotating Testimonials (updated for smoking/vaping topic)
         let currentTestimonial = 0
+        let testimonialTimer;
         const testimonials = [
             {
                 quote: "My dentist took one look and said 'You've been vaping, haven't you?' The gum recession and dry mouth were obvious. That honest conversation changed everything.",
@@ -761,10 +749,16 @@
         window.nextTestimonial = function() {
             currentTestimonial = (currentTestimonial + 1) % testimonials.length
             renderTestimonial()
+            resetTestimonialTimer()
         }
         window.prevTestimonial = function() {
             currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length
             renderTestimonial()
+            resetTestimonialTimer()
+        }
+        function resetTestimonialTimer() {
+            clearInterval(testimonialTimer);
+            testimonialTimer = setInterval(window.nextTestimonial, 5000);
         }
 
         // Seasonal greeting
@@ -852,6 +846,7 @@
             seasonalNote()
             injectSchema()
             renderTestimonial()
+            testimonialTimer = setInterval(window.nextTestimonial, 5000);
             console.log('%c✅ Can Your Dentist Tell If You Smoke or Vape? article fully loaded – enterprise-grade, conversion-ready, 100% self-contained', 'background:#10b981;color:#fff;padding:2px 6px;border-radius:3px')
         })
     </script>
