@@ -167,7 +167,7 @@ window.SITE_REGISTRY = {
       },
       {
         "name": "guide/same-day-dentist-near-me.html",
-        "label": "Same Day Dentist Near Me | Emergency Appointments Available Today"
+        "label": "Same Day Dentist Near Me | Immediate Dental Appointments"
       },
       {
         "name": "guide/walk-in-dentist-near-me.html",
