@@ -166,6 +166,10 @@ window.SITE_REGISTRY = {
         "label": "How to Get Rid of Numbness After the Dentist Fast | Sarasota Emergency Dentist"
       },
       {
+        "name": "guide/same-day-dentist-near-me.html",
+        "label": "Same Day Dentist Near Me | Emergency Appointments Available Today"
+      },
+      {
         "name": "guide/walk-in-dentist-near-me.html",
         "label": "Walk-In Dentist Near Me: No Appointment Needed Guide"
       },
