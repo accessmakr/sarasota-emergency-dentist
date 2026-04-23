@@ -150,6 +150,10 @@ window.SITE_REGISTRY = {
         "label": "Emergency Dentist in Sarasota | Same-Day Care &amp; Immediate Relief"
       },
       {
+        "name": "guide/emergency-dentist-near-me.html",
+        "label": "Emergency Dentist Near Me | Same-Day Dental Emergency Care in Florida"
+      },
+      {
         "name": "guide/how-long-does-a-dental-cleaning-take.html",
         "label": "How Long Does a Dental Cleaning Take? | Sarasota Emergency Dentist"
       },
