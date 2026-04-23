@@ -167,7 +167,7 @@ window.SITE_REGISTRY = {
       },
       {
         "name": "guide/walk-in-dentist-near-me.html",
-        "label": "Walk-In Dentist Near Me | No Appointment Needed | Sarasota Emergency Dentist"
+        "label": "Walk-In Dentist Near Me: No Appointment Needed Guide"
       },
       {
         "name": "guide/what-kind-of-dentist-does-implants.html",
