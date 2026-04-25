@@ -135,7 +135,7 @@ window.SITE_REGISTRY = {
     "files": [
       {
         "name": "guide/24-hour-emergency-dentist-sarasota.html",
-        "label": "24 Hour Emergency Dentist Sarasota | Open Now After Hours Care"
+        "label": "24 Hour Emergency Dentist Sarasota | After-Hours Dental Care"
       },
       {
         "name": "guide/can-a-dentist-pull-a-broken-tooth.html",
