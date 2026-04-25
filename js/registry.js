@@ -170,6 +170,10 @@ window.SITE_REGISTRY = {
         "label": "How to Get Rid of Numbness After the Dentist Fast | Sarasota Emergency Dentist"
       },
       {
+        "name": "guide/root-canal-sarasota.html",
+        "label": "Root Canal Sarasota | Quick Endodontic Appointments"
+      },
+      {
         "name": "guide/same-day-dentist-near-me.html",
         "label": "Same Day Dentist Near Me | Immediate Dental Appointments"
       },
