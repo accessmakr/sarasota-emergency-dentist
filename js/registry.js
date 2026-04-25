@@ -178,6 +178,10 @@ window.SITE_REGISTRY = {
         "label": "Same Day Dentist Near Me | Immediate Dental Appointments"
       },
       {
+        "name": "guide/tooth-extraction-sarasota.html",
+        "label": "Tooth Extraction Sarasota | Urgent Wisdom Teeth Removal"
+      },
+      {
         "name": "guide/walk-in-dentist-near-me.html",
         "label": "Walk-In Dentist Near Me: No Appointment Needed Guide"
       },
