@@ -174,6 +174,10 @@ window.SITE_REGISTRY = {
         "label": "Emergency Dentist Sarasota Guide | Urgent Dental Care Directory"
       },
       {
+        "name": "guide/oral-surgeon-sarasota.html",
+        "label": "Oral Surgeon Sarasota | OMS Referral & Complex Extractions"
+      },
+      {
         "name": "guide/root-canal-sarasota.html",
         "label": "Root Canal Sarasota | Quick Endodontic Appointments"
       },
