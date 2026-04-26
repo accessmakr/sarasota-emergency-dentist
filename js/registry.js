@@ -171,7 +171,7 @@ window.SITE_REGISTRY = {
       },
       {
         "name": "guide/index.html",
-        "label": "Emergency Dentist Sarasota Guide | Urgent Dental Care Directory"
+        "label": "Sarasota Emergency Dentist Guide | 24/7 Dental Resource Hub"
       },
       {
         "name": "guide/root-canal-sarasota.html",
