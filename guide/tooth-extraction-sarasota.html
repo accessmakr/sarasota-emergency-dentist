@@ -471,7 +471,7 @@
             <span class="text-brand-emerald text-4xl mb-4 block">"</span>
             <div id="testimonial-carousel" class="text-xl font-medium italic mb-6 min-h-[100px] flex items-center justify-center transition-opacity duration-500">
                 </div>
-            <div class="text-sm text-gray-400 uppercase tracking-widest font-bold">Verified Patient Experiences</div>
+            <div class="text-sm text-gray-400 uppercase tracking-widest font-bold">Patient Experiences</div>
         </div>
 
         <div class="bg-gradient-to-r from-brand-emerald to-emerald-800 text-white p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg mb-12 max-w-5xl mx-auto">
@@ -486,7 +486,7 @@
 
         <div class="bg-white border border-gray-200 rounded-xl p-8 text-center my-12 shadow-sm max-w-5xl mx-auto" id="feedback-widget">
             <h3 class="text-xl font-bold text-gray-900 mb-6">Was this article helpful?</h3>
-            <div class="flex justify-center gap-4">
+            <div id="feedback-buttons" class="flex justify-center gap-4">
                 <button onclick="handleFeedback(true)" class="px-8 py-3 bg-gray-50 border border-gray-200 rounded-lg hover:bg-emerald-50 hover:border-brand-emerald hover:text-brand-emerald transition font-medium text-lg flex items-center gap-2 shadow-sm">
                     👍 Yes
                 </button>
@@ -811,21 +811,27 @@
             });
         };
 
+        // 11. Feedback Widget Logic (Page-specific storage + Initialization)
         window.handleFeedback = function(isHelpful) {
-            if(localStorage.getItem('page_feedback_submitted')) return;
+            const pageKey = 'feedback_' + window.location.pathname;
+            if(localStorage.getItem(pageKey)) return;
+            
+            const fbBtns = document.getElementById('feedback-buttons');
+            if(fbBtns) fbBtns.classList.add('hidden');
             
             const responseDiv = document.getElementById('feedback-response');
             responseDiv.classList.remove('hidden');
             
             if(isHelpful) {
                 responseDiv.innerHTML = `
-                    <div class="text-brand-emerald font-bold mb-4 text-xl">Thank you for your feedback!</div>
+                    <div class="text-brand-emerald font-bold mb-2 text-xl">Thank you for your feedback!</div>
                 `;
                 // Reveal the global bottom share section natively
-                document.getElementById('bottom-share-section').classList.remove('hidden');
+                const shareSec = document.getElementById('bottom-share-section');
+                if(shareSec) shareSec.classList.remove('hidden');
             } else {
                 responseDiv.innerHTML = `
-                    <div class="p-6 bg-red-50 border border-red-100 rounded-lg">
+                    <div class="p-6 bg-red-50 border border-red-100 rounded-lg mt-4">
                         <p class="text-red-800 font-bold mb-4 text-lg">Contact a dentist now</p>
                         <a href="tel:+18638583891" class="inline-block bg-red-600 text-white font-bold px-8 py-3 rounded-lg hover:bg-red-700 transition shadow-md">
                             Call Quality Dental Care
@@ -834,8 +840,22 @@
                     </div>
                 `;
             }
-            localStorage.setItem('page_feedback_submitted', 'true');
+            localStorage.setItem(pageKey, 'true');
         };
+
+        function initFeedbackWidget() {
+            const pageKey = 'feedback_' + window.location.pathname;
+            if(localStorage.getItem(pageKey)) {
+                const fbBtns = document.getElementById('feedback-buttons');
+                if(fbBtns) fbBtns.classList.add('hidden');
+                
+                const responseDiv = document.getElementById('feedback-response');
+                if(responseDiv) {
+                    responseDiv.classList.remove('hidden');
+                    responseDiv.innerHTML = `<div class="text-gray-500 font-medium italic">Thank you for your feedback.</div>`;
+                }
+            }
+        }
 
         // Main initialization
         document.addEventListener('DOMContentLoaded', () => {
@@ -847,6 +867,7 @@
             seasonalNote();
             injectSchema();
             renderTestimonialsAndCTAs();
+            initFeedbackWidget();
             console.log('%c✅ Tooth Extraction Sarasota article loaded – clinically aligned, 100% self-contained', 'background:#10b981;color:#fff;padding:2px 6px;border-radius:3px');
         });
     </script>
