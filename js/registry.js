@@ -186,6 +186,10 @@ window.SITE_REGISTRY = {
         "label": "Same Day Dentist Near Me | Immediate Dental Appointments"
       },
       {
+        "name": "guide/sleep-apnea-dental-device-sarasota.html",
+        "label": "Sleep Apnea Dental Device Near Me | Custom Sarasota Appliances"
+      },
+      {
         "name": "guide/tooth-extraction-sarasota.html",
         "label": "Tooth Extraction Sarasota | Urgent Wisdom Teeth Removal"
       },
