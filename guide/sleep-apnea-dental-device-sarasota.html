@@ -147,7 +147,7 @@
         <article class="prose prose-lg max-w-none text-gray-700 article-content">
             
             <h2 id="types-of-devices" class="text-3xl font-bold text-gray-900 mt-10 mb-6">Types of Dental Devices for Sleep Apnea</h2>
-            <p>If you have been diagnosed with mild to moderate obstructive sleep apnea (OSA), you are no longer limited strictly to CPAP therapy. Sleep dentists create customized dental appliances that physically expand your airway while you sleep. The two most common types are:</p>
+            <p>If you have been diagnosed with mild to moderate obstructive sleep apnea (OSA), you are no longer limited strictly to CPAP therapy. Specialists in <a href="https://sarasotaemergencydentist.com/sdssa.html" class="text-brand-emerald hover:underline font-medium">Sleep Dentistry / Snoring & Sleep Apnea</a> create customized dental appliances that physically expand your airway while you sleep. The two most common types are:</p>
             
             <ul class="list-none space-y-4 mb-8">
                 <li class="bg-white p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
@@ -479,7 +479,7 @@
             <div id="feedback-response" class="hidden mt-6"></div>
         </div>
 
-        <div id="bottom-share-section" class="hidden text-center py-10 border-t border-b border-gray-100 mb-12 max-w-5xl mx-auto">
+        <div id="bottom-share-section" class="text-center py-10 border-t border-b border-gray-100 mb-12 max-w-5xl mx-auto">
             <h3 class="text-2xl font-bold text-gray-900 mb-2">Found this helpful?</h3>
             <p class="text-gray-500 mb-6">Share this guide with someone who might need it.</p>
             <div class="flex justify-center flex-wrap gap-3">
@@ -807,9 +807,11 @@
             if(isHelpful) {
                 responseDiv.innerHTML = `
                     <div class="text-brand-emerald font-bold mb-2 text-xl">Thank you for your feedback!</div>
+                    <div class="flex justify-center gap-2 mt-4">
+                        <button onclick="shareLink('whatsapp')" class="px-4 py-2 bg-emerald-50 text-brand-emerald rounded text-sm hover:bg-emerald-100 font-bold transition">WhatsApp</button>
+                        <button onclick="shareLink('twitter')" class="px-4 py-2 bg-blue-50 text-blue-600 rounded text-sm hover:bg-blue-100 font-bold transition">Twitter</button>
+                    </div>
                 `;
-                const shareSec = document.getElementById('bottom-share-section');
-                if(shareSec) shareSec.classList.remove('hidden');
             } else {
                 responseDiv.innerHTML = `
                     <div class="p-6 bg-emerald-50 border border-emerald-100 rounded-lg mt-4">
