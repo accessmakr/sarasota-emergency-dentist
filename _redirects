@@ -1,9 +1,34 @@
-# 1. Specifically force index.html to the root
-/index.html      /                301!
+# 1. ROOT LEVEL REDIRECTS
+/index.html      /      301!
+/per.html        /per   301!
+/lad.html        /lad   301!
+/ged.html        /ged   301!
+/sda.html        /sda   301!
+/emd.html        /emd   301!
+/snd.html        /snd   301!
+/odo.html        /odo   301!
+/pwd.html        /pwd   301!
+/red.html        /red   301!
+/pd.html         /pd    301!
+/cod.html        /cod   301!
+/oms.html        /oms   301!
+/sitemap         /sitemap.xml 301
+/free-dental-emergency-guide.html  /free-dental-emergency-guide 301!
 
-# 2. Force all .html pages to their clean versions (The "!" is the secret sauce)
-/*.html          /:splat          301!
+# 2. GUIDE FOLDER REDIRECTS
+/guide/how-to-get-rid-of-numbness-after-the-dentist-fast.html    /guide/how-to-get-rid-of-numbness-after-the-dentist-fast    301!
+/guide/can-a-dentist-pull-a-broken-tooth.html                   /guide/can-a-dentist-pull-a-broken-tooth                   301!
+/guide/emergency-dentist-in-sarasota.html                       /guide/emergency-dentist-in-sarasota                       301!
+/guide/can-your-dentist-tell-you-smoke.html                     /guide/can-your-dentist-tell-you-smoke                     301!
+/guide/what-type-of-dentist-does-dental-implants.html           /guide/what-type-of-dentist-does-dental-implants           301!
+/guide/how-long-does-a-dentist-appointment-take.html            /guide/how-long-does-a-dentist-appointment-take            301!
+/guide/how-long-does-a-dental-cleaning-take.html                /guide/how-long-does-a-dental-cleaning-take                301!
+/guide/what-kind-of-dentist-does-implants.html                  /guide/what-kind-of-dentist-does-implants                  301!
 
-# 3. Handle subdirectories (like your /guide/ or /location/ folders)
-/guide/*.html    /guide/:splat    301!
-/location/*.html /location/:splat 301!
+# 3. LOCATION FOLDER REDIRECTS
+/location/miami-emergency-dentist.html                          /location/miami-emergency-dentist                          301!
+/location/sarasota-emergency-dentist.html                       /location/sarasota-emergency-dentist                       301!
+/location/tampa-emergency-dentist.html                          /location/tampa-emergency-dentist                          301!
+
+# 4. SAFETY NET (For any other .html pages not listed above)
+/*.html  /:splat  301!
