@@ -1,5 +1,9 @@
-# Master Rule: Redirect .html paths to clean paths for SEO
-/*.html  /:splat  301
+# 1. Specifically force index.html to the root
+/index.html      /                301!
 
-# Fallback: Serve the .html file when the clean path is requested (Netlify Standard)
-/* /:splat.html  200
+# 2. Force all .html pages to their clean versions (The "!" is the secret sauce)
+/*.html          /:splat          301!
+
+# 3. Handle subdirectories (like your /guide/ or /location/ folders)
+/guide/*.html    /guide/:splat    301!
+/location/*.html /location/:splat 301!
