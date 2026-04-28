@@ -175,7 +175,7 @@ window.SITE_REGISTRY = {
       },
       {
         "name": "guide/oral-appliance-therapy-near-me.html",
-        "label": "Oral Appliance Therapy Near Me | Sleep Apnea Solutions"
+        "label": "Oral Appliance Therapy Near Me | Custom Sleep Apnea Treatment"
       },
       {
         "name": "guide/oral-surgeon-sarasota.html",
