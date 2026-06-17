@@ -151,7 +151,7 @@ window.SITE_REGISTRY = {
       },
       {
         "name": "guide/emergency-dentist-in-sarasota.html",
-        "label": "Emergency Dentist in Sarasota | Same-Day Care &amp; Immediate Relief"
+        "label": "Emergency Dentist in Sarasota FL | Same-Day &amp; 24/7 Dental Care"
       },
       {
         "name": "guide/emergency-dentist-near-me.html",
