@@ -220,7 +220,7 @@ window.SITE_REGISTRY = {
       },
       {
         "name": "location/sarasota-emergency-dentist.html",
-        "label": "Emergency Dentist in Sarasota FL | Same-Day Urgent Dental Care"
+        "label": "Emergency Dentist Sarasota FL | Verified Local Providers — Call Direct"
       },
       {
         "name": "location/tampa-emergency-dentist.html",
