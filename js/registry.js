@@ -42,7 +42,7 @@ window.SITE_REGISTRY = {
       },
       {
         "name": "emd.html",
-        "label": "Emergency Dentistry in Sarasota, FL • 24/7 Urgent Care with Verified Local Experts"
+        "label": "Emergency Dentist Sarasota FL | Verified Specialist Directory — 8 Clinics, Direct Numbers"
       },
       {
         "name": "emergency-dental-checklist.html",
