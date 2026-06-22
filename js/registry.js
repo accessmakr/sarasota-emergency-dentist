@@ -66,7 +66,7 @@ window.SITE_REGISTRY = {
       },
       {
         "name": "index.html",
-        "label": "Emergency Dental Care in Sarasota, FL • Same-Day Relief with Trusted Local Experts"
+        "label": "Emergency Dentist Sarasota FL | 50+ Verified Providers — Same-Day Care"
       },
       {
         "name": "lad.html",
