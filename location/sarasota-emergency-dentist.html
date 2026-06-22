@@ -4,1016 +4,799 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Find 8+ verified emergency dentists in Sarasota FL and call each clinic directly — no middlemen. Same-day care for tooth pain, abscesses, broken teeth & emergency extractions. Serving Sarasota, Siesta Key, Palmer Ranch, Gulf Gate & surrounding areas.">
+    <meta name="keywords" content="emergency dentist Sarasota FL, same day dentist Sarasota, urgent dental care Sarasota, 24 hour dentist Sarasota, tooth pain Sarasota, dental abscess Sarasota, walk in dentist Sarasota, emergency dentist near me Sarasota">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="Florida Emergency Dental Directory">
-    <meta property="og:title" content="Emergency Dentist Sarasota FL | Verified Local Providers — Call Direct">
-    <meta property="og:description" content="Browse 8+ verified Sarasota emergency dentists with direct clinic phone numbers. Same-day urgent dental care — no referrals, no middlemen.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist.html">
-    <meta property="og:image" content="https://sarasotaemergencydentist.com/og-image-sarasota.jpg">
-    <meta property="og:site_name" content="Sarasota Emergency Dentist">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Emergency Dentist Sarasota FL | Verified Local Providers — Call Direct">
-    <meta name="twitter:description" content="Browse 8+ verified Sarasota emergency dentists with direct clinic phone numbers. Same-day urgent dental care — no referrals, no middlemen.">
-    <meta name="twitter:image" content="https://sarasotaemergencydentist.com/og-image-sarasota.jpg">
-    <link rel="canonical" href="https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist.html">
-    <link rel="alternate" hreflang="en" href="https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist.html">
-    <link rel="sitemap" href="https://sarasotaemergencydentist.com/sitemap.xml">
+    <meta name="author" content="Sarasota Emergency Dentist">
     <meta name="geo.placename" content="Sarasota, Florida, USA">
     <meta name="geo.position" content="27.336434;-82.530653">
     <meta name="ICBM" content="27.336434, -82.530653">
     <title>Emergency Dentist Sarasota FL | Verified Local Providers — Call Direct</title>
+
+    <meta property="og:title" content="Emergency Dentist Sarasota FL | Verified Local Providers — Call Direct">
+    <meta property="og:description" content="Browse 8+ verified Sarasota emergency dentists with direct clinic phone numbers. Same-day urgent dental care — no referrals, no middlemen.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist">
+    <meta property="og:image" content="https://sarasotaemergencydentist.com/og-image.jpg">
+    <meta property="og:site_name" content="Sarasota Emergency Dentist">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Emergency Dentist Sarasota FL | Verified Providers — Call Direct">
+    <meta name="twitter:description" content="Browse 8+ verified Sarasota emergency dentists with direct clinic phone numbers. Same-day urgent dental care — no referrals, no middlemen.">
+    <meta name="twitter:image" content="https://sarasotaemergencydentist.com/og-image.jpg">
+
+    <link rel="canonical" href="https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist">
+    <link rel="alternate" hreflang="en" href="https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist">
+    <link rel="sitemap" href="https://sarasotaemergencydentist.com/sitemap.xml">
+
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-        :root {
-            --tw-color-emerald: #10b981;
-            --tw-color-violet: #8b5cf6;
+        * { font-family: 'Inter', system-ui, sans-serif; }
+
+        /* ── Design system — matches index.html exactly ── */
+        :root { --emerald: #10b981; --violet: #8b5cf6; --slate-dark: #0f172a; }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #ecfdf5 0%, #ede9fe 50%, #f0fdfa 100%);
         }
-        * {
-            font-family: 'Inter', system-ui, sans-serif;
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
         }
-        .hero-bg {
-            background: linear-gradient(92deg, #052e16 0%, #1e1133 100%);
-        }
-        .sticky-bar {
-            animation: pulse 2s infinite;
-        }
-        .provider-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .provider-card:hover {
+        .card-hover:hover {
             transform: translateY(-4px);
-            box-shadow: 0 25px 50px -12px rgb(16 185 129);
+            box-shadow: 0 25px 50px -12px rgba(16,185,129,0.15);
         }
-        .testimonial-slide {
-            animation: fadeIn 0.8s ease forwards;
+        .specialty-card:hover {
+            border-color: var(--emerald);
+            background: #f0fdf4;
         }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.85; }
+        .specialty-card { transition: all 0.25s cubic-bezier(0.4,0,0.2,1); }
+        .neighborhood-pill { transition: background 0.2s ease; }
+        .neighborhood-pill:hover { background: #f0fdf4; border-color: #6ee7b7; }
+        .mckinsey-header {
+            background: white;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .contact-form-input {
+            background: rgba(15,23,42,0.05);
+            color: #0f172a;
+            border: 1px solid rgba(15,23,42,0.12);
+            border-radius: 1rem;
+            padding: 1rem 1.25rem;
+            width: 100%;
+            outline: none;
+            font-size: .9375rem;
+            transition: border-color .2s, box-shadow .2s;
         }
-        .faq-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .contact-form-input:focus {
+            border-color: var(--emerald);
+            box-shadow: 0 0 0 3px rgba(16,185,129,.12);
         }
-        .neighborhood-pill {
-            transition: background 0.2s ease;
+
+        /* Scroll progress bar */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0;
+            background: linear-gradient(90deg, #10b981, #8b5cf6);
+            z-index: 9998; transition: width .1s linear;
         }
-        .neighborhood-pill:hover {
-            background: rgba(16,185,129,0.15);
-        }
-        .specialty-link-card {
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .specialty-link-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(16,185,129,0.6);
+
+        /* FAQ accordion */
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s cubic-bezier(0.4,0,0.2,1); }
+        .faq-answer.open { max-height: 500px; }
+        .faq-chevron { transition: transform .3s cubic-bezier(0.4,0,0.2,1); }
+        .faq-chevron.open { transform: rotate(180deg); }
+
+        /* Provider card direct-call button */
+        .call-btn { transition: background .2s, box-shadow .2s; }
+        .call-btn:hover { box-shadow: 0 8px 24px -4px rgba(16,185,129,.35); }
+
+        @media (max-width: 640px) {
+            .hero-h1 { font-size: 2.25rem !important; letter-spacing: -0.05em; }
         }
     </style>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-</head>
-<body class="bg-gray-950 text-white">
 
-    <!-- ═══════════════════════════════════════════
-         HEADER / HERO
-         Primary target: "emergency dentist sarasota fl" (390 vol, KD 0, pos 85)
-         Secondary: "emergency dentist in sarasota" (GSC 169), "sarasota emergency dentist" (GSC 92)
-         Fix: single H1, no dispatch language, hero CTA scrolls to provider grid
-    ════════════════════════════════════════════ -->
-    <header class="hero-bg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-            <div class="flex justify-between items-center relative z-[1000]">
-                <div class="flex items-center gap-x-3">
-                    <!-- Nav logo — intentionally a div, not h1 -->
-                    <div class="w-10 h-10 bg-emerald-500 rounded-2xl flex items-center justify-center text-2xl">🦷</div>
-                    <div class="text-2xl font-semibold tracking-tight">Sarasota Emergency Dentist</div>
-                </div>
-                <div class="flex items-center gap-x-6">
-                    <a href="https://sarasotaemergencydentist.com" class="text-emerald-400 hover:text-emerald-300 items-center gap-x-1 text-sm font-medium hidden sm:flex">
-                        ← Back to Directory
-                    </a>
-                    <div id="master-nav-dock" class="flex items-center"></div>
-                </div>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-12 items-center pt-12 pb-16">
-                <div>
-                    <div class="inline-flex items-center gap-x-2 bg-white/10 text-emerald-300 text-sm font-medium px-4 h-9 rounded-3xl mb-6">
-                        <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                        8 VERIFIED PROVIDERS LISTED — CALL ANY CLINIC DIRECT
-                    </div>
-
-                    <!-- SINGLE H1 — primary keyword exact match -->
-                    <h1 class="text-5xl lg:text-6xl font-semibold tracking-tighter leading-none mb-6">
-                        Emergency Dentists in <span class="text-emerald-400">Sarasota, FL</span>
-                    </h1>
-                    <p class="text-2xl text-gray-300 max-w-lg mb-8">
-                        Severe tooth pain? Broken tooth? Abscess? Browse verified local clinics and call each one directly — same-day care, no referrals.
-                    </p>
-
-                    <div class="flex flex-wrap gap-4">
-                        <!-- Primary CTA: scrolls to provider grid — the directory model -->
-                        <a href="#providers-grid"
-                           class="bg-emerald-500 hover:bg-emerald-600 text-white px-10 py-6 rounded-3xl text-2xl font-semibold flex items-center gap-x-3 transition-all">
-                            Browse All Providers
-                            <span class="text-3xl">↓</span>
-                        </a>
-
-                        <!-- Secondary CTA: direct call to first provider, clearly labelled -->
-                        <a href="tel:+19413980609"
-                           class="border-2 border-violet-400 hover:bg-violet-400/10 text-white px-8 py-6 rounded-3xl text-xl font-semibold flex items-center gap-x-3 transition-all">
-                            Call Integrated Dental
-                            <span class="text-2xl">📞</span>
-                        </a>
-                    </div>
-
-                    <p class="mt-6 text-emerald-300 flex items-center gap-x-2 text-lg">
-                        <span class="text-3xl">★</span>
-                        8 licensed Sarasota providers — direct clinic numbers listed
-                    </p>
-                    <p class="text-sm text-gray-400 mt-2">Independent directory • Not a clinic • Not a referral service</p>
-                </div>
-
-                <div class="relative">
-                    <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 max-w-md mx-auto lg:ml-auto">
-                        <div id="availability-banner" class="flex items-center justify-between bg-emerald-900/50 rounded-2xl px-6 py-4 mb-6">
-                        </div>
-
-                        <div class="space-y-6">
-                            <div class="flex gap-x-4">
-                                <div class="flex-shrink-0 text-4xl">🦷</div>
-                                <div>
-                                    <p class="font-semibold">Tooth pain or swelling?</p>
-                                    <p class="text-gray-400 text-sm">Every provider below offers same-day emergency slots — call any clinic directly from this page.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-x-4">
-                                <div class="flex-shrink-0 text-4xl">🚨</div>
-                                <div>
-                                    <p class="font-semibold">Broken tooth or lost filling?</p>
-                                    <p class="text-gray-400 text-sm">Same-day repair options available across Sarasota — browse providers and call the nearest clinic.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- ═══════════════════════════════════════════
-         AVAILABILITY STRIP
-    ════════════════════════════════════════════ -->
-    <div class="bg-emerald-600 py-4 text-center font-medium text-white text-lg sticky top-0 z-50 shadow-lg">
-        <div class="max-w-7xl mx-auto px-6 flex items-center justify-center gap-x-3" id="global-availability">
-            <div class="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-            <span>8 Verified Sarasota Emergency Providers Listed — Direct Clinic Numbers Below</span>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         TRUST STRIP
-         GSC signal: "urgent dental care sarasota" (19 imp), "same day dentist sarasota" (24 imp)
-    ════════════════════════════════════════════ -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-b border-white/10">
-        <div class="grid md:grid-cols-3 gap-8 text-center">
-            <div class="bg-white/5 rounded-3xl p-8">
-                <div class="text-5xl mb-4">⏰</div>
-                <h3 class="text-2xl font-semibold mb-2">Don't wait in pain</h3>
-                <p class="text-gray-400">Dental emergencies worsen quickly. Same-day appointments are standard at every provider listed here.</p>
-            </div>
-            <div class="bg-white/5 rounded-3xl p-8">
-                <div class="text-5xl mb-4">📍</div>
-                <h3 class="text-2xl font-semibold mb-2">Local Sarasota clinics</h3>
-                <p class="text-gray-400">All 8 providers are physical, licensed dental offices in Sarasota and Sarasota County — no national chains, no call centres.</p>
-            </div>
-            <div class="bg-white/5 rounded-3xl p-8">
-                <div class="text-5xl mb-4">📞</div>
-                <h3 class="text-2xl font-semibold mb-2">Call any clinic directly</h3>
-                <p class="text-gray-400">Every number on this page rings a real Sarasota dental office — multiple providers list extended and weekend hours.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         EMERGENCY CONDITIONS GRID
-         GSC: "dental abscess treatment sarasota" (21), "broken tooth sarasota" (24),
-              "knocked out tooth sarasota" (13), "wisdom tooth pain sarasota" (7),
-              "swollen gums emergency dentist sarasota" (17), "lost filling dentist sarasota" (11)
-    ════════════════════════════════════════════ -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 class="text-4xl font-semibold text-center mb-4">Dental Emergencies Treated Same-Day in Sarasota</h2>
-        <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Every provider in this directory handles urgent cases the same day — click any condition to learn more or scroll down to find the right clinic.</p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <a href="/guide/tooth-extraction-sarasota.html" class="bg-white/5 rounded-3xl p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
-                <div class="text-6xl mb-4">😣</div>
-                <h3 class="font-semibold text-xl mb-2">Severe Tooth Pain</h3>
-                <p class="text-gray-400 text-sm">Infection, nerve exposure, or abscess — urgent pain relief the same day.</p>
-            </a>
-            <a href="/oms.html" class="bg-white/5 rounded-3xl p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
-                <div class="text-6xl mb-4">🦷</div>
-                <h3 class="font-semibold text-xl mb-2">Broken or Chipped Tooth</h3>
-                <p class="text-gray-400 text-sm">Cracked, fractured, or knocked-out teeth — same-day repair or extraction.</p>
-            </a>
-            <a href="/per.html" class="bg-white/5 rounded-3xl p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
-                <div class="text-6xl mb-4">🔥</div>
-                <h3 class="font-semibold text-xl mb-2">Dental Abscess / Swelling</h3>
-                <p class="text-gray-400 text-sm">Facial swelling or pus — urgent drainage and antibiotics to prevent spread.</p>
-            </a>
-            <div class="bg-white/5 rounded-3xl p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
-                <div class="text-6xl mb-4">🩸</div>
-                <h3 class="font-semibold text-xl mb-2">Lost Filling or Crown</h3>
-                <p class="text-gray-400 text-sm">Exposed nerve or loose restoration — same-day recementation or replacement.</p>
-            </div>
-            <div class="bg-white/5 rounded-3xl p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
-                <div class="text-6xl mb-4">🚨</div>
-                <h3 class="font-semibold text-xl mb-2">Knocked-Out Tooth</h3>
-                <p class="text-gray-400 text-sm">Keep the tooth in milk and call immediately. Reimplantation is time-critical — under 60 minutes is ideal.</p>
-            </div>
-            <a href="/oms.html" class="bg-white/5 rounded-3xl p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
-                <div class="text-6xl mb-4">😬</div>
-                <h3 class="font-semibold text-xl mb-2">Wisdom Tooth Pain</h3>
-                <p class="text-gray-400 text-sm">Impacted or infected wisdom teeth — fast evaluation, antibiotics, or same-day extraction.</p>
-            </a>
-            <a href="/per.html" class="bg-white/5 rounded-3xl p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
-                <div class="text-6xl mb-4">🫀</div>
-                <h3 class="font-semibold text-xl mb-2">Gum Infection or Bleeding</h3>
-                <p class="text-gray-400 text-sm">Swollen, painful gums or spreading infection — urgent periodontal treatment available.</p>
-            </a>
-            <a href="/end.html" class="bg-white/5 rounded-3xl p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
-                <div class="text-6xl mb-4">👑</div>
-                <h3 class="font-semibold text-xl mb-2">Emergency Root Canal</h3>
-                <p class="text-gray-400 text-sm">Irreversible pulpitis or necrotic nerve — same-day endodontic relief available in Sarasota.</p>
-            </a>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         HOW IT WORKS
-    ════════════════════════════════════════════ -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white/5 rounded-3xl mx-4">
-        <h2 class="text-4xl font-semibold text-center mb-12">How to Use This Directory</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="text-center">
-                <div class="mx-auto w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center text-3xl mb-6">1️⃣</div>
-                <h3 class="font-semibold text-2xl mb-3">Find Your Provider</h3>
-                <p class="text-gray-400">Browse the verified Sarasota emergency dentist list below. All 8 are licensed, active, and accepting urgent cases.</p>
-            </div>
-            <div class="text-center">
-                <div class="mx-auto w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center text-3xl mb-6">2️⃣</div>
-                <h3 class="font-semibold text-2xl mb-3">Call the Clinic Directly</h3>
-                <p class="text-gray-400">Each card shows the clinic's direct phone number. Tap to call — you reach the practice front desk immediately, no middlemen.</p>
-            </div>
-            <div class="text-center">
-                <div class="mx-auto w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center text-3xl mb-6">3️⃣</div>
-                <h3 class="font-semibold text-2xl mb-3">Get Relief Fast</h3>
-                <p class="text-gray-400">Book your same-day or walk-in slot directly with the clinic. Most Sarasota emergency patients are seen within hours of calling.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         WHY USE THIS DIRECTORY
-    ════════════════════════════════════════════ -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div class="grid md:grid-cols-3 gap-8 text-center">
-            <div>
-                <div class="text-emerald-400 text-6xl mb-4">⚡</div>
-                <h3 class="font-semibold mb-2">All Verified, All Local</h3>
-                <p class="text-gray-400">Every provider is a licensed Sarasota-area dental practice — addresses, phones, and websites all verified.</p>
-            </div>
-            <div>
-                <div class="text-emerald-400 text-6xl mb-4">📍</div>
-                <h3 class="font-semibold mb-2">Zero Middlemen</h3>
-                <p class="text-gray-400">This is a free public directory. We don't take calls, collect leads, or route your call through any system. You speak directly to the clinic.</p>
-            </div>
-            <div>
-                <div class="text-emerald-400 text-6xl mb-4">✅</div>
-                <h3 class="font-semibold mb-2">Same-Day Standard</h3>
-                <p class="text-gray-400">All 8 listed practices flag same-day emergency appointments as a standard offering — not a premium add-on.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         INSURANCE / COST SECTION
-         FIXED: removed "Call (941) 398-0609 for instant benefits verification" (central helpline claim)
-         GSC: "no insurance dentist sarasota" (15 imp); SEMrush: "can I go to dentist without insurance" (210 vol)
-    ════════════════════════════════════════════ -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div class="bg-violet-950/30 rounded-3xl p-12 max-w-3xl mx-auto text-center">
-            <h2 class="text-4xl font-semibold mb-4">Insurance, Costs & Uninsured Options</h2>
-            <p class="text-xl text-gray-300">Most Sarasota providers on this list accept Delta Dental of Florida, Cigna, Aetna, UnitedHealthcare, MetLife, and common PPO plans. Emergency treatment without insurance is typically still far more affordable than a hospital ER visit.</p>
-            <p class="text-xl text-gray-300 mt-6">No insurance? Most clinics below offer flexible financing, in-house payment plans, or sliding-scale fees for uninsured patients — ask directly when you call. Benefits verification is done by each clinic's own billing team at the time of booking.</p>
-            <a href="#providers-grid" class="mt-8 bg-white text-gray-950 px-12 py-5 rounded-3xl font-semibold text-xl inline-flex items-center gap-x-3 hover:bg-gray-100 transition-colors">
-                <span>Browse Providers &amp; Call Direct</span>
-                <span class="text-2xl">↓</span>
-            </a>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         VERIFIED PROVIDERS GRID
-         FIXED: each card now has its own direct-call button using the provider's number
-         GSC: "emergency dentist in sarasota fl" (82 imp), "same day dentist sarasota" (24 imp)
-    ════════════════════════════════════════════ -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20" id="providers-grid">
-        <h2 class="text-4xl font-semibold text-center mb-4">Verified Emergency Dentists in Sarasota, FL</h2>
-        <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Each provider below is a licensed Sarasota dental practice offering urgent same-day care. Tap the phone number or "Call Direct" button to reach the clinic immediately — no forms, no referrals.</p>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="providers-container">
-            <!-- Populated by renderProviders() JS below -->
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         INTERNAL LINKS — SPECIALTY HUBS
-         Feeds traffic into: /oms.html, /end.html, /per.html, /pd.html, /lad.html, /imd.html, /odo.html
-         This is the site-wide linking engine for this page
-         GSC clusters: extractions (320+ imp), orthodontics/braces (850+ imp), laser (90+ imp), pediatric (110+ imp)
-    ════════════════════════════════════════════ -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/10">
-        <h2 class="text-3xl font-semibold text-center mb-4">Need a Specialist in Sarasota?</h2>
-        <p class="text-center text-gray-400 mb-10 max-w-xl mx-auto">Our directory covers every ADA specialty. Browse the dedicated specialist lists below.</p>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            <a href="/oms.html" class="specialty-link-card bg-white/5 border border-white/10 rounded-2xl p-6 flex items-center gap-x-4 hover:bg-white/10 transition-colors">
-                <div class="text-4xl flex-shrink-0">🔪</div>
-                <div>
-                    <div class="font-semibold text-lg">Oral Surgery Sarasota</div>
-                    <div class="text-gray-400 text-sm">Extractions, wisdom teeth, same-day surgical care</div>
-                </div>
-                <div class="ml-auto text-emerald-400 text-xl">→</div>
-            </a>
-            <a href="/end.html" class="specialty-link-card bg-white/5 border border-white/10 rounded-2xl p-6 flex items-center gap-x-4 hover:bg-white/10 transition-colors">
-                <div class="text-4xl flex-shrink-0">🦷</div>
-                <div>
-                    <div class="font-semibold text-lg">Root Canal Sarasota</div>
-                    <div class="text-gray-400 text-sm">Emergency endodontics, same-day pulp relief</div>
-                </div>
-                <div class="ml-auto text-emerald-400 text-xl">→</div>
-            </a>
-            <a href="/per.html" class="specialty-link-card bg-white/5 border border-white/10 rounded-2xl p-6 flex items-center gap-x-4 hover:bg-white/10 transition-colors">
-                <div class="text-4xl flex-shrink-0">🫀</div>
-                <div>
-                    <div class="font-semibold text-lg">Abscess &amp; Gum Infection</div>
-                    <div class="text-gray-400 text-sm">Periodontal emergency care, drainage, antibiotics</div>
-                </div>
-                <div class="ml-auto text-emerald-400 text-xl">→</div>
-            </a>
-            <a href="/odo.html" class="specialty-link-card bg-white/5 border border-white/10 rounded-2xl p-6 flex items-center gap-x-4 hover:bg-white/10 transition-colors">
-                <div class="text-4xl flex-shrink-0">😁</div>
-                <div>
-                    <div class="font-semibold text-lg">Braces &amp; Invisalign Sarasota</div>
-                    <div class="text-gray-400 text-sm">Orthodontists offering clear aligners &amp; same-day evaluations</div>
-                </div>
-                <div class="ml-auto text-emerald-400 text-xl">→</div>
-            </a>
-            <a href="/pd.html" class="specialty-link-card bg-white/5 border border-white/10 rounded-2xl p-6 flex items-center gap-x-4 hover:bg-white/10 transition-colors">
-                <div class="text-4xl flex-shrink-0">👶</div>
-                <div>
-                    <div class="font-semibold text-lg">Pediatric Dental Emergency</div>
-                    <div class="text-gray-400 text-sm">Kids' emergency dentists, anxiety management, sedation</div>
-                </div>
-                <div class="ml-auto text-emerald-400 text-xl">→</div>
-            </a>
-            <a href="/lad.html" class="specialty-link-card bg-white/5 border border-white/10 rounded-2xl p-6 flex items-center gap-x-4 hover:bg-white/10 transition-colors">
-                <div class="text-4xl flex-shrink-0">💡</div>
-                <div>
-                    <div class="font-semibold text-lg">Laser Dentistry Sarasota</div>
-                    <div class="text-gray-400 text-sm">Drill-free options, soft tissue laser, gum treatment</div>
-                </div>
-                <div class="ml-auto text-emerald-400 text-xl">→</div>
-            </a>
-            <a href="/imd.html" class="specialty-link-card bg-white/5 border border-white/10 rounded-2xl p-6 flex items-center gap-x-4 hover:bg-white/10 transition-colors">
-                <div class="text-4xl flex-shrink-0">🔩</div>
-                <div>
-                    <div class="font-semibold text-lg">Dental Implants Sarasota</div>
-                    <div class="text-gray-400 text-sm">Same-day implant consultations, full-arch &amp; single-tooth</div>
-                </div>
-                <div class="ml-auto text-emerald-400 text-xl">→</div>
-            </a>
-            <a href="/sda.html" class="specialty-link-card bg-white/5 border border-white/10 rounded-2xl p-6 flex items-center gap-x-4 hover:bg-white/10 transition-colors">
-                <div class="text-4xl flex-shrink-0">😴</div>
-                <div>
-                    <div class="font-semibold text-lg">Sedation Dentistry Sarasota</div>
-                    <div class="text-gray-400 text-sm">Nitrous oxide, oral sedation, anxiety-free emergency care</div>
-                </div>
-                <div class="ml-auto text-emerald-400 text-xl">→</div>
-            </a>
-            <a href="/emd.html" class="specialty-link-card bg-white/5 border border-white/10 rounded-2xl p-6 flex items-center gap-x-4 hover:bg-white/10 transition-colors">
-                <div class="text-4xl flex-shrink-0">🏠</div>
-                <div>
-                    <div class="font-semibold text-lg">Full Directory Home</div>
-                    <div class="text-gray-400 text-sm">All 51+ providers across all specialties in Sarasota</div>
-                </div>
-                <div class="ml-auto text-emerald-400 text-xl">→</div>
-            </a>
-        </div>
-    </div>
-
-    <!-- DYNAMIC INTERNAL LINKS (injected by internal-links.js) -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <div id="dynamic-internal-links"></div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         NEIGHBORHOODS SERVED
-         GSC: "emergency dentist palmer ranch" (23), "emergency dentist gulf gate sarasota" (14),
-              "emergency dentist siesta key" (19), "emergency dentist southside village sarasota" (19),
-              "emergency dentist bee ridge sarasota" (13), "walk in dentist sarasota" (20),
-              "emergency dentist near siesta key" (18), "dentist open saturday sarasota" (21)
-    ════════════════════════════════════════════ -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white/5 rounded-3xl mx-4">
-        <h2 class="text-3xl font-semibold text-center mb-4">Emergency Dentists by Sarasota Neighborhood</h2>
-        <p class="text-center text-gray-400 mb-10 max-w-2xl mx-auto">Our verified providers cover all of Sarasota County. Whether you're near Siesta Key or Palmer Ranch, a same-day emergency appointment is within reach.</p>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            <div class="neighborhood-pill bg-white/5 border border-white/10 rounded-2xl p-5">
-                <div class="font-semibold mb-1">Downtown Sarasota</div>
-                <div class="text-gray-400 text-sm">Multiple providers within the 34236 &amp; 34237 zip codes</div>
-            </div>
-            <div class="neighborhood-pill bg-white/5 border border-white/10 rounded-2xl p-5">
-                <div class="font-semibold mb-1">Siesta Key</div>
-                <div class="text-gray-400 text-sm">Emergency dentists serving Siesta Key via South Tamiami Trail corridor</div>
-            </div>
-            <div class="neighborhood-pill bg-white/5 border border-white/10 rounded-2xl p-5">
-                <div class="font-semibold mb-1">Palmer Ranch</div>
-                <div class="text-gray-400 text-sm">South Sarasota clinics accessible from Palmer Ranch &amp; Osprey</div>
-            </div>
-            <div class="neighborhood-pill bg-white/5 border border-white/10 rounded-2xl p-5">
-                <div class="font-semibold mb-1">Gulf Gate</div>
-                <div class="text-gray-400 text-sm">Gulf Gate Dental and South Sarasota providers for Gulf Gate residents</div>
-            </div>
-            <div class="neighborhood-pill bg-white/5 border border-white/10 rounded-2xl p-5">
-                <div class="font-semibold mb-1">Southside Village</div>
-                <div class="text-gray-400 text-sm">South Tamiami Trail providers serving the Southside Village corridor</div>
-            </div>
-            <div class="neighborhood-pill bg-white/5 border border-white/10 rounded-2xl p-5">
-                <div class="font-semibold mb-1">Bee Ridge</div>
-                <div class="text-gray-400 text-sm">Mid-Sarasota providers covering Bee Ridge and Clark Road areas</div>
-            </div>
-            <div class="neighborhood-pill bg-white/5 border border-white/10 rounded-2xl p-5">
-                <div class="font-semibold mb-1">Lakewood Ranch</div>
-                <div class="text-gray-400 text-sm">University Pkwy and North Sarasota practices accessible from Lakewood Ranch</div>
-            </div>
-            <div class="neighborhood-pill bg-white/5 border border-white/10 rounded-2xl p-5">
-                <div class="font-semibold mb-1">Venice &amp; Osprey</div>
-                <div class="text-gray-400 text-sm">Providers serving South County — Venice, Osprey, and Nokomis areas</div>
-            </div>
-        </div>
-        <p class="text-center text-gray-400 text-sm">Not sure which clinic is closest? Each provider card below includes a full street address — compare before you call.</p>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         TESTIMONIALS
-    ════════════════════════════════════════════ -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 class="text-center text-3xl font-semibold mb-8">Sarasota Patients, Real Results</h2>
-        <div id="testimonial-container" class="max-w-2xl mx-auto text-center min-h-[180px] flex items-center justify-center">
-            <!-- Populated by rotateTestimonials() -->
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         FAQ SECTION — EXPANDED
-         GSC: "emergency dentist open now" (82), "24 hour emergency dentist sarasota" (28),
-              "walk in dentist near me sarasota" (10), "dentist open saturday sarasota" (21),
-              "no insurance dentist sarasota" (15), "emergency dental near me open 24 hours" (39)
-         SEMrush: "are dentists open on weekends" (320 vol, KD 0),
-                  "can I go to dentist without insurance" (210 vol),
-                  "will a dentist pull an infected tooth same day" (320 vol)
-    ════════════════════════════════════════════ -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/10">
-        <h2 class="text-4xl font-semibold text-center mb-12">Frequently Asked Questions — Emergency Dentist Sarasota</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-
-            <div class="faq-card bg-white/5 rounded-3xl p-8">
-                <h3 class="font-semibold text-xl mb-3">1. How do I find a same-day emergency dentist in Sarasota?</h3>
-                <p class="text-gray-400">Browse the verified provider list on this page, pick the clinic closest to you, and call their direct number. Every provider listed here accepts same-day urgent appointments — no referral, no form to fill, no waiting queue. Simply call and state it's a dental emergency.</p>
-            </div>
-
-            <div class="faq-card bg-white/5 rounded-3xl p-8">
-                <h3 class="font-semibold text-xl mb-3">2. What should I do if I knock out a tooth in Sarasota?</h3>
-                <p class="text-gray-400">Keep the tooth moist — place it in milk or hold it between your cheek and gum. Call a Sarasota emergency dentist immediately; the 60-minute window is critical for reimplantation success. Do not scrub the root. Providers in this directory such as Integrated Dental and Gulf Gate Dental handle avulsed teeth on a same-day urgent basis.</p>
-            </div>
-
-            <div class="faq-card bg-white/5 rounded-3xl p-8">
-                <h3 class="font-semibold text-xl mb-3">3. Are there dentists open on weekends or late hours in Sarasota?</h3>
-                <p class="text-gray-400">Several providers in this directory offer Saturday appointments and extended evening hours. Z Family Dental and Waterside Dental Sarasota are among those listing weekend availability. Call each clinic directly to confirm their current emergency hours — schedules can change, and the clinic's own front desk is always the most accurate source.</p>
-            </div>
-
-            <div class="faq-card bg-white/5 rounded-3xl p-8">
-                <h3 class="font-semibold text-xl mb-3">4. Do Sarasota emergency dentists accept dental insurance?</h3>
-                <p class="text-gray-400">Yes. Most providers work with Delta Dental of Florida, Cigna, Aetna, UnitedHealthcare, MetLife, and the majority of PPO plans. Insurance verification is handled by each clinic's own billing team — ask when you call to book. There is no centralised verification service on this site.</p>
-            </div>
-
-            <div class="faq-card bg-white/5 rounded-3xl p-8">
-                <h3 class="font-semibold text-xl mb-3">5. Can I see an emergency dentist in Sarasota without insurance?</h3>
-                <p class="text-gray-400">Yes. Every provider in this directory sees uninsured patients. Most offer in-house payment plans, CareCredit financing, or sliding-scale fees. Emergency treatment at a Sarasota dental office is typically a fraction of the cost of a hospital ER visit — and an ER cannot treat the underlying dental problem, only manage pain temporarily.</p>
-            </div>
-
-            <div class="faq-card bg-white/5 rounded-3xl p-8">
-                <h3 class="font-semibold text-xl mb-3">6. Will a Sarasota dentist pull an infected tooth the same day?</h3>
-                <p class="text-gray-400">In many cases, yes — particularly where the infection is localised and extraction is the appropriate treatment. If swelling is severe or has spread to the jaw or neck, the dentist may prescribe antibiotics first to reduce infection before extracting. Oral surgeons in our <a href="/oms.html" class="text-emerald-400 hover:underline">Sarasota oral surgery directory</a> handle same-day emergency extractions including infected and impacted wisdom teeth.</p>
-            </div>
-
-            <div class="faq-card bg-white/5 rounded-3xl p-8">
-                <h3 class="font-semibold text-xl mb-3">7. Can you treat a dental abscess or facial swelling the same day?</h3>
-                <p class="text-gray-400">Yes — abscesses are treated as true dental emergencies. Same-day drainage, antibiotic prescription, and pain relief are available across multiple Sarasota providers. Facial swelling that is spreading rapidly or affecting breathing or swallowing is a medical emergency: go to Sarasota Memorial Hospital ER immediately alongside seeking dental care. See our <a href="/per.html" class="text-emerald-400 hover:underline">periodontal emergency directory</a> for specialist options.</p>
-            </div>
-
-            <div class="faq-card bg-white/5 rounded-3xl p-8">
-                <h3 class="font-semibold text-xl mb-3">8. What areas of Sarasota do these providers cover?</h3>
-                <p class="text-gray-400">Providers in this directory cover all of Sarasota County including Downtown, Siesta Key, Palmer Ranch, Gulf Gate, Southside Village, Bee Ridge, Lakewood Ranch, and North Sarasota. Several also serve Venice, Osprey, and the Bradenton border. Each card below includes a full clinic address so you can pick the closest option to your current location.</p>
-            </div>
-
-            <div class="faq-card bg-white/5 rounded-3xl p-8">
-                <h3 class="font-semibold text-xl mb-3">9. What is and isn't a dental emergency?</h3>
-                <p class="text-gray-400">True emergencies requiring same-day care: severe or worsening tooth pain, dental abscess with swelling, knocked-out tooth, broken tooth with exposed nerve, heavy bleeding, or a lost crown causing acute pain. Non-emergencies that can wait a day or two: mild sensitivity, a small chip with no pain, a loose but not painful crown. When in doubt, call a Sarasota clinic — most will triage over the phone at no charge.</p>
-            </div>
-
-            <div class="faq-card bg-white/5 rounded-3xl p-8">
-                <h3 class="font-semibold text-xl mb-3">10. Is this directory a dental clinic or referral service?</h3>
-                <p class="text-gray-400">Neither. This is a free, independent public directory of verified Sarasota emergency dental providers. We do not take calls, process bookings, collect patient data, or route you through any referral system. Every phone number on this page is a direct clinic line — you call the practice itself. There is no fee to use this directory for patients or providers.</p>
-            </div>
-
-            <div class="faq-card bg-white/5 rounded-3xl p-8">
-                <h3 class="font-semibold text-xl mb-3">11. Do I need an appointment for a dental emergency in Sarasota?</h3>
-                <p class="text-gray-400">Many providers in this list accept walk-in emergency patients, particularly for acute pain, abscesses, and broken teeth. However, calling ahead — even 30 minutes before you arrive — is always advisable: it lets the clinic prepare the right treatment suite and ensures you're seen the moment you arrive rather than waiting behind scheduled patients.</p>
-            </div>
-
-            <div class="faq-card bg-white/5 rounded-3xl p-8">
-                <h3 class="font-semibold text-xl mb-3">12. Should I go to the ER or an emergency dentist in Sarasota?</h3>
-                <p class="text-gray-400">For tooth pain, abscesses, broken teeth, or anything dental in origin: see a dentist, not an ER. Hospital emergency rooms can prescribe antibiotics and pain medication but cannot treat the tooth itself — you will still need a dentist and will have paid ER costs for a temporary fix. Go to the ER only if swelling is closing your airway, if you have signs of systemic infection (fever, chills, difficulty swallowing), or if there is uncontrolled bleeding from trauma.</p>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         FINAL CTA — FIXED: no single helpline number, scroll to providers
-    ════════════════════════════════════════════ -->
-    <div class="bg-gradient-to-r from-emerald-600 to-violet-600 py-16 text-center">
-        <div class="max-w-2xl mx-auto px-6">
-            <h2 class="text-5xl font-semibold mb-6">Still in pain? Find your Sarasota provider now.</h2>
-            <a href="#providers-grid" class="text-4xl bg-white text-gray-950 px-16 py-8 rounded-3xl font-semibold inline-flex items-center gap-x-4 hover:bg-gray-100 transition-colors">
-                Browse All 8 Providers
-                <span class="text-5xl">↓</span>
-            </a>
-            <p class="mt-8 text-xl text-white/80">Direct clinic numbers listed above — Sarasota, FL</p>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         STICKY BAR — FIXED: no "Text Provider" dispatch CTA
-    ════════════════════════════════════════════ -->
-    <div class="fixed bottom-0 left-0 right-0 bg-gray-950 border-t border-emerald-400 z-[9999] shadow-2xl sticky-bar hidden md:flex items-center justify-center py-4 px-6 lg:px-8" id="sticky-bar">
-        <div class="max-w-7xl w-full flex items-center justify-between">
-            <div class="flex items-center gap-x-4">
-                <div class="text-emerald-400 text-2xl">📍 Sarasota, FL</div>
-                <div class="text-white text-xl font-medium">8 Verified Emergency Dentists Listed</div>
-            </div>
-            <div class="flex items-center gap-x-6">
-                <a href="#providers-grid" class="bg-emerald-500 text-white px-8 h-12 rounded-3xl font-semibold flex items-center gap-x-2 hover:bg-emerald-600 transition-colors">
-                    Browse All Providers
-                    <span>↓</span>
-                </a>
-                <a href="tel:+19413980609" class="border border-white/60 hover:bg-white/10 text-white px-8 h-12 rounded-3xl font-semibold flex items-center gap-x-2 transition-colors">
-                    Call Integrated Dental
-                    <span>📞</span>
-                </a>
-            </div>
-            <button onclick="this.closest('#sticky-bar').classList.add('hidden')" class="text-gray-400 text-sm">✕</button>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         FOOTER — PRESERVED INTACT
-    ════════════════════════════════════════════ -->
-    <footer class="bg-black py-16 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-12 gap-y-12">
-                <div class="md:col-span-5">
-                    <div class="flex items-center gap-x-3 mb-6">
-                        <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-3xl">🦷</div>
-                        <div class="text-2xl font-semibold">Sarasota Emergency Dentist</div>
-                    </div>
-                    <p class="text-gray-400 max-w-xs">A free, independent directory of verified emergency dental providers across Sarasota and Sarasota County. Not a clinic — not a referral or call-routing service.</p>
-
-                    <div class="flex gap-x-6 text-sm mt-8 text-gray-400">
-                        <a href="https://facebook.com/sarasotaemergencydentist" target="_blank" class="hover:text-white">Facebook</a>
-                        <a href="https://instagram.com/sarasotaemergencydentist" target="_blank" class="hover:text-white">Instagram</a>
-                        <a href="https://x.com/sarasotaedentist" target="_blank" class="hover:text-white">X (Twitter)</a>
-                    </div>
-
-                    <div class="text-xs text-gray-500 mt-12">
-                        Dynamic copyright © <span id="footer-year">2026</span> Florida Emergency Dental Directory. All rights reserved.
-                    </div>
-                    <div id="freshness-badge" class="inline-flex text-xs mt-4 bg-white/10 text-emerald-300 px-4 h-7 rounded-3xl items-center">
-                    </div>
-                </div>
-
-                <div class="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-y-8 text-sm">
-                    <div>
-                        <a href="https://sarasotaemergencydentist.com/privacy-policy.html" class="block hover:text-emerald-400 mb-3">Privacy Policy</a>
-                        <a href="https://sarasotaemergencydentist.com/cookies-policy.html" class="block hover:text-emerald-400 mb-3">Cookies Policy</a>
-                        <a href="https://sarasotaemergencydentist.com/terms-of-use.html" class="block hover:text-emerald-400 mb-3">Terms of Use</a>
-                        <a href="https://sarasotaemergencydentist.com/disclaimer.html" class="block hover:text-emerald-400 mb-3">Disclaimer</a>
-                    </div>
-                    <div>
-                        <a href="https://sarasotaemergencydentist.com/dmca.html" class="block hover:text-emerald-400 mb-3">DMCA</a>
-                        <a href="https://sarasotaemergencydentist.com/accessibility.html" class="block hover:text-emerald-400 mb-3">Accessibility</a>
-                        <a href="https://sarasotaemergencydentist.com/do-not-sell-my-data.html" class="block hover:text-emerald-400 mb-3">Do Not Sell My Data</a>
-                    </div>
-                    <div>
-                        <a href="https://sarasotaemergencydentist.com/contact.html" class="block hover:text-emerald-400 mb-3">Contact</a>
-                        <a href="https://sarasotaemergencydentist.com/about.html" class="block hover:text-emerald-400 mb-3">About</a>
-                        <a href="https://sarasotaemergencydentist.com/emd.html" class="block hover:text-emerald-400 mb-3">Full Directory</a>
-                        <a href="https://sarasotaemergencydentist.com/sitemap.html" class="block hover:text-emerald-400 mb-3">Sitemap</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-[10px] text-gray-500 mt-16 border-t border-white/10 pt-8 text-center">
-                This is an independent directory service. We do not provide dental treatment. All phone numbers listed are direct clinic lines to licensed dental practices. Medical disclaimer applies.
-            </div>
-        </div>
-    </footer>
-
-    <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>
-
-    <!-- GLOBAL SHARED SCRIPTS — PATHS PRESERVED EXACTLY AS ORIGINAL -->
-    <script defer src="../js/registry.js"></script>
-    <script defer src="../js/root-config.js"></script>
-    <script defer src="../js/menu-system.js"></script>
-    <script defer src="../js/search-system.js"></script>
-    <script defer src="../js/schema.js"></script>
-    <script defer src="../js/internal-links.js"></script>
-    <script defer src="../js/legal-engine.js"></script>
-
-    <script>
-        // ── Tailwind config ───────────────────────────────────────────
-        tailwind.config = { content: [], theme: { extend: {} } };
-
-        // ── Constants ────────────────────────────────────────────────
-        const CURRENT_DATE = new Date();
-        const CURRENT_YEAR = CURRENT_DATE.getFullYear();
-        const CURRENT_MONTH_DAY = CURRENT_DATE.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-
-        // ── Verified Providers ───────────────────────────────────────
-        // Each has its own direct clinic phone — no central routing number
-        const PROVIDERS = [
-            {
-                name: "Integrated Dental",
-                phone: "(941) 398-0609",
-                telLink: "tel:+19413980609",
-                website: "https://www.idaflorida.com/",
-                location: "1435 S Tamiami Trail B, Sarasota, FL 34239",
-                rating: "5.0 ★ (verified)",
-                review: "Same-day emergency appointments available. Highly recommended for urgent care including abscesses and extractions.",
-                tags: ["Same-Day", "Emergency", "Walk-In"],
-                logoEmoji: "🦷"
-            },
-            {
-                name: "Michael R. Dorociak, DDS",
-                phone: "(941) 924-1100",
-                telLink: "tel:+19419241100",
-                website: "https://sarasotafamilydental.com/",
-                location: "3900 Clark Road Suite J5, Sarasota, FL 34233",
-                rating: "4.9 ★",
-                review: "Handles all types of dental emergencies including broken teeth, nerve pain, and same-day extractions.",
-                tags: ["Same-Day", "Family", "Emergency"],
-                logoEmoji: "🦷"
-            },
-            {
-                name: "Gulf Gate Dental",
-                phone: "(941) 921-2122",
-                telLink: "tel:+19419212122",
-                website: "https://www.gulfgatedental.com/",
-                location: "3212 Gulf Gate Dr, Sarasota, FL 34231",
-                rating: "4.8 ★",
-                review: "Prompt emergency dentistry for tooth pain, broken teeth, and infections. Serves Gulf Gate and South Sarasota.",
-                tags: ["Emergency", "Gulf Gate", "South Sarasota"],
-                logoEmoji: "🦷"
-            },
-            {
-                name: "Vital Dental Sarasota",
-                phone: "(941) 371-2022",
-                telLink: "tel:+19413712022",
-                website: "https://www.vitaldentalsarasota.com/",
-                location: "Sarasota, FL 34233 area",
-                rating: "5.0 ★",
-                review: "Same-day emergency appointments and treatment for urgent dental needs including cracked teeth and infections.",
-                tags: ["Same-Day", "Emergency", "5-Star"],
-                logoEmoji: "🦷"
-            },
-            {
-                name: "Waterside Dental Sarasota",
-                phone: "(941) 870-3322",
-                telLink: "tel:+19418703322",
-                website: "https://watersidedentalsarasota.com/",
-                location: "1058 N Tamiami Trail, Sarasota, FL 34236",
-                rating: "4.9 ★",
-                review: "Same-day emergency dental appointments for pain relief and repairs. Downtown Sarasota location.",
-                tags: ["Downtown", "Same-Day", "Emergency"],
-                logoEmoji: "🦷"
-            },
-            {
-                name: "Misch Implant & Aesthetic Dentistry",
-                phone: "(941) 957-6444",
-                telLink: "tel:+19419576444",
-                website: "https://drmisch.com/",
-                location: "120 South Tuttle Avenue, Sarasota, FL 34237",
-                rating: "5.0 ★",
-                review: "Same-day emergency appointments for severe pain, infections, broken teeth, and implant emergencies.",
-                tags: ["Implants", "Emergency", "Aesthetic"],
-                logoEmoji: "🦷"
-            },
-            {
-                name: "University Parkway Dental",
-                phone: "(941) 822-8165",
-                telLink: "tel:+19418228165",
-                website: "https://universityparkwaydental.com/",
-                location: "3315 University Pkwy Unit 103, Sarasota, FL 34243",
-                rating: "4.9 ★",
-                review: "Fast same-day emergency dental care. North Sarasota location — ideal for Lakewood Ranch patients.",
-                tags: ["North Sarasota", "Same-Day", "Emergency"],
-                logoEmoji: "🦷"
-            },
-            {
-                name: "Z Family Dental",
-                phone: "(941) 899-0260",
-                telLink: "tel:+19418990260",
-                website: "https://zfamilydental.com/",
-                location: "Sarasota, FL 34235 area",
-                rating: "5.0 ★",
-                review: "Same-day and weekend emergency dental care for tooth pain, swelling, and extractions.",
-                tags: ["Weekend Hours", "Family", "Emergency"],
-                logoEmoji: "🦷"
-            }
-        ];
-
-        // ── Testimonials ─────────────────────────────────────────────
-        const TESTIMONIALS = [
-            { quote: "Called at 2pm with a broken tooth — was in the chair by 3:30pm. Pain gone. Finding the direct number instantly made all the difference.", author: "— Sarah T., Sarasota" },
-            { quote: "Abscess was unbearable. Found Gulf Gate Dental through this directory, called direct, same-day appointment. Saved my weekend.", author: "— Michael R., Lakewood Ranch" },
-            { quote: "Needed a dentist open on Saturday. Called Z Family Dental directly from this list — appointment booked in two minutes.", author: "— Jennifer K., Siesta Key" },
-            { quote: "Lost a crown while visiting from out of town. Called Waterside Dental direct — fixed it same day downtown.", author: "— David P., Downtown Sarasota" },
-            { quote: "Severe tooth infection at midnight. Found Integrated Dental's direct number here, called first thing — seen and treated by 9am.", author: "— Lisa M., Palmer Ranch" }
-        ];
-
-        // ── Render Providers ─────────────────────────────────────────
-        // FIXED: each card now calls its OWN clinic phone, not a single routing number
-        function renderProviders() {
-            const container = document.getElementById('providers-container');
-            if (!container) return;
-            container.innerHTML = PROVIDERS.map((p, i) => `
-                <div class="provider-card bg-white/5 border border-white/10 hover:border-emerald-400 rounded-3xl p-6 flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="text-5xl">${p.logoEmoji}</div>
-                        <div class="text-right">
-                            <div class="text-emerald-400 font-semibold text-sm">${p.rating}</div>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-1">${p.name}</h3>
-                    <p class="text-sm text-gray-400 mb-3">${p.location}</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        ${p.tags.map(t => `<span class="text-xs bg-white/10 text-emerald-300 px-3 py-1 rounded-full">${t}</span>`).join('')}
-                    </div>
-                    <p class="text-gray-300 text-sm flex-1 mb-6">"${p.review}"</p>
-                    <div class="mt-auto space-y-3">
-                        <a href="${p.telLink}"
-                           class="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-4 rounded-2xl font-semibold text-lg flex items-center justify-center gap-x-2 transition-colors">
-                            📞 Call ${p.phone}
-                        </a>
-                        <a href="${p.website}" target="_blank" rel="noopener"
-                           class="w-full border border-white/20 hover:border-emerald-400 text-gray-300 hover:text-white py-3 rounded-2xl font-medium text-sm flex items-center justify-center gap-x-2 transition-colors">
-                            Visit Website →
-                        </a>
-                    </div>
-                </div>
-            `).join('');
+    <!-- WebPage + ItemList + FAQPage + BreadcrumbList schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist#webpage",
+          "url": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist",
+          "name": "Emergency Dentist Sarasota FL | Verified Local Providers — Call Direct",
+          "description": "Directory of 8+ verified emergency dentists in Sarasota FL with direct clinic phone numbers.",
+          "inLanguage": "en-US",
+          "isPartOf": { "@id": "https://sarasotaemergencydentist.com/#website" },
+          "about": { "@type": "MedicalCondition", "name": "Dental Emergency" },
+          "dateModified": "2026-06-19",
+          "breadcrumb": { "@id": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sarasotaemergencydentist.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Emergency Dentist Sarasota FL", "item": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist" }
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist#providers",
+          "name": "Verified Emergency Dentists in Sarasota FL",
+          "numberOfItems": 8,
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "item": { "@type": "Dentist", "name": "Integrated Dental", "telephone": "(941) 398-0609", "url": "https://www.idaflorida.com/", "address": { "@type": "PostalAddress", "streetAddress": "1435 S Tamiami Trail B", "addressLocality": "Sarasota", "addressRegion": "FL", "postalCode": "34239" } } },
+            { "@type": "ListItem", "position": 2, "item": { "@type": "Dentist", "name": "Gulf Gate Dental", "telephone": "(941) 921-2122", "url": "https://www.gulfgatedental.com/", "address": { "@type": "PostalAddress", "streetAddress": "3212 Gulf Gate Dr", "addressLocality": "Sarasota", "addressRegion": "FL", "postalCode": "34231" } } },
+            { "@type": "ListItem", "position": 3, "item": { "@type": "Dentist", "name": "Waterside Dental Sarasota", "telephone": "(941) 870-3322", "url": "https://watersidedentalsarasota.com/", "address": { "@type": "PostalAddress", "streetAddress": "1058 N Tamiami Trail", "addressLocality": "Sarasota", "addressRegion": "FL", "postalCode": "34236" } } },
+            { "@type": "ListItem", "position": 4, "item": { "@type": "Dentist", "name": "Misch Implant & Aesthetic Dentistry", "telephone": "(941) 957-6444", "url": "https://drmisch.com/", "address": { "@type": "PostalAddress", "streetAddress": "120 South Tuttle Avenue", "addressLocality": "Sarasota", "addressRegion": "FL", "postalCode": "34237" } } },
+            { "@type": "ListItem", "position": 5, "item": { "@type": "Dentist", "name": "Sarasota Family Dental", "telephone": "(941) 924-1100", "url": "https://sarasotafamilydental.com/", "address": { "@type": "PostalAddress", "streetAddress": "3900 Clark Road Suite J5", "addressLocality": "Sarasota", "addressRegion": "FL", "postalCode": "34233" } } },
+            { "@type": "ListItem", "position": 6, "item": { "@type": "Dentist", "name": "Vital Dental Sarasota", "telephone": "(941) 371-2022", "url": "https://www.vitaldentalsarasota.com/", "address": { "@type": "PostalAddress", "addressLocality": "Sarasota", "addressRegion": "FL" } } },
+            { "@type": "ListItem", "position": 7, "item": { "@type": "Dentist", "name": "University Parkway Dental", "telephone": "(941) 822-8165", "url": "https://universityparkwaydental.com/", "address": { "@type": "PostalAddress", "streetAddress": "3315 University Pkwy Unit 103", "addressLocality": "Sarasota", "addressRegion": "FL", "postalCode": "34243" } } },
+            { "@type": "ListItem", "position": 8, "item": { "@type": "Dentist", "name": "Z Family Dental", "telephone": "(941) 899-0260", "url": "https://zfamilydental.com/", "address": { "@type": "PostalAddress", "addressLocality": "Sarasota", "addressRegion": "FL" } } }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist#faq",
+          "mainEntity": [
+            { "@type": "Question", "name": "How do I find a same-day emergency dentist in Sarasota?", "acceptedAnswer": { "@type": "Answer", "text": "Browse the verified provider list on this page and call any clinic directly. Every provider listed accepts same-day urgent appointments." } },
+            { "@type": "Question", "name": "Are dentists open on weekends in Sarasota?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Z Family Dental and Waterside Dental list Saturday availability. Call the clinic directly to confirm current emergency hours." } },
+            { "@type": "Question", "name": "Can I see a Sarasota emergency dentist without insurance?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every provider sees uninsured patients and most offer payment plans or CareCredit financing." } },
+            { "@type": "Question", "name": "Will a Sarasota dentist pull an infected tooth the same day?", "acceptedAnswer": { "@type": "Answer", "text": "Often yes, particularly where the infection is localised. If swelling has spread, antibiotics may be prescribed first." } }
+          ]
         }
-
-        // ── Testimonials ─────────────────────────────────────────────
-        let currentTestimonial = 0;
-        function rotateTestimonials() {
-            const container = document.getElementById('testimonial-container');
-            if (!container) return;
-            container.innerHTML = `
-                <div class="testimonial-slide">
-                    <p class="text-2xl italic leading-tight mb-8">"${TESTIMONIALS[currentTestimonial].quote}"</p>
-                    <p class="font-medium">${TESTIMONIALS[currentTestimonial].author}</p>
-                </div>
-            `;
-            currentTestimonial = (currentTestimonial + 1) % TESTIMONIALS.length;
-        }
-
-        // ── Hero availability banner ──────────────────────────────────
-        function updateAvailability() {
-            const heroBanner = document.getElementById('availability-banner');
-            if (heroBanner) {
-                heroBanner.innerHTML = `
-                    <div class="flex items-center gap-x-2 flex-1">
-                        <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-                        <span class="font-semibold text-sm">✅ 8 Verified Providers Listed — Call Any Clinic Directly</span>
-                    </div>
-                `;
-            }
-        }
-
-        // ── Toast helper ─────────────────────────────────────────────
-        function showToast(message, type) {
-            const container = document.getElementById('toast-container');
-            if (!container) return;
-            const toast = document.createElement('div');
-            toast.className = `px-6 py-4 rounded-3xl text-white flex items-center gap-x-3 shadow-2xl ${type === 'success' ? 'bg-emerald-500' : 'bg-amber-500'}`;
-            toast.innerHTML = `${type === 'success' ? '✅' : '⚠️'} <span>${message}</span>`;
-            container.appendChild(toast);
-            setTimeout(() => {
-                toast.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 1, 1)';
-                toast.style.opacity = '0';
-                toast.style.transform = 'translateY(20px)';
-                setTimeout(() => toast.remove(), 400);
-            }, 4200);
-        }
-
-        // ── Idle recovery ────────────────────────────────────────────
-        let idleTimer;
-        function resetIdleTimer() {
-            clearTimeout(idleTimer);
-            idleTimer = setTimeout(() => {
-                const providersSection = document.getElementById('providers-grid');
-                if (providersSection) providersSection.scrollIntoView({ behavior: 'smooth' });
-                showToast("Still need help? Verified Sarasota providers are listed below.", "success");
-            }, 45000);
-        }
-
-        // ── Dynamic dates / freshness badge ──────────────────────────
-        function setDynamicDates() {
-            const yearEl = document.getElementById('footer-year');
-            if (yearEl) yearEl.textContent = CURRENT_YEAR;
-            const badge = document.getElementById('freshness-badge');
-            if (badge) {
-                badge.innerHTML = `
-                    Updated ${CURRENT_MONTH_DAY} • Providers verified
-                    <span class="ml-2 bg-emerald-400 text-emerald-950 text-[10px] px-2 rounded-2xl">LIVE</span>
-                `;
-            }
-        }
-
-        // ── Schema.org JSON-LD ───────────────────────────────────────
-        // FIXED: Removed incorrect LocalBusiness (implies single clinic)
-        // Now: WebPage + ItemList (directory of providers) + FAQPage + BreadcrumbList
-        function injectSchema() {
-            const schema = {
-                "@context": "https://schema.org",
-                "@graph": [
-                    {
-                        "@type": "WebPage",
-                        "@id": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist.html#webpage",
-                        "url": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist.html",
-                        "name": "Emergency Dentist Sarasota FL | Verified Local Providers — Call Direct",
-                        "description": "Directory of 8+ verified emergency dentists in Sarasota, FL with direct clinic phone numbers. Same-day care for tooth pain, abscesses, broken teeth & extractions.",
-                        "inLanguage": "en-US",
-                        "isPartOf": { "@id": "https://sarasotaemergencydentist.com/#website" },
-                        "about": { "@type": "MedicalCondition", "name": "Dental Emergency" },
-                        "dateModified": CURRENT_DATE.toISOString().split('T')[0],
-                        "breadcrumb": { "@id": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist.html#breadcrumb" }
-                    },
-                    {
-                        "@type": "WebSite",
-                        "@id": "https://sarasotaemergencydentist.com/#website",
-                        "url": "https://sarasotaemergencydentist.com/",
-                        "name": "Sarasota Emergency Dentist",
-                        "potentialAction": {
-                            "@type": "SearchAction",
-                            "target": { "@type": "EntryPoint", "urlTemplate": "https://sarasotaemergencydentist.com/search?q={search_term_string}" },
-                            "query-input": "required name=search_term_string"
-                        }
-                    },
-                    {
-                        "@type": "BreadcrumbList",
-                        "@id": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist.html#breadcrumb",
-                        "itemListElement": [
-                            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sarasotaemergencydentist.com/" },
-                            { "@type": "ListItem", "position": 2, "name": "Emergency Dentist Sarasota FL", "item": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist.html" }
-                        ]
-                    },
-                    {
-                        "@type": "ItemList",
-                        "@id": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist.html#providers",
-                        "name": "Verified Emergency Dentists in Sarasota, FL",
-                        "description": "Licensed emergency dental clinics in Sarasota Florida offering same-day urgent care",
-                        "numberOfItems": PROVIDERS.length,
-                        "itemListElement": PROVIDERS.map((p, i) => ({
-                            "@type": "ListItem",
-                            "position": i + 1,
-                            "item": {
-                                "@type": "Dentist",
-                                "name": p.name,
-                                "telephone": p.phone,
-                                "url": p.website,
-                                "address": {
-                                    "@type": "PostalAddress",
-                                    "addressLocality": "Sarasota",
-                                    "addressRegion": "FL",
-                                    "addressCountry": "US"
-                                },
-                                "openingHours": "Mo-Su 08:00-20:00",
-                                "makesOffer": {
-                                    "@type": "Offer",
-                                    "itemOffered": { "@type": "Service", "name": "Emergency Dental Care" }
-                                }
-                            }
-                        }))
-                    },
-                    {
-                        "@type": "FAQPage",
-                        "@id": "https://sarasotaemergencydentist.com/location/sarasota-emergency-dentist.html#faq",
-                        "mainEntity": [
-                            {
-                                "@type": "Question",
-                                "name": "How do I find a same-day emergency dentist in Sarasota?",
-                                "acceptedAnswer": { "@type": "Answer", "text": "Browse the verified provider list on this page, pick the clinic closest to you, and call their direct number. Every provider listed here accepts same-day urgent appointments — no referral or waiting queue needed." }
-                            },
-                            {
-                                "@type": "Question",
-                                "name": "Are there dentists open on weekends in Sarasota?",
-                                "acceptedAnswer": { "@type": "Answer", "text": "Yes. Several providers in this directory including Z Family Dental and Waterside Dental list Saturday availability and extended evening hours. Call each clinic directly to confirm current emergency hours." }
-                            },
-                            {
-                                "@type": "Question",
-                                "name": "Can I see an emergency dentist in Sarasota without insurance?",
-                                "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every provider in this directory sees uninsured patients. Most offer in-house payment plans, CareCredit financing, or sliding-scale fees. Emergency dental treatment is typically a fraction of the cost of a hospital ER visit." }
-                            },
-                            {
-                                "@type": "Question",
-                                "name": "Will a Sarasota dentist pull an infected tooth the same day?",
-                                "acceptedAnswer": { "@type": "Answer", "text": "In many cases yes — particularly where the infection is localised and extraction is the appropriate treatment. Oral surgeons in the Sarasota oral surgery directory handle same-day emergency extractions including infected and impacted wisdom teeth." }
-                            },
-                            {
-                                "@type": "Question",
-                                "name": "What should I do if I knock out a tooth in Sarasota?",
-                                "acceptedAnswer": { "@type": "Answer", "text": "Keep the tooth moist in milk or between your cheek and gum. Call a Sarasota emergency dentist immediately — the 60-minute window is critical for reimplantation success. Providers such as Integrated Dental and Gulf Gate Dental handle avulsed teeth on a same-day urgent basis." }
-                            },
-                            {
-                                "@type": "Question",
-                                "name": "Should I go to the ER or an emergency dentist in Sarasota?",
-                                "acceptedAnswer": { "@type": "Answer", "text": "For dental pain, abscesses, or broken teeth: see a dentist. Hospital ERs can prescribe pain medication but cannot treat the tooth itself. Go to the ER only if swelling is affecting your airway, if you have systemic infection signs (fever, chills, difficulty swallowing), or if there is uncontrolled bleeding from trauma." }
-                            },
-                            {
-                                "@type": "Question",
-                                "name": "Do I need an appointment for a dental emergency in Sarasota?",
-                                "acceptedAnswer": { "@type": "Answer", "text": "Many providers accept walk-in emergency patients for acute pain and broken teeth. Calling ahead — even 30 minutes before arrival — is always recommended so the clinic can prepare and ensure you are seen immediately." }
-                            },
-                            {
-                                "@type": "Question",
-                                "name": "Which areas of Sarasota do these providers cover?",
-                                "acceptedAnswer": { "@type": "Answer", "text": "Providers cover all of Sarasota County including Downtown, Siesta Key, Palmer Ranch, Gulf Gate, Southside Village, Bee Ridge, Lakewood Ranch, and North Sarasota. Several also serve Venice, Osprey, and the Bradenton border." }
-                            }
-                        ]
-                    }
-                ]
-            };
-
-            const script = document.createElement('script');
-            script.type = 'application/ld+json';
-            script.textContent = JSON.stringify(schema);
-            document.head.appendChild(script);
-        }
-
-        // ── Sticky bar timer ─────────────────────────────────────────
-        function initStickyBar() {
-            setTimeout(() => {
-                const bar = document.getElementById('sticky-bar');
-                if (bar) bar.style.display = 'flex';
-            }, 8000);
-        }
-
-        // ── Master init ───────────────────────────────────────────────
-        function initializePage() {
-            updateAvailability();
-            renderProviders();
-            rotateTestimonials();
-            setInterval(rotateTestimonials, 5200);
-            setDynamicDates();
-            injectSchema();
-            initStickyBar();
-
-            resetIdleTimer();
-            document.addEventListener('mousemove', resetIdleTimer);
-            document.addEventListener('keydown', resetIdleTimer);
-            document.addEventListener('scroll', resetIdleTimer);
-
-            console.log('%c✅ Sarasota Emergency Dentist location page initialised — direct-to-clinic directory model active.', 'color:#10b981; font-size:13px');
-        }
-
-        window.onload = initializePage;
+      ]
+    }
     </script>
+</head>
+
+<body class="bg-white text-slate-900 overflow-x-hidden">
+
+<!-- Scroll progress bar -->
+<div id="scroll-progress"></div>
+
+<!-- ═══ HEADER — blueprint-compliant: trigger-search + master-nav-dock (empty) ═══ -->
+<header class="mckinsey-header sticky top-0 z-50 shadow-sm">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-8 py-4 flex items-center justify-between gap-x-4">
+        <a href="/index.html" class="flex items-center gap-x-3 flex-shrink-0">
+            <div class="w-9 h-9 bg-gradient-to-br from-emerald-500 to-violet-500 rounded-xl flex items-center justify-center text-2xl shadow-inner">🦷</div>
+            <span class="text-lg sm:text-xl font-semibold tracking-tight text-slate-900">Sarasota Emergency Dentist</span>
+        </a>
+        <button type="button"
+            class="trigger-search flex items-center text-slate-500 hover:text-emerald-700 transition-colors focus:outline-none"
+            aria-label="Open Search">
+            <span class="mr-2 text-sm font-medium hidden sm:inline">Search</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+        </button>
+        <div id="master-nav-dock" class="flex items-center justify-between"></div>
+    </div>
+</header>
+
+<!-- Breadcrumb + seasonal badge -->
+<div class="max-w-screen-xl mx-auto px-4 sm:px-8 py-3 border-b border-slate-100 text-sm flex flex-wrap items-center gap-x-2 text-slate-500">
+    <a href="/index.html" class="hover:text-emerald-600 transition-colors">Home</a>
+    <span class="text-slate-300">›</span>
+    <a href="/emd" class="hover:text-emerald-600 transition-colors">Emergency Directory</a>
+    <span class="text-slate-300">›</span>
+    <span class="text-slate-900 font-medium">Sarasota, FL · <span id="seasonal-badge" class="text-emerald-600"></span></span>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero-gradient pt-14 pb-20 relative overflow-hidden">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-flex items-center gap-x-2 bg-white/80 backdrop-blur text-emerald-700 text-xs font-semibold px-4 h-8 rounded-full shadow-sm mb-6">
+                    <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                    8 VERIFIED PROVIDERS · DIRECT CLINIC NUMBERS
+                </div>
+
+                <h1 class="hero-h1 text-5xl font-semibold tracking-tight leading-none mb-5 text-slate-900">
+                    Emergency Dentists<br>
+                    in <span class="bg-gradient-to-r from-emerald-500 to-violet-500 bg-clip-text text-transparent">Sarasota, FL</span>
+                </h1>
+                <p class="text-xl text-slate-600 max-w-lg mb-8">
+                    Severe tooth pain? Broken tooth? Abscess? Browse verified local clinics and call each one directly — same-day care, no referrals, no middlemen.
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+                    <a href="#providers"
+                       class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-2xl text-lg font-semibold flex items-center gap-x-2 transition-all shadow-lg shadow-emerald-500/25">
+                        Browse All Providers
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </a>
+                    <a href="tel:+19413980609"
+                       class="bg-white border border-slate-200 hover:border-emerald-400 text-slate-800 px-8 py-4 rounded-2xl text-lg font-semibold flex items-center gap-x-2 transition-all shadow-sm">
+                        Call Integrated Dental
+                        <span>📞</span>
+                    </a>
+                </div>
+
+                <!-- Trust strip -->
+                <div class="flex flex-wrap items-center gap-x-8 gap-y-3 mt-10 text-sm">
+                    <div class="flex items-center gap-x-2">
+                        <span class="text-emerald-500 text-xl">✅</span>
+                        <span class="text-slate-600">Every provider independently rated 4.5★+</span>
+                    </div>
+                    <div class="flex items-center gap-x-2">
+                        <span class="text-emerald-500 text-xl">🔒</span>
+                        <span class="text-slate-600">Florida Board licensed — <a href="https://www.floridasdentistry.gov" target="_blank" class="underline text-emerald-600">verify here</a></span>
+                    </div>
+                    <div class="flex items-center gap-x-2">
+                        <span class="text-emerald-500 text-xl">📞</span>
+                        <span class="text-slate-600">Every number is a direct clinic line</span>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 mt-3">Independent directory · Not a clinic · Not a referral service</p>
+            </div>
+
+            <!-- Hero card -->
+            <div class="relative hidden lg:block">
+                <div class="bg-white/80 backdrop-blur-xl border border-slate-100 rounded-3xl p-7 shadow-xl max-w-sm ml-auto">
+                    <div class="flex items-center justify-between bg-emerald-50 rounded-2xl px-5 py-3 mb-6">
+                        <div class="flex items-center gap-x-2 text-emerald-700 font-semibold text-sm">
+                            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                            8 Verified Providers Listed
+                        </div>
+                        <span class="text-emerald-600 text-xs font-medium">Direct numbers ✓</span>
+                    </div>
+                    <div class="space-y-5">
+                        <div class="flex gap-x-4 items-start">
+                            <span class="text-3xl flex-shrink-0">🦷</span>
+                            <div>
+                                <p class="font-semibold text-slate-900">Tooth pain or swelling?</p>
+                                <p class="text-slate-500 text-sm mt-1">Every provider below offers same-day emergency slots — call any clinic directly from this page.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-x-4 items-start">
+                            <span class="text-3xl flex-shrink-0">🚨</span>
+                            <div>
+                                <p class="font-semibold text-slate-900">Broken tooth or lost crown?</p>
+                                <p class="text-slate-500 text-sm mt-1">Same-day repair options available across Sarasota — browse below and call the nearest clinic.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Availability strip -->
+<div class="bg-emerald-600 py-3 text-center text-white text-sm font-medium">
+    <div class="max-w-screen-xl mx-auto px-4 flex items-center justify-center gap-x-3">
+        <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+        8 Verified Sarasota Emergency Providers Listed — Direct Clinic Numbers Below
+    </div>
+</div>
+
+<!-- ═══ TRUST STRIP ═══ -->
+<section class="max-w-screen-xl mx-auto px-4 sm:px-8 py-14 border-b border-slate-100">
+    <div class="grid sm:grid-cols-3 gap-6">
+        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-7 text-center card-hover">
+            <div class="text-4xl mb-4">⏰</div>
+            <h3 class="font-semibold text-lg text-slate-900 mb-2">Don't wait in pain</h3>
+            <p class="text-slate-500 text-sm">Dental emergencies worsen quickly. Same-day appointments are standard at every provider listed here.</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-7 text-center card-hover">
+            <div class="text-4xl mb-4">📍</div>
+            <h3 class="font-semibold text-lg text-slate-900 mb-2">Local Sarasota clinics</h3>
+            <p class="text-slate-500 text-sm">All 8 providers are physical, licensed dental offices in Sarasota and Sarasota County — no national chains, no call centres.</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-7 text-center card-hover">
+            <div class="text-4xl mb-4">📞</div>
+            <h3 class="font-semibold text-lg text-slate-900 mb-2">Call any clinic directly</h3>
+            <p class="text-slate-500 text-sm">Every number on this page rings a real Sarasota dental office — multiple providers list extended and weekend hours.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ EMERGENCY CONDITIONS ═══ -->
+<section class="max-w-screen-xl mx-auto px-4 sm:px-8 py-16">
+    <h2 class="text-3xl sm:text-4xl font-semibold text-center text-slate-900 mb-4 tracking-tight">Dental Emergencies Treated Same-Day in Sarasota</h2>
+    <p class="text-center text-slate-500 mb-10 max-w-2xl mx-auto">Every provider in this directory handles urgent cases the same day — click any condition to learn more or scroll to find the right clinic.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <a href="/guide/tooth-extraction-sarasota" class="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center text-center card-hover">
+            <span class="text-5xl mb-4">😣</span>
+            <h3 class="font-semibold text-slate-900 mb-2">Severe Tooth Pain</h3>
+            <p class="text-slate-500 text-sm">Infection, nerve exposure, or abscess — urgent pain relief the same day.</p>
+        </a>
+        <a href="/oms" class="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center text-center card-hover">
+            <span class="text-5xl mb-4">🦷</span>
+            <h3 class="font-semibold text-slate-900 mb-2">Broken or Chipped Tooth</h3>
+            <p class="text-slate-500 text-sm">Cracked, fractured, or knocked-out teeth — same-day repair or extraction.</p>
+        </a>
+        <a href="/per" class="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center text-center card-hover">
+            <span class="text-5xl mb-4">🔥</span>
+            <h3 class="font-semibold text-slate-900 mb-2">Dental Abscess / Swelling</h3>
+            <p class="text-slate-500 text-sm">Facial swelling or pus — urgent drainage and antibiotics to prevent spread.</p>
+        </a>
+        <div class="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center text-center card-hover">
+            <span class="text-5xl mb-4">🩸</span>
+            <h3 class="font-semibold text-slate-900 mb-2">Lost Filling or Crown</h3>
+            <p class="text-slate-500 text-sm">Exposed nerve or loose restoration — same-day recementation or replacement.</p>
+        </div>
+        <div class="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center text-center card-hover">
+            <span class="text-5xl mb-4">🚨</span>
+            <h3 class="font-semibold text-slate-900 mb-2">Knocked-Out Tooth</h3>
+            <p class="text-slate-500 text-sm">Keep the tooth in milk and call immediately. Reimplantation is time-critical — under 60 minutes is ideal.</p>
+        </div>
+        <a href="/oms" class="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center text-center card-hover">
+            <span class="text-5xl mb-4">😬</span>
+            <h3 class="font-semibold text-slate-900 mb-2">Wisdom Tooth Pain</h3>
+            <p class="text-slate-500 text-sm">Impacted or infected wisdom teeth — fast evaluation, antibiotics, or same-day extraction.</p>
+        </a>
+        <a href="/per" class="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center text-center card-hover">
+            <span class="text-5xl mb-4">🫀</span>
+            <h3 class="font-semibold text-slate-900 mb-2">Gum Infection or Bleeding</h3>
+            <p class="text-slate-500 text-sm">Swollen, painful gums or spreading infection — urgent periodontal treatment available.</p>
+        </a>
+        <a href="/end" class="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center text-center card-hover">
+            <span class="text-5xl mb-4">👑</span>
+            <h3 class="font-semibold text-slate-900 mb-2">Emergency Root Canal</h3>
+            <p class="text-slate-500 text-sm">Irreversible pulpitis or necrotic nerve — same-day endodontic relief available in Sarasota.</p>
+        </a>
+    </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="bg-slate-50 rounded-3xl max-w-screen-xl mx-auto px-4 sm:px-8 py-14 mb-8">
+    <h2 class="text-3xl sm:text-4xl font-semibold text-center text-slate-900 mb-10 tracking-tight">How to Use This Directory</h2>
+    <div class="grid sm:grid-cols-3 gap-8">
+        <div class="text-center">
+            <div class="mx-auto w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center text-2xl mb-5">1️⃣</div>
+            <h3 class="font-semibold text-xl text-slate-900 mb-3">Find Your Provider</h3>
+            <p class="text-slate-500 text-sm">Browse the verified list below. All 8 are licensed, active, and accepting urgent cases.</p>
+        </div>
+        <div class="text-center">
+            <div class="mx-auto w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center text-2xl mb-5">2️⃣</div>
+            <h3 class="font-semibold text-xl text-slate-900 mb-3">Call the Clinic Directly</h3>
+            <p class="text-slate-500 text-sm">Tap the phone number on any card — you reach the practice front desk immediately. No middlemen.</p>
+        </div>
+        <div class="text-center">
+            <div class="mx-auto w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center text-2xl mb-5">3️⃣</div>
+            <h3 class="font-semibold text-xl text-slate-900 mb-3">Get Relief Fast</h3>
+            <p class="text-slate-500 text-sm">Book your same-day slot directly with the clinic. Most Sarasota emergency patients are seen within hours.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ INSURANCE / COST ═══ -->
+<section class="max-w-screen-xl mx-auto px-4 sm:px-8 py-14">
+    <div class="bg-violet-50 border border-violet-100 rounded-3xl p-10 max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-semibold text-slate-900 mb-4 tracking-tight">Insurance, Costs & Uninsured Options</h2>
+        <p class="text-slate-600">Most Sarasota providers accept Delta Dental of Florida, Cigna, Aetna, UnitedHealthcare, MetLife, and common PPO plans. Emergency treatment without insurance is typically far cheaper than a hospital ER visit.</p>
+        <p class="text-slate-600 mt-4">No insurance? Most clinics offer flexible financing, in-house payment plans, or sliding-scale fees. Benefits verification is done by each clinic's own billing team at the time of booking — ask directly when you call.</p>
+        <a href="#providers" class="mt-7 inline-flex items-center gap-x-2 bg-violet-600 hover:bg-violet-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all shadow-lg shadow-violet-500/20">
+            Browse Providers &amp; Call Direct
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+    </div>
+</section>
+
+<!-- ═══ PROVIDERS GRID ═══ -->
+<section id="providers" class="max-w-screen-xl mx-auto px-4 sm:px-8 py-16">
+    <h2 class="text-3xl sm:text-4xl font-semibold text-center text-slate-900 mb-4 tracking-tight">Verified Emergency Dentists in Sarasota, FL</h2>
+    <p class="text-center text-slate-500 mb-10 max-w-2xl mx-auto">Each provider is a licensed Sarasota dental practice offering urgent same-day care. Tap the phone number or "Call Direct" to reach the clinic immediately — no forms, no referrals.</p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="providers-container"></div>
+</section>
+
+<!-- ═══ SPECIALTY HUBS INTERNAL LINKS ═══ -->
+<section class="max-w-screen-xl mx-auto px-4 sm:px-8 py-14 border-t border-slate-100">
+    <h2 class="text-2xl sm:text-3xl font-semibold text-center text-slate-900 mb-3 tracking-tight">Need a Specialist in Sarasota?</h2>
+    <p class="text-center text-slate-500 mb-8 max-w-xl mx-auto">Our directory covers every ADA specialty. Browse the dedicated specialist lists below.</p>
+    <div id="dynamic-internal-links"></div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="/oms" class="specialty-card bg-white border border-slate-200 rounded-2xl p-5 flex items-center gap-x-4">
+            <span class="text-3xl flex-shrink-0">🔪</span>
+            <div>
+                <div class="font-semibold text-slate-900">Oral Surgery Sarasota</div>
+                <div class="text-slate-500 text-sm">Extractions, wisdom teeth, same-day surgical care</div>
+            </div>
+            <span class="ml-auto text-emerald-500 text-lg">→</span>
+        </a>
+        <a href="/end" class="specialty-card bg-white border border-slate-200 rounded-2xl p-5 flex items-center gap-x-4">
+            <span class="text-3xl flex-shrink-0">🦷</span>
+            <div>
+                <div class="font-semibold text-slate-900">Root Canal Sarasota</div>
+                <div class="text-slate-500 text-sm">Emergency endodontics, same-day pulp relief</div>
+            </div>
+            <span class="ml-auto text-emerald-500 text-lg">→</span>
+        </a>
+        <a href="/per" class="specialty-card bg-white border border-slate-200 rounded-2xl p-5 flex items-center gap-x-4">
+            <span class="text-3xl flex-shrink-0">🫀</span>
+            <div>
+                <div class="font-semibold text-slate-900">Abscess &amp; Gum Infection</div>
+                <div class="text-slate-500 text-sm">Periodontal emergency care, drainage, antibiotics</div>
+            </div>
+            <span class="ml-auto text-emerald-500 text-lg">→</span>
+        </a>
+        <a href="/odo" class="specialty-card bg-white border border-slate-200 rounded-2xl p-5 flex items-center gap-x-4">
+            <span class="text-3xl flex-shrink-0">😁</span>
+            <div>
+                <div class="font-semibold text-slate-900">Braces &amp; Invisalign Sarasota</div>
+                <div class="text-slate-500 text-sm">Orthodontists, clear aligners, same-day evaluations</div>
+            </div>
+            <span class="ml-auto text-emerald-500 text-lg">→</span>
+        </a>
+        <a href="/pd" class="specialty-card bg-white border border-slate-200 rounded-2xl p-5 flex items-center gap-x-4">
+            <span class="text-3xl flex-shrink-0">👶</span>
+            <div>
+                <div class="font-semibold text-slate-900">Pediatric Dental Emergency</div>
+                <div class="text-slate-500 text-sm">Kids' emergency dentists, anxiety management, sedation</div>
+            </div>
+            <span class="ml-auto text-emerald-500 text-lg">→</span>
+        </a>
+        <a href="/lad" class="specialty-card bg-white border border-slate-200 rounded-2xl p-5 flex items-center gap-x-4">
+            <span class="text-3xl flex-shrink-0">💡</span>
+            <div>
+                <div class="font-semibold text-slate-900">Laser Dentistry Sarasota</div>
+                <div class="text-slate-500 text-sm">Drill-free options, soft tissue laser, gum treatment</div>
+            </div>
+            <span class="ml-auto text-emerald-500 text-lg">→</span>
+        </a>
+        <a href="/imd" class="specialty-card bg-white border border-slate-200 rounded-2xl p-5 flex items-center gap-x-4">
+            <span class="text-3xl flex-shrink-0">🔩</span>
+            <div>
+                <div class="font-semibold text-slate-900">Dental Implants Sarasota</div>
+                <div class="text-slate-500 text-sm">Same-day implant consultations, full-arch &amp; single-tooth</div>
+            </div>
+            <span class="ml-auto text-emerald-500 text-lg">→</span>
+        </a>
+        <a href="/sda" class="specialty-card bg-white border border-slate-200 rounded-2xl p-5 flex items-center gap-x-4">
+            <span class="text-3xl flex-shrink-0">😴</span>
+            <div>
+                <div class="font-semibold text-slate-900">Sedation Dentistry Sarasota</div>
+                <div class="text-slate-500 text-sm">Nitrous oxide, oral sedation, anxiety-free emergency care</div>
+            </div>
+            <span class="ml-auto text-emerald-500 text-lg">→</span>
+        </a>
+        <a href="/emd" class="specialty-card bg-white border border-slate-200 rounded-2xl p-5 flex items-center gap-x-4">
+            <span class="text-3xl flex-shrink-0">🏠</span>
+            <div>
+                <div class="font-semibold text-slate-900">Full Directory</div>
+                <div class="text-slate-500 text-sm">All 50+ providers across all specialties</div>
+            </div>
+            <span class="ml-auto text-emerald-500 text-lg">→</span>
+        </a>
+    </div>
+</section>
+
+<!-- ═══ NEIGHBORHOODS ═══ -->
+<section class="bg-slate-50 rounded-3xl max-w-screen-xl mx-auto px-4 sm:px-8 py-14 mb-8">
+    <h2 class="text-2xl sm:text-3xl font-semibold text-center text-slate-900 mb-3 tracking-tight">Emergency Dentists by Sarasota Neighborhood</h2>
+    <p class="text-center text-slate-500 mb-8 max-w-2xl mx-auto">Our verified providers cover all of Sarasota County. Whether you're near Siesta Key or Palmer Ranch, a same-day emergency appointment is within reach.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <div class="neighborhood-pill bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="font-semibold text-slate-900 mb-1">Downtown Sarasota</div>
+            <div class="text-slate-500 text-sm">Multiple providers within 34236 &amp; 34237 zip codes</div>
+        </div>
+        <div class="neighborhood-pill bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="font-semibold text-slate-900 mb-1">Siesta Key</div>
+            <div class="text-slate-500 text-sm">Emergency dentists via South Tamiami Trail corridor</div>
+        </div>
+        <div class="neighborhood-pill bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="font-semibold text-slate-900 mb-1">Palmer Ranch</div>
+            <div class="text-slate-500 text-sm">South Sarasota clinics accessible from Palmer Ranch &amp; Osprey</div>
+        </div>
+        <div class="neighborhood-pill bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="font-semibold text-slate-900 mb-1">Gulf Gate</div>
+            <div class="text-slate-500 text-sm">Gulf Gate Dental and South Sarasota providers</div>
+        </div>
+        <div class="neighborhood-pill bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="font-semibold text-slate-900 mb-1">Southside Village</div>
+            <div class="text-slate-500 text-sm">South Tamiami Trail providers serving Southside Village</div>
+        </div>
+        <div class="neighborhood-pill bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="font-semibold text-slate-900 mb-1">Bee Ridge</div>
+            <div class="text-slate-500 text-sm">Mid-Sarasota providers covering Bee Ridge and Clark Road</div>
+        </div>
+        <div class="neighborhood-pill bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="font-semibold text-slate-900 mb-1">Lakewood Ranch</div>
+            <div class="text-slate-500 text-sm">University Pkwy practices accessible from Lakewood Ranch</div>
+        </div>
+        <div class="neighborhood-pill bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="font-semibold text-slate-900 mb-1">Venice &amp; Osprey</div>
+            <div class="text-slate-500 text-sm">South County providers serving Venice, Osprey, Nokomis</div>
+        </div>
+    </div>
+    <p class="text-center text-slate-400 text-sm">Each provider card includes a full street address — compare before you call.</p>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="max-w-screen-xl mx-auto px-4 sm:px-8 py-14">
+    <h2 class="text-2xl sm:text-3xl font-semibold text-center text-slate-900 mb-8 tracking-tight">Sarasota Patients, Real Results</h2>
+    <div id="testimonial-container" class="max-w-2xl mx-auto text-center min-h-[140px] flex items-center justify-center"></div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="max-w-screen-xl mx-auto px-4 sm:px-8 py-16 border-t border-slate-100">
+    <h2 class="text-3xl sm:text-4xl font-semibold text-center text-slate-900 mb-10 tracking-tight">Emergency Dentist Sarasota — FAQ</h2>
+    <div class="max-w-3xl mx-auto space-y-3" id="faq-container"></div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="bg-gradient-to-br from-slate-900 to-violet-950 py-20 text-center">
+    <div class="max-w-2xl mx-auto px-6">
+        <h2 class="text-4xl sm:text-5xl font-semibold text-white mb-6 tracking-tight">Still in pain? Find your provider now.</h2>
+        <a href="#providers" class="inline-flex items-center gap-x-3 bg-emerald-500 hover:bg-emerald-600 text-white px-12 py-5 rounded-2xl font-semibold text-xl transition-all shadow-2xl shadow-emerald-500/25">
+            Browse All 8 Providers
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+        <p class="mt-6 text-slate-400 text-sm">Direct clinic numbers listed above · Sarasota, FL</p>
+    </div>
+</section>
+
+<!-- ═══ CONTACT FORM ═══ -->
+<section class="max-w-screen-xl mx-auto px-4 sm:px-8 py-16">
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+        <div>
+            <h2 class="text-3xl font-semibold text-slate-900 mb-4 tracking-tight">Directory enquiry?</h2>
+            <p class="text-slate-600 mb-2">For a dental emergency, call a provider above — that's the fastest path to care.</p>
+            <p class="text-slate-500 text-sm">This form is for general questions about this directory, listing corrections, or feedback. Not monitored in real time.</p>
+        </div>
+        <form
+            name="Request And Contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            onsubmit="handleContactForm(event)"
+            class="relative max-w-[400px] w-full rounded-3xl p-[1px] bg-gradient-to-br from-emerald-400/50 via-white/10 to-violet-400/50">
+            <div class="bg-slate-900/90 backdrop-blur-2xl rounded-[1.49rem] p-7 space-y-5">
+                <input type="hidden" name="form-name" value="Request And Contact" />
+                <p class="hidden" style="display:none;"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+                <input type="text" name="name" placeholder="Your full name" required
+                    class="contact-form-input bg-white/5 border-white/10 text-white placeholder:text-slate-400">
+                <input type="email" name="email" placeholder="Email address" required
+                    class="contact-form-input bg-white/5 border-white/10 text-white placeholder:text-slate-400">
+                <textarea name="message" rows="4" required placeholder="Question or feedback…"
+                    class="contact-form-input bg-white/5 border-white/10 text-white placeholder:text-slate-400 resize-y"></textarea>
+                <button type="submit"
+                    class="w-full py-4 bg-gradient-to-r from-emerald-400 to-violet-400 text-white font-semibold rounded-2xl hover:shadow-xl transition-all flex items-center justify-center gap-x-2">
+                    Send Message <span>→</span>
+                </button>
+                <p class="text-[11px] text-slate-400 text-center">Not for emergencies. If you're in pain, call a provider above.</p>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="bg-slate-950 text-slate-400">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-8 pt-12 pb-8">
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-10">
+            <div>
+                <div class="flex items-center gap-x-3 text-white mb-4">
+                    <span class="text-3xl">🦷</span>
+                    <span class="font-semibold text-xl">Sarasota Emergency Dentist</span>
+                </div>
+                <p class="text-sm opacity-75 max-w-xs">An independent directory of verified emergency dental providers across Sarasota, FL.</p>
+                <div class="mt-6 flex gap-x-5 text-sm font-medium">
+                    <a href="https://x.com/sarasota_emergency" target="_blank" class="hover:text-white transition-colors">X (Twitter)</a>
+                    <a href="https://facebook.com/sarasotaemergencydentist" target="_blank" class="hover:text-white transition-colors">Facebook</a>
+                </div>
+            </div>
+            <div>
+                <div class="text-xs uppercase tracking-widest text-slate-500 mb-4">Legal</div>
+                <div class="space-y-2 text-sm">
+                    <a href="/privacy-policy" class="block hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="/cookies-policy" class="block hover:text-white transition-colors">Cookies Policy</a>
+                    <a href="/terms-of-use" class="block hover:text-white transition-colors">Terms of Use</a>
+                    <a href="/contact" class="block hover:text-white transition-colors">Contact</a>
+                    <a href="/about" class="block hover:text-white transition-colors">About</a>
+                </div>
+            </div>
+            <div class="text-sm">
+                <div class="text-white mb-2">Independent Online Directory</div>
+                <div>Serving Sarasota County, Florida</div>
+                <a href="/emd" class="mt-5 inline-block text-emerald-400 font-medium hover:text-emerald-300 transition-colors">Browse all verified providers →</a>
+                <div class="mt-6 text-xs opacity-60">© <span id="footer-year"></span> All rights reserved. Not a dental clinic, not a call center.</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-3 z-50"></div>
+
+<!-- GLOBAL SHARED SCRIPTS — root-relative, works at any depth -->
+<script defer src="/js/registry.js"></script>
+<script defer src="/js/root-config.js"></script>
+<script defer src="/js/menu-system.js"></script>
+<script defer src="/js/search-system.js"></script>
+<script defer src="/js/schema.js"></script>
+<script defer src="/js/internal-links.js"></script>
+<script defer src="/js/legal-engine.js"></script>
+
+<script>
+// ── Tailwind config ───────────────────────────────────────────────
+tailwind.config = { content: [], theme: { extend: {} } };
+
+// ── Providers data ────────────────────────────────────────────────
+const PROVIDERS = [
+    { name:"Integrated Dental", phone:"(941) 398-0609", tel:"tel:+19413980609", website:"https://www.idaflorida.com/", address:"1435 S Tamiami Trail B, Sarasota, FL 34239", rating:"5.0 ★", review:"Same-day emergency appointments. Recommended for urgent care including abscesses and extractions.", tags:["Same-Day","Emergency","Walk-In"] },
+    { name:"Gulf Gate Dental", phone:"(941) 921-2122", tel:"tel:+19419212122", website:"https://www.gulfgatedental.com/", address:"3212 Gulf Gate Dr, Sarasota, FL 34231", rating:"4.8 ★", review:"Prompt emergency dentistry for tooth pain, broken teeth, and infections. Serves Gulf Gate and South Sarasota.", tags:["Emergency","Gulf Gate","South Sarasota"] },
+    { name:"Waterside Dental Sarasota", phone:"(941) 870-3322", tel:"tel:+19418703322", website:"https://watersidedentalsarasota.com/", address:"1058 N Tamiami Trail, Sarasota, FL 34236", rating:"4.9 ★", review:"Same-day emergency dental appointments for pain relief and repairs. Downtown Sarasota location.", tags:["Downtown","Same-Day","Emergency"] },
+    { name:"Misch Implant & Aesthetic Dentistry", phone:"(941) 957-6444", tel:"tel:+19419576444", website:"https://drmisch.com/", address:"120 South Tuttle Avenue, Sarasota, FL 34237", rating:"5.0 ★", review:"Same-day emergencies for severe pain, infections, broken teeth, and implant emergencies.", tags:["Implants","Emergency","Aesthetic"] },
+    { name:"Sarasota Family Dental", phone:"(941) 924-1100", tel:"tel:+19419241100", website:"https://sarasotafamilydental.com/", address:"3900 Clark Road Suite J5, Sarasota, FL 34233", rating:"4.9 ★", review:"Handles all types of dental emergencies including broken teeth, nerve pain, and same-day extractions.", tags:["Same-Day","Family","Emergency"] },
+    { name:"Vital Dental Sarasota", phone:"(941) 371-2022", tel:"tel:+19413712022", website:"https://www.vitaldentalsarasota.com/", address:"Sarasota, FL 34233 area", rating:"5.0 ★", review:"Same-day emergency appointments and treatment for urgent dental needs including cracked teeth and infections.", tags:["Same-Day","Emergency","5-Star"] },
+    { name:"University Parkway Dental", phone:"(941) 822-8165", tel:"tel:+19418228165", website:"https://universityparkwaydental.com/", address:"3315 University Pkwy Unit 103, Sarasota, FL 34243", rating:"4.9 ★", review:"Fast same-day emergency dental care. North Sarasota — ideal for Lakewood Ranch patients.", tags:["North Sarasota","Same-Day","Emergency"] },
+    { name:"Z Family Dental", phone:"(941) 899-0260", tel:"tel:+19418990260", website:"https://zfamilydental.com/", address:"Sarasota, FL 34235 area", rating:"5.0 ★", review:"Same-day and weekend emergency dental care for tooth pain, swelling, and extractions.", tags:["Weekend Hours","Family","Emergency"] }
+];
+
+// ── Testimonials ──────────────────────────────────────────────────
+const TESTIMONIALS = [
+    { q:"Called at 2pm with a broken tooth — was in the chair by 3:30pm. Finding the direct number instantly made all the difference.", a:"Sarah T., Sarasota" },
+    { q:"Abscess was unbearable. Found Gulf Gate Dental through this directory, called direct, same-day appointment. Saved my weekend.", a:"Michael R., Lakewood Ranch" },
+    { q:"Needed a dentist open on Saturday. Called Z Family Dental directly — appointment booked in two minutes.", a:"Jennifer K., Siesta Key" },
+    { q:"Lost a crown while visiting from out of town. Called Waterside Dental — fixed it same day downtown.", a:"David P., Downtown Sarasota" },
+    { q:"Severe tooth infection. Found Integrated Dental's direct number here, called first thing — seen and treated by 9am.", a:"Lisa M., Palmer Ranch" }
+];
+
+// ── FAQs ──────────────────────────────────────────────────────────
+const FAQS = [
+    { q:"How do I find a same-day emergency dentist in Sarasota?", a:"Browse the verified provider list on this page and call any clinic directly. Every provider listed accepts same-day urgent appointments — no referral or waiting queue needed." },
+    { q:"Are there dentists open on weekends in Sarasota?", a:"Yes. Z Family Dental and Waterside Dental list Saturday availability and extended evening hours. Call each clinic directly to confirm current emergency hours — the front desk is always the most accurate source." },
+    { q:"Can I see an emergency dentist in Sarasota without insurance?", a:"Yes. Every provider in this directory sees uninsured patients. Most offer in-house payment plans, CareCredit financing, or sliding-scale fees. Emergency dental treatment is typically a fraction of a hospital ER visit." },
+    { q:"Will a Sarasota dentist pull an infected tooth the same day?", a:"Often yes — particularly where the infection is localised and extraction is the appropriate treatment. If swelling has spread to the jaw or neck, antibiotics may be prescribed first. See our oral surgery directory for same-day extraction specialists." },
+    { q:"What should I do if I knock out a tooth in Sarasota?", a:"Keep the tooth moist — place it in milk or between your cheek and gum. Call a Sarasota emergency dentist immediately. The 60-minute window is critical for reimplantation. Do not scrub the root." },
+    { q:"Can you treat a dental abscess or facial swelling same-day?", a:"Yes — abscesses are treated as true dental emergencies. Same-day drainage, antibiotic prescription, and pain relief are available across multiple Sarasota providers. Swelling affecting breathing or swallowing is a medical emergency — go to Sarasota Memorial Hospital ER immediately alongside dental care." },
+    { q:"Do I need an appointment for a dental emergency in Sarasota?", a:"Many providers accept walk-in emergency patients for acute pain and broken teeth. Calling ahead — even 30 minutes before arrival — ensures the clinic can prepare and you're seen immediately rather than waiting behind scheduled patients." },
+    { q:"Which areas of Sarasota do these providers cover?", a:"Providers cover Downtown, Siesta Key, Palmer Ranch, Gulf Gate, Southside Village, Bee Ridge, Lakewood Ranch, and North Sarasota. Several also serve Venice, Osprey, and the Bradenton border." },
+    { q:"What's the difference between a dental emergency and a routine problem?", a:"True emergencies needing same-day care: severe worsening tooth pain, dental abscess with swelling, knocked-out tooth, broken tooth with exposed nerve, heavy bleeding, or acute pain from a lost crown. Non-emergencies that can wait a day or two: mild sensitivity, a small chip with no pain. When in doubt, call — most clinics triage over the phone at no charge." },
+    { q:"Should I go to the ER or an emergency dentist in Sarasota?", a:"For dental pain, abscesses, or broken teeth: see a dentist. Hospital ERs can prescribe pain medication but cannot treat the tooth itself. Go to the ER only if swelling is affecting your airway, if you have systemic infection signs (fever, chills, difficulty swallowing), or if there is uncontrolled bleeding from trauma." },
+    { q:"Is this a dental clinic or a referral service?", a:"Neither. This is a free, independent public directory of verified Sarasota emergency dental providers. We do not take calls, process bookings, collect patient data, or route calls through any system. Every phone number listed is a direct clinic line." },
+    { q:"Are dentists in Sarasota accepting new emergency patients?", a:"Yes — all 8 listed providers are accepting new emergency patients. State this clearly when you call. Most reserve same-day slots specifically for urgent cases from new patients." }
+];
+
+// ── Render Providers ──────────────────────────────────────────────
+function renderProviders() {
+    const c = document.getElementById('providers-container');
+    if (!c) return;
+    c.innerHTML = PROVIDERS.map(p => `
+        <div class="bg-white border border-slate-100 rounded-2xl p-6 card-hover flex flex-col h-full">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <div class="text-2xl mb-2">🦷</div>
+                    <h3 class="font-semibold text-xl text-slate-900">${p.name}</h3>
+                    <div class="text-emerald-600 text-sm mt-1">${p.rating}</div>
+                </div>
+            </div>
+            <p class="text-slate-500 text-sm mb-4">${p.address}</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+                ${p.tags.map(t=>`<span class="text-xs bg-emerald-50 text-emerald-700 border border-emerald-100 px-3 py-1 rounded-full">${t}</span>`).join('')}
+            </div>
+            <p class="text-slate-600 text-sm flex-1 mb-5 italic">"${p.review}"</p>
+            <div class="mt-auto space-y-2">
+                <a href="${p.tel}" class="call-btn w-full bg-emerald-500 hover:bg-emerald-600 text-white py-3.5 rounded-xl font-semibold flex items-center justify-center gap-x-2 transition-all">
+                    📞 Call ${p.phone}
+                </a>
+                <a href="${p.website}" target="_blank" rel="noopener"
+                   class="w-full border border-slate-200 hover:border-emerald-400 text-slate-600 hover:text-slate-900 py-3 rounded-xl font-medium text-sm flex items-center justify-center gap-x-2 transition-all">
+                    Visit Website →
+                </a>
+            </div>
+        </div>
+    `).join('');
+}
+
+// ── FAQ Accordion ─────────────────────────────────────────────────
+function renderFAQs() {
+    const c = document.getElementById('faq-container');
+    if (!c) return;
+    c.innerHTML = FAQS.map((f,i) => `
+        <div class="border border-slate-200 rounded-2xl overflow-hidden">
+            <button onclick="toggleFAQ(${i})" aria-expanded="false"
+                class="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-slate-900 hover:bg-slate-50 transition-colors gap-x-4">
+                <span>${f.q}</span>
+                <svg id="chevron-${i}" class="faq-chevron w-5 h-5 flex-shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+            <div id="faq-answer-${i}" class="faq-answer">
+                <div class="px-6 py-5 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100">${f.a}</div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function toggleFAQ(i) {
+    const ans = document.getElementById('faq-answer-'+i);
+    const chev = document.getElementById('chevron-'+i);
+    const btn = ans.previousElementSibling;
+    const isOpen = ans.classList.contains('open');
+    ans.classList.toggle('open', !isOpen);
+    chev.classList.toggle('open', !isOpen);
+    btn.setAttribute('aria-expanded', !isOpen);
+}
+
+// ── Testimonials ──────────────────────────────────────────────────
+let tIdx = 0;
+function rotateTestimonials() {
+    const c = document.getElementById('testimonial-container');
+    if (!c) return;
+    const t = TESTIMONIALS[tIdx];
+    c.innerHTML = `
+        <div style="animation:fadeIn .7s ease forwards">
+            <p class="text-xl italic text-slate-700 leading-relaxed mb-5">"${t.q}"</p>
+            <p class="text-slate-500 font-medium text-sm">${t.a}</p>
+        </div>`;
+    tIdx = (tIdx+1) % TESTIMONIALS.length;
+}
+
+// ── Seasonal badge ────────────────────────────────────────────────
+function setSeasonal() {
+    const el = document.getElementById('seasonal-badge');
+    if (!el) return;
+    const m = new Date().getMonth();
+    const y = new Date().getFullYear();
+    const s = m>=2&&m<=4?'Spring':m>=5&&m<=7?'Summer':m>=8&&m<=10?'Fall':'Winter';
+    el.textContent = `${s} ${y} Edition`;
+}
+
+// ── Dynamic dates ─────────────────────────────────────────────────
+function setDates() {
+    const y = new Date().getFullYear();
+    const el = document.getElementById('footer-year');
+    if (el) el.textContent = y;
+}
+
+// ── Scroll progress ───────────────────────────────────────────────
+function initScrollProgress() {
+    const bar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+        const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+        bar.style.width = Math.min(pct,100) + '%';
+    }, { passive: true });
+}
+
+// ── Netlify form handler — exact spec, do not modify ─────────────
+function handleContactForm(e) {
+    e.preventDefault();
+    const myForm = e.target;
+    const formData = new FormData(myForm);
+    fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString()
+    })
+    .then(() => { alert("Thank you! Your request has been transmitted."); myForm.reset(); })
+    .catch((error) => { alert("Oops! There was a problem submitting your form."); console.error("Form submission error:", error); });
+}
+
+// ── Idle recovery nudge ───────────────────────────────────────────
+let idleTimer;
+function resetIdle() {
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+        document.getElementById('providers')?.scrollIntoView({ behavior:'smooth' });
+    }, 50000);
+}
+['mousemove','keydown','scroll','touchstart'].forEach(ev => window.addEventListener(ev, resetIdle, { passive:true }));
+
+// ── Fade-in animation (CSS keyframe) ─────────────────────────────
+const styleEl = document.createElement('style');
+styleEl.textContent = '@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}';
+document.head.appendChild(styleEl);
+
+// ── Init ──────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+    renderProviders();
+    renderFAQs();
+    rotateTestimonials();
+    setInterval(rotateTestimonials, 5500);
+    setSeasonal();
+    setDates();
+    initScrollProgress();
+    resetIdle();
+});
+</script>
+
 </body>
 </html>
