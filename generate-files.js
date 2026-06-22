@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const DOMAIN = 'https://www.sarasotaemergencydentist.com';
+const DOMAIN = 'https://sarasotaemergencydentist.com';
 const MAIN_HTML = 'index.html';
 const REGISTRY_OUTPUT = path.join('js', 'registry.js');
 
