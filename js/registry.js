@@ -216,7 +216,7 @@ window.SITE_REGISTRY = {
     "files": [
       {
         "name": "location/miami-emergency-dentist.html",
-        "label": "Emergency Dentist in Miami FL | Same-Day Urgent Dental Care"
+        "label": "Emergency Dentist Miami FL | Verified Local Providers — Call Direct"
       },
       {
         "name": "location/sarasota-emergency-dentist.html",
