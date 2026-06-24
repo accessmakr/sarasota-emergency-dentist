@@ -224,7 +224,7 @@ window.SITE_REGISTRY = {
       },
       {
         "name": "location/tampa-emergency-dentist.html",
-        "label": "Emergency Dentist in Tampa FL | Same-Day Urgent Dental Care"
+        "label": "Emergency Dentist Tampa FL | Verified Local Providers — Call Direct"
       }
     ]
   }
