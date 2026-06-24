@@ -195,7 +195,7 @@ window.SITE_REGISTRY = {
       },
       {
         "name": "guide/tooth-extraction-sarasota.html",
-        "label": "Tooth Extraction Sarasota | Urgent Wisdom Teeth Removal"
+        "label": "Tooth Extraction Sarasota FL | Same-Day Emergency & Wisdom Teeth Removal"
       },
       {
         "name": "guide/walk-in-dentist-near-me.html",
